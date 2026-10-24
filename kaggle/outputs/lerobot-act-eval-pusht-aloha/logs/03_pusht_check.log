@@ -1,0 +1,4 @@
+
+===== [14:00:05] $ /kaggle/tmp/venv/bin/python /kaggle/tmp/pusht_check.py
+PUSHT_OK pixels_agent_pos {'pixels': (96, 96, 3), 'agent_pos': (2,)} True
+PUSHT_OK environment_state_agent_pos {'environment_state': (16,), 'agent_pos': (2,)} True

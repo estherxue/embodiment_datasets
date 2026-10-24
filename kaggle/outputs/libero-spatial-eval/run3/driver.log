@@ -1,0 +1,29 @@
+[20:10:32 +   0.0m] start; WORK=/kaggle/working TMP=/kaggle/tmp
+[20:10:32 +   0.0m] [00_sysinfo] $ nvidia-smi || true; python -V; nproc; free -g; df -h / /kaggle/working /tmp 2>/dev/null; head -2 /etc/os-release; echo HOME=$HOME; echo PYTHONPATH=$PYTHONPATH; ldconfig -p | grep -i -E 'libEGL|OSMesa' || true
+[20:10:33 +   0.0m] [00_sysinfo] rc=0 (1s)
+[20:10:33 +   0.0m] [01_apt] $ export DEBIAN_FRONTEND=noninteractive; (apt-get update -qq || true) && apt-get install -y -qq --no-install-recommends libegl1 libgl1 libglvnd0 libosmesa6 libosmesa6-dev > /dev/null; ldconfig -p | grep -i -E 'libEGL|OSMesa' || true
+[20:10:56 +   0.4m] [01_apt] rc=0 (23s)
+[20:10:56 +   0.4m] [01_egl_vendor] $ echo '--- vendor dir:'; ls -la /usr/share/glvnd/egl_vendor.d/ 2>/dev/null; cat /usr/share/glvnd/egl_vendor.d/*.json 2>/dev/null; echo '--- nvidia libs:'; ls /usr/local/nvidia/lib64 2>/dev/null | grep -i -E 'egl|glsi|eglcore|nvidia-gl' | head; echo '--- cpu affinity:'; nproc; python3 -c 'import os; print(sorted(os.sched_getaffinity(0)))'
+[20:10:56 +   0.4m] [01_egl_vendor] rc=0 (0s)
+[20:10:56 +   0.4m] wrote /usr/share/glvnd/egl_vendor.d/10_nvidia.json (NVIDIA EGL ICD was not registered for GLVND)
+[20:10:56 +   0.4m] [02_uv] $ /usr/bin/python3 -m pip install -q uv && uv --version
+[20:11:02 +   0.5m] [02_uv] rc=0 (6s)
+[20:11:02 +   0.5m] [02_venv] $ uv venv --python 3.10 /kaggle/tmp/venv && /kaggle/tmp/venv/bin/python -V
+[20:11:04 +   0.5m] [02_venv] rc=0 (2s)
+[20:11:04 +   0.5m] [03_clone] $ rm -rf /kaggle/tmp/LIBERO; git clone -q https://github.com/Lifelong-Robot-Learning/LIBERO /kaggle/tmp/LIBERO && cd /kaggle/tmp/LIBERO && git checkout -q 8f1084e && git log -1 --format='%H %cd %s' --date=short
+[20:11:19 +   0.8m] [03_clone] rc=0 (15s)
+[20:11:19 +   0.8m] [04_torch] $ uv pip install --python /kaggle/tmp/venv/bin/python -q torch==2.5.1 torchvision==0.20.1 --index-url https://download.pytorch.org/whl/cpu
+[20:11:23 +   0.8m] [04_torch] rc=0 (4s)
+[20:11:23 +   0.8m] [04_reqs] $ cd /kaggle/tmp/LIBERO && uv pip install --python /kaggle/tmp/venv/bin/python -q -r requirements.txt huggingface_hub h5py mujoco==2.3.2 setuptools
+[20:11:57 +   1.4m] [04_reqs] rc=0 (34s)
+[20:11:57 +   1.4m] [04_libero] $ cd /kaggle/tmp/LIBERO && uv pip install --python /kaggle/tmp/venv/bin/python -q -e . && uv pip freeze --python /kaggle/tmp/venv/bin/python > /kaggle/working/requirements-kaggle-freeze.txt && grep -i -E '^(torch|torchvision|numpy|robosuite|mujoco|bddl|robomimic|transformers|hydra-core|gym|h5py|huggingface-hub|tokenizers)=' /kaggle/working/requirements-kaggle-freeze.txt
+[20:11:58 +   1.4m] [04_libero] rc=0 (1s)
+[20:11:58 +   1.4m] wrote /root/.libero/config.yaml: {'benchmark_root': '/kaggle/tmp/LIBERO/libero/libero', 'bddl_files': '/kaggle/tmp/LIBERO/libero/libero/bddl_files', 'init_states': '/kaggle/tmp/LIBERO/libero/libero/init_files', 'assets': '/kaggle/tmp/LIBERO/libero/libero/assets', 'datasets': '/kaggle/tmp/datasets'}
+[20:11:58 +   1.4m] [05_import] $ cd /kaggle/tmp/LIBERO && /kaggle/tmp/venv/bin/python -c "import torch, numpy, robosuite, mujoco, h5py, transformers; from libero.libero import get_libero_path, benchmark; print('torch', torch.__version__, 'numpy', numpy.__version__, 'robosuite', robosuite.__version__, 'mujoco', mujoco.__version__); print('datasets path', get_libero_path('datasets')); print('benchmarks', list(benchmark.get_benchmark_dict().keys()))"
+[20:12:05 +   1.6m] [05_import] rc=0 (7s)
+[20:12:05 +   1.6m] [05_import_eval_deps] $ cd /kaggle/tmp/LIBERO && /kaggle/tmp/venv/bin/python -c "import wandb, hydra, easydict, omegaconf, yaml, pkg_resources; import robomimic.utils.obs_utils, robomimic.utils.tensor_utils; from libero.lifelong.algos import *; from libero.lifelong.metric import evaluate_success; from libero.lifelong.main import get_task_embs; from libero.lifelong.utils import torch_load_model; print('eval deps OK')"
+[20:12:06 +   1.6m] [05_import_eval_deps] rc=1 (1s)
+[20:12:06 +   1.6m] environment setup failed -> skipping evaluation stages
+[20:12:06 +   1.6m] [11_disk] $ du -sh /kaggle/tmp/* /kaggle/working/* 2>/dev/null | sort -h | tail -15; free -g | head -2
+[20:12:07 +   1.6m] [11_disk] rc=0 (0s)
+[20:12:07 +   1.6m] ALL_DONE

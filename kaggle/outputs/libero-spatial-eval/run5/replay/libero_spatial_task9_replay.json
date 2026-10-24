@@ -1,0 +1,513 @@
+{
+ "suite": "libero_spatial",
+ "task_id": 9,
+ "task": "pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate",
+ "language": "pick up the black bowl on the wooden cabinet and place it on the plate",
+ "n_demos": 50,
+ "n_success": 47,
+ "success_rate": 0.94,
+ "mean_steps_to_success": 123.61702127659575,
+ "mean_demo_len": 137.6,
+ "records": [
+  {
+   "task_id": 9,
+   "demo": "demo_0",
+   "n_actions": 136,
+   "success": true,
+   "success_step": 126,
+   "final_success": true,
+   "max_state_drift": 1.8349,
+   "seconds": 10.9
+  },
+  {
+   "task_id": 9,
+   "demo": "demo_1",
+   "n_actions": 138,
+   "success": true,
+   "success_step": 124,
+   "final_success": true,
+   "max_state_drift": 3.3737,
+   "seconds": 10.9
+  },
+  {
+   "task_id": 9,
+   "demo": "demo_2",
+   "n_actions": 130,
+   "success": true,
+   "success_step": 120,
+   "final_success": true,
+   "max_state_drift": 4.9458,
+   "seconds": 10.5
+  },
+  {
+   "task_id": 9,
+   "demo": "demo_3",
+   "n_actions": 136,
+   "success": true,
+   "success_step": 118,
+   "final_success": true,
+   "max_state_drift": 3.9681,
+   "seconds": 10.3
+  },
+  {
+   "task_id": 9,
+   "demo": "demo_4",
+   "n_actions": 145,
+   "success": true,
+   "success_step": 127,
+   "final_success": true,
+   "max_state_drift": 6.9474,
+   "seconds": 10.9
+  },
+  {
+   "task_id": 9,
+   "demo": "demo_5",
+   "n_actions": 139,
+   "success": true,
+   "success_step": 121,
+   "final_success": true,
+   "max_state_drift": 3.7928,
+   "seconds": 10.3
+  },
+  {
+   "task_id": 9,
+   "demo": "demo_6",
+   "n_actions": 164,
+   "success": true,
+   "success_step": 146,
+   "final_success": true,
+   "max_state_drift": 10.9318,
+   "seconds": 12.0
+  },
+  {
+   "task_id": 9,
+   "demo": "demo_7",
+   "n_actions": 119,
+   "success": true,
+   "success_step": 107,
+   "final_success": true,
+   "max_state_drift": 4.8352,
+   "seconds": 9.8
+  },
+  {
+   "task_id": 9,
+   "demo": "demo_8",
+   "n_actions": 135,
+   "success": true,
+   "success_step": 123,
+   "final_success": true,
+   "max_state_drift": 4.0141,
+   "seconds": 10.9
+  },
+  {
+   "task_id": 9,
+   "demo": "demo_9",
+   "n_actions": 173,
+   "success": true,
+   "success_step": 157,
+   "final_success": true,
+   "max_state_drift": 3.466,
+   "seconds": 12.7
+  },
+  {
+   "task_id": 9,
+   "demo": "demo_10",
+   "n_actions": 142,
+   "success": true,
+   "success_step": 123,
+   "final_success": true,
+   "max_state_drift": 4.7152,
+   "seconds": 10.7
+  },
+  {
+   "task_id": 9,
+   "demo": "demo_11",
+   "n_actions": 131,
+   "success": true,
+   "success_step": 107,
+   "final_success": true,
+   "max_state_drift": 6.4574,
+   "seconds": 9.8
+  },
+  {
+   "task_id": 9,
+   "demo": "demo_12",
+   "n_actions": 126,
+   "success": true,
+   "success_step": 110,
+   "final_success": true,
+   "max_state_drift": 3.866,
+   "seconds": 10.1
+  },
+  {
+   "task_id": 9,
+   "demo": "demo_13",
+   "n_actions": 134,
+   "success": true,
+   "success_step": 115,
+   "final_success": true,
+   "max_state_drift": 5.9586,
+   "seconds": 10.1
+  },
+  {
+   "task_id": 9,
+   "demo": "demo_14",
+   "n_actions": 136,
+   "success": true,
+   "success_step": 120,
+   "final_success": true,
+   "max_state_drift": 4.3532,
+   "seconds": 11.0
+  },
+  {
+   "task_id": 9,
+   "demo": "demo_15",
+   "n_actions": 193,
+   "success": true,
+   "success_step": 176,
+   "final_success": true,
+   "max_state_drift": 4.3309,
+   "seconds": 14.4
+  },
+  {
+   "task_id": 9,
+   "demo": "demo_16",
+   "n_actions": 142,
+   "success": true,
+   "success_step": 133,
+   "final_success": true,
+   "max_state_drift": 6.4396,
+   "seconds": 11.7
+  },
+  {
+   "task_id": 9,
+   "demo": "demo_17",
+   "n_actions": 182,
+   "success": true,
+   "success_step": 171,
+   "final_success": true,
+   "max_state_drift": 3.7661,
+   "seconds": 13.2
+  },
+  {
+   "task_id": 9,
+   "demo": "demo_18",
+   "n_actions": 133,
+   "success": true,
+   "success_step": 124,
+   "final_success": true,
+   "max_state_drift": 3.4154,
+   "seconds": 10.4
+  },
+  {
+   "task_id": 9,
+   "demo": "demo_19",
+   "n_actions": 135,
+   "success": true,
+   "success_step": 114,
+   "final_success": true,
+   "max_state_drift": 10.2079,
+   "seconds": 10.2
+  },
+  {
+   "task_id": 9,
+   "demo": "demo_20",
+   "n_actions": 137,
+   "success": true,
+   "success_step": 123,
+   "final_success": true,
+   "max_state_drift": 4.5047,
+   "seconds": 10.3
+  },
+  {
+   "task_id": 9,
+   "demo": "demo_21",
+   "n_actions": 137,
+   "success": true,
+   "success_step": 121,
+   "final_success": true,
+   "max_state_drift": 5.3088,
+   "seconds": 10.3
+  },
+  {
+   "task_id": 9,
+   "demo": "demo_22",
+   "n_actions": 145,
+   "success": true,
+   "success_step": 120,
+   "final_success": true,
+   "max_state_drift": 4.5463,
+   "seconds": 10.1
+  },
+  {
+   "task_id": 9,
+   "demo": "demo_23",
+   "n_actions": 140,
+   "success": true,
+   "success_step": 120,
+   "final_success": true,
+   "max_state_drift": 4.537,
+   "seconds": 10.0
+  },
+  {
+   "task_id": 9,
+   "demo": "demo_24",
+   "n_actions": 124,
+   "success": true,
+   "success_step": 114,
+   "final_success": true,
+   "max_state_drift": 3.7573,
+   "seconds": 9.9
+  },
+  {
+   "task_id": 9,
+   "demo": "demo_25",
+   "n_actions": 141,
+   "success": false,
+   "success_step": null,
+   "final_success": false,
+   "max_state_drift": 11.5087,
+   "seconds": 11.5
+  },
+  {
+   "task_id": 9,
+   "demo": "demo_26",
+   "n_actions": 143,
+   "success": true,
+   "success_step": 123,
+   "final_success": true,
+   "max_state_drift": 7.5066,
+   "seconds": 10.8
+  },
+  {
+   "task_id": 9,
+   "demo": "demo_27",
+   "n_actions": 124,
+   "success": true,
+   "success_step": 114,
+   "final_success": true,
+   "max_state_drift": 12.4777,
+   "seconds": 10.5
+  },
+  {
+   "task_id": 9,
+   "demo": "demo_28",
+   "n_actions": 141,
+   "success": true,
+   "success_step": 130,
+   "final_success": true,
+   "max_state_drift": 4.1643,
+   "seconds": 11.0
+  },
+  {
+   "task_id": 9,
+   "demo": "demo_29",
+   "n_actions": 122,
+   "success": false,
+   "success_step": null,
+   "final_success": false,
+   "max_state_drift": 6.1507,
+   "seconds": 10.9
+  },
+  {
+   "task_id": 9,
+   "demo": "demo_30",
+   "n_actions": 132,
+   "success": true,
+   "success_step": 122,
+   "final_success": true,
+   "max_state_drift": 9.346,
+   "seconds": 10.5
+  },
+  {
+   "task_id": 9,
+   "demo": "demo_31",
+   "n_actions": 125,
+   "success": true,
+   "success_step": 111,
+   "final_success": true,
+   "max_state_drift": 6.5302,
+   "seconds": 9.9
+  },
+  {
+   "task_id": 9,
+   "demo": "demo_32",
+   "n_actions": 130,
+   "success": true,
+   "success_step": 109,
+   "final_success": true,
+   "max_state_drift": 8.644,
+   "seconds": 9.9
+  },
+  {
+   "task_id": 9,
+   "demo": "demo_33",
+   "n_actions": 144,
+   "success": true,
+   "success_step": 132,
+   "final_success": true,
+   "max_state_drift": 4.8517,
+   "seconds": 11.1
+  },
+  {
+   "task_id": 9,
+   "demo": "demo_34",
+   "n_actions": 145,
+   "success": true,
+   "success_step": 127,
+   "final_success": true,
+   "max_state_drift": 2.2614,
+   "seconds": 10.9
+  },
+  {
+   "task_id": 9,
+   "demo": "demo_35",
+   "n_actions": 125,
+   "success": true,
+   "success_step": 113,
+   "final_success": true,
+   "max_state_drift": 6.8337,
+   "seconds": 10.1
+  },
+  {
+   "task_id": 9,
+   "demo": "demo_36",
+   "n_actions": 133,
+   "success": true,
+   "success_step": 122,
+   "final_success": true,
+   "max_state_drift": 4.5928,
+   "seconds": 10.2
+  },
+  {
+   "task_id": 9,
+   "demo": "demo_37",
+   "n_actions": 138,
+   "success": true,
+   "success_step": 128,
+   "final_success": true,
+   "max_state_drift": 3.0793,
+   "seconds": 10.9
+  },
+  {
+   "task_id": 9,
+   "demo": "demo_38",
+   "n_actions": 140,
+   "success": true,
+   "success_step": 119,
+   "final_success": true,
+   "max_state_drift": 3.3663,
+   "seconds": 10.1
+  },
+  {
+   "task_id": 9,
+   "demo": "demo_39",
+   "n_actions": 127,
+   "success": true,
+   "success_step": 116,
+   "final_success": true,
+   "max_state_drift": 3.0071,
+   "seconds": 10.5
+  },
+  {
+   "task_id": 9,
+   "demo": "demo_40",
+   "n_actions": 139,
+   "success": true,
+   "success_step": 119,
+   "final_success": true,
+   "max_state_drift": 2.0799,
+   "seconds": 10.4
+  },
+  {
+   "task_id": 9,
+   "demo": "demo_41",
+   "n_actions": 128,
+   "success": true,
+   "success_step": 118,
+   "final_success": true,
+   "max_state_drift": 7.2908,
+   "seconds": 10.2
+  },
+  {
+   "task_id": 9,
+   "demo": "demo_42",
+   "n_actions": 132,
+   "success": false,
+   "success_step": null,
+   "final_success": false,
+   "max_state_drift": 6.7726,
+   "seconds": 10.9
+  },
+  {
+   "task_id": 9,
+   "demo": "demo_43",
+   "n_actions": 128,
+   "success": true,
+   "success_step": 118,
+   "final_success": true,
+   "max_state_drift": 4.7478,
+   "seconds": 10.1
+  },
+  {
+   "task_id": 9,
+   "demo": "demo_44",
+   "n_actions": 131,
+   "success": true,
+   "success_step": 119,
+   "final_success": true,
+   "max_state_drift": 4.9634,
+   "seconds": 10.2
+  },
+  {
+   "task_id": 9,
+   "demo": "demo_45",
+   "n_actions": 130,
+   "success": true,
+   "success_step": 119,
+   "final_success": true,
+   "max_state_drift": 3.2531,
+   "seconds": 10.4
+  },
+  {
+   "task_id": 9,
+   "demo": "demo_46",
+   "n_actions": 139,
+   "success": true,
+   "success_step": 129,
+   "final_success": true,
+   "max_state_drift": 6.7627,
+   "seconds": 10.7
+  },
+  {
+   "task_id": 9,
+   "demo": "demo_47",
+   "n_actions": 136,
+   "success": true,
+   "success_step": 125,
+   "final_success": true,
+   "max_state_drift": 9.2247,
+   "seconds": 10.8
+  },
+  {
+   "task_id": 9,
+   "demo": "demo_48",
+   "n_actions": 117,
+   "success": true,
+   "success_step": 107,
+   "final_success": true,
+   "max_state_drift": 5.6223,
+   "seconds": 9.5
+  },
+  {
+   "task_id": 9,
+   "demo": "demo_49",
+   "n_actions": 138,
+   "success": true,
+   "success_step": 130,
+   "final_success": true,
+   "max_state_drift": 5.2209,
+   "seconds": 11.0
+  }
+ ]
+}

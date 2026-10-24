@@ -1,0 +1,9 @@
+
+$ uv venv --python 3.10 /kaggle/tmp/venv && /kaggle/tmp/venv/bin/python -V
+warning: The `--system` flag has no effect, `uv venv` always ignores virtual environments when finding a Python interpreter; did you mean `--no-managed-python`?
+Downloading cpython-3.10.22-linux-x86_64-gnu (download) (28.0MiB)
+ Downloaded cpython-3.10.22-linux-x86_64-gnu (download)
+Using CPython 3.10.22
+Creating virtual environment at: /kaggle/tmp/venv
+Activate with: source /kaggle/tmp/venv/bin/activate
+Python 3.10.22

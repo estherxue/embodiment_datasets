@@ -1,0 +1,458 @@
+[{"stream_name":"stderr","time":1.078134567,"data":"/kaggle/src/script.py:45: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).\n"}
+,{"stream_name":"stderr","time":1.078186868,"data":"  summary = {\"started_utc\": datetime.datetime.utcnow().isoformat(), \"stages\": {}, \"env\": {}, \"results\": {}}\n"}
+,{"stream_name":"stdout","time":1.08023475,"data":"[20:37:51 +   0.0m] start; WORK=/kaggle/working TMP=/kaggle/tmp\n"}
+,{"stream_name":"stdout","time":1.080272157,"data":"[20:37:51 +   0.0m] [00_sysinfo] $ nvidia-smi || true; python -V; nproc; free -g; df -h / /kaggle/working /tmp 2\u003e/dev/null; head -2 /etc/os-release; echo HOME=$HOME; echo PYTHONPATH=$PYTHONPATH; echo cgroup cpu.max=$(cat /sys/fs/cgroup/cpu.max 2\u003e/dev/null); python3 -c 'import os; print(\"affinity\", sorted(os.sched_getaffinity(0)))'; ldconfig -p | grep -i -E 'libEGL|OSMesa' || true\n"}
+,{"stream_name":"stdout","time":1.8045758090000001,"data":"    | Filesystem      Size  Used Avail Use% Mounted on\n"}
+,{"stream_name":"stdout","time":1.8046223829999999,"data":"    | overlay         8.0T  7.0T  1.1T  88% /\n"}
+,{"stream_name":"stdout","time":1.8046276620000001,"data":"    | /dev/loop2       20G  208K   20G   1% /kaggle/working\n"}
+,{"stream_name":"stdout","time":1.80463188,"data":"    | overlay         8.0T  7.0T  1.1T  88% /\n"}
+,{"stream_name":"stdout","time":1.8046366040000001,"data":"    | PRETTY_NAME=\"Ubuntu 24.04.1 LTS\"\n"}
+,{"stream_name":"stdout","time":1.8046408710000001,"data":"    | NAME=\"Ubuntu\"\n"}
+,{"stream_name":"stdout","time":1.8046452579999999,"data":"    | HOME=/root\n"}
+,{"stream_name":"stdout","time":1.8046494800000001,"data":"    | PYTHONPATH=/kaggle/tmp/LIBERO\n"}
+,{"stream_name":"stdout","time":1.804653257,"data":"    | cgroup cpu.max=400000 100000\n"}
+,{"stream_name":"stdout","time":1.80465682,"data":"    | affinity [0, 1, 2, 3]\n"}
+,{"stream_name":"stdout","time":1.8046603989999999,"data":"    | \tlibEGL_mesa.so.0 (libc6,x86-64) =\u003e /lib/x86_64-linux-gnu/libEGL_mesa.so.0\n"}
+,{"stream_name":"stdout","time":1.804664524,"data":"    | \tlibEGL.so.1 (libc6,x86-64) =\u003e /lib/x86_64-linux-gnu/libEGL.so.1\n"}
+,{"stream_name":"stdout","time":1.804668293,"data":"[20:37:51 +   0.0m] [00_sysinfo] rc=0 (1s)\n"}
+,{"stream_name":"stdout","time":1.8445355380000001,"data":"[20:37:51 +   0.0m] [01_apt] $ export DEBIAN_FRONTEND=noninteractive; (apt-get update -qq || true) \u0026\u0026 apt-get install -y -qq --no-install-recommends libegl1 libgl1 libglvnd0 libosmesa6 libosmesa6-dev \u003e /dev/null; ldconfig -p | grep -i -E 'libEGL|OSMesa' || true\n"}
+,{"stream_name":"stdout","time":20.861085155,"data":"    | \n"}
+,{"stream_name":"stdout","time":20.86110978,"data":"    | $ export DEBIAN_FRONTEND=noninteractive; (apt-get update -qq || true) \u0026\u0026 apt-get install -y -qq --no-install-recommends libegl1 libgl1 libglvnd0 libosmesa6 libosmesa6-dev \u003e /dev/null; ldconfig -p | grep -i -E 'libEGL|OSMesa' || true\n"}
+,{"stream_name":"stdout","time":20.861134675,"data":"    | W: https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2404/x86_64/InRelease: Key is stored in legacy trusted.gpg keyring (/etc/apt/trusted.gpg), see the DEPRECATION section in apt-key(8) for details.\n"}
+,{"stream_name":"stdout","time":20.861139975,"data":"    | W: Skipping acquire of configured file 'main/source/Sources' as repository 'https://r2u.stat.illinois.edu/ubuntu noble InRelease' does not seem to provide it (sources.list entry misspelt?)\n"}
+,{"stream_name":"stdout","time":20.86114425,"data":"    | \tlibOSMesa.so.8 (libc6,x86-64) =\u003e /lib/x86_64-linux-gnu/libOSMesa.so.8\n"}
+,{"stream_name":"stdout","time":20.861148172,"data":"    | \tlibOSMesa.so (libc6,x86-64) =\u003e /lib/x86_64-linux-gnu/libOSMesa.so\n"}
+,{"stream_name":"stdout","time":20.861165292,"data":"    | \tlibEGL_nvidia.so.0 (libc6,x86-64) =\u003e /usr/local/nvidia/lib64/libEGL_nvidia.so.0\n"}
+,{"stream_name":"stdout","time":20.861169358,"data":"    | \tlibEGL_mesa.so.0 (libc6,x86-64) =\u003e /lib/x86_64-linux-gnu/libEGL_mesa.so.0\n"}
+,{"stream_name":"stdout","time":20.861173682,"data":"    | \tlibEGL.so.1 (libc6,x86-64) =\u003e /usr/local/nvidia/lib64/libEGL.so.1\n"}
+,{"stream_name":"stdout","time":20.861177466,"data":"    | \tlibEGL.so.1 (libc6,x86-64) =\u003e /lib/x86_64-linux-gnu/libEGL.so.1\n"}
+,{"stream_name":"stdout","time":20.861181659,"data":"    | \tlibEGL.so (libc6,x86-64) =\u003e /usr/local/nvidia/lib64/libEGL.so\n"}
+,{"stream_name":"stdout","time":20.861185744,"data":"[20:38:10 +   0.3m] [01_apt] rc=0 (19s)\n"}
+,{"stream_name":"stdout","time":20.861437369,"data":"[20:38:10 +   0.3m] [01_egl_vendor] $ echo '--- vendor dir:'; ls -la /usr/share/glvnd/egl_vendor.d/ 2\u003e/dev/null; cat /usr/share/glvnd/egl_vendor.d/*.json 2\u003e/dev/null; echo '--- nvidia libs:'; ls /usr/local/nvidia/lib64 2\u003e/dev/null | grep -i -E 'egl|glsi|eglcore|nvidia-gl' | head; echo '--- cpu affinity:'; nproc; python3 -c 'import os; print(sorted(os.sched_getaffinity(0)))'\n"}
+,{"stream_name":"stdout","time":20.976545732,"data":"    | libEGL_nvidia.so.580.178.04\n"}
+,{"stream_name":"stdout","time":20.976588538,"data":"    | libEGL.so\n"}
+,{"stream_name":"stdout","time":20.97661271,"data":"    | libEGL.so.1\n"}
+,{"stream_name":"stdout","time":20.976620854,"data":"    | libEGL.so.1.1.0\n"}
+,{"stream_name":"stdout","time":20.976625093,"data":"    | libnvidia-eglcore.so.580.178.04\n"}
+,{"stream_name":"stdout","time":20.976637994,"data":"    | libnvidia-egl-gbm.so.1\n"}
+,{"stream_name":"stdout","time":20.976641846,"data":"    | libnvidia-egl-gbm.so.1.1.3\n"}
+,{"stream_name":"stdout","time":20.97665238,"data":"    | libnvidia-egl-wayland.so.1\n"}
+,{"stream_name":"stdout","time":20.976669493,"data":"    | libnvidia-egl-wayland.so.1.1.20\n"}
+,{"stream_name":"stdout","time":20.976673721,"data":"    | --- cpu affinity:\n"}
+,{"stream_name":"stdout","time":20.97667763,"data":"    | 1\n"}
+,{"stream_name":"stdout","time":20.976681816,"data":"    | [0, 1, 2, 3]\n"}
+,{"stream_name":"stdout","time":20.976685846,"data":"[20:38:11 +   0.3m] [01_egl_vendor] rc=0 (0s)\n"}
+,{"stream_name":"stdout","time":20.979696987,"data":"[20:38:11 +   0.3m] wrote /usr/share/glvnd/egl_vendor.d/10_nvidia.json (NVIDIA EGL ICD was not registered for GLVND)\n"}
+,{"stream_name":"stdout","time":20.979955859,"data":"[20:38:11 +   0.3m] [02_uv] $ /usr/bin/python3 -m pip install -q uv \u0026\u0026 uv --version\n"}
+,{"stream_name":"stdout","time":25.305558081,"data":"    | \n"}
+,{"stream_name":"stdout","time":25.305594226,"data":"    | $ /usr/bin/python3 -m pip install -q uv \u0026\u0026 uv --version\n"}
+,{"stream_name":"stdout","time":25.305599876,"data":"    | uv 0.13.5 (x86_64-unknown-linux-gnu)\n"}
+,{"stream_name":"stdout","time":25.305602734,"data":"[20:38:15 +   0.4m] [02_uv] rc=0 (4s)\n"}
+,{"stream_name":"stdout","time":25.305962649,"data":"[20:38:15 +   0.4m] [02_venv] $ uv venv --python 3.10 /kaggle/tmp/venv \u0026\u0026 /kaggle/tmp/venv/bin/python -V\n"}
+,{"stream_name":"stdout","time":27.075189347,"data":"    | \n"}
+,{"stream_name":"stdout","time":27.075218712,"data":"    | $ uv venv --python 3.10 /kaggle/tmp/venv \u0026\u0026 /kaggle/tmp/venv/bin/python -V\n"}
+,{"stream_name":"stdout","time":27.075222934,"data":"    | warning: The `--system` flag has no effect, `uv venv` always ignores virtual environments when finding a Python interpreter; did you mean `--no-managed-python`?\n"}
+,{"stream_name":"stdout","time":27.075234485,"data":"    | Downloading cpython-3.10.22-linux-x86_64-gnu (download) (28.0MiB)\n"}
+,{"stream_name":"stdout","time":27.075248732,"data":"    |  Downloaded cpython-3.10.22-linux-x86_64-gnu (download)\n"}
+,{"stream_name":"stdout","time":27.075252897,"data":"    | Using CPython 3.10.22\n"}
+,{"stream_name":"stdout","time":27.075256807,"data":"    | Creating virtual environment at: /kaggle/tmp/venv\n"}
+,{"stream_name":"stdout","time":27.075260704,"data":"    | Activate with: source /kaggle/tmp/venv/bin/activate\n"}
+,{"stream_name":"stdout","time":27.075264701,"data":"    | Python 3.10.22\n"}
+,{"stream_name":"stdout","time":27.075268618,"data":"[20:38:17 +   0.4m] [02_venv] rc=0 (2s)\n"}
+,{"stream_name":"stdout","time":27.075519475,"data":"[20:38:17 +   0.4m] [03_clone] $ rm -rf /kaggle/tmp/LIBERO; git clone -q https://github.com/Lifelong-Robot-Learning/LIBERO /kaggle/tmp/LIBERO \u0026\u0026 cd /kaggle/tmp/LIBERO \u0026\u0026 git checkout -q 8f1084e \u0026\u0026 git log -1 --format='%H %cd %s' --date=short\n"}
+,{"stream_name":"stdout","time":44.438741346,"data":"    | \n"}
+,{"stream_name":"stdout","time":44.438769452,"data":"    | $ rm -rf /kaggle/tmp/LIBERO; git clone -q https://github.com/Lifelong-Robot-Learning/LIBERO /kaggle/tmp/LIBERO \u0026\u0026 cd /kaggle/tmp/LIBERO \u0026\u0026 git checkout -q 8f1084e \u0026\u0026 git log -1 --format='%H %cd %s' --date=short\n"}
+,{"stream_name":"stdout","time":44.438776904,"data":"    | 8f1084e3132a39270c3a13ebe37270a43ece2a01 2025-03-15 Add support for dataset download from huggingface\n"}
+,{"stream_name":"stdout","time":44.438781915,"data":"[20:38:34 +   0.7m] [03_clone] rc=0 (17s)\n"}
+,{"stream_name":"stdout","time":44.439091022,"data":"[20:38:34 +   0.7m] [03_patch_venv_spawn] $ cd /kaggle/tmp/LIBERO \u0026\u0026 sed -i 's/^from multiprocessing.context import Process$/from multiprocessing import get_context as _get_context; Process = _get_context(\"spawn\").Process  # [kaggle patch]/' libero/libero/envs/venv.py \u0026\u0026 grep -n 'kaggle patch' libero/libero/envs/venv.py \u0026\u0026 git diff --stat\n"}
+,{"stream_name":"stdout","time":44.455300794,"data":"    | \n"}
+,{"stream_name":"stdout","time":44.455321983,"data":"    | $ cd /kaggle/tmp/LIBERO \u0026\u0026 sed -i 's/^from multiprocessing.context import Process$/from multiprocessing import get_context as _get_context; Process = _get_context(\"spawn\").Process  # [kaggle patch]/' libero/libero/envs/venv.py \u0026\u0026 grep -n 'kaggle patch' libero/libero/envs/venv.py \u0026\u0026 git diff --stat\n"}
+,{"stream_name":"stdout","time":44.45533015,"data":"    | 12:from multiprocessing import get_context as _get_context; Process = _get_context(\"spawn\").Process  # [kaggle patch]\n"}
+,{"stream_name":"stdout","time":44.455335461,"data":"    |  libero/libero/envs/venv.py | 2 +-\n"}
+,{"stream_name":"stdout","time":44.45533996,"data":"    |  1 file changed, 1 insertion(+), 1 deletion(-)\n"}
+,{"stream_name":"stdout","time":44.455344226,"data":"[20:38:34 +   0.7m] [03_patch_venv_spawn] rc=0 (0s)\n"}
+,{"stream_name":"stdout","time":44.455662768,"data":"[20:38:34 +   0.7m] [04_torch] $ uv pip install --python /kaggle/tmp/venv/bin/python -q torch==2.5.1 torchvision==0.20.1 --index-url https://download.pytorch.org/whl/cpu\n"}
+,{"stream_name":"stdout","time":48.487040805,"data":"    | \n"}
+,{"stream_name":"stdout","time":48.487069947,"data":"    | $ uv pip install --python /kaggle/tmp/venv/bin/python -q torch==2.5.1 torchvision==0.20.1 --index-url https://download.pytorch.org/whl/cpu\n"}
+,{"stream_name":"stdout","time":48.487076622000004,"data":"[20:38:38 +   0.8m] [04_torch] rc=0 (4s)\n"}
+,{"stream_name":"stdout","time":48.487311379,"data":"[20:38:38 +   0.8m] [04_reqs] $ cd /kaggle/tmp/LIBERO \u0026\u0026 uv pip install --python /kaggle/tmp/venv/bin/python -q -r requirements.txt huggingface_hub h5py mujoco==2.3.2 'setuptools\u003c81'\n"}
+,{"stream_name":"stdout","time":62.737654272,"data":"    | \n"}
+,{"stream_name":"stdout","time":62.737681523,"data":"    | $ cd /kaggle/tmp/LIBERO \u0026\u0026 uv pip install --python /kaggle/tmp/venv/bin/python -q -r requirements.txt huggingface_hub h5py mujoco==2.3.2 'setuptools\u003c81'\n"}
+,{"stream_name":"stdout","time":62.737688397,"data":"[20:38:52 +   1.0m] [04_reqs] rc=0 (14s)\n"}
+,{"stream_name":"stdout","time":62.739621032,"data":"[20:38:52 +   1.0m] [04_libero] $ cd /kaggle/tmp/LIBERO \u0026\u0026 uv pip install --python /kaggle/tmp/venv/bin/python -q -e . \u0026\u0026 uv pip freeze --python /kaggle/tmp/venv/bin/python \u003e /kaggle/working/requirements-kaggle-freeze.txt \u0026\u0026 grep -i -E '^(torch|torchvision|numpy|robosuite|mujoco|bddl|robomimic|transformers|hydra-core|gym|h5py|huggingface-hub|tokenizers)=' /kaggle/working/requirements-kaggle-freeze.txt\n"}
+,{"stream_name":"stdout","time":66.864968084,"data":"    | gym==0.25.2\n"}
+,{"stream_name":"stdout","time":66.865003138,"data":"    | h5py==3.16.0\n"}
+,{"stream_name":"stdout","time":66.865008221,"data":"    | huggingface-hub==0.36.2\n"}
+,{"stream_name":"stdout","time":66.865011925,"data":"    | hydra-core==1.2.0\n"}
+,{"stream_name":"stdout","time":66.865015427,"data":"    | mujoco==2.3.2\n"}
+,{"stream_name":"stdout","time":66.865035817,"data":"    | numpy==1.22.4\n"}
+,{"stream_name":"stdout","time":66.865040342,"data":"    | robomimic==0.2.0\n"}
+,{"stream_name":"stdout","time":66.865044555,"data":"    | robosuite==1.4.0\n"}
+,{"stream_name":"stdout","time":66.865048654,"data":"    | tokenizers==0.12.1\n"}
+,{"stream_name":"stdout","time":66.865052258,"data":"    | torch==2.5.1+cpu\n"}
+,{"stream_name":"stdout","time":66.86505573,"data":"    | torchvision==0.20.1+cpu\n"}
+,{"stream_name":"stdout","time":66.865059479,"data":"    | transformers==4.21.1\n"}
+,{"stream_name":"stdout","time":66.865062976,"data":"[20:38:56 +   1.1m] [04_libero] rc=0 (4s)\n"}
+,{"stream_name":"stdout","time":66.866539151,"data":"[20:38:56 +   1.1m] wrote /root/.libero/config.yaml: {'benchmark_root': '/kaggle/tmp/LIBERO/libero/libero', 'bddl_files': '/kaggle/tmp/LIBERO/libero/libero/bddl_files', 'init_states': '/kaggle/tmp/LIBERO/libero/libero/init_files', 'assets': '/kaggle/tmp/LIBERO/libero/libero/assets', 'datasets': '/kaggle/tmp/datasets'}\n"}
+,{"stream_name":"stdout","time":66.867302157,"data":"[20:38:56 +   1.1m] [05_import] $ cd /kaggle/tmp/LIBERO \u0026\u0026 /kaggle/tmp/venv/bin/python -c \"import torch, numpy, robosuite, mujoco, h5py, transformers; from libero.libero import get_libero_path, benchmark; print('torch', torch.__version__, 'numpy', numpy.__version__, 'robosuite', robosuite.__version__, 'mujoco', mujoco.__version__); print('datasets path', get_libero_path('datasets')); print('benchmarks', list(benchmark.get_benchmark_dict().keys()))\"\n"}
+,{"stream_name":"stdout","time":73.199012153,"data":"    | \n"}
+,{"stream_name":"stdout","time":73.19907038,"data":"    | $ cd /kaggle/tmp/LIBERO \u0026\u0026 /kaggle/tmp/venv/bin/python -c \"import torch, numpy, robosuite, mujoco, h5py, transformers; from libero.libero import get_libero_path, benchmark; print('torch', torch.__version__, 'numpy', numpy.__version__, 'robosuite', robosuite.__version__, 'mujoco', mujoco.__version__)\n"}
+,{"stream_name":"stdout","time":73.199079105,"data":"    | [robosuite WARNING] No private macro file found! (__init__.py:7)\n"}
+,{"stream_name":"stdout","time":73.19908392,"data":"    | [robosuite WARNING] It is recommended to use a private macro file (__init__.py:8)\n"}
+,{"stream_name":"stdout","time":73.199088545,"data":"    | [robosuite WARNING] To setup, run: python /kaggle/tmp/venv/lib/python3.10/site-packages/robosuite/scripts/setup_macros.py (__init__.py:9)\n"}
+,{"stream_name":"stdout","time":73.199115119,"data":"    | torch 2.5.1+cpu numpy 1.22.4 robosuite 1.4.0 mujoco 2.3.2\n"}
+,{"stream_name":"stdout","time":73.199120225,"data":"    | datasets path /kaggle/tmp/datasets\n"}
+,{"stream_name":"stdout","time":73.199135754,"data":"    | benchmarks ['libero_spatial', 'libero_object', 'libero_goal', 'libero_90', 'libero_10', 'libero_100']\n"}
+,{"stream_name":"stdout","time":73.199140218,"data":"[20:39:03 +   1.2m] [05_import] rc=0 (6s)\n"}
+,{"stream_name":"stdout","time":73.199600903,"data":"[20:39:03 +   1.2m] [05_import_eval_deps] $ cd /kaggle/tmp/LIBERO \u0026\u0026 /kaggle/tmp/venv/bin/python -c \"import wandb, hydra, easydict, omegaconf, yaml, pkg_resources; import robomimic.utils.obs_utils, robomimic.utils.tensor_utils; from libero.lifelong.algos import *; from libero.lifelong.metric import evaluate_success; from libero.lifelong.main import get_task_embs; from libero.lifelong.utils import torch_load_model; print('eval deps OK')\"\n"}
+,{"stream_name":"stdout","time":82.042521862,"data":"    | $ cd /kaggle/tmp/LIBERO \u0026\u0026 /kaggle/tmp/venv/bin/python -c \"import wandb, hydra, easydict, omegaconf, yaml, pkg_resources; import robomimic.utils.obs_utils, robomimic.utils.tensor_utils; from libero.lifelong.algos import *; from libero.lifelong.metric import evaluate_success; from libero.lifelong.mai\n"}
+,{"stream_name":"stdout","time":82.042642466,"data":"    | /kaggle/tmp/venv/lib/python3.10/site-packages/wandb/sdk/internal/internal_api.py:30: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this packag\n"}
+,{"stream_name":"stdout","time":82.04265199,"data":"    |   from pkg_resources import parse_version\n"}
+,{"stream_name":"stdout","time":82.04265669,"data":"    | [robosuite WARNING] No private macro file found! (__init__.py:7)\n"}
+,{"stream_name":"stdout","time":82.042661082,"data":"    | [robosuite WARNING] It is recommended to use a private macro file (__init__.py:8)\n"}
+,{"stream_name":"stdout","time":82.04266604,"data":"    | [robosuite WARNING] To setup, run: python /kaggle/tmp/venv/lib/python3.10/site-packages/robosuite/scripts/setup_macros.py (__init__.py:9)\n"}
+,{"stream_name":"stdout","time":82.042670727,"data":"    | Gym has been unmaintained since 2022 and does not support NumPy 2.0 amongst other critical functionality.\n"}
+,{"stream_name":"stdout","time":82.042675175,"data":"    | Please upgrade to Gymnasium, the maintained drop-in replacement of Gym, or contact the authors of your software and request that they upgrade.\n"}
+,{"stream_name":"stdout","time":82.042679832,"data":"    | See the migration guide at https://gymnasium.farama.org/introduction/migration_guide/ for additional information.\n"}
+,{"stream_name":"stdout","time":82.042684743,"data":"    | /kaggle/tmp/venv/lib/python3.10/site-packages/thop/profile.py:12: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.\n"}
+,{"stream_name":"stdout","time":82.042689823,"data":"    |   if LooseVersion(torch.__version__) \u003c LooseVersion(\"1.0.0\"):\n"}
+,{"stream_name":"stdout","time":82.042694785,"data":"    | eval deps OK\n"}
+,{"stream_name":"stdout","time":82.042700789,"data":"[20:39:12 +   1.3m] [05_import_eval_deps] rc=0 (9s)\n"}
+,{"stream_name":"stdout","time":82.059192627,"data":"[20:39:12 +   1.3m] [06_smoke_egl] $ cd /kaggle/tmp/LIBERO \u0026\u0026 /kaggle/tmp/venv/bin/python local_eval/smoke_render.py\n"}
+,{"stream_name":"stdout","time":109.465704134,"data":"    | Gym has been unmaintained since 2022 and does not support NumPy 2.0 amongst other critical functionality.\n"}
+,{"stream_name":"stdout","time":109.465789675,"data":"    | Please upgrade to Gymnasium, the maintained drop-in replacement of Gym, or contact the authors of your software and request that they upgrade.\n"}
+,{"stream_name":"stdout","time":109.46579415,"data":"    | See the migration guide at https://gymnasium.farama.org/introduction/migration_guide/ for additional information.\n"}
+,{"stream_name":"stdout","time":109.465797066,"data":"    | [info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]\n"}
+,{"stream_name":"stdout","time":109.46579961,"data":"    | GL_RENDERER: b'Tesla T4/PCIe/SSE2' | GL_VENDOR: b'NVIDIA Corporation' | GL_VERSION: b'4.6.0 NVIDIA 580.178.04'\n"}
+,{"stream_name":"stdout","time":109.465802166,"data":"    | env built+reset in 14.4s\n"}
+,{"stream_name":"stdout","time":109.465804596,"data":"    | STEP_MS 192.3 ms/step (50 zero-action steps incl. 2x128x128 rendering)\n"}
+,{"stream_name":"stdout","time":109.465808258,"data":"    | obs keys: ['agentview_image', 'akita_black_bowl_1_pos', 'akita_black_bowl_1_quat', 'akita_black_bowl_1_to_robot0_eef_pos', 'akita_black_bowl_1_to_robot0_eef_quat', 'akita_black_bowl_2_pos', 'akita_black_bowl_2_quat', 'akita_black_bowl_2_to_robot0_eef_pos', 'akita_black_bowl_2_to_robot0_eef_quat', 'c\n"}
+,{"stream_name":"stdout","time":109.46581539,"data":"    | agentview_image (128, 128, 3) uint8 std=49.93 | eye_in_hand (128, 128, 3)\n"}
+,{"stream_name":"stdout","time":109.465818465,"data":"    | robot0 state: joint_pos (7,) gripper_qpos (2,)\n"}
+,{"stream_name":"stdout","time":109.465834494,"data":"    | action dim: 7\n"}
+,{"stream_name":"stdout","time":109.465838898,"data":"    | SMOKE_OK backend=egl 24.3s\n"}
+,{"stream_name":"stdout","time":109.465842899,"data":"[20:39:39 +   1.8m] [06_smoke_egl] rc=0 (27s)\n"}
+,{"stream_name":"stdout","time":109.466524596,"data":"[20:39:39 +   1.8m] render backend = egl\n"}
+,{"stream_name":"stdout","time":109.466668822,"data":"[20:39:39 +   1.8m] [07_dataset] $ cd /kaggle/tmp/LIBERO \u0026\u0026 /kaggle/tmp/venv/bin/python benchmark_scripts/download_libero_datasets.py --datasets libero_spatial --use-huggingface --download-dir /kaggle/tmp/datasets \u003c /dev/null\n"}
+,{"stream_name":"stdout","time":132.019142734,"data":"    | Fetching 10 files:  90%|█████████ | 9/10 [00:20\u003c00:02,  2.33s/it]\n"}
+,{"stream_name":"stdout","time":132.019189819,"data":"    | Fetching 10 files: 100%|██████████| 10/10 [00:20\u003c00:00,  2.10s/it]\n"}
+,{"stream_name":"stdout","time":132.019195587,"data":"    | Downloaded 10 files for libero_spatial\n"}
+,{"stream_name":"stdout","time":132.019199384,"data":"    | \n"}
+,{"stream_name":"stdout","time":132.019202943,"data":"    | \n"}
+,{"stream_name":"stdout","time":132.019206377,"data":"    | \n"}
+,{"stream_name":"stdout","time":132.01920968,"data":"    | \n"}
+,{"stream_name":"stdout","time":132.019213097,"data":"    | [ ] Dataset libero_object not found!!!\n"}
+,{"stream_name":"stdout","time":132.019216642,"data":"    | [ ] Dataset libero_goal not found!!!\n"}
+,{"stream_name":"stdout","time":132.019220042,"data":"    | [X] Dataset libero_spatial is complete\n"}
+,{"stream_name":"stdout","time":132.019223465,"data":"    | [ ] Dataset libero_10 not found!!!\n"}
+,{"stream_name":"stdout","time":132.019226818,"data":"    | [ ] Dataset libero_90 not found!!!\n"}
+,{"stream_name":"stdout","time":132.019230308,"data":"[20:40:02 +   2.2m] [07_dataset] rc=0 (23s)\n"}
+,{"stream_name":"stdout","time":132.020550743,"data":"[20:40:02 +   2.2m] dataset: 10 hdf5 files, 5.81 GiB\n"}
+,{"stream_name":"stdout","time":132.020789955,"data":"[20:40:02 +   2.2m] [08_bert] $ cd /kaggle/tmp/LIBERO \u0026\u0026 /kaggle/tmp/venv/bin/python local_eval/fetch_bert.py\n"}
+,{"stream_name":"stdout","time":142.021808241,"data":"    | \n"}
+,{"stream_name":"stdout","time":142.021837966,"data":"    | $ cd /kaggle/tmp/LIBERO \u0026\u0026 /kaggle/tmp/venv/bin/python local_eval/fetch_bert.py\n"}
+,{"stream_name":"stdout","time":142.021859829,"data":"    | ok bert-base-cased/config.json 570\n"}
+,{"stream_name":"stdout","time":142.021864635,"data":"    | ok bert-base-cased/vocab.txt 213450\n"}
+,{"stream_name":"stdout","time":142.021869024,"data":"    | ok bert-base-cased/tokenizer_config.json 49\n"}
+,{"stream_name":"stdout","time":142.021873393,"data":"    | ok bert-base-cased/tokenizer.json 435797\n"}
+,{"stream_name":"stdout","time":142.021877931,"data":"    | ok bert-base-cased/pytorch_model.bin 435779157\n"}
+,{"stream_name":"stdout","time":142.021882482,"data":"    | BERT_DONE\n"}
+,{"stream_name":"stdout","time":142.021886812,"data":"[20:40:12 +   2.3m] [08_bert] rc=0 (10s)\n"}
+,{"stream_name":"stdout","time":142.022797698,"data":"[20:40:12 +   2.3m] [10_random_ckpt] $ cd /kaggle/tmp/LIBERO \u0026\u0026 /kaggle/tmp/venv/bin/python local_eval/make_random_ckpt.py \u0026\u0026 find experiments -name '*.pth' | xargs ls -la\n"}
+,{"stream_name":"stdout","time":149.661318679,"data":"    | shape_meta: {'ac_dim': 7, 'all_shapes': OrderedDict([('agentview_rgb', [3, 128, 128]), ('eye_in_hand_rgb', [3, 128, 128]), ('gripper_states', [2]), ('joint_states', [7])]), 'all_obs_keys': ['agentview_rgb', 'eye_in_hand_rgb', 'gripper_states', 'joint_states'], 'use_images': True}\n"}
+,{"stream_name":"stdout","time":149.66134542,"data":"    | /kaggle/tmp/venv/lib/python3.10/site-packages/transformers/modeling_utils.py:367: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arb\n"}
+,{"stream_name":"stdout","time":149.661350505,"data":"    |   return torch.load(checkpoint_file, map_location=\"cpu\")\n"}
+,{"stream_name":"stdout","time":149.661355968,"data":"    | task_embs: (10, 768)\n"}
+,{"stream_name":"stdout","time":149.661362729,"data":"    | /kaggle/tmp/venv/lib/python3.10/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.\n"}
+,{"stream_name":"stdout","time":149.661365547,"data":"    |   warnings.warn(\n"}
+,{"stream_name":"stdout","time":149.6613679,"data":"    | /kaggle/tmp/venv/lib/python3.10/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=None`.\n"}
+,{"stream_name":"stdout","time":149.661370855,"data":"    |   warnings.warn(msg)\n"}
+,{"stream_name":"stdout","time":149.66137342,"data":"    | /kaggle/tmp/venv/lib/python3.10/site-packages/torch/functional.py:534: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at ../aten/src/ATen/native/TensorShape.cpp:3595.)\n"}
+,{"stream_name":"stdout","time":149.661376069,"data":"    |   return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]\n"}
+,{"stream_name":"stdout","time":149.661378444,"data":"    | saved untrained policy (5.38 M params) to ./experiments/LIBERO_SPATIAL/Multitask/BCTransformerPolicy_seed10000/run_001/multitask_model_ep0.pth\n"}
+,{"stream_name":"stdout","time":149.661380888,"data":"    | -rw-r--r-- 1 root root 21636832 Oct 23 20:40 experiments/LIBERO_SPATIAL/Multitask/BCTransformerPolicy_seed10000/run_001/multitask_model_ep0.pth\n"}
+,{"stream_name":"stdout","time":149.661391824,"data":"[20:40:19 +   2.5m] [10_random_ckpt] rc=0 (8s)\n"}
+,{"stream_name":"stdout","time":149.662193136,"data":"[20:40:19 +   2.5m] [10_eval_task0_egl_env20] $ cd /kaggle/tmp/LIBERO \u0026\u0026 /kaggle/tmp/venv/bin/python local_eval/evaluate_cpu.py --benchmark libero_spatial --task_id 0 --algo multitask --policy bc_transformer_policy --seed 10000 --ep 0 --env-num 20; free -g | head -2\n"}
+,{"stream_name":"stdout","time":878.684410552,"data":"    | Please upgrade to Gymnasium, the maintained drop-in replacement of Gym, or contact the authors of your software and request that they upgrade.\n"}
+,{"stream_name":"stdout","time":878.684484054,"data":"    | See the migration guide at https://gymnasium.farama.org/introduction/migration_guide/ for additional information.\n"}
+,{"stream_name":"stdout","time":878.6844923,"data":"    | /kaggle/tmp/venv/lib/python3.10/site-packages/thop/profile.py:12: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.\n"}
+,{"stream_name":"stdout","time":878.68449783,"data":"    |   if LooseVersion(torch.__version__) \u003c LooseVersion(\"1.0.0\"):\n"}
+,{"stream_name":"stdout","time":878.684504262,"data":"    | /kaggle/tmp/LIBERO/local_eval/evaluate_cpu.py:269: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (\n"}
+,{"stream_name":"stdout","time":878.684511417,"data":"    |   init_states = torch.load(init_states_path)\n"}
+,{"stream_name":"stdout","time":878.684516011,"data":"    | [info] finish for ckpt at experiments/LIBERO_SPATIAL/Multitask/BCTransformerPolicy_seed10000/run_001 in 721.137550949 sec for rollouts\n"}
+,{"stream_name":"stdout","time":878.684521133,"data":"    | Results are saved at experiments_saved/libero_spatial_multitask_bc_transformer_policy_10000_ep0_on0.stats\n"}
+,{"stream_name":"stdout","time":878.684526738,"data":"    | 0.0 0.0\n"}
+,{"stream_name":"stdout","time":878.684532213,"data":"    | EVAL_SUMMARY {\"benchmark\": \"libero_spatial\", \"task_id\": 0, \"algo\": \"multitask\", \"policy\": \"bc_transformer_policy\", \"episodes\": 20, \"steps_run\": 600, \"max_steps\": 600, \"num_success\": 0, \"success_rate\": 0.0, \"seconds\": 721.1}\n"}
+,{"stream_name":"stdout","time":878.684539296,"data":"    |                total        used        free      shared  buff/cache   available\n"}
+,{"stream_name":"stdout","time":878.684544259,"data":"    | Mem:              31           1          24           0           5          30\n"}
+,{"stream_name":"stdout","time":878.684549137,"data":"[20:52:28 +  14.6m] [10_eval_task0_egl_env20] rc=0 (729s)\n"}
+,{"stream_name":"stdout","time":878.688609467,"data":"[20:52:28 +  14.6m] protocol task 0: rc=0 backend=egl env_num=20 wall=729s summary={'benchmark': 'libero_spatial', 'task_id': 0, 'algo': 'multitask', 'policy': 'bc_transformer_policy', 'episodes': 20, 'steps_run': 600, 'max_steps': 600, 'num_success': 0, 'success_rate': 0.0, 'seconds': 721.1}\n"}
+,{"stream_name":"stdout","time":878.68913413,"data":"[20:52:28 +  14.6m] [10_eval_task1_egl_env20] $ cd /kaggle/tmp/LIBERO \u0026\u0026 /kaggle/tmp/venv/bin/python local_eval/evaluate_cpu.py --benchmark libero_spatial --task_id 1 --algo multitask --policy bc_transformer_policy --seed 10000 --ep 0 --env-num 20; free -g | head -2\n"}
+,{"stream_name":"stdout","time":1587.670052682,"data":"    | /kaggle/tmp/venv/lib/python3.10/site-packages/thop/profile.py:12: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.\n"}
+,{"stream_name":"stdout","time":1587.670100124,"data":"    |   if LooseVersion(torch.__version__) \u003c LooseVersion(\"1.0.0\"):\n"}
+,{"stream_name":"stdout","time":1587.670108329,"data":"    | /kaggle/tmp/venv/lib/python3.10/site-packages/thop/profile.py:12: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.\n"}
+,{"stream_name":"stdout","time":1587.670130693,"data":"    |   if LooseVersion(torch.__version__) \u003c LooseVersion(\"1.0.0\"):\n"}
+,{"stream_name":"stdout","time":1587.67013657,"data":"    | /kaggle/tmp/LIBERO/local_eval/evaluate_cpu.py:269: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (\n"}
+,{"stream_name":"stdout","time":1587.67014215,"data":"    |   init_states = torch.load(init_states_path)\n"}
+,{"stream_name":"stdout","time":1587.670146149,"data":"    | [info] finish for ckpt at experiments/LIBERO_SPATIAL/Multitask/BCTransformerPolicy_seed10000/run_001 in 699.796873484 sec for rollouts\n"}
+,{"stream_name":"stdout","time":1587.670150888,"data":"    | Results are saved at experiments_saved/libero_spatial_multitask_bc_transformer_policy_10000_ep0_on1.stats\n"}
+,{"stream_name":"stdout","time":1587.670154562,"data":"    | 0.0 0.0\n"}
+,{"stream_name":"stdout","time":1587.670158859,"data":"    | EVAL_SUMMARY {\"benchmark\": \"libero_spatial\", \"task_id\": 1, \"algo\": \"multitask\", \"policy\": \"bc_transformer_policy\", \"episodes\": 20, \"steps_run\": 600, \"max_steps\": 600, \"num_success\": 0, \"success_rate\": 0.0, \"seconds\": 699.8}\n"}
+,{"stream_name":"stdout","time":1587.670164822,"data":"    |                total        used        free      shared  buff/cache   available\n"}
+,{"stream_name":"stdout","time":1587.67016924,"data":"    | Mem:              31           1          24           0           5          30\n"}
+,{"stream_name":"stdout","time":1587.670186765,"data":"[21:04:17 +  26.4m] [10_eval_task1_egl_env20] rc=0 (709s)\n"}
+,{"stream_name":"stdout","time":1587.671381579,"data":"[21:04:17 +  26.4m] protocol task 1: rc=0 backend=egl env_num=20 wall=709s summary={'benchmark': 'libero_spatial', 'task_id': 1, 'algo': 'multitask', 'policy': 'bc_transformer_policy', 'episodes': 20, 'steps_run': 600, 'max_steps': 600, 'num_success': 0, 'success_rate': 0.0, 'seconds': 699.8}\n"}
+,{"stream_name":"stdout","time":1587.671919577,"data":"[21:04:17 +  26.4m] [10_eval_task2_egl_env20] $ cd /kaggle/tmp/LIBERO \u0026\u0026 /kaggle/tmp/venv/bin/python local_eval/evaluate_cpu.py --benchmark libero_spatial --task_id 2 --algo multitask --policy bc_transformer_policy --seed 10000 --ep 0 --env-num 20; free -g | head -2\n"}
+,{"stream_name":"stdout","time":2238.123681574,"data":"    | Please upgrade to Gymnasium, the maintained drop-in replacement of Gym, or contact the authors of your software and request that they upgrade.\n"}
+,{"stream_name":"stdout","time":2238.123721857,"data":"    | See the migration guide at https://gymnasium.farama.org/introduction/migration_guide/ for additional information.\n"}
+,{"stream_name":"stdout","time":2238.123727872,"data":"    | /kaggle/tmp/venv/lib/python3.10/site-packages/thop/profile.py:12: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.\n"}
+,{"stream_name":"stdout","time":2238.12373797,"data":"    |   if LooseVersion(torch.__version__) \u003c LooseVersion(\"1.0.0\"):\n"}
+,{"stream_name":"stdout","time":2238.123742517,"data":"    | /kaggle/tmp/LIBERO/local_eval/evaluate_cpu.py:269: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (\n"}
+,{"stream_name":"stdout","time":2238.123746932,"data":"    |   init_states = torch.load(init_states_path)\n"}
+,{"stream_name":"stdout","time":2238.123761804,"data":"    | [info] finish for ckpt at experiments/LIBERO_SPATIAL/Multitask/BCTransformerPolicy_seed10000/run_001 in 642.186165935 sec for rollouts\n"}
+,{"stream_name":"stdout","time":2238.123764629,"data":"    | Results are saved at experiments_saved/libero_spatial_multitask_bc_transformer_policy_10000_ep0_on2.stats\n"}
+,{"stream_name":"stdout","time":2238.123767032,"data":"    | 0.0 0.0\n"}
+,{"stream_name":"stdout","time":2238.123769451,"data":"    | EVAL_SUMMARY {\"benchmark\": \"libero_spatial\", \"task_id\": 2, \"algo\": \"multitask\", \"policy\": \"bc_transformer_policy\", \"episodes\": 20, \"steps_run\": 600, \"max_steps\": 600, \"num_success\": 0, \"success_rate\": 0.0, \"seconds\": 642.2}\n"}
+,{"stream_name":"stdout","time":2238.123773039,"data":"    |                total        used        free      shared  buff/cache   available\n"}
+,{"stream_name":"stdout","time":2238.123775486,"data":"    | Mem:              31           1          24           0           5          30\n"}
+,{"stream_name":"stdout","time":2238.12377789,"data":"[21:15:08 +  37.3m] [10_eval_task2_egl_env20] rc=0 (650s)\n"}
+,{"stream_name":"stdout","time":2238.124728137,"data":"[21:15:08 +  37.3m] protocol task 2: rc=0 backend=egl env_num=20 wall=650s summary={'benchmark': 'libero_spatial', 'task_id': 2, 'algo': 'multitask', 'policy': 'bc_transformer_policy', 'episodes': 20, 'steps_run': 600, 'max_steps': 600, 'num_success': 0, 'success_rate': 0.0, 'seconds': 642.2}\n"}
+,{"stream_name":"stdout","time":2238.125361116,"data":"[21:15:08 +  37.3m] [10_eval_task3_egl_env20] $ cd /kaggle/tmp/LIBERO \u0026\u0026 /kaggle/tmp/venv/bin/python local_eval/evaluate_cpu.py --benchmark libero_spatial --task_id 3 --algo multitask --policy bc_transformer_policy --seed 10000 --ep 0 --env-num 20; free -g | head -2\n"}
+,{"stream_name":"stdout","time":2909.582840295,"data":"    | /kaggle/tmp/venv/lib/python3.10/site-packages/thop/profile.py:12: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.\n"}
+,{"stream_name":"stdout","time":2909.582909723,"data":"    |   if LooseVersion(torch.__version__) \u003c LooseVersion(\"1.0.0\"):\n"}
+,{"stream_name":"stdout","time":2909.582917561,"data":"    | /kaggle/tmp/venv/lib/python3.10/site-packages/thop/profile.py:12: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.\n"}
+,{"stream_name":"stdout","time":2909.582922816,"data":"    |   if LooseVersion(torch.__version__) \u003c LooseVersion(\"1.0.0\"):\n"}
+,{"stream_name":"stdout","time":2909.582928391,"data":"    | /kaggle/tmp/LIBERO/local_eval/evaluate_cpu.py:269: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (\n"}
+,{"stream_name":"stdout","time":2909.582935001,"data":"    |   init_states = torch.load(init_states_path)\n"}
+,{"stream_name":"stdout","time":2909.582941589,"data":"    | [info] finish for ckpt at experiments/LIBERO_SPATIAL/Multitask/BCTransformerPolicy_seed10000/run_001 in 663.354481647 sec for rollouts\n"}
+,{"stream_name":"stdout","time":2909.582949203,"data":"    | Results are saved at experiments_saved/libero_spatial_multitask_bc_transformer_policy_10000_ep0_on3.stats\n"}
+,{"stream_name":"stdout","time":2909.582952431,"data":"    | 0.0 0.0\n"}
+,{"stream_name":"stdout","time":2909.582955445,"data":"    | EVAL_SUMMARY {\"benchmark\": \"libero_spatial\", \"task_id\": 3, \"algo\": \"multitask\", \"policy\": \"bc_transformer_policy\", \"episodes\": 20, \"steps_run\": 600, \"max_steps\": 600, \"num_success\": 0, \"success_rate\": 0.0, \"seconds\": 663.4}\n"}
+,{"stream_name":"stdout","time":2909.582959845,"data":"    |                total        used        free      shared  buff/cache   available\n"}
+,{"stream_name":"stdout","time":2909.582971513,"data":"    | Mem:              31           1          25           0           5          30\n"}
+,{"stream_name":"stdout","time":2909.582974237,"data":"[21:26:19 +  48.5m] [10_eval_task3_egl_env20] rc=0 (671s)\n"}
+,{"stream_name":"stdout","time":2909.583853351,"data":"[21:26:19 +  48.5m] protocol task 3: rc=0 backend=egl env_num=20 wall=671s summary={'benchmark': 'libero_spatial', 'task_id': 3, 'algo': 'multitask', 'policy': 'bc_transformer_policy', 'episodes': 20, 'steps_run': 600, 'max_steps': 600, 'num_success': 0, 'success_rate': 0.0, 'seconds': 663.4}\n"}
+,{"stream_name":"stdout","time":2909.584738618,"data":"[21:26:19 +  48.5m] [10_eval_task4_egl_env20] $ cd /kaggle/tmp/LIBERO \u0026\u0026 /kaggle/tmp/venv/bin/python local_eval/evaluate_cpu.py --benchmark libero_spatial --task_id 4 --algo multitask --policy bc_transformer_policy --seed 10000 --ep 0 --env-num 20; free -g | head -2\n"}
+,{"stream_name":"stdout","time":3593.240109397,"data":"    | Please upgrade to Gymnasium, the maintained drop-in replacement of Gym, or contact the authors of your software and request that they upgrade.\n"}
+,{"stream_name":"stdout","time":3593.24015009,"data":"    | See the migration guide at https://gymnasium.farama.org/introduction/migration_guide/ for additional information.\n"}
+,{"stream_name":"stdout","time":3593.240155846,"data":"    | /kaggle/tmp/venv/lib/python3.10/site-packages/thop/profile.py:12: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.\n"}
+,{"stream_name":"stdout","time":3593.240161146,"data":"    |   if LooseVersion(torch.__version__) \u003c LooseVersion(\"1.0.0\"):\n"}
+,{"stream_name":"stdout","time":3593.240167008,"data":"    | /kaggle/tmp/LIBERO/local_eval/evaluate_cpu.py:269: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (\n"}
+,{"stream_name":"stdout","time":3593.240173361,"data":"    |   init_states = torch.load(init_states_path)\n"}
+,{"stream_name":"stdout","time":3593.240178043,"data":"    | [info] finish for ckpt at experiments/LIBERO_SPATIAL/Multitask/BCTransformerPolicy_seed10000/run_001 in 675.644270167 sec for rollouts\n"}
+,{"stream_name":"stdout","time":3593.240183269,"data":"    | Results are saved at experiments_saved/libero_spatial_multitask_bc_transformer_policy_10000_ep0_on4.stats\n"}
+,{"stream_name":"stdout","time":3593.240188587,"data":"    | 0.0 0.0\n"}
+,{"stream_name":"stdout","time":3593.240193039,"data":"    | EVAL_SUMMARY {\"benchmark\": \"libero_spatial\", \"task_id\": 4, \"algo\": \"multitask\", \"policy\": \"bc_transformer_policy\", \"episodes\": 20, \"steps_run\": 600, \"max_steps\": 600, \"num_success\": 0, \"success_rate\": 0.0, \"seconds\": 675.6}\n"}
+,{"stream_name":"stdout","time":3593.240199813,"data":"    |                total        used        free      shared  buff/cache   available\n"}
+,{"stream_name":"stdout","time":3593.240204576,"data":"    | Mem:              31           1          25           0           5          30\n"}
+,{"stream_name":"stdout","time":3593.240209451,"data":"[21:37:43 +  59.9m] [10_eval_task4_egl_env20] rc=0 (684s)\n"}
+,{"stream_name":"stdout","time":3593.240970429,"data":"[21:37:43 +  59.9m] protocol task 4: rc=0 backend=egl env_num=20 wall=684s summary={'benchmark': 'libero_spatial', 'task_id': 4, 'algo': 'multitask', 'policy': 'bc_transformer_policy', 'episodes': 20, 'steps_run': 600, 'max_steps': 600, 'num_success': 0, 'success_rate': 0.0, 'seconds': 675.6}\n"}
+,{"stream_name":"stdout","time":3593.24151725,"data":"[21:37:43 +  59.9m] [10_eval_task5_egl_env20] $ cd /kaggle/tmp/LIBERO \u0026\u0026 /kaggle/tmp/venv/bin/python local_eval/evaluate_cpu.py --benchmark libero_spatial --task_id 5 --algo multitask --policy bc_transformer_policy --seed 10000 --ep 0 --env-num 20; free -g | head -2\n"}
+,{"stream_name":"stdout","time":4251.184639568,"data":"    | /kaggle/tmp/venv/lib/python3.10/site-packages/thop/profile.py:12: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.\n"}
+,{"stream_name":"stdout","time":4251.184681411,"data":"    |   if LooseVersion(torch.__version__) \u003c LooseVersion(\"1.0.0\"):\n"}
+,{"stream_name":"stdout","time":4251.184686668,"data":"    | /kaggle/tmp/venv/lib/python3.10/site-packages/thop/profile.py:12: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.\n"}
+,{"stream_name":"stdout","time":4251.18469047,"data":"    |   if LooseVersion(torch.__version__) \u003c LooseVersion(\"1.0.0\"):\n"}
+,{"stream_name":"stdout","time":4251.184708123,"data":"    | /kaggle/tmp/LIBERO/local_eval/evaluate_cpu.py:269: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (\n"}
+,{"stream_name":"stdout","time":4251.184714686,"data":"    |   init_states = torch.load(init_states_path)\n"}
+,{"stream_name":"stdout","time":4251.184719579,"data":"    | [info] finish for ckpt at experiments/LIBERO_SPATIAL/Multitask/BCTransformerPolicy_seed10000/run_001 in 649.984140907 sec for rollouts\n"}
+,{"stream_name":"stdout","time":4251.184724837,"data":"    | Results are saved at experiments_saved/libero_spatial_multitask_bc_transformer_policy_10000_ep0_on5.stats\n"}
+,{"stream_name":"stdout","time":4251.184729741,"data":"    | 0.0 0.0\n"}
+,{"stream_name":"stdout","time":4251.1847347,"data":"    | EVAL_SUMMARY {\"benchmark\": \"libero_spatial\", \"task_id\": 5, \"algo\": \"multitask\", \"policy\": \"bc_transformer_policy\", \"episodes\": 20, \"steps_run\": 600, \"max_steps\": 600, \"num_success\": 0, \"success_rate\": 0.0, \"seconds\": 650.0}\n"}
+,{"stream_name":"stdout","time":4251.184741088,"data":"    |                total        used        free      shared  buff/cache   available\n"}
+,{"stream_name":"stdout","time":4251.184746041,"data":"    | Mem:              31           1          25           0           5          30\n"}
+,{"stream_name":"stdout","time":4251.184753221,"data":"[21:48:41 +  70.8m] [10_eval_task5_egl_env20] rc=0 (658s)\n"}
+,{"stream_name":"stdout","time":4251.186451771,"data":"[21:48:41 +  70.8m] protocol task 5: rc=0 backend=egl env_num=20 wall=658s summary={'benchmark': 'libero_spatial', 'task_id': 5, 'algo': 'multitask', 'policy': 'bc_transformer_policy', 'episodes': 20, 'steps_run': 600, 'max_steps': 600, 'num_success': 0, 'success_rate': 0.0, 'seconds': 650.0}\n"}
+,{"stream_name":"stdout","time":4251.187049049,"data":"[21:48:41 +  70.8m] [10_eval_task6_egl_env20] $ cd /kaggle/tmp/LIBERO \u0026\u0026 /kaggle/tmp/venv/bin/python local_eval/evaluate_cpu.py --benchmark libero_spatial --task_id 6 --algo multitask --policy bc_transformer_policy --seed 10000 --ep 0 --env-num 20; free -g | head -2\n"}
+,{"stream_name":"stdout","time":4930.723829537,"data":"    | /kaggle/tmp/venv/lib/python3.10/site-packages/thop/profile.py:12: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.\n"}
+,{"stream_name":"stdout","time":4930.723862184,"data":"    |   if LooseVersion(torch.__version__) \u003c LooseVersion(\"1.0.0\"):\n"}
+,{"stream_name":"stdout","time":4930.723868798,"data":"    | /kaggle/tmp/venv/lib/python3.10/site-packages/thop/profile.py:12: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.\n"}
+,{"stream_name":"stdout","time":4930.723874604,"data":"    |   if LooseVersion(torch.__version__) \u003c LooseVersion(\"1.0.0\"):\n"}
+,{"stream_name":"stdout","time":4930.7238958,"data":"    | /kaggle/tmp/LIBERO/local_eval/evaluate_cpu.py:269: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (\n"}
+,{"stream_name":"stdout","time":4930.723902305,"data":"    |   init_states = torch.load(init_states_path)\n"}
+,{"stream_name":"stdout","time":4930.723906341,"data":"    | [info] finish for ckpt at experiments/LIBERO_SPATIAL/Multitask/BCTransformerPolicy_seed10000/run_001 in 671.309211776 sec for rollouts\n"}
+,{"stream_name":"stdout","time":4930.723910594,"data":"    | Results are saved at experiments_saved/libero_spatial_multitask_bc_transformer_policy_10000_ep0_on6.stats\n"}
+,{"stream_name":"stdout","time":4930.723914558,"data":"    | 0.0 0.0\n"}
+,{"stream_name":"stdout","time":4930.72391842,"data":"    | EVAL_SUMMARY {\"benchmark\": \"libero_spatial\", \"task_id\": 6, \"algo\": \"multitask\", \"policy\": \"bc_transformer_policy\", \"episodes\": 20, \"steps_run\": 600, \"max_steps\": 600, \"num_success\": 0, \"success_rate\": 0.0, \"seconds\": 671.3}\n"}
+,{"stream_name":"stdout","time":4930.723924677,"data":"    |                total        used        free      shared  buff/cache   available\n"}
+,{"stream_name":"stdout","time":4930.723928878,"data":"    | Mem:              31           1          25           0           5          30\n"}
+,{"stream_name":"stdout","time":4930.723933266,"data":"[22:00:00 +  82.2m] [10_eval_task6_egl_env20] rc=0 (680s)\n"}
+,{"stream_name":"stdout","time":4930.725011746,"data":"[22:00:00 +  82.2m] protocol task 6: rc=0 backend=egl env_num=20 wall=680s summary={'benchmark': 'libero_spatial', 'task_id': 6, 'algo': 'multitask', 'policy': 'bc_transformer_policy', 'episodes': 20, 'steps_run': 600, 'max_steps': 600, 'num_success': 0, 'success_rate': 0.0, 'seconds': 671.3}\n"}
+,{"stream_name":"stdout","time":4930.725640008,"data":"[22:00:00 +  82.2m] [10_eval_task7_egl_env20] $ cd /kaggle/tmp/LIBERO \u0026\u0026 /kaggle/tmp/venv/bin/python local_eval/evaluate_cpu.py --benchmark libero_spatial --task_id 7 --algo multitask --policy bc_transformer_policy --seed 10000 --ep 0 --env-num 20; free -g | head -2\n"}
+,{"stream_name":"stdout","time":5644.248059985,"data":"    | /kaggle/tmp/venv/lib/python3.10/site-packages/thop/profile.py:12: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.\n"}
+,{"stream_name":"stdout","time":5644.248100133,"data":"    |   if LooseVersion(torch.__version__) \u003c LooseVersion(\"1.0.0\"):\n"}
+,{"stream_name":"stdout","time":5644.248105275,"data":"    | /kaggle/tmp/venv/lib/python3.10/site-packages/thop/profile.py:12: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.\n"}
+,{"stream_name":"stdout","time":5644.248110611,"data":"    |   if LooseVersion(torch.__version__) \u003c LooseVersion(\"1.0.0\"):\n"}
+,{"stream_name":"stdout","time":5644.248115463,"data":"    | /kaggle/tmp/LIBERO/local_eval/evaluate_cpu.py:269: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (\n"}
+,{"stream_name":"stdout","time":5644.248120431,"data":"    |   init_states = torch.load(init_states_path)\n"}
+,{"stream_name":"stdout","time":5644.248123705,"data":"    | [info] finish for ckpt at experiments/LIBERO_SPATIAL/Multitask/BCTransformerPolicy_seed10000/run_001 in 705.811571221 sec for rollouts\n"}
+,{"stream_name":"stdout","time":5644.248127361,"data":"    | Results are saved at experiments_saved/libero_spatial_multitask_bc_transformer_policy_10000_ep0_on7.stats\n"}
+,{"stream_name":"stdout","time":5644.248140289,"data":"    | 0.0 0.0\n"}
+,{"stream_name":"stdout","time":5644.248143059,"data":"    | EVAL_SUMMARY {\"benchmark\": \"libero_spatial\", \"task_id\": 7, \"algo\": \"multitask\", \"policy\": \"bc_transformer_policy\", \"episodes\": 20, \"steps_run\": 600, \"max_steps\": 600, \"num_success\": 0, \"success_rate\": 0.0, \"seconds\": 705.8}\n"}
+,{"stream_name":"stdout","time":5644.248146807,"data":"    |                total        used        free      shared  buff/cache   available\n"}
+,{"stream_name":"stdout","time":5644.248149359,"data":"    | Mem:              31           1          25           0           5          30\n"}
+,{"stream_name":"stdout","time":5644.248152085,"data":"[22:11:54 +  94.1m] [10_eval_task7_egl_env20] rc=0 (714s)\n"}
+,{"stream_name":"stdout","time":5644.249225638,"data":"[22:11:54 +  94.1m] protocol task 7: rc=0 backend=egl env_num=20 wall=714s summary={'benchmark': 'libero_spatial', 'task_id': 7, 'algo': 'multitask', 'policy': 'bc_transformer_policy', 'episodes': 20, 'steps_run': 600, 'max_steps': 600, 'num_success': 0, 'success_rate': 0.0, 'seconds': 705.8}\n"}
+,{"stream_name":"stdout","time":5644.249873288,"data":"[22:11:54 +  94.1m] [10_eval_task8_egl_env20] $ cd /kaggle/tmp/LIBERO \u0026\u0026 /kaggle/tmp/venv/bin/python local_eval/evaluate_cpu.py --benchmark libero_spatial --task_id 8 --algo multitask --policy bc_transformer_policy --seed 10000 --ep 0 --env-num 20; free -g | head -2\n"}
+,{"stream_name":"stdout","time":6329.139670367,"data":"    | /kaggle/tmp/venv/lib/python3.10/site-packages/thop/profile.py:12: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.\n"}
+,{"stream_name":"stdout","time":6329.139728632,"data":"    |   if LooseVersion(torch.__version__) \u003c LooseVersion(\"1.0.0\"):\n"}
+,{"stream_name":"stdout","time":6329.139735394,"data":"    | /kaggle/tmp/venv/lib/python3.10/site-packages/thop/profile.py:12: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.\n"}
+,{"stream_name":"stdout","time":6329.139740719,"data":"    |   if LooseVersion(torch.__version__) \u003c LooseVersion(\"1.0.0\"):\n"}
+,{"stream_name":"stdout","time":6329.139752234,"data":"    | /kaggle/tmp/LIBERO/local_eval/evaluate_cpu.py:269: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (\n"}
+,{"stream_name":"stdout","time":6329.139757284,"data":"    |   init_states = torch.load(init_states_path)\n"}
+,{"stream_name":"stdout","time":6329.139760392,"data":"    | [info] finish for ckpt at experiments/LIBERO_SPATIAL/Multitask/BCTransformerPolicy_seed10000/run_001 in 676.596899958 sec for rollouts\n"}
+,{"stream_name":"stdout","time":6329.139763656,"data":"    | Results are saved at experiments_saved/libero_spatial_multitask_bc_transformer_policy_10000_ep0_on8.stats\n"}
+,{"stream_name":"stdout","time":6329.13976692,"data":"    | 0.0 0.0\n"}
+,{"stream_name":"stdout","time":6329.139770044,"data":"    | EVAL_SUMMARY {\"benchmark\": \"libero_spatial\", \"task_id\": 8, \"algo\": \"multitask\", \"policy\": \"bc_transformer_policy\", \"episodes\": 20, \"steps_run\": 600, \"max_steps\": 600, \"num_success\": 0, \"success_rate\": 0.0, \"seconds\": 676.6}\n"}
+,{"stream_name":"stdout","time":6329.13977458,"data":"    |                total        used        free      shared  buff/cache   available\n"}
+,{"stream_name":"stdout","time":6329.139777736,"data":"    | Mem:              31           1          25           0           5          30\n"}
+,{"stream_name":"stdout","time":6329.139780882,"data":"[22:23:19 + 105.5m] [10_eval_task8_egl_env20] rc=0 (685s)\n"}
+,{"stream_name":"stdout","time":6329.140786759,"data":"[22:23:19 + 105.5m] protocol task 8: rc=0 backend=egl env_num=20 wall=685s summary={'benchmark': 'libero_spatial', 'task_id': 8, 'algo': 'multitask', 'policy': 'bc_transformer_policy', 'episodes': 20, 'steps_run': 600, 'max_steps': 600, 'num_success': 0, 'success_rate': 0.0, 'seconds': 676.6}\n"}
+,{"stream_name":"stdout","time":6329.141546978,"data":"[22:23:19 + 105.5m] [10_eval_task9_egl_env20] $ cd /kaggle/tmp/LIBERO \u0026\u0026 /kaggle/tmp/venv/bin/python local_eval/evaluate_cpu.py --benchmark libero_spatial --task_id 9 --algo multitask --policy bc_transformer_policy --seed 10000 --ep 0 --env-num 20; free -g | head -2\n"}
+,{"stream_name":"stdout","time":7029.410583381,"data":"    | /kaggle/tmp/venv/lib/python3.10/site-packages/thop/profile.py:12: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.\n"}
+,{"stream_name":"stdout","time":7029.41061555,"data":"    |   if LooseVersion(torch.__version__) \u003c LooseVersion(\"1.0.0\"):\n"}
+,{"stream_name":"stdout","time":7029.410622535,"data":"    | /kaggle/tmp/venv/lib/python3.10/site-packages/thop/profile.py:12: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.\n"}
+,{"stream_name":"stdout","time":7029.410627874,"data":"    |   if LooseVersion(torch.__version__) \u003c LooseVersion(\"1.0.0\"):\n"}
+,{"stream_name":"stdout","time":7029.410633883,"data":"    | /kaggle/tmp/LIBERO/local_eval/evaluate_cpu.py:269: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (\n"}
+,{"stream_name":"stdout","time":7029.410640881,"data":"    |   init_states = torch.load(init_states_path)\n"}
+,{"stream_name":"stdout","time":7029.410645811,"data":"    | [info] finish for ckpt at experiments/LIBERO_SPATIAL/Multitask/BCTransformerPolicy_seed10000/run_001 in 692.282724076 sec for rollouts\n"}
+,{"stream_name":"stdout","time":7029.410651035,"data":"    | Results are saved at experiments_saved/libero_spatial_multitask_bc_transformer_policy_10000_ep0_on9.stats\n"}
+,{"stream_name":"stdout","time":7029.410656326,"data":"    | 0.0 0.0\n"}
+,{"stream_name":"stdout","time":7029.410661893,"data":"    | EVAL_SUMMARY {\"benchmark\": \"libero_spatial\", \"task_id\": 9, \"algo\": \"multitask\", \"policy\": \"bc_transformer_policy\", \"episodes\": 20, \"steps_run\": 600, \"max_steps\": 600, \"num_success\": 0, \"success_rate\": 0.0, \"seconds\": 692.3}\n"}
+,{"stream_name":"stdout","time":7029.410669272,"data":"    |                total        used        free      shared  buff/cache   available\n"}
+,{"stream_name":"stdout","time":7029.4106744,"data":"    | Mem:              31           1          24           0           5          30\n"}
+,{"stream_name":"stdout","time":7029.410678859,"data":"[22:34:59 + 117.1m] [10_eval_task9_egl_env20] rc=0 (700s)\n"}
+,{"stream_name":"stdout","time":7029.411801062,"data":"[22:34:59 + 117.1m] protocol task 9: rc=0 backend=egl env_num=20 wall=700s summary={'benchmark': 'libero_spatial', 'task_id': 9, 'algo': 'multitask', 'policy': 'bc_transformer_policy', 'episodes': 20, 'steps_run': 600, 'max_steps': 600, 'num_success': 0, 'success_rate': 0.0, 'seconds': 692.3}\n"}
+,{"stream_name":"stdout","time":7029.41288451,"data":"[22:34:59 + 117.1m] [09_replay_A] $ cd /kaggle/tmp/LIBERO \u0026\u0026 /kaggle/tmp/venv/bin/python local_eval/replay_demos.py --suite libero_spatial --tasks 0 1 2 3 4 --n-demos 50 --out /kaggle/working/replay\n"}
+,{"stream_name":"stdout","time":7029.413641522,"data":"[22:34:59 + 117.1m] [09_replay_B] $ cd /kaggle/tmp/LIBERO \u0026\u0026 /kaggle/tmp/venv/bin/python local_eval/replay_demos.py --suite libero_spatial --tasks 5 6 7 8 9 --n-demos 50 --out /kaggle/working/replay\n"}
+,{"stream_name":"stdout","time":9219.453391282,"data":"    |     demo_40: success=True step=123/157 drift=5.679 (10.1s)\n"}
+,{"stream_name":"stdout","time":9219.453441276,"data":"    |     demo_41: success=True step=124/134 drift=3.872 (10.6s)\n"}
+,{"stream_name":"stdout","time":9219.453448128,"data":"    |     demo_42: success=True step=114/127 drift=4.081 (9.7s)\n"}
+,{"stream_name":"stdout","time":9219.453453102,"data":"    |     demo_43: success=True step=115/137 drift=2.688 (9.7s)\n"}
+,{"stream_name":"stdout","time":9219.453457839,"data":"    |     demo_44: success=True step=127/137 drift=3.400 (10.4s)\n"}
+,{"stream_name":"stdout","time":9219.453462928,"data":"    |     demo_45: success=True step=138/169 drift=6.412 (11.0s)\n"}
+,{"stream_name":"stdout","time":9219.453467674,"data":"    |     demo_46: success=True step=122/147 drift=2.629 (10.1s)\n"}
+,{"stream_name":"stdout","time":9219.453473045,"data":"    |     demo_47: success=True step=133/151 drift=5.153 (10.3s)\n"}
+,{"stream_name":"stdout","time":9219.453478341,"data":"    |     demo_48: success=True step=126/134 drift=2.835 (10.1s)\n"}
+,{"stream_name":"stdout","time":9219.453484693,"data":"    |     demo_49: success=False step=None/137 drift=3.981 (10.6s)\n"}
+,{"stream_name":"stdout","time":9219.453489794,"data":"    | [task 4] success 41/50 = 0.82 -\u003e /kaggle/working/replay/libero_spatial_task4_replay.json\n"}
+,{"stream_name":"stdout","time":9219.453495856,"data":"    | REPLAY_DONE\n"}
+,{"stream_name":"stdout","time":9219.453595693,"data":"[23:11:29 + 153.6m] [09_replay_A] rc=0 (2190s)\n"}
+,{"stream_name":"stdout","time":9479.460519727,"data":"    |     demo_40: success=True step=119/139 drift=2.080 (10.4s)\n"}
+,{"stream_name":"stdout","time":9479.460572665,"data":"    |     demo_41: success=True step=118/128 drift=7.291 (10.2s)\n"}
+,{"stream_name":"stdout","time":9479.460578267,"data":"    |     demo_42: success=False step=None/132 drift=6.773 (10.9s)\n"}
+,{"stream_name":"stdout","time":9479.460586718,"data":"    |     demo_43: success=True step=118/128 drift=4.748 (10.1s)\n"}
+,{"stream_name":"stdout","time":9479.460590461,"data":"    |     demo_44: success=True step=119/131 drift=4.963 (10.2s)\n"}
+,{"stream_name":"stdout","time":9479.460593368,"data":"    |     demo_45: success=True step=119/130 drift=3.253 (10.4s)\n"}
+,{"stream_name":"stdout","time":9479.460596174,"data":"    |     demo_46: success=True step=129/139 drift=6.763 (10.7s)\n"}
+,{"stream_name":"stdout","time":9479.460599147,"data":"    |     demo_47: success=True step=125/136 drift=9.225 (10.8s)\n"}
+,{"stream_name":"stdout","time":9479.460603421,"data":"    |     demo_48: success=True step=107/117 drift=5.622 (9.5s)\n"}
+,{"stream_name":"stdout","time":9479.460607704,"data":"    |     demo_49: success=True step=130/138 drift=5.221 (11.0s)\n"}
+,{"stream_name":"stdout","time":9479.460610877,"data":"    | [task 9] success 47/50 = 0.94 -\u003e /kaggle/working/replay/libero_spatial_task9_replay.json\n"}
+,{"stream_name":"stdout","time":9479.460614199,"data":"    | REPLAY_DONE\n"}
+,{"stream_name":"stdout","time":9479.460617057,"data":"[23:15:49 + 158.0m] [09_replay_B] rc=0 (2450s)\n"}
+,{"stream_name":"stdout","time":9489.591708901,"data":"[23:15:59 + 158.1m] replay task 0: 48/50 = 96%  drift mean 4.864  7.5s/demo\n"}
+,{"stream_name":"stdout","time":9489.591736135,"data":"[23:15:59 + 158.1m] replay task 1: 45/50 = 90%  drift mean 5.486  8.9s/demo\n"}
+,{"stream_name":"stdout","time":9489.591789361,"data":"[23:15:59 + 158.1m] replay task 2: 48/50 = 96%  drift mean 3.463  8.2s/demo\n"}
+,{"stream_name":"stdout","time":9489.591922345,"data":"[23:15:59 + 158.1m] replay task 3: 45/50 = 90%  drift mean 4.544  7.9s/demo\n"}
+,{"stream_name":"stdout","time":9489.591946482,"data":"[23:15:59 + 158.1m] replay task 4: 41/50 = 82%  drift mean 4.345  10.7s/demo\n"}
+,{"stream_name":"stdout","time":9489.591956926,"data":"[23:15:59 + 158.1m] replay task 5: 41/50 = 82%  drift mean 6.353  8.7s/demo\n"}
+,{"stream_name":"stdout","time":9489.592060937,"data":"[23:15:59 + 158.1m] replay task 6: 48/50 = 96%  drift mean 5.793  9.5s/demo\n"}
+,{"stream_name":"stdout","time":9489.592080281,"data":"[23:15:59 + 158.1m] replay task 7: 42/50 = 84%  drift mean 5.584  10.9s/demo\n"}
+,{"stream_name":"stdout","time":9489.593208014,"data":"[23:15:59 + 158.1m] replay task 8: 46/50 = 92%  drift mean 4.774  8.7s/demo\n"}
+,{"stream_name":"stdout","time":9489.593223198,"data":"[23:15:59 + 158.1m] replay task 9: 47/50 = 94%  drift mean 5.491  10.7s/demo\n"}
+,{"stream_name":"stdout","time":9489.593227514,"data":"[23:15:59 + 158.1m] replay overall: 451/500 = 90.2%\n"}
+,{"stream_name":"stdout","time":9489.593441606,"data":"[23:15:59 + 158.1m] [11_disk] $ du -sh /kaggle/tmp/* /kaggle/working/* 2\u003e/dev/null | sort -h | tail -15; free -g | head -2\n"}
+,{"stream_name":"stdout","time":9490.009061792,"data":"    | 4.0K\t/kaggle/working/requirements-kaggle-freeze.txt\n"}
+,{"stream_name":"stdout","time":9490.00912092,"data":"    | 16K\t/kaggle/working/driver.log\n"}
+,{"stream_name":"stdout","time":9490.00912724,"data":"    | 16K\t/kaggle/working/summary.json\n"}
+,{"stream_name":"stdout","time":9490.009131783,"data":"    | 124K\t/kaggle/working/replay\n"}
+,{"stream_name":"stdout","time":9490.009135992,"data":"    | 440K\t/kaggle/working/logs\n"}
+,{"stream_name":"stdout","time":9490.009140161,"data":"    | 728K\t/kaggle/tmp/hf\n"}
+,{"stream_name":"stdout","time":9490.009144006,"data":"    | 71M\t/kaggle/tmp/venv\n"}
+,{"stream_name":"stdout","time":9490.009147853,"data":"    | 1.2G\t/kaggle/tmp/LIBERO\n"}
+,{"stream_name":"stdout","time":9490.009151558,"data":"    | 2.3G\t/kaggle/tmp/uv-cache\n"}
+,{"stream_name":"stdout","time":9490.009155699,"data":"    | 5.9G\t/kaggle/tmp/datasets\n"}
+,{"stream_name":"stdout","time":9490.009159858,"data":"    |                total        used        free      shared  buff/cache   available\n"}
+,{"stream_name":"stdout","time":9490.009164086,"data":"    | Mem:              31           1          24           0           5          30\n"}
+,{"stream_name":"stdout","time":9490.009169546,"data":"[23:16:00 + 158.1m] [11_disk] rc=0 (0s)\n"}
+,{"stream_name":"stdout","time":9490.011258774,"data":"# LIBERO libero_spatial on Kaggle - summary\n"}
+,{"stream_name":"stdout","time":9490.01126912,"data":"\n"}
+,{"stream_name":"stdout","time":9490.011271666,"data":"- started (UTC): 2026-10-23T20:37:51.197400  elapsed: 158.1 min\n"}
+,{"stream_name":"stdout","time":9490.011274043,"data":"- GPU: Tesla T4, 15360 MiB\n"}
+,{"stream_name":"stdout","time":9490.011276299,"data":"Tesla T4, 15360 MiB  nproc: 4  render backend: egl\n"}
+,{"stream_name":"stdout","time":9490.01127856,"data":"- LIBERO commit: 8f1084e; dataset: 5.81 GiB, 10 hdf5 files\n"}
+,{"stream_name":"stdout","time":9490.011280937,"data":"- renderer: GL_RENDERER: b'Tesla T4/PCIe/SSE2' | GL_VENDOR: b'NVIDIA Corporation' | GL_VERSION: b'4.6.0 NVIDIA 580.178.04'  step cost: STEP_MS 192.3 ms/step (50 zero-action steps incl. 2x128x128 rendering)\n"}
+,{"stream_name":"stdout","time":9490.011284409,"data":"\n"}
+,{"stream_name":"stdout","time":9490.011286608,"data":"## Demo replay (open-loop action replay of the recorded demos, success = env.step done)\n"}
+,{"stream_name":"stdout","time":9490.011288921,"data":"\n"}
+,{"stream_name":"stdout","time":9490.011291205,"data":"| task | n | succ | rate | SE | mean steps→succ | mean len | mean max drift | s/demo | language |\n"}
+,{"stream_name":"stdout","time":9490.011317418,"data":"|---|---|---|---|---|---|---|---|---|---|\n"}
+,{"stream_name":"stdout","time":9490.011321829,"data":"| 0 | 50 | 48 | 96% | 0.0277 | 81.6 | 101.4 | 4.864 | 7.5 | pick up the black bowl between the plate and the ramekin and place it on the plate |\n"}
+,{"stream_name":"stdout","time":9490.011326101,"data":"| 1 | 50 | 45 | 90% | 0.0424 | 110.4 | 134.1 | 5.486 | 8.9 | pick up the black bowl next to the ramekin and place it on the plate |\n"}
+,{"stream_name":"stdout","time":9490.011329627,"data":"| 2 | 50 | 48 | 96% | 0.0277 | 98.8 | 117.6 | 3.463 | 8.2 | pick up the black bowl from table center and place it on the plate |\n"}
+,{"stream_name":"stdout","time":9490.011333168,"data":"| 3 | 50 | 45 | 90% | 0.0424 | 84.3 | 101.0 | 4.544 | 7.9 | pick up the black bowl on the cookie box and place it on the plate |\n"}
+,{"stream_name":"stdout","time":9490.011336707,"data":"| 4 | 50 | 41 | 82% | 0.0543 | 130.1 | 149.6 | 4.345 | 10.7 | pick up the black bowl in the top drawer of the wooden cabinet and place it on the plate |\n"}
+,{"stream_name":"stdout","time":9490.011345434,"data":"| 5 | 50 | 41 | 82% | 0.0543 | 101.1 | 115.9 | 6.353 | 8.7 | pick up the black bowl on the ramekin and place it on the plate |\n"}
+,{"stream_name":"stdout","time":9490.011348768,"data":"| 6 | 50 | 48 | 96% | 0.0277 | 109.1 | 126.2 | 5.793 | 9.5 | pick up the black bowl next to the cookie box and place it on the plate |\n"}
+,{"stream_name":"stdout","time":9490.011351177,"data":"| 7 | 50 | 42 | 84% | 0.0518 | 122.6 | 142.2 | 5.584 | 10.9 | pick up the black bowl on the stove and place it on the plate |\n"}
+,{"stream_name":"stdout","time":9490.011353853,"data":"| 8 | 50 | 46 | 92% | 0.0384 | 100.9 | 119.3 | 4.774 | 8.7 | pick up the black bowl next to the plate and place it on the plate |\n"}
+,{"stream_name":"stdout","time":9490.011356479,"data":"| 9 | 50 | 47 | 94% | 0.0336 | 123.6 | 137.6 | 5.491 | 10.7 | pick up the black bowl on the wooden cabinet and place it on the plate |\n"}
+,{"stream_name":"stdout","time":9490.011358939,"data":"\n"}
+,{"stream_name":"stdout","time":9490.011361786,"data":"overall: 451/500 = 90.2%  (mean of per-task rates 90.2%)\n"}
+,{"stream_name":"stdout","time":9490.011364136,"data":"\n"}
+,{"stream_name":"stdout","time":9490.011366244,"data":"## evaluate.py protocol check with an UNTRAINED checkpoint (numbers are meaningless by construction)\n"}
+,{"stream_name":"stdout","time":9490.011368599,"data":"\n"}
+,{"stream_name":"stdout","time":9490.011370698,"data":"| task | backend | env_num (episodes) | steps run | max_steps | successes | success_rate | rollout s | wall s | rc |\n"}
+,{"stream_name":"stdout","time":9490.01137307,"data":"|---|---|---|---|---|---|---|---|---|---|\n"}
+,{"stream_name":"stdout","time":9490.01137536,"data":"| 0 | egl | 20 | 600 | 600 | 0 | 0.0 | 721.1 | 729.0 | 0 |\n"}
+,{"stream_name":"stdout","time":9490.011377662,"data":"| 1 | egl | 20 | 600 | 600 | 0 | 0.0 | 699.8 | 709.0 | 0 |\n"}
+,{"stream_name":"stdout","time":9490.011379908,"data":"| 2 | egl | 20 | 600 | 600 | 0 | 0.0 | 642.2 | 650.5 | 0 |\n"}
+,{"stream_name":"stdout","time":9490.011382144,"data":"| 3 | egl | 20 | 600 | 600 | 0 | 0.0 | 663.4 | 671.5 | 0 |\n"}
+,{"stream_name":"stdout","time":9490.011384456,"data":"| 4 | egl | 20 | 600 | 600 | 0 | 0.0 | 675.6 | 683.7 | 0 |\n"}
+,{"stream_name":"stdout","time":9490.011386714,"data":"| 5 | egl | 20 | 600 | 600 | 0 | 0.0 | 650.0 | 657.9 | 0 |\n"}
+,{"stream_name":"stdout","time":9490.011388933,"data":"| 6 | egl | 20 | 600 | 600 | 0 | 0.0 | 671.3 | 679.5 | 0 |\n"}
+,{"stream_name":"stdout","time":9490.011391176,"data":"| 7 | egl | 20 | 600 | 600 | 0 | 0.0 | 705.8 | 713.5 | 0 |\n"}
+,{"stream_name":"stdout","time":9490.011393443,"data":"| 8 | egl | 20 | 600 | 600 | 0 | 0.0 | 676.6 | 684.9 | 0 |\n"}
+,{"stream_name":"stdout","time":9490.011398459,"data":"| 9 | egl | 20 | 600 | 600 | 0 | 0.0 | 692.3 | 700.3 | 0 |\n"}
+,{"stream_name":"stdout","time":9490.011400843,"data":"\n"}
+,{"stream_name":"stdout","time":9490.011403,"data":"## Stages\n"}
+,{"stream_name":"stdout","time":9490.011405259,"data":"\n"}
+,{"stream_name":"stdout","time":9490.011407388,"data":"| stage | rc | seconds |\n"}
+,{"stream_name":"stdout","time":9490.011409586,"data":"|---|---|---|\n"}
+,{"stream_name":"stdout","time":9490.011411793,"data":"| 00_sysinfo | 0 | 0.7 |\n"}
+,{"stream_name":"stdout","time":9490.011413981,"data":"| 01_apt | 0 | 19.0 |\n"}
+,{"stream_name":"stdout","time":9490.011416168,"data":"| 01_egl_vendor | 0 | 0.1 |\n"}
+,{"stream_name":"stdout","time":9490.011418379,"data":"| 02_uv | 0 | 4.3 |\n"}
+,{"stream_name":"stdout","time":9490.011420551,"data":"| 02_venv | 0 | 1.8 |\n"}
+,{"stream_name":"stdout","time":9490.011422719,"data":"| 03_clone | 0 | 17.4 |\n"}
+,{"stream_name":"stdout","time":9490.011424921,"data":"| 03_patch_venv_spawn | 0 | 0.0 |\n"}
+,{"stream_name":"stdout","time":9490.011427143,"data":"| 04_torch | 0 | 4.0 |\n"}
+,{"stream_name":"stdout","time":9490.011429324,"data":"| 04_reqs | 0 | 14.2 |\n"}
+,{"stream_name":"stdout","time":9490.011431494,"data":"| 04_libero | 0 | 4.1 |\n"}
+,{"stream_name":"stdout","time":9490.011433668,"data":"| 05_import | 0 | 6.3 |\n"}
+,{"stream_name":"stdout","time":9490.011436054,"data":"| 05_import_eval_deps | 0 | 8.8 |\n"}
+,{"stream_name":"stdout","time":9490.011438287,"data":"| 06_smoke_egl | 0 | 27.4 |\n"}
+,{"stream_name":"stdout","time":9490.01144047,"data":"| 07_dataset | 0 | 22.6 |\n"}
+,{"stream_name":"stdout","time":9490.011442682,"data":"| 08_bert | 0 | 10.0 |\n"}
+,{"stream_name":"stdout","time":9490.011444864,"data":"| 10_random_ckpt | 0 | 7.6 |\n"}
+,{"stream_name":"stdout","time":9490.011447113,"data":"| 10_eval_task0_egl_env20 | 0 | 729.0 |\n"}
+,{"stream_name":"stdout","time":9490.011449359,"data":"| 10_eval_task1_egl_env20 | 0 | 709.0 |\n"}
+,{"stream_name":"stdout","time":9490.011451582,"data":"| 10_eval_task2_egl_env20 | 0 | 650.5 |\n"}
+,{"stream_name":"stdout","time":9490.011453796,"data":"| 10_eval_task3_egl_env20 | 0 | 671.5 |\n"}
+,{"stream_name":"stdout","time":9490.011456004,"data":"| 10_eval_task4_egl_env20 | 0 | 683.7 |\n"}
+,{"stream_name":"stdout","time":9490.011458203,"data":"| 10_eval_task5_egl_env20 | 0 | 657.9 |\n"}
+,{"stream_name":"stdout","time":9490.011460416,"data":"| 10_eval_task6_egl_env20 | 0 | 679.5 |\n"}
+,{"stream_name":"stdout","time":9490.011462606,"data":"| 10_eval_task7_egl_env20 | 0 | 713.5 |\n"}
+,{"stream_name":"stdout","time":9490.011464826,"data":"| 10_eval_task8_egl_env20 | 0 | 684.9 |\n"}
+,{"stream_name":"stdout","time":9490.011467019,"data":"| 10_eval_task9_egl_env20 | 0 | 700.3 |\n"}
+,{"stream_name":"stdout","time":9490.01146923,"data":"| 09_replay_A | 0 | 2190.0 |\n"}
+,{"stream_name":"stdout","time":9490.011471449,"data":"| 09_replay_B | 0 | 2450.0 |\n"}
+,{"stream_name":"stdout","time":9490.011473661,"data":"| 11_disk | 0 | 0.4 |\n"}
+,{"stream_name":"stdout","time":9490.011475871,"data":"[23:16:00 + 158.1m] ALL_DONE\n"}
+,{"stream_name":"stderr","time":9492.479511098,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":9492.479540279,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":9492.873569072,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":9492.873607682,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":9494.107122274,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":9495.273172569,"data":"[NbConvertApp] Writing 438497 bytes to __results__.html\n"}
+]

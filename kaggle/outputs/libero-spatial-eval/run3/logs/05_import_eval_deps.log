@@ -1,0 +1,17 @@
+
+$ cd /kaggle/tmp/LIBERO && /kaggle/tmp/venv/bin/python -c "import wandb, hydra, easydict, omegaconf, yaml, pkg_resources; import robomimic.utils.obs_utils, robomimic.utils.tensor_utils; from libero.lifelong.algos import *; from libero.lifelong.metric import evaluate_success; from libero.lifelong.main import get_task_embs; from libero.lifelong.utils import torch_load_model; print('eval deps OK')"
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/kaggle/tmp/venv/lib/python3.10/site-packages/wandb/__init__.py", line 26, in <module>
+    from wandb import sdk as wandb_sdk
+  File "/kaggle/tmp/venv/lib/python3.10/site-packages/wandb/sdk/__init__.py", line 7, in <module>
+    from .wandb_artifacts import Artifact  # noqa: F401
+  File "/kaggle/tmp/venv/lib/python3.10/site-packages/wandb/sdk/wandb_artifacts.py", line 29, in <module>
+    from wandb.apis import InternalApi, PublicApi
+  File "/kaggle/tmp/venv/lib/python3.10/site-packages/wandb/apis/__init__.py", line 31, in <module>
+    from .internal import Api as InternalApi  # noqa
+  File "/kaggle/tmp/venv/lib/python3.10/site-packages/wandb/apis/internal.py", line 1, in <module>
+    from wandb.sdk.internal.internal_api import Api as InternalApi
+  File "/kaggle/tmp/venv/lib/python3.10/site-packages/wandb/sdk/internal/internal_api.py", line 30, in <module>
+    from pkg_resources import parse_version
+ModuleNotFoundError: No module named 'pkg_resources'

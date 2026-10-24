@@ -1,0 +1,6 @@
+
+===== [14:00:21] $ /kaggle/tmp/venv/bin/python /kaggle/tmp/convert_old_act_ckpt.py alexandersoare/act_pusht_keypoints /kaggle/tmp/ckpts/act_pusht_keypoints
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights from local directory
+CONVERT_OK alexandersoare/act_pusht_keypoints -> /kaggle/tmp/ckpts/act_pusht_keypoints: 56.3M params; inputs=['observation.environment_state', 'observation.state'] norm={'ENV': <NormalizationMode.MIN_MAX: 'MIN_MAX'>, 'STATE': <NormalizationMode.MIN_MAX: 'MIN_MAX'>, 'ACTION': <NormalizationMode.MIN_MAX: 'MIN_MAX'>} chunk=16 n_action_steps=16
+normalize buffers finite: True

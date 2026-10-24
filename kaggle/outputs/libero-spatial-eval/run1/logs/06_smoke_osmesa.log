@@ -1,0 +1,6 @@
+
+$ cd /kaggle/tmp/LIBERO && /kaggle/tmp/venv/bin/python local_eval/smoke_render.py
+Traceback (most recent call last):
+  File "/kaggle/tmp/LIBERO/local_eval/smoke_render.py", line 4, in <module>
+    from libero.libero import benchmark, get_libero_path
+ModuleNotFoundError: No module named 'libero'

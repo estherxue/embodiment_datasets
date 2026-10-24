@@ -1,0 +1,8 @@
+
+$ cd /kaggle/tmp/LIBERO && /kaggle/tmp/venv/bin/python local_eval/fetch_bert.py
+ok bert-base-cased/config.json 570
+ok bert-base-cased/vocab.txt 213450
+ok bert-base-cased/tokenizer_config.json 49
+ok bert-base-cased/tokenizer.json 435797
+ok bert-base-cased/pytorch_model.bin 435779157
+BERT_DONE

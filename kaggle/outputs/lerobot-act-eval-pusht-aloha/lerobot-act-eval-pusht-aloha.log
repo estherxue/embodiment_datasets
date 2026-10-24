@@ -1,0 +1,404 @@
+[{"stream_name":"stdout","time":0.701446187,"data":"[      0s] $ nvidia-smi || true; echo; python -V; echo; head -3 /etc/os-release; nproc; free -g; df -h /kaggle/working /tmp | cat; echo; env | grep -E '^(CUDA|NVIDIA|KAGGLE)' | sort\n"}
+,{"stream_name":"stdout","time":1.248631972,"data":"    | \n"}
+,{"stream_name":"stdout","time":1.248655421,"data":"    | +-----------------------------------------------------------------------------------------+\n"}
+,{"stream_name":"stdout","time":1.248660087,"data":"    | | Processes:                                                                              |\n"}
+,{"stream_name":"stdout","time":1.248663921,"data":"    | |  GPU   GI   CI              PID   Type   Process name                        GPU Memory |\n"}
+,{"stream_name":"stdout","time":1.2486675250000001,"data":"    | |        ID   ID                                                               Usage      |\n"}
+,{"stream_name":"stdout","time":1.24867091,"data":"    | |=========================================================================================|\n"}
+,{"stream_name":"stdout","time":1.2486744220000001,"data":"    | |  No running processes found                                                             |\n"}
+,{"stream_name":"stdout","time":1.248678234,"data":"    | +-----------------------------------------------------------------------------------------+\n"}
+,{"stream_name":"stdout","time":1.2486821,"data":"    | \n"}
+,{"stream_name":"stdout","time":1.24868599,"data":"    | Python 3.13.15\n"}
+,{"stream_name":"stdout","time":1.248689656,"data":"    | \n"}
+,{"stream_name":"stdout","time":1.24869283,"data":"    | PRETTY_NAME=\"Ubuntu 24.04.1 LTS\"\n"}
+,{"stream_name":"stdout","time":1.248695884,"data":"    | NAME=\"Ubuntu\"\n"}
+,{"stream_name":"stdout","time":1.2486991,"data":"    | VERSION_ID=\"24.04\"\n"}
+,{"stream_name":"stdout","time":1.2487025489999999,"data":"    | 4\n"}
+,{"stream_name":"stdout","time":1.248705793,"data":"    |                total        used        free      shared  buff/cache   available\n"}
+,{"stream_name":"stdout","time":1.24870888,"data":"    | Mem:              31           1          26           0           4          30\n"}
+,{"stream_name":"stdout","time":1.248712261,"data":"    | Swap:              0           0           0\n"}
+,{"stream_name":"stdout","time":1.248715449,"data":"    | Filesystem      Size  Used Avail Use% Mounted on\n"}
+,{"stream_name":"stdout","time":1.248718851,"data":"    | /dev/loop2       20G  172K   20G   1% /kaggle/working\n"}
+,{"stream_name":"stdout","time":1.248722436,"data":"    | overlay         8.0T  7.0T  1.1T  88% /\n"}
+,{"stream_name":"stdout","time":1.248725934,"data":"    | \n"}
+,{"stream_name":"stdout","time":1.248729199,"data":"    | CUDA_HOME=/usr/local/cuda\n"}
+,{"stream_name":"stdout","time":1.248732946,"data":"    | CUDA_VERSION=12.8.1\n"}
+,{"stream_name":"stdout","time":1.24873692,"data":"    | KAGGLE_API_V1_TOKEN=/etc/secrets/kaggle/api-v1-token\n"}
+,{"stream_name":"stdout","time":1.24874054,"data":"    | KAGGLE_CONTAINER_NAME=kaggle_5zb1Bexjew6W1JLRUPhRVIiew89EftqaNRNNtdPUJs-361481701-webtier\n"}
+,{"stream_name":"stdout","time":1.248744711,"data":"    | KAGGLE_DATA_PROXY_PROJECT=kaggle-161607\n"}
+,{"stream_name":"stdout","time":1.248748532,"data":"    | KAGGLE_DATA_PROXY_TOKEN=eyJhbGciOiJBMTI4S1ciLCJlbmMiOiJBMTI4Q0JDLUhTMjU2In0.8uBIRw7eq0yKM-rll6VZWaeNRAes-W_dR0GX58Pxkp8YwoF8Fw_LGw.qeucWxLz_tAUJMpxjxlmpA.CQ2320_E00GyXePRqi8FAVdVzOCRrf7pFSFBvS4wzbOz2yj-b4K7fNTJRHTx1Rd-dL\n"}
+,{"stream_name":"stdout","time":1.248753314,"data":"    | KAGGLE_DATA_PROXY_URL=https://dp.kaggle.net\n"}
+,{"stream_name":"stdout","time":1.248756563,"data":"    | KAGGLE_DOCKER_IMAGE=gcr.io/kaggle-gpu-images/python@sha256:9a6bcfda6d03b2cd9aa347ee8c1bae62043328ed0f4afe9bda014e4f8bbf9435\n"}
+,{"stream_name":"stdout","time":1.2487701310000001,"data":"    | KAGGLE_GCP_ZONE=us-east4-b\n"}
+,{"stream_name":"stdout","time":1.24877426,"data":"    | KAGGLE_GRPC_DATA_PROXY_URL=dp.kaggle.net:443\n"}
+,{"stream_name":"stdout","time":1.248778095,"data":"    | KAGGLE_KERNEL_INTEGRATIONS=\n"}
+,{"stream_name":"stdout","time":1.248781832,"data":"    | KAGGLE_KERNEL_RUN_TYPE=Batch\n"}
+,{"stream_name":"stdout","time":1.2487865519999999,"data":"    | KAGGLE_URL_BASE=https://www.kaggle.com\n"}
+,{"stream_name":"stdout","time":1.248790295,"data":"    | KAGGLE_USER_SECRETS_TOKEN=eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2In0..icDhNGGQ9yrj2l4TdS2Vjw.EU1CQ-ZDj-LeIZLljFoilcWMs924YQ8VGlGTU0a5dOBLqDtSuIklJsz_WZa89gFnX38Uvnx54p4vhegaCBsLg1UUa8J8MSMsnuHGatHCsldTSwNTdktr3MDggn\n"}
+,{"stream_name":"stdout","time":1.24879485,"data":"    | NVIDIA_DRIVER_CAPABILITIES=compute,utility\n"}
+,{"stream_name":"stdout","time":1.248798722,"data":"    | NVIDIA_PRODUCT_NAME=CUDA\n"}
+,{"stream_name":"stdout","time":1.24880213,"data":"    | NVIDIA_REQUIRE_CUDA=cuda\u003e=12.8 brand=unknown,driver\u003e=470,driver\u003c471 brand=grid,driver\u003e=470,driver\u003c471 brand=tesla,driver\u003e=470,driver\u003c471 brand=nvidia,driver\u003e=470,driver\u003c471 brand=quadro,driver\u003e=470,driver\u003c471 brand=quadr\n"}
+,{"stream_name":"stdout","time":1.2488064859999999,"data":"    | NVIDIA_VISIBLE_DEVICES=all\n"}
+,{"stream_name":"stdout","time":1.248923136,"data":"[      1s] -\u003e rc=0  (00_env_info)\n"}
+,{"stream_name":"stdout","time":1.264693222,"data":"[      1s] $ /usr/local/bin/uv --version\n"}
+,{"stream_name":"stdout","time":1.353885996,"data":"    | \n"}
+,{"stream_name":"stdout","time":1.3539099829999999,"data":"    | ===== [13:58:50] $ /usr/local/bin/uv --version\n"}
+,{"stream_name":"stdout","time":1.353914262,"data":"    | uv 0.13.5 (x86_64-unknown-linux-gnu)\n"}
+,{"stream_name":"stdout","time":1.353917968,"data":"[      1s] -\u003e rc=0  (01_install)\n"}
+,{"stream_name":"stdout","time":1.35392169,"data":"[      1s] $ /usr/local/bin/uv venv --python 3.10 /kaggle/tmp/venv\n"}
+,{"stream_name":"stdout","time":2.917965753,"data":"    | \n"}
+,{"stream_name":"stdout","time":2.917995227,"data":"    | ===== [13:58:50] $ /usr/local/bin/uv --version\n"}
+,{"stream_name":"stdout","time":2.917999878,"data":"    | uv 0.13.5 (x86_64-unknown-linux-gnu)\n"}
+,{"stream_name":"stdout","time":2.918005043,"data":"    | \n"}
+,{"stream_name":"stdout","time":2.918012363,"data":"    | ===== [13:58:50] $ /usr/local/bin/uv venv --python 3.10 /kaggle/tmp/venv\n"}
+,{"stream_name":"stdout","time":2.918044271,"data":"    | warning: The `--system` flag has no effect, `uv venv` always ignores virtual environments when finding a Python interpreter; did you mean `--no-managed-python`?\n"}
+,{"stream_name":"stdout","time":2.918049647,"data":"    | Downloading cpython-3.10.22-linux-x86_64-gnu (download) (28.0MiB)\n"}
+,{"stream_name":"stdout","time":2.9180532,"data":"    |  Downloaded cpython-3.10.22-linux-x86_64-gnu (download)\n"}
+,{"stream_name":"stdout","time":2.918056642,"data":"    | Using CPython 3.10.22\n"}
+,{"stream_name":"stdout","time":2.918059963,"data":"    | Creating virtual environment at: /kaggle/tmp/venv\n"}
+,{"stream_name":"stdout","time":2.918063417,"data":"    | Activate with: source /kaggle/tmp/venv/bin/activate\n"}
+,{"stream_name":"stdout","time":2.918066755,"data":"[      2s] -\u003e rc=0  (01_install)\n"}
+,{"stream_name":"stdout","time":2.918147392,"data":"[      2s] $ git clone -q https://github.com/huggingface/lerobot /kaggle/tmp/lerobot \u0026\u0026 cd /kaggle/tmp/lerobot \u0026\u0026 git checkout -q b883328e6c95681ca90a18b102e4ae5e1f91e2bf \u0026\u0026 git log -1 --format='%H %cd %s' --date=short\n"}
+,{"stream_name":"stdout","time":15.566513523,"data":"    | \n"}
+,{"stream_name":"stdout","time":15.566540718,"data":"    | ===== [13:58:50] $ /usr/local/bin/uv --version\n"}
+,{"stream_name":"stdout","time":15.566545188,"data":"    | uv 0.13.5 (x86_64-unknown-linux-gnu)\n"}
+,{"stream_name":"stdout","time":15.566548932,"data":"    | \n"}
+,{"stream_name":"stdout","time":15.56655295,"data":"    | ===== [13:58:50] $ /usr/local/bin/uv venv --python 3.10 /kaggle/tmp/venv\n"}
+,{"stream_name":"stdout","time":15.566556630000001,"data":"    | warning: The `--system` flag has no effect, `uv venv` always ignores virtual environments when finding a Python interpreter; did you mean `--no-managed-python`?\n"}
+,{"stream_name":"stdout","time":15.566560593,"data":"    | Downloading cpython-3.10.22-linux-x86_64-gnu (download) (28.0MiB)\n"}
+,{"stream_name":"stdout","time":15.566564468,"data":"    |  Downloaded cpython-3.10.22-linux-x86_64-gnu (download)\n"}
+,{"stream_name":"stdout","time":15.566567883,"data":"    | Using CPython 3.10.22\n"}
+,{"stream_name":"stdout","time":15.566571308,"data":"    | Creating virtual environment at: /kaggle/tmp/venv\n"}
+,{"stream_name":"stdout","time":15.566574778,"data":"    | Activate with: source /kaggle/tmp/venv/bin/activate\n"}
+,{"stream_name":"stdout","time":15.566578633,"data":"    | \n"}
+,{"stream_name":"stdout","time":15.566582015,"data":"    | ===== [13:58:52] $ git clone -q https://github.com/huggingface/lerobot /kaggle/tmp/lerobot \u0026\u0026 cd /kaggle/tmp/lerobot \u0026\u0026 git checkout -q b883328e6c95681ca90a18b102e4ae5e1f91e2bf \u0026\u0026 git log -1 --format='%H %cd %s' --date=s\n"}
+,{"stream_name":"stdout","time":15.566603998,"data":"    | b883328e6c95681ca90a18b102e4ae5e1f91e2bf 2025-08-06 chore: Bump to 0.3.3 (#1690)\n"}
+,{"stream_name":"stdout","time":15.566607618,"data":"[     15s] -\u003e rc=0  (01_install)\n"}
+,{"stream_name":"stdout","time":15.566611129,"data":"[     15s] $ /usr/local/bin/uv pip install --python /kaggle/tmp/venv/bin/python --reinstall-package torch --reinstall-package torchvision torch==2.7.1 torchvision==0.22.1 --index-url https://download.pytorch.org/whl/cu126\n"}
+,{"stream_name":"stdout","time":48.173254823,"data":"    |  + nvidia-cuda-cupti-cu12==12.6.80\n"}
+,{"stream_name":"stdout","time":48.17328954,"data":"    |  + nvidia-cuda-nvrtc-cu12==12.6.77\n"}
+,{"stream_name":"stdout","time":48.173295811,"data":"    |  + nvidia-cuda-runtime-cu12==12.6.77\n"}
+,{"stream_name":"stdout","time":48.173300175,"data":"    |  + nvidia-cudnn-cu12==9.5.1.17\n"}
+,{"stream_name":"stdout","time":48.17330483,"data":"    |  + nvidia-cufft-cu12==11.3.0.4\n"}
+,{"stream_name":"stdout","time":48.173309676,"data":"    |  + nvidia-cufile-cu12==1.11.1.6\n"}
+,{"stream_name":"stdout","time":48.173314495,"data":"    |  + nvidia-curand-cu12==10.3.7.77\n"}
+,{"stream_name":"stdout","time":48.17331937,"data":"    |  + nvidia-cusolver-cu12==11.7.1.2\n"}
+,{"stream_name":"stdout","time":48.173323886,"data":"    |  + nvidia-cusparse-cu12==12.5.4.2\n"}
+,{"stream_name":"stdout","time":48.173327967,"data":"    |  + nvidia-cusparselt-cu12==0.6.3\n"}
+,{"stream_name":"stdout","time":48.173331973,"data":"    |  + nvidia-nccl-cu12==2.26.2\n"}
+,{"stream_name":"stdout","time":48.173336705,"data":"    |  + nvidia-nvjitlink-cu12==12.6.85\n"}
+,{"stream_name":"stdout","time":48.173341695,"data":"    |  + nvidia-nvtx-cu12==12.6.77\n"}
+,{"stream_name":"stdout","time":48.173346449,"data":"    |  + pillow==12.3.0\n"}
+,{"stream_name":"stdout","time":48.173350555,"data":"    |  + setuptools==78.1.0\n"}
+,{"stream_name":"stdout","time":48.173367533,"data":"    |  + sympy==1.14.0\n"}
+,{"stream_name":"stdout","time":48.173371013,"data":"    |  + torch==2.7.1+cu126\n"}
+,{"stream_name":"stdout","time":48.173380461,"data":"    |  + torchvision==0.22.1+cu126\n"}
+,{"stream_name":"stdout","time":48.173383026,"data":"    |  + triton==3.3.1\n"}
+,{"stream_name":"stdout","time":48.17338572,"data":"    |  + typing-extensions==4.16.0\n"}
+,{"stream_name":"stdout","time":48.173406077,"data":"[     47s] -\u003e rc=0  (01_install)\n"}
+,{"stream_name":"stdout","time":48.173411042,"data":"[     47s] $ /usr/local/bin/uv pip install --python /kaggle/tmp/venv/bin/python --no-deps torchcodec==0.4.0\n"}
+,{"stream_name":"stdout","time":48.319548407,"data":"    |  + nvidia-cusparselt-cu12==0.6.3\n"}
+,{"stream_name":"stdout","time":48.31957418,"data":"    |  + nvidia-nccl-cu12==2.26.2\n"}
+,{"stream_name":"stdout","time":48.319579134,"data":"    |  + nvidia-nvjitlink-cu12==12.6.85\n"}
+,{"stream_name":"stdout","time":48.319583176,"data":"    |  + nvidia-nvtx-cu12==12.6.77\n"}
+,{"stream_name":"stdout","time":48.319586947,"data":"    |  + pillow==12.3.0\n"}
+,{"stream_name":"stdout","time":48.319590091,"data":"    |  + setuptools==78.1.0\n"}
+,{"stream_name":"stdout","time":48.319593935,"data":"    |  + sympy==1.14.0\n"}
+,{"stream_name":"stdout","time":48.319597472,"data":"    |  + torch==2.7.1+cu126\n"}
+,{"stream_name":"stdout","time":48.319600843,"data":"    |  + torchvision==0.22.1+cu126\n"}
+,{"stream_name":"stdout","time":48.319604395,"data":"    |  + triton==3.3.1\n"}
+,{"stream_name":"stdout","time":48.319608255,"data":"    |  + typing-extensions==4.16.0\n"}
+,{"stream_name":"stdout","time":48.319612485,"data":"    | \n"}
+,{"stream_name":"stdout","time":48.319615984,"data":"    | ===== [13:59:37] $ /usr/local/bin/uv pip install --python /kaggle/tmp/venv/bin/python --no-deps torchcodec==0.4.0\n"}
+,{"stream_name":"stdout","time":48.319620427,"data":"    | Using Python 3.10.22 environment at: /kaggle/tmp/venv\n"}
+,{"stream_name":"stdout","time":48.319624319,"data":"    | Resolved 1 package in 87ms\n"}
+,{"stream_name":"stdout","time":48.319627477,"data":"    | Downloading torchcodec (1.3MiB)\n"}
+,{"stream_name":"stdout","time":48.319630785,"data":"    |  Downloaded torchcodec\n"}
+,{"stream_name":"stdout","time":48.319634061,"data":"    | Prepared 1 package in 40ms\n"}
+,{"stream_name":"stdout","time":48.319637386,"data":"    | Installed 1 package in 2ms\n"}
+,{"stream_name":"stdout","time":48.319647754,"data":"    |  + torchcodec==0.4.0\n"}
+,{"stream_name":"stdout","time":48.31965207,"data":"[     48s] -\u003e rc=0  (01_install)\n"}
+,{"stream_name":"stdout","time":48.319873672,"data":"[     48s] $ /usr/local/bin/uv pip install --python /kaggle/tmp/venv/bin/python -e \"/kaggle/tmp/lerobot[pusht,aloha]\" -c /kaggle/tmp/constraints.txt\n"}
+,{"stream_name":"stdout","time":59.903578343,"data":"    |  + scipy==1.15.3\n"}
+,{"stream_name":"stdout","time":59.903607648,"data":"    |  + shapely==2.1.2\n"}
+,{"stream_name":"stdout","time":59.90361252,"data":"    |  + six==1.17.0\n"}
+,{"stream_name":"stdout","time":59.903616297,"data":"    |  + sniffio==1.3.1\n"}
+,{"stream_name":"stdout","time":59.903619832,"data":"    |  + termcolor==3.3.0\n"}
+,{"stream_name":"stdout","time":59.903623231,"data":"    |  + toml==0.10.2\n"}
+,{"stream_name":"stdout","time":59.903626825,"data":"    |  + tomli==2.5.0\n"}
+,{"stream_name":"stdout","time":59.903630586,"data":"    |  + tqdm==4.70.1\n"}
+,{"stream_name":"stdout","time":59.903633961,"data":"    |  + typing-inspect==0.9.0\n"}
+,{"stream_name":"stdout","time":59.903649491,"data":"    |  + typing-inspection==0.4.4\n"}
+,{"stream_name":"stdout","time":59.903653106,"data":"    |  + tzdata==2026.5\n"}
+,{"stream_name":"stdout","time":59.903656403,"data":"    |  + urllib3==2.8.0\n"}
+,{"stream_name":"stdout","time":59.903659709,"data":"    |  + wandb==0.31.0\n"}
+,{"stream_name":"stdout","time":59.903663215,"data":"    |  + werkzeug==3.1.9\n"}
+,{"stream_name":"stdout","time":59.903666633,"data":"    |  + wrapt==2.5.1\n"}
+,{"stream_name":"stdout","time":59.903670013,"data":"    |  + xxhash==4.0.2\n"}
+,{"stream_name":"stdout","time":59.903673374,"data":"    |  + yarl==1.25.1\n"}
+,{"stream_name":"stdout","time":59.903676675,"data":"    |  + zipp==4.1.2\n"}
+,{"stream_name":"stdout","time":59.90368003,"data":"    | warning: The package `huggingface-hub==1.33.0` does not have an extra named `hf-transfer`\n"}
+,{"stream_name":"stdout","time":59.903683735,"data":"    | warning: The package `huggingface-hub==1.33.0` does not have an extra named `cli`\n"}
+,{"stream_name":"stdout","time":59.903687387,"data":"[     59s] -\u003e rc=0  (01_install)\n"}
+,{"stream_name":"stdout","time":59.903694829,"data":"[     59s] $ /kaggle/tmp/venv/bin/python -c 'import lerobot, torch, torchvision, numpy; print(\"VERSIONS\", lerobot.__version__, torch.__version__, torchvision.__version__, numpy.__version__)'\n"}
+,{"stream_name":"stdout","time":72.968795842,"data":"    |  + sniffio==1.3.1\n"}
+,{"stream_name":"stdout","time":72.968829386,"data":"    |  + termcolor==3.3.0\n"}
+,{"stream_name":"stdout","time":72.968834809,"data":"    |  + toml==0.10.2\n"}
+,{"stream_name":"stdout","time":72.968838341,"data":"    |  + tomli==2.5.0\n"}
+,{"stream_name":"stdout","time":72.968842078,"data":"    |  + tqdm==4.70.1\n"}
+,{"stream_name":"stdout","time":72.968845797,"data":"    |  + typing-inspect==0.9.0\n"}
+,{"stream_name":"stdout","time":72.968849932,"data":"    |  + typing-inspection==0.4.4\n"}
+,{"stream_name":"stdout","time":72.968854026,"data":"    |  + tzdata==2026.5\n"}
+,{"stream_name":"stdout","time":72.968857926,"data":"    |  + urllib3==2.8.0\n"}
+,{"stream_name":"stdout","time":72.968861339,"data":"    |  + wandb==0.31.0\n"}
+,{"stream_name":"stdout","time":72.968864531,"data":"    |  + werkzeug==3.1.9\n"}
+,{"stream_name":"stdout","time":72.968867738,"data":"    |  + wrapt==2.5.1\n"}
+,{"stream_name":"stdout","time":72.96887097,"data":"    |  + xxhash==4.0.2\n"}
+,{"stream_name":"stdout","time":72.968879328,"data":"    |  + yarl==1.25.1\n"}
+,{"stream_name":"stdout","time":72.968882558,"data":"    |  + zipp==4.1.2\n"}
+,{"stream_name":"stdout","time":72.968884816,"data":"    | warning: The package `huggingface-hub==1.33.0` does not have an extra named `hf-transfer`\n"}
+,{"stream_name":"stdout","time":72.968887074,"data":"    | warning: The package `huggingface-hub==1.33.0` does not have an extra named `cli`\n"}
+,{"stream_name":"stdout","time":72.968889302,"data":"    | \n"}
+,{"stream_name":"stdout","time":72.968891445,"data":"    | ===== [13:59:49] $ /kaggle/tmp/venv/bin/python -c 'import lerobot, torch, torchvision, numpy; print(\"VERSIONS\", lerobot.__version__, torch.__version__, torchvision.__version__, numpy.__version__)'\n"}
+,{"stream_name":"stdout","time":72.968894104,"data":"    | VERSIONS 0.3.3 2.7.1+cu126 0.22.1+cu126 2.2.6\n"}
+,{"stream_name":"stdout","time":72.968915181,"data":"[     72s] -\u003e rc=0  (01_install)\n"}
+,{"stream_name":"stdout","time":72.96914799,"data":"[     72s] $ /kaggle/tmp/venv/bin/python /kaggle/tmp/gpu_check.py\n"}
+,{"stream_name":"stdout","time":75.960958961,"data":"    | \n"}
+,{"stream_name":"stdout","time":75.961006811,"data":"    | ===== [14:00:02] $ /kaggle/tmp/venv/bin/python /kaggle/tmp/gpu_check.py\n"}
+,{"stream_name":"stdout","time":75.961062679,"data":"    | GPU_CHECK {\"torch\": \"2.7.1+cu126\", \"cuda_available\": true, \"device_name\": \"Tesla T4\", \"capability\": [7, 5], \"gpu_ok\": true}\n"}
+,{"stream_name":"stdout","time":75.961070541,"data":"[     75s] -\u003e rc=0  (02_gpu_check)\n"}
+,{"stream_name":"stdout","time":75.96125857,"data":"[     75s] DEVICE = cuda  gpu={'torch': '2.7.1+cu126', 'cuda_available': True, 'device_name': 'Tesla T4', 'capability': [7, 5], 'gpu_ok': True}\n"}
+,{"stream_name":"stdout","time":75.961267728,"data":"[     75s] $ /usr/local/bin/uv pip freeze --python /kaggle/tmp/venv/bin/python \u003e /kaggle/working/env/requirements-freeze.txt; wc -l /kaggle/working/env/requirements-freeze.txt\n"}
+,{"stream_name":"stdout","time":75.982603079,"data":"    | ===== [14:00:05] $ /usr/local/bin/uv pip freeze --python /kaggle/tmp/venv/bin/python \u003e /kaggle/working/env/requirements-freeze.txt; wc -l /kaggle/working/env/requirements-freeze.txt\n"}
+,{"stream_name":"stdout","time":75.982627589,"data":"    | Using Python 3.10.22 environment at: /kaggle/tmp/venv\n"}
+,{"stream_name":"stdout","time":75.982632653,"data":"    | 141 /kaggle/working/env/requirements-freeze.txt\n"}
+,{"stream_name":"stdout","time":75.982637507,"data":"[     75s] -\u003e rc=0  (01_install)\n"}
+,{"stream_name":"stdout","time":75.983114117,"data":"[     75s] $ /kaggle/tmp/venv/bin/python /kaggle/tmp/pusht_check.py\n"}
+,{"stream_name":"stdout","time":76.85183727,"data":"    | \n"}
+,{"stream_name":"stdout","time":76.851871848,"data":"    | ===== [14:00:05] $ /kaggle/tmp/venv/bin/python /kaggle/tmp/pusht_check.py\n"}
+,{"stream_name":"stdout","time":76.851881912,"data":"    | PUSHT_OK pixels_agent_pos {'pixels': (96, 96, 3), 'agent_pos': (2,)} True\n"}
+,{"stream_name":"stdout","time":76.851884654,"data":"    | PUSHT_OK environment_state_agent_pos {'environment_state': (16,), 'agent_pos': (2,)} True\n"}
+,{"stream_name":"stdout","time":76.851887036,"data":"[     76s] -\u003e rc=0  (03_pusht_check)\n"}
+,{"stream_name":"stdout","time":76.851889857,"data":"[     76s] $ apt-get update -qq \u003e /dev/null 2\u003e\u00261; DEBIAN_FRONTEND=noninteractive apt-get install -y -qq libegl1 libgl1 libglvnd0 libosmesa6 libglfw3 \u003e /dev/null 2\u003e\u00261; ls /usr/lib/x86_64-linux-gnu/ | grep -i -E 'EGL|OSMesa' | head\n"}
+,{"stream_name":"stdout","time":87.459403422,"data":"    | libEGL_mesa.so.0.0.0\n"}
+,{"stream_name":"stdout","time":87.459449942,"data":"    | libEGL.so.1\n"}
+,{"stream_name":"stdout","time":87.459457053,"data":"    | libEGL.so.1.1.0\n"}
+,{"stream_name":"stdout","time":87.459461719,"data":"    | libOSMesa.so.6\n"}
+,{"stream_name":"stdout","time":87.45946745,"data":"    | libOSMesa.so.8\n"}
+,{"stream_name":"stdout","time":87.459471843,"data":"    | libOSMesa.so.8.0.0\n"}
+,{"stream_name":"stdout","time":87.459475946,"data":"    | libwayland-egl.so.1\n"}
+,{"stream_name":"stdout","time":87.459480033,"data":"    | libwayland-egl.so.1.22.0\n"}
+,{"stream_name":"stdout","time":87.459484248,"data":"[     87s] -\u003e rc=0  (03_render_check)\n"}
+,{"stream_name":"stdout","time":87.459671225,"data":"[     87s] $ /kaggle/tmp/venv/bin/python /kaggle/tmp/render_check.py\n"}
+,{"stream_name":"stdout","time":91.551312689,"data":"    | \n"}
+,{"stream_name":"stdout","time":91.551342135,"data":"    | ===== [14:00:06] $ apt-get update -qq \u003e /dev/null 2\u003e\u00261; DEBIAN_FRONTEND=noninteractive apt-get install -y -qq libegl1 libgl1 libglvnd0 libosmesa6 libglfw3 \u003e /dev/null 2\u003e\u00261; ls /usr/lib/x86_64-linux-gnu/ | grep -i -E 'EGL\n"}
+,{"stream_name":"stdout","time":91.551349632,"data":"    | libEGL_mesa.so.0\n"}
+,{"stream_name":"stdout","time":91.55136844,"data":"    | libEGL_mesa.so.0.0.0\n"}
+,{"stream_name":"stdout","time":91.551373222,"data":"    | libEGL.so.1\n"}
+,{"stream_name":"stdout","time":91.551377008,"data":"    | libEGL.so.1.1.0\n"}
+,{"stream_name":"stdout","time":91.551380486,"data":"    | libOSMesa.so.6\n"}
+,{"stream_name":"stdout","time":91.551383676,"data":"    | libOSMesa.so.8\n"}
+,{"stream_name":"stdout","time":91.551386813,"data":"    | libOSMesa.so.8.0.0\n"}
+,{"stream_name":"stdout","time":91.551390517,"data":"    | libwayland-egl.so.1\n"}
+,{"stream_name":"stdout","time":91.551394473,"data":"    | libwayland-egl.so.1.22.0\n"}
+,{"stream_name":"stdout","time":91.551398344,"data":"    | \n"}
+,{"stream_name":"stdout","time":91.551401607,"data":"    | ===== [14:00:16] $ /kaggle/tmp/venv/bin/python /kaggle/tmp/render_check.py\n"}
+,{"stream_name":"stdout","time":91.551405489,"data":"    | RENDER_OK egl (480, 640, 3) uint8 39.91 render() (480, 640, 3) 3.6s\n"}
+,{"stream_name":"stdout","time":91.551409009,"data":"[     91s] -\u003e rc=0  (03_render_check)\n"}
+,{"stream_name":"stdout","time":91.551531166,"data":"[     91s] ALOHA rendering OK with MUJOCO_GL=egl\n"}
+,{"stream_name":"stdout","time":91.552095853,"data":"[     91s] $ /kaggle/tmp/venv/bin/python /kaggle/tmp/convert_old_act_ckpt.py alexandersoare/act_pusht_keypoints /kaggle/tmp/ckpts/act_pusht_keypoints\n"}
+,{"stream_name":"stdout","time":106.05960323,"data":"    | \n"}
+,{"stream_name":"stdout","time":106.059641251,"data":"    | ===== [14:00:21] $ /kaggle/tmp/venv/bin/python /kaggle/tmp/convert_old_act_ckpt.py alexandersoare/act_pusht_keypoints /kaggle/tmp/ckpts/act_pusht_keypoints\n"}
+,{"stream_name":"stdout","time":106.059645674,"data":"    | Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n"}
+,{"stream_name":"stdout","time":106.059648304,"data":"    | Loading weights from local directory\n"}
+,{"stream_name":"stdout","time":106.059650729,"data":"    | CONVERT_OK alexandersoare/act_pusht_keypoints -\u003e /kaggle/tmp/ckpts/act_pusht_keypoints: 56.3M params; inputs=['observation.environment_state', 'observation.state'] norm={'ENV': \u003cNormalizationMode.MIN_MAX: 'MIN_MAX'\u003e, 'ST\n"}
+,{"stream_name":"stdout","time":106.059653799,"data":"    | normalize buffers finite: True\n"}
+,{"stream_name":"stdout","time":106.059656077,"data":"[    105s] -\u003e rc=0  (04_convert_act_pusht_keypoints)\n"}
+,{"stream_name":"stdout","time":106.060437121,"data":"[    105s] $ /kaggle/tmp/venv/bin/lerobot-eval --policy.path=/kaggle/tmp/ckpts/act_pusht_keypoints --policy.device=cuda --env.type=pusht --env.obs_type=environment_state_agent_pos --eval.n_episodes=50 --eval.batch_size=50 --seed=1000 --output_dir=/kaggle/working/eval/pusht_act_keypoints_seed1000\n"}
+,{"stream_name":"stdout","time":147.442681469,"data":"    | Running rollout with at most 300 steps: 100%|█████████▉| 299/300 [00:26\u003c00:00, 11.68it/s, running_success_rate=64.0%]\u001b[A\n"}
+,{"stream_name":"stdout","time":147.442739595,"data":"    | \n"}
+,{"stream_name":"stdout","time":147.442748933,"data":"    |                                                                                                                      \u001b[A\n"}
+,{"stream_name":"stdout","time":147.442755768,"data":"    | Stepping through eval batches:   0%|          | 0/1 [00:26\u003c?, ?it/s, running_success_rate=64.0%]\n"}
+,{"stream_name":"stdout","time":147.44276274999999,"data":"    | Stepping through eval batches: 100%|██████████| 1/1 [00:26\u003c00:00, 27.00s/it, running_success_rate=64.0%]\n"}
+,{"stream_name":"stdout","time":147.442770151,"data":"    | Stepping through eval batches: 100%|██████████| 1/1 [00:26\u003c00:00, 27.00s/it, running_success_rate=64.0%]\n"}
+,{"stream_name":"stdout","time":147.442790568,"data":"    | {'avg_sum_reward': 95.49836207150304, 'avg_max_reward': 0.9493971370707803, 'pc_success': 64.0, 'eval_s': 31.732502460479736, 'eval_ep_s': 0.6346500635147094}\n"}
+,{"stream_name":"stdout","time":147.442795809,"data":"    | INFO 2026-10-23 14:01:15 pts/eval.py:501 End of eval\n"}
+,{"stream_name":"stdout","time":147.442800353,"data":"[    147s] -\u003e rc=0  (pusht_act_keypoints_seed1000)\n"}
+,{"stream_name":"stdout","time":147.443170267,"data":"[    147s] RESULT pusht_act_keypoints_seed1000: 32/50 = 64.0%  CI95 [50.1, 75.9]  avg_max_reward=0.949  eval_s=32\n"}
+,{"stream_name":"stdout","time":147.443924579,"data":"[    147s] $ /kaggle/tmp/venv/bin/lerobot-eval --policy.path=lerobot/act_aloha_sim_insertion_human --policy.device=cuda --env.type=aloha --env.task=AlohaInsertion-v0 --eval.n_episodes=50 --eval.batch_size=50 --seed=1000 --output_dir=/kaggle/working/eval/aloha_insertion_act_seed1000\n"}
+,{"stream_name":"stdout","time":5548.229586678,"data":"    | Running rollout with at most 400 steps:  99%|█████████▉| 397/400 [1:28:49\u003c00:41, 13.91s/it, running_success_rate=14.0%]\u001b[A\n"}
+,{"stream_name":"stdout","time":5548.229646955,"data":"    | \n"}
+,{"stream_name":"stdout","time":5548.229653464,"data":"    | Running rollout with at most 400 steps: 100%|█████████▉| 398/400 [1:28:49\u003c00:27, 13.89s/it, running_success_rate=14.0%]\u001b[A\n"}
+,{"stream_name":"stdout","time":5548.229658277,"data":"    | \n"}
+,{"stream_name":"stdout","time":5548.229662977,"data":"    | Running rollout with at most 400 steps: 100%|█████████▉| 398/400 [1:29:02\u003c00:27, 13.89s/it, running_success_rate=14.0%]\u001b[A\n"}
+,{"stream_name":"stdout","time":5548.229668131,"data":"    | \n"}
+,{"stream_name":"stdout","time":5548.229672504,"data":"    | Running rollout with at most 400 steps: 100%|█████████▉| 399/400 [1:29:02\u003c00:13, 13.89s/it, running_success_rate=14.0%]\u001b[A\n"}
+,{"stream_name":"stdout","time":5548.229677291,"data":"    | ===== TIMEOUT after 5400s, killed\n"}
+,{"stream_name":"stdout","time":5548.229681769,"data":"[   5548s] -\u003e rc=-9  (aloha_insertion_act_seed1000)\n"}
+,{"stream_name":"stdout","time":5548.230912111,"data":"[   5548s] FAILED aloha_insertion_act_seed1000: no eval_info.json (rc=-9)\n"}
+,{"stream_name":"stdout","time":5548.231650186,"data":"[   5548s] ALOHA run failed, retrying once with batch_size=10\n"}
+,{"stream_name":"stdout","time":5548.232168568,"data":"[   5548s] $ /kaggle/tmp/venv/bin/lerobot-eval --policy.path=lerobot/act_aloha_sim_insertion_human --policy.device=cuda --env.type=aloha --env.task=AlohaInsertion-v0 --eval.n_episodes=50 --eval.batch_size=10 --seed=1000 --output_dir=/kaggle/working/eval/aloha_insertion_act_seed1000\n"}
+,{"stream_name":"stdout","time":10743.118006947,"data":"    | Running rollout with at most 400 steps: 100%|██████████| 400/400 [15:51\u003c00:00,  3.13s/it, running_success_rate=0.0%]\u001b[A\n"}
+,{"stream_name":"stdout","time":10743.118095348,"data":"    | \n"}
+,{"stream_name":"stdout","time":10743.118100071,"data":"    |                                                                                                                     \u001b[A\n"}
+,{"stream_name":"stdout","time":10743.118103573,"data":"    | Stepping through eval batches:  80%|████████  | 4/5 [1:26:24\u003c17:01, 1021.60s/it, running_success_rate=12.0%]\n"}
+,{"stream_name":"stdout","time":10743.118106921,"data":"    | Stepping through eval batches: 100%|██████████| 5/5 [1:26:24\u003c00:00, 997.16s/it, running_success_rate=12.0%] \n"}
+,{"stream_name":"stdout","time":10743.118131721,"data":"    | Stepping through eval batches: 100%|██████████| 5/5 [1:26:24\u003c00:00, 1036.87s/it, running_success_rate=12.0%]\n"}
+,{"stream_name":"stdout","time":10743.118136907,"data":"    | {'avg_sum_reward': 180.74, 'avg_max_reward': 1.94, 'pc_success': 12.0, 'eval_s': 5184.360816955566, 'eval_ep_s': 103.68721634864806}\n"}
+,{"stream_name":"stdout","time":10743.118140652,"data":"    | INFO 2026-10-23 16:57:51 pts/eval.py:501 End of eval\n"}
+,{"stream_name":"stdout","time":10743.118144725,"data":"[  10742s] -\u003e rc=0  (aloha_insertion_act_seed1000)\n"}
+,{"stream_name":"stdout","time":10743.118672819,"data":"[  10742s] RESULT aloha_insertion_act_seed1000: 6/50 = 12.0%  CI95 [5.6, 23.8]  avg_max_reward=1.940  eval_s=5184\n"}
+,{"stream_name":"stdout","time":10743.119465552,"data":"[  10742s] $ /kaggle/tmp/venv/bin/lerobot-eval --policy.path=/kaggle/tmp/ckpts/act_pusht_keypoints --policy.device=cuda --env.type=pusht --env.obs_type=environment_state_agent_pos --eval.n_episodes=50 --eval.batch_size=50 --seed=2000 --output_dir=/kaggle/working/eval/pusht_act_keypoints_seed2000\n"}
+,{"stream_name":"stdout","time":10781.164333805,"data":"    | Running rollout with at most 300 steps: 100%|█████████▉| 299/300 [00:24\u003c00:00, 12.49it/s, running_success_rate=60.0%]\u001b[A\n"}
+,{"stream_name":"stdout","time":10781.164366004,"data":"    | \n"}
+,{"stream_name":"stdout","time":10781.164371849,"data":"    |                                                                                                                      \u001b[A\n"}
+,{"stream_name":"stdout","time":10781.164376102,"data":"    | Stepping through eval batches:   0%|          | 0/1 [00:24\u003c?, ?it/s, running_success_rate=60.0%]\n"}
+,{"stream_name":"stdout","time":10781.164380742,"data":"    | Stepping through eval batches: 100%|██████████| 1/1 [00:24\u003c00:00, 24.62s/it, running_success_rate=60.0%]\n"}
+,{"stream_name":"stdout","time":10781.164385788,"data":"    | Stepping through eval batches: 100%|██████████| 1/1 [00:24\u003c00:00, 24.62s/it, running_success_rate=60.0%]\n"}
+,{"stream_name":"stdout","time":10781.164390786,"data":"    | {'avg_sum_reward': 102.50659275789259, 'avg_max_reward': 0.9317690376248051, 'pc_success': 60.0, 'eval_s': 29.01813268661499, 'eval_ep_s': 0.580362663269043}\n"}
+,{"stream_name":"stdout","time":10781.164395927,"data":"    | INFO 2026-10-23 16:58:29 pts/eval.py:501 End of eval\n"}
+,{"stream_name":"stdout","time":10781.164400954,"data":"[  10780s] -\u003e rc=0  (pusht_act_keypoints_seed2000)\n"}
+,{"stream_name":"stdout","time":10781.164777767,"data":"[  10780s] RESULT pusht_act_keypoints_seed2000: 30/50 = 60.0%  CI95 [46.2, 72.4]  avg_max_reward=0.932  eval_s=29\n"}
+,{"stream_name":"stdout","time":10781.16551738,"data":"[  10780s] $ /kaggle/tmp/venv/bin/lerobot-eval --policy.path=/kaggle/tmp/ckpts/act_pusht_keypoints --policy.device=cuda --env.type=pusht --env.obs_type=environment_state_agent_pos --eval.n_episodes=50 --eval.batch_size=50 --seed=3000 --output_dir=/kaggle/working/eval/pusht_act_keypoints_seed3000\n"}
+,{"stream_name":"stdout","time":10820.698105589,"data":"    | Running rollout with at most 300 steps: 100%|█████████▉| 299/300 [00:24\u003c00:00, 13.02it/s, running_success_rate=64.0%]\u001b[A\n"}
+,{"stream_name":"stdout","time":10820.698186532,"data":"    | \n"}
+,{"stream_name":"stdout","time":10820.698193726,"data":"    |                                                                                                                      \u001b[A\n"}
+,{"stream_name":"stdout","time":10820.698198985,"data":"    | Stepping through eval batches:   0%|          | 0/1 [00:25\u003c?, ?it/s, running_success_rate=64.0%]\n"}
+,{"stream_name":"stdout","time":10820.698215686,"data":"    | Stepping through eval batches: 100%|██████████| 1/1 [00:25\u003c00:00, 25.37s/it, running_success_rate=64.0%]\n"}
+,{"stream_name":"stdout","time":10820.698219791,"data":"    | Stepping through eval batches: 100%|██████████| 1/1 [00:25\u003c00:00, 25.37s/it, running_success_rate=64.0%]\n"}
+,{"stream_name":"stdout","time":10820.69822387,"data":"    | {'avg_sum_reward': 98.30690613237182, 'avg_max_reward': 0.917779192428286, 'pc_success': 64.0, 'eval_s': 30.459166049957275, 'eval_ep_s': 0.6091833305358887}\n"}
+,{"stream_name":"stdout","time":10820.698227712,"data":"    | INFO 2026-10-23 16:59:09 pts/eval.py:501 End of eval\n"}
+,{"stream_name":"stdout","time":10820.698231278,"data":"[  10820s] -\u003e rc=0  (pusht_act_keypoints_seed3000)\n"}
+,{"stream_name":"stdout","time":10820.69852731,"data":"[  10820s] RESULT pusht_act_keypoints_seed3000: 32/50 = 64.0%  CI95 [50.1, 75.9]  avg_max_reward=0.918  eval_s=30\n"}
+,{"stream_name":"stdout","time":10820.700522282,"data":"[  10820s] $ /kaggle/tmp/venv/bin/lerobot-eval --policy.path=arclabmit/pusht_act_model --policy.device=cuda --env.type=pusht --eval.n_episodes=50 --eval.batch_size=50 --seed=1000 --output_dir=/kaggle/working/eval/pusht_act_pixels_seed1000\n"}
+,{"stream_name":"stdout","time":10900.156491402,"data":"    | Running rollout with at most 300 steps: 100%|██████████| 300/300 [01:00\u003c00:00,  4.13it/s, running_success_rate=0.0%]\u001b[A\n"}
+,{"stream_name":"stdout","time":10900.156526338,"data":"    | \n"}
+,{"stream_name":"stdout","time":10900.156531076,"data":"    |                                                                                                                     \u001b[A\n"}
+,{"stream_name":"stdout","time":10900.156545055,"data":"    | Stepping through eval batches:   0%|          | 0/1 [01:01\u003c?, ?it/s, running_success_rate=0.0%]\n"}
+,{"stream_name":"stdout","time":10900.156557484,"data":"    | Stepping through eval batches: 100%|██████████| 1/1 [01:01\u003c00:00, 61.34s/it, running_success_rate=0.0%]\n"}
+,{"stream_name":"stdout","time":10900.15656354,"data":"    | Stepping through eval batches: 100%|██████████| 1/1 [01:01\u003c00:00, 61.34s/it, running_success_rate=0.0%]\n"}
+,{"stream_name":"stdout","time":10900.156568944,"data":"    | {'avg_sum_reward': 45.25136426696192, 'avg_max_reward': 0.42363364316720487, 'pc_success': 0.0, 'eval_s': 67.0234124660492, 'eval_ep_s': 1.340468258857727}\n"}
+,{"stream_name":"stdout","time":10900.156573552,"data":"    | INFO 2026-10-23 17:00:28 pts/eval.py:501 End of eval\n"}
+,{"stream_name":"stdout","time":10900.156577941,"data":"[  10899s] -\u003e rc=0  (pusht_act_pixels_seed1000)\n"}
+,{"stream_name":"stdout","time":10900.157117243,"data":"[  10899s] RESULT pusht_act_pixels_seed1000: 0/50 = 0.0%  CI95 [0.0, 7.1]  avg_max_reward=0.424  eval_s=67\n"}
+,{"stream_name":"stdout","time":10900.158116402,"data":"[  10899s] $ /kaggle/tmp/venv/bin/lerobot-eval --policy.path=lerobot/act_aloha_sim_insertion_human --policy.device=cuda --env.type=aloha --env.task=AlohaInsertion-v0 --eval.n_episodes=50 --eval.batch_size=50 --seed=2000 --output_dir=/kaggle/working/eval/aloha_insertion_act_seed2000\n"}
+,{"stream_name":"stdout","time":16200.576472447,"data":"    | Running rollout with at most 400 steps: 100%|██████████| 400/400 [1:27:28\u003c00:00, 16.45s/it, running_success_rate=8.0%]\u001b[A\n"}
+,{"stream_name":"stdout","time":16200.576548418,"data":"    | \n"}
+,{"stream_name":"stdout","time":16200.576560209,"data":"    |                                                                                                                       \u001b[A\n"}
+,{"stream_name":"stdout","time":16200.576564006,"data":"    | Stepping through eval batches:   0%|          | 0/1 [1:27:49\u003c?, ?it/s, running_success_rate=8.0%]\n"}
+,{"stream_name":"stdout","time":16200.576578826,"data":"    | Stepping through eval batches: 100%|██████████| 1/1 [1:27:49\u003c00:00, 5269.83s/it, running_success_rate=8.0%]\n"}
+,{"stream_name":"stdout","time":16200.57658177,"data":"    | Stepping through eval batches: 100%|██████████| 1/1 [1:27:49\u003c00:00, 5269.83s/it, running_success_rate=8.0%]\n"}
+,{"stream_name":"stdout","time":16200.576584261,"data":"    | {'avg_sum_reward': 213.04, 'avg_max_reward': 2.12, 'pc_success': 8.0, 'eval_s': 5286.878156661987, 'eval_ep_s': 105.73756314754486}\n"}
+,{"stream_name":"stdout","time":16200.576586649,"data":"    | INFO 2026-10-23 18:28:48 pts/eval.py:501 End of eval\n"}
+,{"stream_name":"stdout","time":16200.576593192,"data":"[  16200s] -\u003e rc=0  (aloha_insertion_act_seed2000)\n"}
+,{"stream_name":"stdout","time":16200.577182828,"data":"[  16200s] RESULT aloha_insertion_act_seed2000: 4/50 = 8.0%  CI95 [3.2, 18.8]  avg_max_reward=2.120  eval_s=5287\n"}
+,{"stream_name":"stdout","time":16200.578280938,"data":"[  16200s] $ /kaggle/tmp/venv/bin/lerobot-eval --policy.path=lerobot/act_aloha_sim_insertion_human --policy.device=cuda --env.type=aloha --env.task=AlohaInsertion-v0 --eval.n_episodes=50 --eval.batch_size=50 --seed=3000 --output_dir=/kaggle/working/eval/aloha_insertion_act_seed3000\n"}
+,{"stream_name":"stdout","time":21456.37946599,"data":"    | Running rollout with at most 400 steps: 100%|██████████| 400/400 [1:26:46\u003c00:00, 15.91s/it, running_success_rate=12.0%]\u001b[A\n"}
+,{"stream_name":"stdout","time":21456.379518402,"data":"    | \n"}
+,{"stream_name":"stdout","time":21456.379524372,"data":"    |                                                                                                                        \u001b[A\n"}
+,{"stream_name":"stdout","time":21456.37952902,"data":"    | Stepping through eval batches:   0%|          | 0/1 [1:27:06\u003c?, ?it/s, running_success_rate=12.0%]\n"}
+,{"stream_name":"stdout","time":21456.379533649,"data":"    | Stepping through eval batches: 100%|██████████| 1/1 [1:27:06\u003c00:00, 5226.22s/it, running_success_rate=12.0%]\n"}
+,{"stream_name":"stdout","time":21456.379539155,"data":"    | Stepping through eval batches: 100%|██████████| 1/1 [1:27:06\u003c00:00, 5226.22s/it, running_success_rate=12.0%]\n"}
+,{"stream_name":"stdout","time":21456.379543948,"data":"    | {'avg_sum_reward': 208.04, 'avg_max_reward': 2.08, 'pc_success': 12.0, 'eval_s': 5242.313378572464, 'eval_ep_s': 104.84626758575439}\n"}
+,{"stream_name":"stdout","time":21456.379548742,"data":"    | INFO 2026-10-23 19:56:23 pts/eval.py:501 End of eval\n"}
+,{"stream_name":"stdout","time":21456.379570834,"data":"[  21456s] -\u003e rc=0  (aloha_insertion_act_seed3000)\n"}
+,{"stream_name":"stdout","time":21456.380073121,"data":"[  21456s] RESULT aloha_insertion_act_seed3000: 6/50 = 12.0%  CI95 [5.6, 23.8]  avg_max_reward=2.080  eval_s=5242\n"}
+,{"stream_name":"stdout","time":21456.381639686,"data":"[  21456s] $ /kaggle/tmp/venv/bin/lerobot-eval --policy.path=arclabmit/pusht_act_model --policy.device=cuda --env.type=pusht --eval.n_episodes=50 --eval.batch_size=50 --seed=2000 --output_dir=/kaggle/working/eval/pusht_act_pixels_seed2000\n"}
+,{"stream_name":"stdout","time":21532.846040056,"data":"    | Running rollout with at most 300 steps: 100%|██████████| 300/300 [01:00\u003c00:00,  4.12it/s, running_success_rate=0.0%]\u001b[A\n"}
+,{"stream_name":"stdout","time":21532.846085842,"data":"    | \n"}
+,{"stream_name":"stdout","time":21532.84608995,"data":"    |                                                                                                                     \u001b[A\n"}
+,{"stream_name":"stdout","time":21532.846093375,"data":"    | Stepping through eval batches:   0%|          | 0/1 [01:01\u003c?, ?it/s, running_success_rate=0.0%]\n"}
+,{"stream_name":"stdout","time":21532.846106691,"data":"    | Stepping through eval batches: 100%|██████████| 1/1 [01:01\u003c00:00, 61.28s/it, running_success_rate=0.0%]\n"}
+,{"stream_name":"stdout","time":21532.846109553,"data":"    | Stepping through eval batches: 100%|██████████| 1/1 [01:01\u003c00:00, 61.28s/it, running_success_rate=0.0%]\n"}
+,{"stream_name":"stdout","time":21532.846111998,"data":"    | {'avg_sum_reward': 44.436058132524074, 'avg_max_reward': 0.3706839865460485, 'pc_success': 0.0, 'eval_s': 67.09964442253113, 'eval_ep_s': 1.3419929027557373}\n"}
+,{"stream_name":"stdout","time":21532.846114431,"data":"    | INFO 2026-10-23 19:57:41 pts/eval.py:501 End of eval\n"}
+,{"stream_name":"stdout","time":21532.846116601,"data":"[  21532s] -\u003e rc=0  (pusht_act_pixels_seed2000)\n"}
+,{"stream_name":"stdout","time":21532.84652019,"data":"[  21532s] RESULT pusht_act_pixels_seed2000: 0/50 = 0.0%  CI95 [0.0, 7.1]  avg_max_reward=0.371  eval_s=67\n"}
+,{"stream_name":"stdout","time":21532.847603655,"data":"[  21532s] $ /kaggle/tmp/venv/bin/lerobot-eval --policy.path=arclabmit/pusht_act_model --policy.device=cuda --env.type=pusht --eval.n_episodes=50 --eval.batch_size=50 --seed=3000 --output_dir=/kaggle/working/eval/pusht_act_pixels_seed3000\n"}
+,{"stream_name":"stdout","time":21609.827903718,"data":"    | Running rollout with at most 300 steps: 100%|██████████| 300/300 [01:01\u003c00:00,  4.28it/s, running_success_rate=6.0%]\u001b[A\n"}
+,{"stream_name":"stdout","time":21609.827932225,"data":"    | \n"}
+,{"stream_name":"stdout","time":21609.827937433,"data":"    |                                                                                                                     \u001b[A\n"}
+,{"stream_name":"stdout","time":21609.827942569,"data":"    | Stepping through eval batches:   0%|          | 0/1 [01:01\u003c?, ?it/s, running_success_rate=6.0%]\n"}
+,{"stream_name":"stdout","time":21609.827947277,"data":"    | Stepping through eval batches: 100%|██████████| 1/1 [01:01\u003c00:00, 61.83s/it, running_success_rate=6.0%]\n"}
+,{"stream_name":"stdout","time":21609.827952165,"data":"    | Stepping through eval batches: 100%|██████████| 1/1 [01:01\u003c00:00, 61.83s/it, running_success_rate=6.0%]\n"}
+,{"stream_name":"stdout","time":21609.827956955,"data":"    | {'avg_sum_reward': 42.236807735326956, 'avg_max_reward': 0.4380044949346135, 'pc_success': 6.0, 'eval_s': 67.58800840377808, 'eval_ep_s': 1.3517601823806762}\n"}
+,{"stream_name":"stdout","time":21609.827961805,"data":"    | INFO 2026-10-23 19:58:58 pts/eval.py:501 End of eval\n"}
+,{"stream_name":"stdout","time":21609.827966196,"data":"[  21609s] -\u003e rc=0  (pusht_act_pixels_seed3000)\n"}
+,{"stream_name":"stdout","time":21609.82829276,"data":"[  21609s] RESULT pusht_act_pixels_seed3000: 3/50 = 6.0%  CI95 [2.1, 16.2]  avg_max_reward=0.438  eval_s=68\n"}
+,{"stream_name":"stdout","time":21609.829450252,"data":"[  21609s] $ /kaggle/tmp/venv/bin/lerobot-eval --policy.path=lerobot/diffusion_pusht --policy.device=cuda --env.type=pusht --eval.n_episodes=50 --eval.batch_size=50 --seed=1000 --output_dir=/kaggle/working/eval/pusht_diffusion_seed1000\n"}
+,{"stream_name":"stdout","time":21902.560139261,"data":"    | Running rollout with at most 300 steps: 100%|██████████| 300/300 [04:27\u003c00:00,  1.24it/s, running_success_rate=66.0%]\u001b[A\n"}
+,{"stream_name":"stdout","time":21902.560200469,"data":"    | \n"}
+,{"stream_name":"stdout","time":21902.560207706,"data":"    |                                                                                                                      \u001b[A\n"}
+,{"stream_name":"stdout","time":21902.56022833,"data":"    | Stepping through eval batches:   0%|          | 0/1 [04:28\u003c?, ?it/s, running_success_rate=66.0%]\n"}
+,{"stream_name":"stdout","time":21902.560232198,"data":"    | Stepping through eval batches: 100%|██████████| 1/1 [04:28\u003c00:00, 268.48s/it, running_success_rate=66.0%]\n"}
+,{"stream_name":"stdout","time":21902.560235964,"data":"    | Stepping through eval batches: 100%|██████████| 1/1 [04:28\u003c00:00, 268.48s/it, running_success_rate=66.0%]\n"}
+,{"stream_name":"stdout","time":21902.560239696,"data":"    | {'avg_sum_reward': 114.68170676696833, 'avg_max_reward': 0.9717019505920578, 'pc_success': 66.0, 'eval_s': 273.2451136112213, 'eval_ep_s': 5.464902281761169}\n"}
+,{"stream_name":"stdout","time":21902.560243319,"data":"    | INFO 2026-10-23 20:03:50 pts/eval.py:501 End of eval\n"}
+,{"stream_name":"stdout","time":21902.560246568,"data":"[  21902s] -\u003e rc=0  (pusht_diffusion_seed1000)\n"}
+,{"stream_name":"stdout","time":21902.56072112,"data":"[  21902s] RESULT pusht_diffusion_seed1000: 33/50 = 66.0%  CI95 [52.2, 77.6]  avg_max_reward=0.972  eval_s=273\n"}
+,{"stream_name":"stdout","time":21902.562106048,"data":"[  21902s] $ /kaggle/tmp/venv/bin/python /kaggle/tmp/pusht_random_baseline.py 1000 50 /kaggle/working/eval/pusht_random_seed1000/eval_info.json\n"}
+,{"stream_name":"stdout","time":21950.051492419,"data":"    | \n"}
+,{"stream_name":"stdout","time":21950.051538289,"data":"    | ===== [20:03:52] $ /kaggle/tmp/venv/bin/python /kaggle/tmp/pusht_random_baseline.py 1000 50 /kaggle/working/eval/pusht_random_seed1000/eval_info.json\n"}
+,{"stream_name":"stdout","time":21950.051545131,"data":"    | RANDOM_OK {'avg_sum_reward': 1.2241344271115444, 'avg_max_reward': 0.08607290125391241, 'pc_success': 0.0, 'eval_s': 46.966901779174805, 'eval_ep_s': 0.9393380451202392}\n"}
+,{"stream_name":"stdout","time":21950.051549879,"data":"[  21949s] -\u003e rc=0  (pusht_random_seed1000)\n"}
+,{"stream_name":"stdout","time":21950.053280203,"data":"[  21949s] $ /kaggle/tmp/venv/bin/python /kaggle/tmp/convert_old_act_ckpt.py pepijn223/act-pusht /kaggle/tmp/ckpts/act_pusht_pepijn223\n"}
+,{"stream_name":"stdout","time":21958.891947317,"data":"    | \n"}
+,{"stream_name":"stdout","time":21958.891993492,"data":"    | ===== [20:04:39] $ /kaggle/tmp/venv/bin/python /kaggle/tmp/convert_old_act_ckpt.py pepijn223/act-pusht /kaggle/tmp/ckpts/act_pusht_pepijn223\n"}
+,{"stream_name":"stdout","time":21958.89200101,"data":"    | Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n"}
+,{"stream_name":"stdout","time":21958.892006518,"data":"    | Loading weights from local directory\n"}
+,{"stream_name":"stdout","time":21958.892023324,"data":"    | CONVERT_OK pepijn223/act-pusht -\u003e /kaggle/tmp/ckpts/act_pusht_pepijn223: 51.6M params; inputs=['observation.image', 'observation.state'] norm={'VISUAL': \u003cNormalizationMode.MEAN_STD: 'MEAN_STD'\u003e, 'STATE': \u003cNormalizationMo\n"}
+,{"stream_name":"stdout","time":21958.892030073,"data":"    | normalize buffers finite: True\n"}
+,{"stream_name":"stdout","time":21958.892034228,"data":"[  21958s] -\u003e rc=0  (04_convert_act_pusht_pepijn223)\n"}
+,{"stream_name":"stdout","time":21958.892498784,"data":"[  21958s] $ /kaggle/tmp/venv/bin/lerobot-eval --policy.path=/kaggle/tmp/ckpts/act_pusht_pepijn223 --policy.device=cuda --env.type=pusht --eval.n_episodes=50 --eval.batch_size=50 --seed=1000 --output_dir=/kaggle/working/eval/pusht_act_pepijn223_seed1000\n"}
+,{"stream_name":"stdout","time":22035.702161482,"data":"    | Running rollout with at most 300 steps: 100%|██████████| 300/300 [01:01\u003c00:00,  4.21it/s, running_success_rate=0.0%]\u001b[A\n"}
+,{"stream_name":"stdout","time":22035.70219456,"data":"    | \n"}
+,{"stream_name":"stdout","time":22035.70220952,"data":"    |                                                                                                                     \u001b[A\n"}
+,{"stream_name":"stdout","time":22035.702213414,"data":"    | Stepping through eval batches:   0%|          | 0/1 [01:01\u003c?, ?it/s, running_success_rate=0.0%]\n"}
+,{"stream_name":"stdout","time":22035.702217082,"data":"    | Stepping through eval batches: 100%|██████████| 1/1 [01:01\u003c00:00, 61.71s/it, running_success_rate=0.0%]\n"}
+,{"stream_name":"stdout","time":22035.702220894,"data":"    | Stepping through eval batches: 100%|██████████| 1/1 [01:01\u003c00:00, 61.71s/it, running_success_rate=0.0%]\n"}
+,{"stream_name":"stdout","time":22035.702224967,"data":"    | {'avg_sum_reward': 37.62258208001284, 'avg_max_reward': 0.4034663664490968, 'pc_success': 0.0, 'eval_s': 67.45601439476013, 'eval_ep_s': 1.349120306968689}\n"}
+,{"stream_name":"stdout","time":22035.702229088,"data":"    | INFO 2026-10-23 20:06:03 pts/eval.py:501 End of eval\n"}
+,{"stream_name":"stdout","time":22035.702233237,"data":"[  22035s] -\u003e rc=0  (pusht_act_pepijn223_seed1000)\n"}
+,{"stream_name":"stdout","time":22035.702618546,"data":"[  22035s] RESULT pusht_act_pepijn223_seed1000: 0/50 = 0.0%  CI95 [0.0, 7.1]  avg_max_reward=0.403  eval_s=67\n"}
+,{"stream_name":"stdout","time":22035.704872256,"data":"\n"}
+,{"stream_name":"stdout","time":22035.704887355,"data":"# LeRobot ACT evaluation on Kaggle\n"}
+,{"stream_name":"stdout","time":22035.704891863,"data":"\n"}
+,{"stream_name":"stdout","time":22035.704895686,"data":"- lerobot commit: `b883328e6c95681ca90a18b102e4ae5e1f91e2bf` (v0.3.3)\n"}
+,{"stream_name":"stdout","time":22035.70489989,"data":"- device: cuda  |  GPU: Tesla T4  |  torch 2.7.1+cu126\n"}
+,{"stream_name":"stdout","time":22035.704903964,"data":"- MUJOCO_GL: egl  |  n_episodes=50 batch_size=50\n"}
+,{"stream_name":"stdout","time":22035.704907841,"data":"- started 2026-10-23 13:58:50 UTC, elapsed 367.2 min\n"}
+,{"stream_name":"stdout","time":22035.704911661,"data":"\n"}
+,{"stream_name":"stdout","time":22035.704915802,"data":"| run | policy | env / obs | seed | ok | success | pc_success | var (sample) | var (Bernoulli) | 95% CI (Wilson) | avg_sum_reward | avg_max_reward | eval_s |\n"}
+,{"stream_name":"stdout","time":22035.704919875,"data":"|---|---|---|---|---|---|---|---|---|---|---|---|---|\n"}
+,{"stream_name":"stdout","time":22035.704923898,"data":"| pusht_act_keypoints_seed1000 | alexandersoare/act_pusht_keypoints (converted) | --env.type=pusht --env.obs_type=environment_state_agent_pos | 1000 | rc=0 | 32/50 | 64.0% | 0.2351 | 0.2304 | [50.1, 75.9] | 95.50 | 0.949 | 32 |\n"}
+,{"stream_name":"stdout","time":22035.704929519,"data":"| aloha_insertion_act_seed1000 | lerobot/act_aloha_sim_insertion_human | --env.type=aloha --env.task=AlohaInsertion-v0 | 1000 | rc=0 | 6/50 | 12.0% | 0.1078 | 0.1056 | [5.6, 23.8] | 180.74 | 1.940 | 5184 |\n"}
+,{"stream_name":"stdout","time":22035.704934635,"data":"| pusht_act_keypoints_seed2000 | alexandersoare/act_pusht_keypoints (converted) | --env.type=pusht --env.obs_type=environment_state_agent_pos | 2000 | rc=0 | 30/50 | 60.0% | 0.2449 | 0.2400 | [46.2, 72.4] | 102.51 | 0.932 | 29 |\n"}
+,{"stream_name":"stdout","time":22035.704939148,"data":"| pusht_act_keypoints_seed3000 | alexandersoare/act_pusht_keypoints (converted) | --env.type=pusht --env.obs_type=environment_state_agent_pos | 3000 | rc=0 | 32/50 | 64.0% | 0.2351 | 0.2304 | [50.1, 75.9] | 98.31 | 0.918 | 30 |\n"}
+,{"stream_name":"stdout","time":22035.70494367,"data":"| pusht_act_pixels_seed1000 | arclabmit/pusht_act_model | --env.type=pusht | 1000 | rc=0 | 0/50 | 0.0% | 0.0000 | 0.0000 | [0.0, 7.1] | 45.25 | 0.424 | 67 |\n"}
+,{"stream_name":"stdout","time":22035.704948066,"data":"| aloha_insertion_act_seed2000 | lerobot/act_aloha_sim_insertion_human | --env.type=aloha --env.task=AlohaInsertion-v0 | 2000 | rc=0 | 4/50 | 8.0% | 0.0751 | 0.0736 | [3.2, 18.8] | 213.04 | 2.120 | 5287 |\n"}
+,{"stream_name":"stdout","time":22035.704961137,"data":"| aloha_insertion_act_seed3000 | lerobot/act_aloha_sim_insertion_human | --env.type=aloha --env.task=AlohaInsertion-v0 | 3000 | rc=0 | 6/50 | 12.0% | 0.1078 | 0.1056 | [5.6, 23.8] | 208.04 | 2.080 | 5242 |\n"}
+,{"stream_name":"stdout","time":22035.704966163,"data":"| pusht_act_pixels_seed2000 | arclabmit/pusht_act_model | --env.type=pusht | 2000 | rc=0 | 0/50 | 0.0% | 0.0000 | 0.0000 | [0.0, 7.1] | 44.44 | 0.371 | 67 |\n"}
+,{"stream_name":"stdout","time":22035.704970672,"data":"| pusht_act_pixels_seed3000 | arclabmit/pusht_act_model | --env.type=pusht | 3000 | rc=0 | 3/50 | 6.0% | 0.0576 | 0.0564 | [2.1, 16.2] | 42.24 | 0.438 | 68 |\n"}
+,{"stream_name":"stdout","time":22035.704975175,"data":"| pusht_diffusion_seed1000 | lerobot/diffusion_pusht (non-ACT reference) | --env.type=pusht | 1000 | rc=0 | 33/50 | 66.0% | 0.2290 | 0.2244 | [52.2, 77.6] | 114.68 | 0.972 | 273 |\n"}
+,{"stream_name":"stdout","time":22035.704979567,"data":"| pusht_random_seed1000 | uniform random actions | --env.type=pusht | 1000 | rc=0 | 0/50 | 0.0% | 0.0000 | 0.0000 | [0.0, 7.1] | 1.22 | 0.086 | 47 |\n"}
+,{"stream_name":"stdout","time":22035.704983415,"data":"| pusht_act_pepijn223_seed1000 | pepijn223/act-pusht (converted) | --env.type=pusht | 1000 | rc=0 | 0/50 | 0.0% | 0.0000 | 0.0000 | [0.0, 7.1] | 37.62 | 0.403 | 67 |\n"}
+,{"stream_name":"stdout","time":22035.704987749,"data":"\n"}
+,{"stream_name":"stdout","time":22035.704991206,"data":"## Across seeds (same policy, 50 episodes per seed)\n"}
+,{"stream_name":"stdout","time":22035.704994516,"data":"\n"}
+,{"stream_name":"stdout","time":22035.704998377,"data":"| group | seeds | mean pc_success | std across seeds (pts) | values |\n"}
+,{"stream_name":"stdout","time":22035.705002805,"data":"|---|---|---|---|---|\n"}
+,{"stream_name":"stdout","time":22035.705005969,"data":"| pusht_act_keypoints | [1000, 2000, 3000] | 62.7% | 2.3 | [64.0, 60.0, 64.0] |\n"}
+,{"stream_name":"stdout","time":22035.705009781,"data":"| aloha_insertion_act | [1000, 2000, 3000] | 10.7% | 2.3 | [12.0, 8.0, 12.0] |\n"}
+,{"stream_name":"stdout","time":22035.705027766,"data":"| pusht_act_pixels | [1000, 2000, 3000] | 2.0% | 3.5 | [0.0, 0.0, 6.0] |\n"}
+,{"stream_name":"stdout","time":22035.705032269,"data":"| pusht_diffusion | [1000] | 66.0% | nan | [66.0] |\n"}
+,{"stream_name":"stdout","time":22035.705036,"data":"| pusht_random | [1000] | 0.0% | nan | [0.0] |\n"}
+,{"stream_name":"stdout","time":22035.705039686,"data":"| pusht_act_pepijn223 | [1000] | 0.0% | nan | [0.0] |\n"}
+,{"stream_name":"stdout","time":22035.705043515,"data":"\n"}
+,{"stream_name":"stdout","time":22035.705047093,"data":"[  22035s] KERNEL_DONE\n"}
+,{"stream_name":"stderr","time":22037.89579344,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":22037.895817798,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":22038.191499699,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":22038.191518702,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":22039.591624861,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":22040.599928643,"data":"[NbConvertApp] Writing 387531 bytes to __results__.html\n"}
+]

@@ -1,0 +1,3 @@
+
+$ /usr/bin/python3 -m pip install -q uv && uv --version
+uv 0.13.5 (x86_64-unknown-linux-gnu)

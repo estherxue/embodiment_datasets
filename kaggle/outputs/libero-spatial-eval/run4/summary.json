@@ -1,0 +1,257 @@
+{
+ "started_utc": "2026-10-23T20:15:37.292093",
+ "stages": {
+  "00_sysinfo": {
+   "rc": 0,
+   "seconds": 0.6
+  },
+  "01_apt": {
+   "rc": 0,
+   "seconds": 20.7
+  },
+  "01_egl_vendor": {
+   "rc": 0,
+   "seconds": 0.1
+  },
+  "02_uv": {
+   "rc": 0,
+   "seconds": 4.0
+  },
+  "02_venv": {
+   "rc": 0,
+   "seconds": 1.6
+  },
+  "03_clone": {
+   "rc": 0,
+   "seconds": 23.4
+  },
+  "04_torch": {
+   "rc": 0,
+   "seconds": 4.2
+  },
+  "04_reqs": {
+   "rc": 0,
+   "seconds": 14.9
+  },
+  "04_libero": {
+   "rc": 0,
+   "seconds": 1.0
+  },
+  "05_import": {
+   "rc": 0,
+   "seconds": 10.3
+  },
+  "05_import_eval_deps": {
+   "rc": 0,
+   "seconds": 9.6
+  },
+  "06_smoke_egl": {
+   "rc": 0,
+   "seconds": 27.6
+  },
+  "07_dataset": {
+   "rc": 0,
+   "seconds": 28.8
+  },
+  "08_bert": {
+   "rc": 0,
+   "seconds": 6.5
+  },
+  "10_random_ckpt": {
+   "rc": 0,
+   "seconds": 7.7
+  },
+  "10_eval_task0_env20": {
+   "rc": 0,
+   "seconds": 33.0
+  },
+  "10_eval_task0_env10": {
+   "rc": 0,
+   "seconds": 20.6
+  },
+  "09_replay_A": {
+   "rc": 0,
+   "seconds": 530.0
+  },
+  "10_eval_task1_env10": {
+   "rc": 0,
+   "seconds": 20.1
+  },
+  "10_eval_task2_env10": {
+   "rc": 0,
+   "seconds": 20.7
+  },
+  "10_eval_task3_env10": {
+   "rc": 0,
+   "seconds": 20.8
+  },
+  "10_eval_task4_env10": {
+   "rc": 0,
+   "seconds": 20.8
+  },
+  "10_eval_task5_env10": {
+   "rc": 0,
+   "seconds": 20.4
+  },
+  "10_eval_task6_env10": {
+   "rc": 0,
+   "seconds": 20.5
+  },
+  "10_eval_task7_env10": {
+   "rc": 0,
+   "seconds": 20.4
+  },
+  "10_eval_task8_env10": {
+   "rc": 0,
+   "seconds": 20.3
+  },
+  "10_eval_task9_env10": {
+   "rc": 0,
+   "seconds": 20.3
+  },
+  "11_disk": {
+   "rc": 0,
+   "seconds": 0.4
+  }
+ },
+ "env": {
+  "hostname": "f5fa64d34b23",
+  "gpu": "Tesla T4, 15360 MiB\nTesla T4, 15360 MiB",
+  "nproc": 4,
+  "kaggle_python": "3.13.15",
+  "nvidia_icd": "written",
+  "libero_config": {
+   "benchmark_root": "/kaggle/tmp/LIBERO/libero/libero",
+   "bddl_files": "/kaggle/tmp/LIBERO/libero/libero/bddl_files",
+   "init_states": "/kaggle/tmp/LIBERO/libero/libero/init_files",
+   "assets": "/kaggle/tmp/LIBERO/libero/libero/assets",
+   "datasets": "/kaggle/tmp/datasets"
+  },
+  "gl_renderer": "GL_RENDERER: b'Tesla T4/PCIe/SSE2' | GL_VENDOR: b'NVIDIA Corporation' | GL_VERSION: b'4.6.0 NVIDIA 580.178.04'",
+  "step_ms": "STEP_MS 196.2 ms/step (50 zero-action steps incl. 2x128x128 rendering)",
+  "render_backend": "egl",
+  "dataset_files_MiB": {
+   "pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate_demo.hdf5": 485.2,
+   "pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate_demo.hdf5": 562.3,
+   "pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate_demo.hdf5": 713.6,
+   "pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate_demo.hdf5": 603.1,
+   "pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate_demo.hdf5": 570.0,
+   "pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate_demo.hdf5": 640.5,
+   "pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate_demo.hdf5": 483.7,
+   "pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate_demo.hdf5": 554.2,
+   "pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate_demo.hdf5": 678.7,
+   "pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate_demo.hdf5": 656.9
+  },
+  "dataset_total_GiB": 5.81
+ },
+ "results": {
+  "protocol": {
+   "random_ckpt_rc": 0,
+   "per_task": [
+    {
+     "task_id": 0,
+     "rc": 0,
+     "env_num": 10,
+     "eval_summary": null,
+     "wall_s": 53.7
+    },
+    {
+     "task_id": 1,
+     "rc": 0,
+     "env_num": 10,
+     "eval_summary": null,
+     "wall_s": 20.1
+    },
+    {
+     "task_id": 2,
+     "rc": 0,
+     "env_num": 10,
+     "eval_summary": null,
+     "wall_s": 20.7
+    },
+    {
+     "task_id": 3,
+     "rc": 0,
+     "env_num": 10,
+     "eval_summary": null,
+     "wall_s": 20.8
+    },
+    {
+     "task_id": 4,
+     "rc": 0,
+     "env_num": 10,
+     "eval_summary": null,
+     "wall_s": 20.8
+    },
+    {
+     "task_id": 5,
+     "rc": 0,
+     "env_num": 10,
+     "eval_summary": null,
+     "wall_s": 20.4
+    },
+    {
+     "task_id": 6,
+     "rc": 0,
+     "env_num": 10,
+     "eval_summary": null,
+     "wall_s": 20.5
+    },
+    {
+     "task_id": 7,
+     "rc": 0,
+     "env_num": 10,
+     "eval_summary": null,
+     "wall_s": 20.4
+    },
+    {
+     "task_id": 8,
+     "rc": 0,
+     "env_num": 10,
+     "eval_summary": null,
+     "wall_s": 20.3
+    },
+    {
+     "task_id": 9,
+     "rc": 0,
+     "env_num": 10,
+     "eval_summary": null,
+     "wall_s": 20.3
+    }
+   ],
+   "note": "UNTRAINED (randomly initialised) Multitask/BCTransformerPolicy; success numbers are NOT policy performance, only a protocol check",
+   "env_num_final": 10
+  },
+  "replay": {
+   "rcs": {
+    "09_replay_A": 0
+   },
+   "n_demos_per_task": 50,
+   "per_task": [
+    {
+     "task_id": 9,
+     "task": "pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate",
+     "language": "pick up the black bowl on the wooden cabinet and place it on the plate",
+     "n_demos": 50,
+     "n_success": 47,
+     "success_rate": 0.94,
+     "bernoulli_std": 0.2375,
+     "se": 0.0336,
+     "mean_steps_to_success": 123.6,
+     "mean_demo_len": 137.6,
+     "mean_max_state_drift": 5.491,
+     "max_state_drift": 12.478,
+     "final_success_rate": 0.94,
+     "mean_seconds_per_demo": 10.3
+    }
+   ],
+   "overall": {
+    "n": 50,
+    "k": 47,
+    "success_rate": 0.94,
+    "mean_task_success_rate": 0.94
+   }
+  }
+ },
+ "elapsed_min": 15.7
+}

@@ -1,0 +1,21 @@
+
+$ cd /kaggle/tmp/LIBERO && /kaggle/tmp/venv/bin/python benchmark_scripts/download_libero_datasets.py --datasets libero_spatial --use-huggingface --download-dir /kaggle/tmp/datasets < /dev/null
+Datasets downloaded to /kaggle/tmp/datasets
+Downloading libero_spatial datasets
+Using Hugging Face as the download source
+Downloading libero_spatial
+Downloading libero_spatial from Hugging Face...
+Fetching 10 files:   0%|          | 0/10 [00:00<?, ?it/s]/kaggle/tmp/venv/lib/python3.10/site-packages/huggingface_hub/file_download.py:986: UserWarning: `local_dir_use_symlinks` parameter is deprecated and will be ignored. The process to download files to a local folder has been updated and do not rely on symlinks anymore. You only need to pass a destination folder as`local_dir`.
+For more details, check out https://huggingface.co/docs/huggingface_hub/main/en/guides/download#download-files-to-local-folder.
+  warnings.warn(
+Fetching 10 files:  10%|█         | 1/10 [00:10<01:30, 10.00s/it]Fetching 10 files:  20%|██        | 2/10 [00:11<00:45,  5.74s/it]Fetching 10 files:  30%|███       | 3/10 [00:12<00:28,  4.03s/it]Fetching 10 files:  40%|████      | 4/10 [00:12<00:18,  3.09s/it]Fetching 10 files:  50%|█████     | 5/10 [00:12<00:12,  2.51s/it]Fetching 10 files:  70%|███████   | 7/10 [00:13<00:05,  1.86s/it]Fetching 10 files:  90%|█████████ | 9/10 [00:27<00:03,  3.01s/it]Fetching 10 files: 100%|██████████| 10/10 [00:27<00:00,  2.71s/it]
+Downloaded 10 files for libero_spatial
+
+
+
+
+[ ] Dataset libero_object not found!!!
+[ ] Dataset libero_goal not found!!!
+[X] Dataset libero_spatial is complete
+[ ] Dataset libero_10 not found!!!
+[ ] Dataset libero_90 not found!!!

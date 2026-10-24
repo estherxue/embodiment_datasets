@@ -1,0 +1,33 @@
+[13:58:40 +   0.0m] start; WORK=/kaggle/working TMP=/kaggle/tmp
+[13:58:40 +   0.0m] [00_sysinfo] $ nvidia-smi || true; python -V; nproc; free -g; df -h / /kaggle/working /tmp 2>/dev/null; head -2 /etc/os-release; echo HOME=$HOME; echo PYTHONPATH=$PYTHONPATH; ldconfig -p | grep -i -E 'libEGL|OSMesa' || true
+[13:58:41 +   0.0m] [00_sysinfo] rc=0 (1s)
+[13:58:41 +   0.0m] [01_apt] $ export DEBIAN_FRONTEND=noninteractive; (apt-get update -qq || true) && apt-get install -y -qq --no-install-recommends libegl1 libgl1 libglvnd0 libosmesa6 libosmesa6-dev > /dev/null; ldconfig -p | grep -i -E 'libEGL|OSMesa' || true
+[13:58:56 +   0.3m] [01_apt] rc=0 (15s)
+[13:58:56 +   0.3m] [02_uv] $ /usr/bin/python3 -m pip install -q uv && uv --version
+[13:59:00 +   0.3m] [02_uv] rc=0 (4s)
+[13:59:00 +   0.3m] [02_venv] $ uv venv --python 3.10 /kaggle/tmp/venv && /kaggle/tmp/venv/bin/python -V
+[13:59:01 +   0.3m] [02_venv] rc=0 (2s)
+[13:59:01 +   0.3m] [03_clone] $ rm -rf /kaggle/tmp/LIBERO; git clone -q https://github.com/Lifelong-Robot-Learning/LIBERO /kaggle/tmp/LIBERO && cd /kaggle/tmp/LIBERO && git checkout -q 8f1084e && git log -1 --format='%H %cd %s' --date=short
+[13:59:13 +   0.5m] [03_clone] rc=0 (12s)
+[13:59:13 +   0.5m] [04_torch] $ uv pip install --python /kaggle/tmp/venv/bin/python -q torch==2.5.1 torchvision==0.20.1 --index-url https://download.pytorch.org/whl/cpu
+[13:59:19 +   0.6m] [04_torch] rc=0 (6s)
+[13:59:19 +   0.6m] [04_reqs] $ cd /kaggle/tmp/LIBERO && uv pip install --python /kaggle/tmp/venv/bin/python -q -r requirements.txt huggingface_hub h5py mujoco==2.3.2
+[13:59:31 +   0.8m] [04_reqs] rc=0 (12s)
+[13:59:31 +   0.8m] [04_libero] $ cd /kaggle/tmp/LIBERO && uv pip install --python /kaggle/tmp/venv/bin/python -q -e . && uv pip freeze --python /kaggle/tmp/venv/bin/python > /kaggle/working/requirements-kaggle-freeze.txt && grep -i -E '^(torch|torchvision|numpy|robosuite|mujoco|bddl|robomimic|transformers|hydra-core|gym|h5py|huggingface-hub|tokenizers)=' /kaggle/working/requirements-kaggle-freeze.txt
+[13:59:32 +   0.9m] [04_libero] rc=0 (1s)
+[13:59:32 +   0.9m] wrote /root/.libero/config.yaml: {'benchmark_root': '/kaggle/tmp/LIBERO/libero/libero', 'bddl_files': '/kaggle/tmp/LIBERO/libero/libero/bddl_files', 'init_states': '/kaggle/tmp/LIBERO/libero/libero/init_files', 'assets': '/kaggle/tmp/LIBERO/libero/libero/assets', 'datasets': '/kaggle/tmp/datasets'}
+[13:59:32 +   0.9m] [05_import] $ cd /kaggle/tmp/LIBERO && /kaggle/tmp/venv/bin/python -c "import torch, numpy, robosuite, mujoco, h5py, transformers; from libero.libero import get_libero_path, benchmark; print('torch', torch.__version__, 'numpy', numpy.__version__, 'robosuite', robosuite.__version__, 'mujoco', mujoco.__version__); print('datasets path', get_libero_path('datasets')); print('benchmarks', list(benchmark.get_benchmark_dict().keys()))"
+[13:59:38 +   1.0m] [05_import] rc=0 (6s)
+[13:59:38 +   1.0m] [06_smoke_egl] $ cd /kaggle/tmp/LIBERO && /kaggle/tmp/venv/bin/python local_eval/smoke_render.py
+[13:59:38 +   1.0m] [06_smoke_egl] rc=1 (0s)
+[13:59:38 +   1.0m] [06_smoke_osmesa] $ cd /kaggle/tmp/LIBERO && /kaggle/tmp/venv/bin/python local_eval/smoke_render.py
+[13:59:38 +   1.0m] [06_smoke_osmesa] rc=1 (0s)
+[13:59:38 +   1.0m] [07_dataset] $ cd /kaggle/tmp/LIBERO && /kaggle/tmp/venv/bin/python benchmark_scripts/download_libero_datasets.py --datasets libero_spatial --use-huggingface --download-dir /kaggle/tmp/datasets < /dev/null
+[14:00:15 +   1.6m] [07_dataset] rc=0 (36s)
+[14:00:15 +   1.6m] dataset: 10 hdf5 files, 5.81 GiB
+[14:00:15 +   1.6m] [08_bert] $ cd /kaggle/tmp/LIBERO && /kaggle/tmp/venv/bin/python local_eval/fetch_bert.py
+[14:00:17 +   1.6m] [08_bert] rc=0 (2s)
+[14:00:17 +   1.6m] skipping replay/protocol: render_ok=False data_ok=True
+[14:00:17 +   1.6m] [11_disk] $ du -sh /kaggle/tmp/* /kaggle/working/* 2>/dev/null | sort -h | tail -15; free -g | head -2
+[14:00:18 +   1.6m] [11_disk] rc=0 (0s)
+[14:00:18 +   1.6m] ALL_DONE

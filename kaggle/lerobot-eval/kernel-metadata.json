@@ -1,0 +1,13 @@
+{
+  "id": "cindyxue1122/lerobot-act-eval-pusht-aloha",
+  "title": "lerobot-act-eval-pusht-aloha",
+  "code_file": "lerobot_eval_kernel.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_internet": true,
+  "dataset_sources": [],
+  "competition_sources": [],
+  "kernel_sources": []
+}

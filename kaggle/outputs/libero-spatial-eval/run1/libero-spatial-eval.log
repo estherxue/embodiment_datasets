@@ -1,0 +1,174 @@
+[{"stream_name":"stderr","time":0.771181681,"data":"/kaggle/src/script.py:42: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).\n"}
+,{"stream_name":"stderr","time":0.771231527,"data":"  summary = {\"started_utc\": datetime.datetime.utcnow().isoformat(), \"stages\": {}, \"env\": {}, \"results\": {}}\n"}
+,{"stream_name":"stdout","time":0.772815562,"data":"[13:58:40 +   0.0m] start; WORK=/kaggle/working TMP=/kaggle/tmp\n"}
+,{"stream_name":"stdout","time":0.772936967,"data":"[13:58:40 +   0.0m] [00_sysinfo] $ nvidia-smi || true; python -V; nproc; free -g; df -h / /kaggle/working /tmp 2\u003e/dev/null; head -2 /etc/os-release; echo HOME=$HOME; echo PYTHONPATH=$PYTHONPATH; ldconfig -p | grep -i -E 'libEGL|OSMesa' || true\n"}
+,{"stream_name":"stdout","time":1.340654467,"data":"    | Mem:              31           1          26           0           4          30\n"}
+,{"stream_name":"stdout","time":1.340678711,"data":"    | Swap:              0           0           0\n"}
+,{"stream_name":"stdout","time":1.3406841489999999,"data":"    | Filesystem      Size  Used Avail Use% Mounted on\n"}
+,{"stream_name":"stdout","time":1.3406881130000001,"data":"    | overlay         8.0T  7.0T  1.1T  88% /\n"}
+,{"stream_name":"stdout","time":1.34069674,"data":"    | /dev/loop2       20G  196K   20G   1% /kaggle/working\n"}
+,{"stream_name":"stdout","time":1.3407008550000001,"data":"    | overlay         8.0T  7.0T  1.1T  88% /\n"}
+,{"stream_name":"stdout","time":1.340705035,"data":"    | PRETTY_NAME=\"Ubuntu 24.04.1 LTS\"\n"}
+,{"stream_name":"stdout","time":1.340709111,"data":"    | NAME=\"Ubuntu\"\n"}
+,{"stream_name":"stdout","time":1.340713405,"data":"    | HOME=/root\n"}
+,{"stream_name":"stdout","time":1.340717211,"data":"    | PYTHONPATH=\n"}
+,{"stream_name":"stdout","time":1.340721296,"data":"    | \tlibEGL_mesa.so.0 (libc6,x86-64) =\u003e /lib/x86_64-linux-gnu/libEGL_mesa.so.0\n"}
+,{"stream_name":"stdout","time":1.340875443,"data":"    | \tlibEGL.so.1 (libc6,x86-64) =\u003e /lib/x86_64-linux-gnu/libEGL.so.1\n"}
+,{"stream_name":"stdout","time":1.3408937490000001,"data":"[13:58:41 +   0.0m] [00_sysinfo] rc=0 (1s)\n"}
+,{"stream_name":"stdout","time":1.379761988,"data":"[13:58:41 +   0.0m] [01_apt] $ export DEBIAN_FRONTEND=noninteractive; (apt-get update -qq || true) \u0026\u0026 apt-get install -y -qq --no-install-recommends libegl1 libgl1 libglvnd0 libosmesa6 libosmesa6-dev \u003e /dev/null; ldconfig -p | grep -i -E 'libEGL|OSMesa' || true\n"}
+,{"stream_name":"stdout","time":16.379168977,"data":"    | \n"}
+,{"stream_name":"stdout","time":16.379196457,"data":"    | $ export DEBIAN_FRONTEND=noninteractive; (apt-get update -qq || true) \u0026\u0026 apt-get install -y -qq --no-install-recommends libegl1 libgl1 libglvnd0 libosmesa6 libosmesa6-dev \u003e /dev/null; ldconfig -p | grep -i -E 'libEGL|OSMesa' || true\n"}
+,{"stream_name":"stdout","time":16.37920298,"data":"    | W: https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2404/x86_64/InRelease: Key is stored in legacy trusted.gpg keyring (/etc/apt/trusted.gpg), see the DEPRECATION section in apt-key(8) for details.\n"}
+,{"stream_name":"stdout","time":16.37920733,"data":"    | W: Skipping acquire of configured file 'main/source/Sources' as repository 'https://r2u.stat.illinois.edu/ubuntu noble InRelease' does not seem to provide it (sources.list entry misspelt?)\n"}
+,{"stream_name":"stdout","time":16.379211708,"data":"    | \tlibOSMesa.so.8 (libc6,x86-64) =\u003e /lib/x86_64-linux-gnu/libOSMesa.so.8\n"}
+,{"stream_name":"stdout","time":16.37922156,"data":"    | \tlibOSMesa.so (libc6,x86-64) =\u003e /lib/x86_64-linux-gnu/libOSMesa.so\n"}
+,{"stream_name":"stdout","time":16.379232655,"data":"    | \tlibEGL_nvidia.so.0 (libc6,x86-64) =\u003e /usr/local/nvidia/lib64/libEGL_nvidia.so.0\n"}
+,{"stream_name":"stdout","time":16.379235439,"data":"    | \tlibEGL_mesa.so.0 (libc6,x86-64) =\u003e /lib/x86_64-linux-gnu/libEGL_mesa.so.0\n"}
+,{"stream_name":"stdout","time":16.379237926,"data":"    | \tlibEGL.so.1 (libc6,x86-64) =\u003e /usr/local/nvidia/lib64/libEGL.so.1\n"}
+,{"stream_name":"stdout","time":16.379240357,"data":"    | \tlibEGL.so.1 (libc6,x86-64) =\u003e /lib/x86_64-linux-gnu/libEGL.so.1\n"}
+,{"stream_name":"stdout","time":16.379242824,"data":"    | \tlibEGL.so (libc6,x86-64) =\u003e /usr/local/nvidia/lib64/libEGL.so\n"}
+,{"stream_name":"stdout","time":16.379246698,"data":"[13:58:56 +   0.3m] [01_apt] rc=0 (15s)\n"}
+,{"stream_name":"stdout","time":16.379585006,"data":"[13:58:56 +   0.3m] [02_uv] $ /usr/bin/python3 -m pip install -q uv \u0026\u0026 uv --version\n"}
+,{"stream_name":"stdout","time":20.102452167,"data":"    | \n"}
+,{"stream_name":"stdout","time":20.102496395,"data":"    | $ /usr/bin/python3 -m pip install -q uv \u0026\u0026 uv --version\n"}
+,{"stream_name":"stdout","time":20.10250167,"data":"    | uv 0.13.5 (x86_64-unknown-linux-gnu)\n"}
+,{"stream_name":"stdout","time":20.102505504,"data":"[13:59:00 +   0.3m] [02_uv] rc=0 (4s)\n"}
+,{"stream_name":"stdout","time":20.102815202,"data":"[13:59:00 +   0.3m] [02_venv] $ uv venv --python 3.10 /kaggle/tmp/venv \u0026\u0026 /kaggle/tmp/venv/bin/python -V\n"}
+,{"stream_name":"stdout","time":21.721162169,"data":"    | \n"}
+,{"stream_name":"stdout","time":21.721188653,"data":"    | $ uv venv --python 3.10 /kaggle/tmp/venv \u0026\u0026 /kaggle/tmp/venv/bin/python -V\n"}
+,{"stream_name":"stdout","time":21.721194509,"data":"    | warning: The `--system` flag has no effect, `uv venv` always ignores virtual environments when finding a Python interpreter; did you mean `--no-managed-python`?\n"}
+,{"stream_name":"stdout","time":21.721217467,"data":"    | Downloading cpython-3.10.22-linux-x86_64-gnu (download) (28.0MiB)\n"}
+,{"stream_name":"stdout","time":21.721220578,"data":"    |  Downloaded cpython-3.10.22-linux-x86_64-gnu (download)\n"}
+,{"stream_name":"stdout","time":21.721223131,"data":"    | Using CPython 3.10.22\n"}
+,{"stream_name":"stdout","time":21.721225474,"data":"    | Creating virtual environment at: /kaggle/tmp/venv\n"}
+,{"stream_name":"stdout","time":21.72122838,"data":"    | Activate with: source /kaggle/tmp/venv/bin/activate\n"}
+,{"stream_name":"stdout","time":21.721231079,"data":"    | Python 3.10.22\n"}
+,{"stream_name":"stdout","time":21.721233427,"data":"[13:59:01 +   0.3m] [02_venv] rc=0 (2s)\n"}
+,{"stream_name":"stdout","time":21.721650854,"data":"[13:59:01 +   0.3m] [03_clone] $ rm -rf /kaggle/tmp/LIBERO; git clone -q https://github.com/Lifelong-Robot-Learning/LIBERO /kaggle/tmp/LIBERO \u0026\u0026 cd /kaggle/tmp/LIBERO \u0026\u0026 git checkout -q 8f1084e \u0026\u0026 git log -1 --format='%H %cd %s' --date=short\n"}
+,{"stream_name":"stdout","time":33.562082566,"data":"    | \n"}
+,{"stream_name":"stdout","time":33.562116158,"data":"    | $ rm -rf /kaggle/tmp/LIBERO; git clone -q https://github.com/Lifelong-Robot-Learning/LIBERO /kaggle/tmp/LIBERO \u0026\u0026 cd /kaggle/tmp/LIBERO \u0026\u0026 git checkout -q 8f1084e \u0026\u0026 git log -1 --format='%H %cd %s' --date=short\n"}
+,{"stream_name":"stdout","time":33.562121382,"data":"    | 8f1084e3132a39270c3a13ebe37270a43ece2a01 2025-03-15 Add support for dataset download from huggingface\n"}
+,{"stream_name":"stdout","time":33.562124707,"data":"[13:59:13 +   0.5m] [03_clone] rc=0 (12s)\n"}
+,{"stream_name":"stdout","time":33.56301261,"data":"[13:59:13 +   0.5m] [04_torch] $ uv pip install --python /kaggle/tmp/venv/bin/python -q torch==2.5.1 torchvision==0.20.1 --index-url https://download.pytorch.org/whl/cpu\n"}
+,{"stream_name":"stdout","time":39.547887628,"data":"    | \n"}
+,{"stream_name":"stdout","time":39.547911385,"data":"    | $ uv pip install --python /kaggle/tmp/venv/bin/python -q torch==2.5.1 torchvision==0.20.1 --index-url https://download.pytorch.org/whl/cpu\n"}
+,{"stream_name":"stdout","time":39.547916539,"data":"[13:59:19 +   0.6m] [04_torch] rc=0 (6s)\n"}
+,{"stream_name":"stdout","time":39.548238792,"data":"[13:59:19 +   0.6m] [04_reqs] $ cd /kaggle/tmp/LIBERO \u0026\u0026 uv pip install --python /kaggle/tmp/venv/bin/python -q -r requirements.txt huggingface_hub h5py mujoco==2.3.2\n"}
+,{"stream_name":"stdout","time":51.370265166,"data":"    | \n"}
+,{"stream_name":"stdout","time":51.370294045,"data":"    | $ cd /kaggle/tmp/LIBERO \u0026\u0026 uv pip install --python /kaggle/tmp/venv/bin/python -q -r requirements.txt huggingface_hub h5py mujoco==2.3.2\n"}
+,{"stream_name":"stdout","time":51.37032697,"data":"[13:59:31 +   0.8m] [04_reqs] rc=0 (12s)\n"}
+,{"stream_name":"stdout","time":51.370333073,"data":"[13:59:31 +   0.8m] [04_libero] $ cd /kaggle/tmp/LIBERO \u0026\u0026 uv pip install --python /kaggle/tmp/venv/bin/python -q -e . \u0026\u0026 uv pip freeze --python /kaggle/tmp/venv/bin/python \u003e /kaggle/working/requirements-kaggle-freeze.txt \u0026\u0026 grep -i -E '^(torch|torchvision|numpy|robosuite|mujoco|bddl|robomimic|transformers|hydra-core|gym|h5py|huggingface-hub|tokenizers)=' /kaggle/working/requirements-kaggle-freeze.txt\n"}
+,{"stream_name":"stdout","time":52.337446157,"data":"    | gym==0.25.2\n"}
+,{"stream_name":"stdout","time":52.337485564,"data":"    | h5py==3.16.0\n"}
+,{"stream_name":"stdout","time":52.337491002,"data":"    | huggingface-hub==0.36.2\n"}
+,{"stream_name":"stdout","time":52.337494827,"data":"    | hydra-core==1.2.0\n"}
+,{"stream_name":"stdout","time":52.337498978,"data":"    | mujoco==2.3.2\n"}
+,{"stream_name":"stdout","time":52.337503109,"data":"    | numpy==1.22.4\n"}
+,{"stream_name":"stdout","time":52.337507001,"data":"    | robomimic==0.2.0\n"}
+,{"stream_name":"stdout","time":52.337511263,"data":"    | robosuite==1.4.0\n"}
+,{"stream_name":"stdout","time":52.337515293,"data":"    | tokenizers==0.12.1\n"}
+,{"stream_name":"stdout","time":52.337518815,"data":"    | torch==2.5.1+cpu\n"}
+,{"stream_name":"stdout","time":52.337522335,"data":"    | torchvision==0.20.1+cpu\n"}
+,{"stream_name":"stdout","time":52.33752589,"data":"    | transformers==4.21.1\n"}
+,{"stream_name":"stdout","time":52.337529406,"data":"[13:59:32 +   0.9m] [04_libero] rc=0 (1s)\n"}
+,{"stream_name":"stdout","time":52.338350677,"data":"[13:59:32 +   0.9m] wrote /root/.libero/config.yaml: {'benchmark_root': '/kaggle/tmp/LIBERO/libero/libero', 'bddl_files': '/kaggle/tmp/LIBERO/libero/libero/bddl_files', 'init_states': '/kaggle/tmp/LIBERO/libero/libero/init_files', 'assets': '/kaggle/tmp/LIBERO/libero/libero/assets', 'datasets': '/kaggle/tmp/datasets'}\n"}
+,{"stream_name":"stdout","time":52.338375552,"data":"[13:59:32 +   0.9m] [05_import] $ cd /kaggle/tmp/LIBERO \u0026\u0026 /kaggle/tmp/venv/bin/python -c \"import torch, numpy, robosuite, mujoco, h5py, transformers; from libero.libero import get_libero_path, benchmark; print('torch', torch.__version__, 'numpy', numpy.__version__, 'robosuite', robosuite.__version__, 'mujoco', mujoco.__version__); print('datasets path', get_libero_path('datasets')); print('benchmarks', list(benchmark.get_benchmark_dict().keys()))\"\n"}
+,{"stream_name":"stdout","time":58.520010012,"data":"    | \n"}
+,{"stream_name":"stdout","time":58.520045399,"data":"    | $ cd /kaggle/tmp/LIBERO \u0026\u0026 /kaggle/tmp/venv/bin/python -c \"import torch, numpy, robosuite, mujoco, h5py, transformers; from libero.libero import get_libero_path, benchmark; print('torch', torch.__version__, 'numpy', numpy.__version__, 'robosuite', robosuite.__version__, 'mujoco', mujoco.__version__)\n"}
+,{"stream_name":"stdout","time":58.520062654,"data":"    | [robosuite WARNING] No private macro file found! (__init__.py:7)\n"}
+,{"stream_name":"stdout","time":58.520071633,"data":"    | [robosuite WARNING] It is recommended to use a private macro file (__init__.py:8)\n"}
+,{"stream_name":"stdout","time":58.520074977,"data":"    | [robosuite WARNING] To setup, run: python /kaggle/tmp/venv/lib/python3.10/site-packages/robosuite/scripts/setup_macros.py (__init__.py:9)\n"}
+,{"stream_name":"stdout","time":58.520077436,"data":"    | torch 2.5.1+cpu numpy 1.22.4 robosuite 1.4.0 mujoco 2.3.2\n"}
+,{"stream_name":"stdout","time":58.520079634,"data":"    | datasets path /kaggle/tmp/datasets\n"}
+,{"stream_name":"stdout","time":58.52008187,"data":"    | benchmarks ['libero_spatial', 'libero_object', 'libero_goal', 'libero_90', 'libero_10', 'libero_100']\n"}
+,{"stream_name":"stdout","time":58.520084204,"data":"[13:59:38 +   1.0m] [05_import] rc=0 (6s)\n"}
+,{"stream_name":"stdout","time":58.520581624,"data":"[13:59:38 +   1.0m] [06_smoke_egl] $ cd /kaggle/tmp/LIBERO \u0026\u0026 /kaggle/tmp/venv/bin/python local_eval/smoke_render.py\n"}
+,{"stream_name":"stdout","time":58.685382554,"data":"    | \n"}
+,{"stream_name":"stdout","time":58.685425916,"data":"    | $ cd /kaggle/tmp/LIBERO \u0026\u0026 /kaggle/tmp/venv/bin/python local_eval/smoke_render.py\n"}
+,{"stream_name":"stdout","time":58.685432725,"data":"    | Traceback (most recent call last):\n"}
+,{"stream_name":"stdout","time":58.685436516,"data":"    |   File \"/kaggle/tmp/LIBERO/local_eval/smoke_render.py\", line 4, in \u003cmodule\u003e\n"}
+,{"stream_name":"stdout","time":58.685440991,"data":"    |     from libero.libero import benchmark, get_libero_path\n"}
+,{"stream_name":"stdout","time":58.685444552,"data":"    | ModuleNotFoundError: No module named 'libero'\n"}
+,{"stream_name":"stdout","time":58.685447937,"data":"[13:59:38 +   1.0m] [06_smoke_egl] rc=1 (0s)\n"}
+,{"stream_name":"stdout","time":58.685799031,"data":"[13:59:38 +   1.0m] [06_smoke_osmesa] $ cd /kaggle/tmp/LIBERO \u0026\u0026 /kaggle/tmp/venv/bin/python local_eval/smoke_render.py\n"}
+,{"stream_name":"stdout","time":58.850669739,"data":"    | \n"}
+,{"stream_name":"stdout","time":58.850694843,"data":"    | $ cd /kaggle/tmp/LIBERO \u0026\u0026 /kaggle/tmp/venv/bin/python local_eval/smoke_render.py\n"}
+,{"stream_name":"stdout","time":58.850699762,"data":"    | Traceback (most recent call last):\n"}
+,{"stream_name":"stdout","time":58.850703236,"data":"    |   File \"/kaggle/tmp/LIBERO/local_eval/smoke_render.py\", line 4, in \u003cmodule\u003e\n"}
+,{"stream_name":"stdout","time":58.850707239,"data":"    |     from libero.libero import benchmark, get_libero_path\n"}
+,{"stream_name":"stdout","time":58.850712281,"data":"    | ModuleNotFoundError: No module named 'libero'\n"}
+,{"stream_name":"stdout","time":58.850719774,"data":"[13:59:38 +   1.0m] [06_smoke_osmesa] rc=1 (0s)\n"}
+,{"stream_name":"stdout","time":58.851280548,"data":"[13:59:38 +   1.0m] [07_dataset] $ cd /kaggle/tmp/LIBERO \u0026\u0026 /kaggle/tmp/venv/bin/python benchmark_scripts/download_libero_datasets.py --datasets libero_spatial --use-huggingface --download-dir /kaggle/tmp/datasets \u003c /dev/null\n"}
+,{"stream_name":"stdout","time":95.142558475,"data":"    | Fetching 10 files: 100%|██████████| 10/10 [00:34\u003c00:00,  3.46s/it]\n"}
+,{"stream_name":"stdout","time":95.142590431,"data":"    | Fetching 10 files: 100%|██████████| 10/10 [00:34\u003c00:00,  3.46s/it]\n"}
+,{"stream_name":"stdout","time":95.142609184,"data":"    | Downloaded 10 files for libero_spatial\n"}
+,{"stream_name":"stdout","time":95.142613785,"data":"    | \n"}
+,{"stream_name":"stdout","time":95.142617816,"data":"    | \n"}
+,{"stream_name":"stdout","time":95.142621678,"data":"    | \n"}
+,{"stream_name":"stdout","time":95.142625533,"data":"    | \n"}
+,{"stream_name":"stdout","time":95.142629387,"data":"    | [ ] Dataset libero_object not found!!!\n"}
+,{"stream_name":"stdout","time":95.142633387,"data":"    | [ ] Dataset libero_goal not found!!!\n"}
+,{"stream_name":"stdout","time":95.142637423,"data":"    | [X] Dataset libero_spatial is complete\n"}
+,{"stream_name":"stdout","time":95.142641899,"data":"    | [ ] Dataset libero_10 not found!!!\n"}
+,{"stream_name":"stdout","time":95.142645943,"data":"    | [ ] Dataset libero_90 not found!!!\n"}
+,{"stream_name":"stdout","time":95.142649988,"data":"[14:00:15 +   1.6m] [07_dataset] rc=0 (36s)\n"}
+,{"stream_name":"stdout","time":95.144003685,"data":"[14:00:15 +   1.6m] dataset: 10 hdf5 files, 5.81 GiB\n"}
+,{"stream_name":"stdout","time":95.144271264,"data":"[14:00:15 +   1.6m] [08_bert] $ cd /kaggle/tmp/LIBERO \u0026\u0026 /kaggle/tmp/venv/bin/python local_eval/fetch_bert.py\n"}
+,{"stream_name":"stdout","time":97.467832174,"data":"    | \n"}
+,{"stream_name":"stdout","time":97.467854542,"data":"    | $ cd /kaggle/tmp/LIBERO \u0026\u0026 /kaggle/tmp/venv/bin/python local_eval/fetch_bert.py\n"}
+,{"stream_name":"stdout","time":97.467860044,"data":"    | ok bert-base-cased/config.json 570\n"}
+,{"stream_name":"stdout","time":97.467863744,"data":"    | ok bert-base-cased/vocab.txt 213450\n"}
+,{"stream_name":"stdout","time":97.467878455,"data":"    | ok bert-base-cased/tokenizer_config.json 49\n"}
+,{"stream_name":"stdout","time":97.467882292,"data":"    | ok bert-base-cased/tokenizer.json 435797\n"}
+,{"stream_name":"stdout","time":97.467885994,"data":"    | ok bert-base-cased/pytorch_model.bin 435779157\n"}
+,{"stream_name":"stdout","time":97.467889772,"data":"    | BERT_DONE\n"}
+,{"stream_name":"stdout","time":97.468858492,"data":"[14:00:17 +   1.6m] [08_bert] rc=0 (2s)\n"}
+,{"stream_name":"stdout","time":97.468878556,"data":"[14:00:17 +   1.6m] skipping replay/protocol: render_ok=False data_ok=True\n"}
+,{"stream_name":"stdout","time":97.468883811,"data":"[14:00:17 +   1.6m] [11_disk] $ du -sh /kaggle/tmp/* /kaggle/working/* 2\u003e/dev/null | sort -h | tail -15; free -g | head -2\n"}
+,{"stream_name":"stdout","time":97.934152326,"data":"    | 4.0K\t/kaggle/working/driver.log\n"}
+,{"stream_name":"stdout","time":97.934175764,"data":"    | 4.0K\t/kaggle/working/libero_config.yaml\n"}
+,{"stream_name":"stdout","time":97.934180967,"data":"    | 4.0K\t/kaggle/working/requirements-kaggle-freeze.txt\n"}
+,{"stream_name":"stdout","time":97.934185381,"data":"    | 4.0K\t/kaggle/working/summary.json\n"}
+,{"stream_name":"stdout","time":97.934189503,"data":"    | 60K\t/kaggle/working/logs\n"}
+,{"stream_name":"stdout","time":97.93419365,"data":"    | 740K\t/kaggle/tmp/hf\n"}
+,{"stream_name":"stdout","time":97.934197568,"data":"    | 34M\t/kaggle/tmp/venv\n"}
+,{"stream_name":"stdout","time":97.934201485,"data":"    | 1.2G\t/kaggle/tmp/LIBERO\n"}
+,{"stream_name":"stdout","time":97.93420516,"data":"    | 2.3G\t/kaggle/tmp/uv-cache\n"}
+,{"stream_name":"stdout","time":97.934209109,"data":"    | 5.9G\t/kaggle/tmp/datasets\n"}
+,{"stream_name":"stdout","time":97.934212742,"data":"    |                total        used        free      shared  buff/cache   available\n"}
+,{"stream_name":"stdout","time":97.934216182,"data":"    | Mem:              31           1           6           0          24          30\n"}
+,{"stream_name":"stdout","time":97.934229802,"data":"[14:00:18 +   1.6m] [11_disk] rc=0 (0s)\n"}
+,{"stream_name":"stdout","time":97.93503484,"data":"# LIBERO libero_spatial on Kaggle - summary\n"}
+,{"stream_name":"stdout","time":97.935049736,"data":"\n"}
+,{"stream_name":"stdout","time":97.935053765,"data":"- started (UTC): 2026-10-23T13:58:40.911485  elapsed: 1.6 min\n"}
+,{"stream_name":"stdout","time":97.935057598,"data":"- GPU: Tesla T4, 15360 MiB\n"}
+,{"stream_name":"stdout","time":97.935061162,"data":"Tesla T4, 15360 MiB  nproc: 4  render backend: NONE (egl and osmesa both failed)\n"}
+,{"stream_name":"stdout","time":97.935064742,"data":"- LIBERO commit: 8f1084e; dataset: 5.81 GiB, 10 hdf5 files\n"}
+,{"stream_name":"stdout","time":97.935068456,"data":"\n"}
+,{"stream_name":"stdout","time":97.935072346,"data":"\n"}
+,{"stream_name":"stdout","time":97.935075645,"data":"## Stages\n"}
+,{"stream_name":"stdout","time":97.935079458,"data":"\n"}
+,{"stream_name":"stdout","time":97.935082838,"data":"| stage | rc | seconds |\n"}
+,{"stream_name":"stdout","time":97.935086739,"data":"|---|---|---|\n"}
+,{"stream_name":"stdout","time":97.935097497,"data":"| 00_sysinfo | 0 | 0.6 |\n"}
+,{"stream_name":"stdout","time":97.935100869,"data":"| 01_apt | 0 | 15.0 |\n"}
+,{"stream_name":"stdout","time":97.935104444,"data":"| 02_uv | 0 | 3.7 |\n"}
+,{"stream_name":"stdout","time":97.935107863,"data":"| 02_venv | 0 | 1.6 |\n"}
+,{"stream_name":"stdout","time":97.935111526,"data":"| 03_clone | 0 | 11.8 |\n"}
+,{"stream_name":"stdout","time":97.935115102,"data":"| 04_torch | 0 | 6.0 |\n"}
+,{"stream_name":"stdout","time":97.935118546,"data":"| 04_reqs | 0 | 11.8 |\n"}
+,{"stream_name":"stdout","time":97.935122229,"data":"| 04_libero | 0 | 1.0 |\n"}
+,{"stream_name":"stdout","time":97.935125658,"data":"| 05_import | 0 | 6.2 |\n"}
+,{"stream_name":"stdout","time":97.935129074,"data":"| 06_smoke_egl | 1 | 0.2 |\n"}
+,{"stream_name":"stdout","time":97.935132644,"data":"| 06_smoke_osmesa | 1 | 0.2 |\n"}
+,{"stream_name":"stdout","time":97.935136176,"data":"| 07_dataset | 0 | 36.3 |\n"}
+,{"stream_name":"stdout","time":97.935139565,"data":"| 08_bert | 0 | 2.3 |\n"}
+,{"stream_name":"stdout","time":97.935143033,"data":"| 11_disk | 0 | 0.5 |\n"}
+,{"stream_name":"stdout","time":97.935146798,"data":"[14:00:18 +   1.6m] ALL_DONE\n"}
+,{"stream_name":"stderr","time":101.499376976,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":101.49940319,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":101.826814376,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":101.826865888,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":102.772372609,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":103.868393929,"data":"[NbConvertApp] Writing 417631 bytes to __results__.html\n"}
+]

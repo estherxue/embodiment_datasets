@@ -1,0 +1,90 @@
+INFO 2026-10-23 21:22:16 _client.py:1025 HTTP Request: HEAD https://huggingface.co/lerobot/diffusion_pusht/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+WARNING 2026-10-23 21:22:16 ls/_http.py:993 Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+INFO 2026-10-23 21:22:16 _client.py:1025 HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/lerobot/diffusion_pusht/84a7c23178445c6bbf7e1a884ff497017910f653/config.json?%2Flerobot%2Fdiffusion_pusht%2Fresolve%2Fmain%2Fconfig.json=&etag=%22eedd556d079c4c07e29afcff63b97917b1f22074%22 "HTTP/1.1 200 OK"
+WARNING 2026-10-23 21:22:16 ils/utils.py:54 No accelerated backend detected. Using default cpu, this will be slow.
+WARNING 2026-10-23 21:22:16 /policies.py:80 Device 'cuda' is not available. Switching to 'cpu'.
+INFO 2026-10-23 21:22:16 pts/eval.py:462 {'env': {'episode_length': 300,
+         'features': {'action': {'shape': (2,),
+                                 'type': <FeatureType.ACTION: 'ACTION'>},
+                      'agent_pos': {'shape': (2,),
+                                    'type': <FeatureType.STATE: 'STATE'>},
+                      'pixels': {'shape': (384, 384, 3),
+                                 'type': <FeatureType.VISUAL: 'VISUAL'>}},
+         'features_map': {'action': 'action',
+                          'agent_pos': 'observation.state',
+                          'environment_state': 'observation.environment_state',
+                          'pixels': 'observation.image'},
+         'fps': 10,
+         'obs_type': 'pixels_agent_pos',
+         'render_mode': 'rgb_array',
+         'task': 'PushT-v0',
+         'visualization_height': 384,
+         'visualization_width': 384},
+ 'eval': {'batch_size': 50, 'n_episodes': 50, 'use_async_envs': False},
+ 'job_name': 'pusht_diffusion',
+ 'output_dir': PosixPath('outputs/eval/pusht_diffusion_seed1000'),
+ 'policy': {'beta_end': 0.02,
+            'beta_schedule': 'squaredcos_cap_v2',
+            'beta_start': 0.0001,
+            'clip_sample': True,
+            'clip_sample_range': 1.0,
+            'crop_is_random': True,
+            'crop_shape': (84, 84),
+            'device': 'cpu',
+            'diffusion_step_embed_dim': 128,
+            'do_mask_loss_for_padding': False,
+            'down_dims': (512, 1024, 2048),
+            'drop_n_last_frames': 7,
+            'horizon': 16,
+            'input_features': {'observation.image': {'shape': (3, 96, 96),
+                                                     'type': <FeatureType.VISUAL: 'VISUAL'>},
+                               'observation.state': {'shape': (2,),
+                                                     'type': <FeatureType.STATE: 'STATE'>}},
+            'kernel_size': 5,
+            'license': None,
+            'n_action_steps': 8,
+            'n_groups': 8,
+            'n_obs_steps': 2,
+            'noise_scheduler_type': 'DDPM',
+            'normalization_mapping': {'ACTION': <NormalizationMode.MIN_MAX: 'MIN_MAX'>,
+                                      'STATE': <NormalizationMode.MIN_MAX: 'MIN_MAX'>,
+                                      'VISUAL': <NormalizationMode.MEAN_STD: 'MEAN_STD'>},
+            'num_inference_steps': None,
+            'num_train_timesteps': 100,
+            'optimizer_betas': (0.95, 0.999),
+            'optimizer_eps': 1e-08,
+            'optimizer_lr': 0.0001,
+            'optimizer_weight_decay': 1e-06,
+            'output_features': {'action': {'shape': (2,),
+                                           'type': <FeatureType.ACTION: 'ACTION'>}},
+            'prediction_type': 'epsilon',
+            'pretrained_backbone_weights': None,
+            'private': None,
+            'push_to_hub': True,
+            'repo_id': None,
+            'scheduler_name': 'cosine',
+            'scheduler_warmup_steps': 500,
+            'spatial_softmax_num_keypoints': 32,
+            'tags': None,
+            'use_amp': False,
+            'use_film_scale_modulation': True,
+            'use_group_norm': True,
+            'use_separate_rgb_encoder_per_camera': False,
+            'vision_backbone': 'resnet18'},
+ 'seed': 1000}
+WARNING 2026-10-23 21:22:16 ils/utils.py:72 Using CPU, this will be slow.
+INFO 2026-10-23 21:22:16 pts/eval.py:471 Output dir: outputs/eval/pusht_diffusion_seed1000
+INFO 2026-10-23 21:22:16 pts/eval.py:473 Making environment.
+INFO 2026-10-23 21:22:17 pts/eval.py:476 Making policy.
+INFO 2026-10-23 21:22:23 _client.py:1025 HTTP Request: HEAD https://huggingface.co/lerobot/diffusion_pusht/resolve/main/model.safetensors "HTTP/1.1 302 Found"
+INFO 2026-10-23 21:22:23 _client.py:1025 HTTP Request: GET https://huggingface.co/api/models/lerobot/diffusion_pusht/xet-read-token/84a7c23178445c6bbf7e1a884ff497017910f653 "HTTP/1.1 200 OK"
+Stepping through eval batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Running rollout with at most 300 steps:   0%|          | 0/300 [00:00<?, ?it/s][A/Users/xingyuanxue1122/Documents/coding/code/lerobot/.venv/lib/python3.10/site-packages/gymnasium/core.py:311: UserWarning: [33mWARN: env.task_description to get variables from other wrappers is deprecated and will be removed in v1.0, to get this variable you can do `env.unwrapped.task_description` for environment variables or `env.get_wrapper_attr('task_description')` that will search the reminding wrappers.[0m
+  logger.warn(
+/Users/xingyuanxue1122/Documents/coding/code/lerobot/src/lerobot/scripts/eval.py:147: UserWarning: The environment does not have 'task_description' and 'task'. Some policies require these features.
+  check_env_attributes_and_types(env)
+/Users/xingyuanxue1122/Documents/coding/code/lerobot/.venv/lib/python3.10/site-packages/gymnasium/core.py:311: UserWarning: [33mWARN: env.task_description to get variables from other wrappers is deprecated and will be removed in v1.0, to get this variable you can do `env.unwrapped.task_description` for environment variables or `env.get_wrapper_attr('task_description')` that will search the reminding wrappers.[0m
+  logger.warn(
+/Users/xingyuanxue1122/Documents/coding/code/lerobot/.venv/lib/python3.10/site-packages/gymnasium/core.py:311: UserWarning: [33mWARN: env.task to get variables from other wrappers is deprecated and will be removed in v1.0, to get this variable you can do `env.unwrapped.task` for environment variables or `env.get_wrapper_attr('task')` that will search the reminding wrappers.[0m
+  logger.warn(

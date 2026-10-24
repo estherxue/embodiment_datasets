@@ -1,0 +1,145 @@
+{
+  "meta": {
+    "lerobot_commit": "b883328e6c95681ca90a18b102e4ae5e1f91e2bf",
+    "n_episodes": 50,
+    "batch_size": 50,
+    "started_utc": "2026-10-23 20:12:52",
+    "gpu": {
+      "torch": "2.7.1+cu126",
+      "cuda_available": true,
+      "device_name": "Tesla T4",
+      "capability": [
+        7,
+        5
+      ],
+      "gpu_ok": true
+    },
+    "device": "cuda",
+    "elapsed_s": 13952.8,
+    "mujoco_gl": "egl",
+    "render_check": "egl (480, 640, 3) uint8 39.91 render() (480, 640, 3) 2.9s"
+  },
+  "runs": {
+    "aloha_insertion_act_seed1000": {
+      "group": "aloha_insertion_act",
+      "policy": "lerobot/act_aloha_sim_insertion_human",
+      "policy_path": "lerobot/act_aloha_sim_insertion_human",
+      "env": "--env.type=aloha --env.task=AlohaInsertion-v0",
+      "seed": 1000,
+      "device": "cuda",
+      "batch_size": 50,
+      "mujoco_gl": "egl",
+      "rc": 0,
+      "wall_s": 4606.0,
+      "cmd": "/kaggle/tmp/venv/bin/lerobot-eval --policy.path=lerobot/act_aloha_sim_insertion_human --policy.device=cuda --env.type=aloha --env.task=AlohaInsertion-v0 --eval.n_episodes=50 --eval.batch_size=50 --seed=1000 --output_dir=/kaggle/working/eval/aloha_insertion_act_seed1000",
+      "stats": {
+        "n_episodes": 50,
+        "n_success": 8,
+        "pc_success": 16.0,
+        "success_var_sample": 0.13714285714285712,
+        "success_std_sample": 0.3703280399090206,
+        "success_var_bernoulli": 0.1344,
+        "success_std_bernoulli": 0.3666060555964672,
+        "se_mean": 0.05184592558726288,
+        "ci95_normal": [
+          5.8381985848964755,
+          26.161801415103525
+        ],
+        "ci95_wilson": [
+          8.337321362087696,
+          28.51448096176598
+        ],
+        "avg_sum_reward": 243.22,
+        "avg_max_reward": 2.36,
+        "eval_s": 4584.795008897781,
+        "eval_ep_s": 91.69590019226074,
+        "episode_seeds": [
+          1000,
+          1049
+        ],
+        "reported_pc_success": 16.0
+      }
+    },
+    "aloha_insertion_act_seed2000": {
+      "group": "aloha_insertion_act",
+      "policy": "lerobot/act_aloha_sim_insertion_human",
+      "policy_path": "lerobot/act_aloha_sim_insertion_human",
+      "env": "--env.type=aloha --env.task=AlohaInsertion-v0",
+      "seed": 2000,
+      "device": "cuda",
+      "batch_size": 50,
+      "mujoco_gl": "egl",
+      "rc": 0,
+      "wall_s": 4637.3,
+      "cmd": "/kaggle/tmp/venv/bin/lerobot-eval --policy.path=lerobot/act_aloha_sim_insertion_human --policy.device=cuda --env.type=aloha --env.task=AlohaInsertion-v0 --eval.n_episodes=50 --eval.batch_size=50 --seed=2000 --output_dir=/kaggle/working/eval/aloha_insertion_act_seed2000",
+      "stats": {
+        "n_episodes": 50,
+        "n_success": 10,
+        "pc_success": 20.0,
+        "success_var_sample": 0.16326530612244902,
+        "success_std_sample": 0.4040610178208843,
+        "success_var_bernoulli": 0.16000000000000003,
+        "success_std_bernoulli": 0.4,
+        "se_mean": 0.05656854249492381,
+        "ci95_normal": [
+          8.912565670994935,
+          31.08743432900507
+        ],
+        "ci95_wilson": [
+          11.243629945973886,
+          33.03737210448524
+        ],
+        "avg_sum_reward": 309.1,
+        "avg_max_reward": 2.78,
+        "eval_s": 4621.178430557251,
+        "eval_ep_s": 92.42356862545013,
+        "episode_seeds": [
+          2000,
+          2049
+        ],
+        "reported_pc_success": 20.0
+      }
+    },
+    "aloha_insertion_act_seed3000": {
+      "group": "aloha_insertion_act",
+      "policy": "lerobot/act_aloha_sim_insertion_human",
+      "policy_path": "lerobot/act_aloha_sim_insertion_human",
+      "env": "--env.type=aloha --env.task=AlohaInsertion-v0",
+      "seed": 3000,
+      "device": "cuda",
+      "batch_size": 50,
+      "mujoco_gl": "egl",
+      "rc": 0,
+      "wall_s": 4603.0,
+      "cmd": "/kaggle/tmp/venv/bin/lerobot-eval --policy.path=lerobot/act_aloha_sim_insertion_human --policy.device=cuda --env.type=aloha --env.task=AlohaInsertion-v0 --eval.n_episodes=50 --eval.batch_size=50 --seed=3000 --output_dir=/kaggle/working/eval/aloha_insertion_act_seed3000",
+      "stats": {
+        "n_episodes": 50,
+        "n_success": 7,
+        "pc_success": 14.000000000000002,
+        "success_var_sample": 0.12285714285714285,
+        "success_std_sample": 0.3505098327538656,
+        "success_var_bernoulli": 0.12040000000000001,
+        "success_std_bernoulli": 0.34698703145794946,
+        "se_mean": 0.04907137658554119,
+        "ci95_normal": [
+          4.382010189233928,
+          23.617989810766073
+        ],
+        "ci95_wilson": [
+          6.950745262022862,
+          26.18645719852809
+        ],
+        "avg_sum_reward": 267.58,
+        "avg_max_reward": 2.52,
+        "eval_s": 4586.945721626282,
+        "eval_ep_s": 91.7389144563675,
+        "episode_seeds": [
+          3000,
+          3049
+        ],
+        "reported_pc_success": 14.000000000000002
+      }
+    }
+  },
+  "errors": []
+}

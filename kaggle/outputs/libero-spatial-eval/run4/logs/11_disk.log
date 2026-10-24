@@ -1,0 +1,15 @@
+
+$ du -sh /kaggle/tmp/* /kaggle/working/* 2>/dev/null | sort -h | tail -15; free -g | head -2
+4.0K	/kaggle/working/libero_config.yaml
+4.0K	/kaggle/working/requirements-kaggle-freeze.txt
+8.0K	/kaggle/working/summary.json
+12K	/kaggle/working/driver.log
+16K	/kaggle/working/replay
+324K	/kaggle/working/logs
+732K	/kaggle/tmp/hf
+71M	/kaggle/tmp/venv
+1.2G	/kaggle/tmp/LIBERO
+2.3G	/kaggle/tmp/uv-cache
+5.9G	/kaggle/tmp/datasets
+               total        used        free      shared  buff/cache   available
+Mem:              31           4           7           0          20          27

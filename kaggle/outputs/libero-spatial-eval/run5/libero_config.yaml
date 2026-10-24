@@ -1,0 +1,5 @@
+benchmark_root: /kaggle/tmp/LIBERO/libero/libero
+bddl_files: /kaggle/tmp/LIBERO/libero/libero/bddl_files
+init_states: /kaggle/tmp/LIBERO/libero/libero/init_files
+assets: /kaggle/tmp/LIBERO/libero/libero/assets
+datasets: /kaggle/tmp/datasets

@@ -1,0 +1,33 @@
+{
+ "suite": "libero_spatial",
+ "task_id": 0,
+ "task": "pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate",
+ "language": "pick up the black bowl between the plate and the ramekin and place it on the plate",
+ "n_demos": 2,
+ "n_success": 2,
+ "success_rate": 1.0,
+ "mean_steps_to_success": 77.5,
+ "mean_demo_len": 91.0,
+ "records": [
+  {
+   "task_id": 0,
+   "demo": "demo_0",
+   "n_actions": 98,
+   "success": true,
+   "success_step": 82,
+   "final_success": true,
+   "max_state_drift": 2.6913,
+   "seconds": 12.1
+  },
+  {
+   "task_id": 0,
+   "demo": "demo_1",
+   "n_actions": 84,
+   "success": true,
+   "success_step": 73,
+   "final_success": true,
+   "max_state_drift": 3.6356,
+   "seconds": 11.7
+  }
+ ]
+}

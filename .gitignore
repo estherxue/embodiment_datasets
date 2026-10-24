@@ -1,0 +1,17 @@
+# environments & caches
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+*.pid
+
+# upstream clone histories, kept locally only (lerobot @ b883328e, LIBERO @ 8f1084e)
+.git.upstream/
+
+# large data / weights (re-downloadable; see README + EVAL_NOTES)
+LIBERO/datasets/
+LIBERO/bert-base-cased/
+LIBERO/experiments/
+lerobot/outputs/converted_ckpts/
+*.safetensors
+*.hdf5

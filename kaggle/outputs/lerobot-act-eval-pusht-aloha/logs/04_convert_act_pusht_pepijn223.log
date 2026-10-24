@@ -1,0 +1,6 @@
+
+===== [20:04:39] $ /kaggle/tmp/venv/bin/python /kaggle/tmp/convert_old_act_ckpt.py pepijn223/act-pusht /kaggle/tmp/ckpts/act_pusht_pepijn223
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights from local directory
+CONVERT_OK pepijn223/act-pusht -> /kaggle/tmp/ckpts/act_pusht_pepijn223: 51.6M params; inputs=['observation.image', 'observation.state'] norm={'VISUAL': <NormalizationMode.MEAN_STD: 'MEAN_STD'>, 'STATE': <NormalizationMode.MEAN_STD: 'MEAN_STD'>, 'ACTION': <NormalizationMode.MEAN_STD: 'MEAN_STD'>} chunk=100 n_action_steps=100
+normalize buffers finite: True

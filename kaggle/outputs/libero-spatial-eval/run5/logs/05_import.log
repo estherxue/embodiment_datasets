@@ -1,0 +1,8 @@
+
+$ cd /kaggle/tmp/LIBERO && /kaggle/tmp/venv/bin/python -c "import torch, numpy, robosuite, mujoco, h5py, transformers; from libero.libero import get_libero_path, benchmark; print('torch', torch.__version__, 'numpy', numpy.__version__, 'robosuite', robosuite.__version__, 'mujoco', mujoco.__version__); print('datasets path', get_libero_path('datasets')); print('benchmarks', list(benchmark.get_benchmark_dict().keys()))"
+[robosuite WARNING] No private macro file found! (__init__.py:7)
+[robosuite WARNING] It is recommended to use a private macro file (__init__.py:8)
+[robosuite WARNING] To setup, run: python /kaggle/tmp/venv/lib/python3.10/site-packages/robosuite/scripts/setup_macros.py (__init__.py:9)
+torch 2.5.1+cpu numpy 1.22.4 robosuite 1.4.0 mujoco 2.3.2
+datasets path /kaggle/tmp/datasets
+benchmarks ['libero_spatial', 'libero_object', 'libero_goal', 'libero_90', 'libero_10', 'libero_100']

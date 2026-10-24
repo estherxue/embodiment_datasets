@@ -1,0 +1,2 @@
+
+$ cd /kaggle/tmp/LIBERO && uv pip install --python /kaggle/tmp/venv/bin/python -q -r requirements.txt huggingface_hub h5py mujoco==2.3.2 setuptools

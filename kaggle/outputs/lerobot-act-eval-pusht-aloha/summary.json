@@ -1,0 +1,502 @@
+{
+  "meta": {
+    "lerobot_commit": "b883328e6c95681ca90a18b102e4ae5e1f91e2bf",
+    "n_episodes": 50,
+    "batch_size": 50,
+    "started_utc": "2026-10-23 13:58:50",
+    "gpu": {
+      "torch": "2.7.1+cu126",
+      "cuda_available": true,
+      "device_name": "Tesla T4",
+      "capability": [
+        7,
+        5
+      ],
+      "gpu_ok": true
+    },
+    "device": "cuda",
+    "elapsed_s": 22035.0,
+    "pusht_check_rc": 0,
+    "mujoco_gl": "egl",
+    "render_check": "egl (480, 640, 3) uint8 39.91 render() (480, 640, 3) 3.6s"
+  },
+  "runs": {
+    "pusht_act_keypoints_seed1000": {
+      "group": "pusht_act_keypoints",
+      "policy": "alexandersoare/act_pusht_keypoints (converted)",
+      "policy_path": "/kaggle/tmp/ckpts/act_pusht_keypoints",
+      "env": "--env.type=pusht --env.obs_type=environment_state_agent_pos",
+      "seed": 1000,
+      "device": "cuda",
+      "batch_size": 50,
+      "mujoco_gl": "egl",
+      "rc": 0,
+      "wall_s": 41.4,
+      "cmd": "/kaggle/tmp/venv/bin/lerobot-eval --policy.path=/kaggle/tmp/ckpts/act_pusht_keypoints --policy.device=cuda --env.type=pusht --env.obs_type=environment_state_agent_pos --eval.n_episodes=50 --eval.batch_size=50 --seed=1000 --output_dir=/kaggle/working/eval/pusht_act_keypoints_seed1000",
+      "stats": {
+        "n_episodes": 50,
+        "n_success": 32,
+        "pc_success": 64.0,
+        "success_var_sample": 0.23510204081632652,
+        "success_std_sample": 0.48487322138506117,
+        "success_var_bernoulli": 0.2304,
+        "success_std_bernoulli": 0.48,
+        "se_mean": 0.06788225099390856,
+        "ci95_normal": [
+          50.69507880519393,
+          77.30492119480607
+        ],
+        "ci95_wilson": [
+          50.140762010301955,
+          75.86143703281711
+        ],
+        "avg_sum_reward": 95.49836207150304,
+        "avg_max_reward": 0.9493971370707803,
+        "eval_s": 31.732502460479736,
+        "eval_ep_s": 0.6346500635147094,
+        "episode_seeds": [
+          1000,
+          1049
+        ],
+        "reported_pc_success": 64.0
+      }
+    },
+    "aloha_insertion_act_seed1000": {
+      "group": "aloha_insertion_act",
+      "policy": "lerobot/act_aloha_sim_insertion_human",
+      "policy_path": "lerobot/act_aloha_sim_insertion_human",
+      "env": "--env.type=aloha --env.task=AlohaInsertion-v0",
+      "seed": 1000,
+      "device": "cuda",
+      "batch_size": 10,
+      "mujoco_gl": "egl",
+      "rc": 0,
+      "wall_s": 5194.9,
+      "cmd": "/kaggle/tmp/venv/bin/lerobot-eval --policy.path=lerobot/act_aloha_sim_insertion_human --policy.device=cuda --env.type=aloha --env.task=AlohaInsertion-v0 --eval.n_episodes=50 --eval.batch_size=10 --seed=1000 --output_dir=/kaggle/working/eval/aloha_insertion_act_seed1000",
+      "stats": {
+        "n_episodes": 50,
+        "n_success": 6,
+        "pc_success": 12.0,
+        "success_var_sample": 0.10775510204081633,
+        "success_std_sample": 0.32826072265931594,
+        "success_var_bernoulli": 0.1056,
+        "success_std_bernoulli": 0.32496153618543844,
+        "se_mean": 0.04595650117230423,
+        "ci95_normal": [
+          2.99252577022837,
+          21.007474229771628
+        ],
+        "ci95_wilson": [
+          5.617523710624646,
+          23.805078886623583
+        ],
+        "avg_sum_reward": 180.74,
+        "avg_max_reward": 1.94,
+        "eval_s": 5184.360816955566,
+        "eval_ep_s": 103.68721634864806,
+        "episode_seeds": [
+          1000,
+          1049
+        ],
+        "reported_pc_success": 12.0
+      }
+    },
+    "pusht_act_keypoints_seed2000": {
+      "group": "pusht_act_keypoints",
+      "policy": "alexandersoare/act_pusht_keypoints (converted)",
+      "policy_path": "/kaggle/tmp/ckpts/act_pusht_keypoints",
+      "env": "--env.type=pusht --env.obs_type=environment_state_agent_pos",
+      "seed": 2000,
+      "device": "cuda",
+      "batch_size": 50,
+      "mujoco_gl": "egl",
+      "rc": 0,
+      "wall_s": 38.0,
+      "cmd": "/kaggle/tmp/venv/bin/lerobot-eval --policy.path=/kaggle/tmp/ckpts/act_pusht_keypoints --policy.device=cuda --env.type=pusht --env.obs_type=environment_state_agent_pos --eval.n_episodes=50 --eval.batch_size=50 --seed=2000 --output_dir=/kaggle/working/eval/pusht_act_keypoints_seed2000",
+      "stats": {
+        "n_episodes": 50,
+        "n_success": 30,
+        "pc_success": 60.0,
+        "success_var_sample": 0.24489795918367346,
+        "success_std_sample": 0.4948716593053935,
+        "success_var_bernoulli": 0.24,
+        "success_std_bernoulli": 0.4898979485566356,
+        "se_mean": 0.06928203230275509,
+        "ci95_normal": [
+          46.42072166866,
+          73.57927833133999
+        ],
+        "ci95_wilson": [
+          46.18118910275937,
+          72.39181021375425
+        ],
+        "avg_sum_reward": 102.50659275789259,
+        "avg_max_reward": 0.9317690376248051,
+        "eval_s": 29.01813268661499,
+        "eval_ep_s": 0.580362663269043,
+        "episode_seeds": [
+          2000,
+          2049
+        ],
+        "reported_pc_success": 60.0
+      }
+    },
+    "pusht_act_keypoints_seed3000": {
+      "group": "pusht_act_keypoints",
+      "policy": "alexandersoare/act_pusht_keypoints (converted)",
+      "policy_path": "/kaggle/tmp/ckpts/act_pusht_keypoints",
+      "env": "--env.type=pusht --env.obs_type=environment_state_agent_pos",
+      "seed": 3000,
+      "device": "cuda",
+      "batch_size": 50,
+      "mujoco_gl": "egl",
+      "rc": 0,
+      "wall_s": 39.5,
+      "cmd": "/kaggle/tmp/venv/bin/lerobot-eval --policy.path=/kaggle/tmp/ckpts/act_pusht_keypoints --policy.device=cuda --env.type=pusht --env.obs_type=environment_state_agent_pos --eval.n_episodes=50 --eval.batch_size=50 --seed=3000 --output_dir=/kaggle/working/eval/pusht_act_keypoints_seed3000",
+      "stats": {
+        "n_episodes": 50,
+        "n_success": 32,
+        "pc_success": 64.0,
+        "success_var_sample": 0.23510204081632652,
+        "success_std_sample": 0.48487322138506117,
+        "success_var_bernoulli": 0.2304,
+        "success_std_bernoulli": 0.48,
+        "se_mean": 0.06788225099390856,
+        "ci95_normal": [
+          50.69507880519393,
+          77.30492119480607
+        ],
+        "ci95_wilson": [
+          50.140762010301955,
+          75.86143703281711
+        ],
+        "avg_sum_reward": 98.30690613237182,
+        "avg_max_reward": 0.917779192428286,
+        "eval_s": 30.459166049957275,
+        "eval_ep_s": 0.6091833305358887,
+        "episode_seeds": [
+          3000,
+          3049
+        ],
+        "reported_pc_success": 64.0
+      }
+    },
+    "pusht_act_pixels_seed1000": {
+      "group": "pusht_act_pixels",
+      "policy": "arclabmit/pusht_act_model",
+      "policy_path": "arclabmit/pusht_act_model",
+      "env": "--env.type=pusht",
+      "seed": 1000,
+      "device": "cuda",
+      "batch_size": 50,
+      "mujoco_gl": "egl",
+      "rc": 0,
+      "wall_s": 79.5,
+      "cmd": "/kaggle/tmp/venv/bin/lerobot-eval --policy.path=arclabmit/pusht_act_model --policy.device=cuda --env.type=pusht --eval.n_episodes=50 --eval.batch_size=50 --seed=1000 --output_dir=/kaggle/working/eval/pusht_act_pixels_seed1000",
+      "stats": {
+        "n_episodes": 50,
+        "n_success": 0,
+        "pc_success": 0.0,
+        "success_var_sample": 0.0,
+        "success_std_sample": 0.0,
+        "success_var_bernoulli": 0.0,
+        "success_std_bernoulli": 0.0,
+        "se_mean": 0.0,
+        "ci95_normal": [
+          0.0,
+          0.0
+        ],
+        "ci95_wilson": [
+          0.0,
+          7.135003417431873
+        ],
+        "avg_sum_reward": 45.25136426696192,
+        "avg_max_reward": 0.42363364316720487,
+        "eval_s": 67.0234124660492,
+        "eval_ep_s": 1.340468258857727,
+        "episode_seeds": [
+          1000,
+          1049
+        ],
+        "reported_pc_success": 0.0
+      }
+    },
+    "aloha_insertion_act_seed2000": {
+      "group": "aloha_insertion_act",
+      "policy": "lerobot/act_aloha_sim_insertion_human",
+      "policy_path": "lerobot/act_aloha_sim_insertion_human",
+      "env": "--env.type=aloha --env.task=AlohaInsertion-v0",
+      "seed": 2000,
+      "device": "cuda",
+      "batch_size": 50,
+      "mujoco_gl": "egl",
+      "rc": 0,
+      "wall_s": 5300.4,
+      "cmd": "/kaggle/tmp/venv/bin/lerobot-eval --policy.path=lerobot/act_aloha_sim_insertion_human --policy.device=cuda --env.type=aloha --env.task=AlohaInsertion-v0 --eval.n_episodes=50 --eval.batch_size=50 --seed=2000 --output_dir=/kaggle/working/eval/aloha_insertion_act_seed2000",
+      "stats": {
+        "n_episodes": 50,
+        "n_success": 4,
+        "pc_success": 8.0,
+        "success_var_sample": 0.07510204081632653,
+        "success_std_sample": 0.27404751561786966,
+        "success_var_bernoulli": 0.0736,
+        "success_std_bernoulli": 0.2712931993250107,
+        "se_mean": 0.03836665218650176,
+        "ci95_normal": [
+          0.48013617144565535,
+          15.519863828554344
+        ],
+        "ci95_wilson": [
+          3.1549003255790686,
+          18.838502545063704
+        ],
+        "avg_sum_reward": 213.04,
+        "avg_max_reward": 2.12,
+        "eval_s": 5286.878156661987,
+        "eval_ep_s": 105.73756314754486,
+        "episode_seeds": [
+          2000,
+          2049
+        ],
+        "reported_pc_success": 8.0
+      }
+    },
+    "aloha_insertion_act_seed3000": {
+      "group": "aloha_insertion_act",
+      "policy": "lerobot/act_aloha_sim_insertion_human",
+      "policy_path": "lerobot/act_aloha_sim_insertion_human",
+      "env": "--env.type=aloha --env.task=AlohaInsertion-v0",
+      "seed": 3000,
+      "device": "cuda",
+      "batch_size": 50,
+      "mujoco_gl": "egl",
+      "rc": 0,
+      "wall_s": 5255.8,
+      "cmd": "/kaggle/tmp/venv/bin/lerobot-eval --policy.path=lerobot/act_aloha_sim_insertion_human --policy.device=cuda --env.type=aloha --env.task=AlohaInsertion-v0 --eval.n_episodes=50 --eval.batch_size=50 --seed=3000 --output_dir=/kaggle/working/eval/aloha_insertion_act_seed3000",
+      "stats": {
+        "n_episodes": 50,
+        "n_success": 6,
+        "pc_success": 12.0,
+        "success_var_sample": 0.10775510204081633,
+        "success_std_sample": 0.32826072265931594,
+        "success_var_bernoulli": 0.1056,
+        "success_std_bernoulli": 0.32496153618543844,
+        "se_mean": 0.04595650117230423,
+        "ci95_normal": [
+          2.99252577022837,
+          21.007474229771628
+        ],
+        "ci95_wilson": [
+          5.617523710624646,
+          23.805078886623583
+        ],
+        "avg_sum_reward": 208.04,
+        "avg_max_reward": 2.08,
+        "eval_s": 5242.313378572464,
+        "eval_ep_s": 104.84626758575439,
+        "episode_seeds": [
+          3000,
+          3049
+        ],
+        "reported_pc_success": 12.0
+      }
+    },
+    "pusht_act_pixels_seed2000": {
+      "group": "pusht_act_pixels",
+      "policy": "arclabmit/pusht_act_model",
+      "policy_path": "arclabmit/pusht_act_model",
+      "env": "--env.type=pusht",
+      "seed": 2000,
+      "device": "cuda",
+      "batch_size": 50,
+      "mujoco_gl": "egl",
+      "rc": 0,
+      "wall_s": 76.5,
+      "cmd": "/kaggle/tmp/venv/bin/lerobot-eval --policy.path=arclabmit/pusht_act_model --policy.device=cuda --env.type=pusht --eval.n_episodes=50 --eval.batch_size=50 --seed=2000 --output_dir=/kaggle/working/eval/pusht_act_pixels_seed2000",
+      "stats": {
+        "n_episodes": 50,
+        "n_success": 0,
+        "pc_success": 0.0,
+        "success_var_sample": 0.0,
+        "success_std_sample": 0.0,
+        "success_var_bernoulli": 0.0,
+        "success_std_bernoulli": 0.0,
+        "se_mean": 0.0,
+        "ci95_normal": [
+          0.0,
+          0.0
+        ],
+        "ci95_wilson": [
+          0.0,
+          7.135003417431873
+        ],
+        "avg_sum_reward": 44.436058132524074,
+        "avg_max_reward": 0.3706839865460485,
+        "eval_s": 67.09964442253113,
+        "eval_ep_s": 1.3419929027557373,
+        "episode_seeds": [
+          2000,
+          2049
+        ],
+        "reported_pc_success": 0.0
+      }
+    },
+    "pusht_act_pixels_seed3000": {
+      "group": "pusht_act_pixels",
+      "policy": "arclabmit/pusht_act_model",
+      "policy_path": "arclabmit/pusht_act_model",
+      "env": "--env.type=pusht",
+      "seed": 3000,
+      "device": "cuda",
+      "batch_size": 50,
+      "mujoco_gl": "egl",
+      "rc": 0,
+      "wall_s": 77.0,
+      "cmd": "/kaggle/tmp/venv/bin/lerobot-eval --policy.path=arclabmit/pusht_act_model --policy.device=cuda --env.type=pusht --eval.n_episodes=50 --eval.batch_size=50 --seed=3000 --output_dir=/kaggle/working/eval/pusht_act_pixels_seed3000",
+      "stats": {
+        "n_episodes": 50,
+        "n_success": 3,
+        "pc_success": 6.0,
+        "success_var_sample": 0.05755102040816326,
+        "success_std_sample": 0.2398979374820952,
+        "success_var_bernoulli": 0.05639999999999999,
+        "success_std_bernoulli": 0.23748684174075832,
+        "se_mean": 0.03358571124749333,
+        "ci95_normal": [
+          -0.5827994045086924,
+          12.582799404508693
+        ],
+        "ci95_wilson": [
+          2.0614596364630478,
+          16.217343370877003
+        ],
+        "avg_sum_reward": 42.236807735326956,
+        "avg_max_reward": 0.4380044949346135,
+        "eval_s": 67.58800840377808,
+        "eval_ep_s": 1.3517601823806762,
+        "episode_seeds": [
+          3000,
+          3049
+        ],
+        "reported_pc_success": 6.0
+      }
+    },
+    "pusht_diffusion_seed1000": {
+      "group": "pusht_diffusion",
+      "policy": "lerobot/diffusion_pusht (non-ACT reference)",
+      "policy_path": "lerobot/diffusion_pusht",
+      "env": "--env.type=pusht",
+      "seed": 1000,
+      "device": "cuda",
+      "batch_size": 50,
+      "mujoco_gl": "egl",
+      "rc": 0,
+      "wall_s": 292.7,
+      "cmd": "/kaggle/tmp/venv/bin/lerobot-eval --policy.path=lerobot/diffusion_pusht --policy.device=cuda --env.type=pusht --eval.n_episodes=50 --eval.batch_size=50 --seed=1000 --output_dir=/kaggle/working/eval/pusht_diffusion_seed1000",
+      "stats": {
+        "n_episodes": 50,
+        "n_success": 33,
+        "pc_success": 66.0,
+        "success_var_sample": 0.22897959183673472,
+        "success_std_sample": 0.4785181206984065,
+        "success_var_bernoulli": 0.2244,
+        "success_std_bernoulli": 0.4737087712930804,
+        "se_mean": 0.0669925368977769,
+        "ci95_normal": [
+          52.869462768035724,
+          79.13053723196428
+        ],
+        "ci95_wilson": [
+          52.153568541482855,
+          77.56323036493895
+        ],
+        "avg_sum_reward": 114.68170676696833,
+        "avg_max_reward": 0.9717019505920578,
+        "eval_s": 273.2451136112213,
+        "eval_ep_s": 5.464902281761169,
+        "episode_seeds": [
+          1000,
+          1049
+        ],
+        "reported_pc_success": 66.0
+      }
+    },
+    "pusht_random_seed1000": {
+      "group": "pusht_random",
+      "policy": "uniform random actions",
+      "env": "--env.type=pusht",
+      "seed": 1000,
+      "device": "cpu",
+      "rc": 0,
+      "wall_s": 47.5,
+      "stats": {
+        "n_episodes": 50,
+        "n_success": 0,
+        "pc_success": 0.0,
+        "success_var_sample": 0.0,
+        "success_std_sample": 0.0,
+        "success_var_bernoulli": 0.0,
+        "success_std_bernoulli": 0.0,
+        "se_mean": 0.0,
+        "ci95_normal": [
+          0.0,
+          0.0
+        ],
+        "ci95_wilson": [
+          0.0,
+          7.135003417431873
+        ],
+        "avg_sum_reward": 1.2241344271115444,
+        "avg_max_reward": 0.08607290125391241,
+        "eval_s": 46.966901779174805,
+        "eval_ep_s": 0.9393380451202392,
+        "episode_seeds": [
+          1000,
+          1049
+        ],
+        "reported_pc_success": 0.0
+      }
+    },
+    "pusht_act_pepijn223_seed1000": {
+      "group": "pusht_act_pepijn223",
+      "policy": "pepijn223/act-pusht (converted)",
+      "policy_path": "/kaggle/tmp/ckpts/act_pusht_pepijn223",
+      "env": "--env.type=pusht",
+      "seed": 1000,
+      "device": "cuda",
+      "batch_size": 50,
+      "mujoco_gl": "egl",
+      "rc": 0,
+      "wall_s": 76.8,
+      "cmd": "/kaggle/tmp/venv/bin/lerobot-eval --policy.path=/kaggle/tmp/ckpts/act_pusht_pepijn223 --policy.device=cuda --env.type=pusht --eval.n_episodes=50 --eval.batch_size=50 --seed=1000 --output_dir=/kaggle/working/eval/pusht_act_pepijn223_seed1000",
+      "stats": {
+        "n_episodes": 50,
+        "n_success": 0,
+        "pc_success": 0.0,
+        "success_var_sample": 0.0,
+        "success_std_sample": 0.0,
+        "success_var_bernoulli": 0.0,
+        "success_std_bernoulli": 0.0,
+        "se_mean": 0.0,
+        "ci95_normal": [
+          0.0,
+          0.0
+        ],
+        "ci95_wilson": [
+          0.0,
+          7.135003417431873
+        ],
+        "avg_sum_reward": 37.62258208001284,
+        "avg_max_reward": 0.4034663664490968,
+        "eval_s": 67.45601439476013,
+        "eval_ep_s": 1.349120306968689,
+        "episode_seeds": [
+          1000,
+          1049
+        ],
+        "reported_pc_success": 0.0
+      }
+    }
+  },
+  "errors": []
+}

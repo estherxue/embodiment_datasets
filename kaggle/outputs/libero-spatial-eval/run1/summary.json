@@ -1,0 +1,90 @@
+{
+ "started_utc": "2026-10-23T13:58:40.911485",
+ "stages": {
+  "00_sysinfo": {
+   "rc": 0,
+   "seconds": 0.6
+  },
+  "01_apt": {
+   "rc": 0,
+   "seconds": 15.0
+  },
+  "02_uv": {
+   "rc": 0,
+   "seconds": 3.7
+  },
+  "02_venv": {
+   "rc": 0,
+   "seconds": 1.6
+  },
+  "03_clone": {
+   "rc": 0,
+   "seconds": 11.8
+  },
+  "04_torch": {
+   "rc": 0,
+   "seconds": 6.0
+  },
+  "04_reqs": {
+   "rc": 0,
+   "seconds": 11.8
+  },
+  "04_libero": {
+   "rc": 0,
+   "seconds": 1.0
+  },
+  "05_import": {
+   "rc": 0,
+   "seconds": 6.2
+  },
+  "06_smoke_egl": {
+   "rc": 1,
+   "seconds": 0.2
+  },
+  "06_smoke_osmesa": {
+   "rc": 1,
+   "seconds": 0.2
+  },
+  "07_dataset": {
+   "rc": 0,
+   "seconds": 36.3
+  },
+  "08_bert": {
+   "rc": 0,
+   "seconds": 2.3
+  },
+  "11_disk": {
+   "rc": 0,
+   "seconds": 0.5
+  }
+ },
+ "env": {
+  "hostname": "7ee47f5ebd2e",
+  "gpu": "Tesla T4, 15360 MiB\nTesla T4, 15360 MiB",
+  "nproc": 4,
+  "kaggle_python": "3.13.15",
+  "libero_config": {
+   "benchmark_root": "/kaggle/tmp/LIBERO/libero/libero",
+   "bddl_files": "/kaggle/tmp/LIBERO/libero/libero/bddl_files",
+   "init_states": "/kaggle/tmp/LIBERO/libero/libero/init_files",
+   "assets": "/kaggle/tmp/LIBERO/libero/libero/assets",
+   "datasets": "/kaggle/tmp/datasets"
+  },
+  "render_backend": "NONE (egl and osmesa both failed)",
+  "dataset_files_MiB": {
+   "pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate_demo.hdf5": 485.2,
+   "pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate_demo.hdf5": 562.3,
+   "pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate_demo.hdf5": 713.6,
+   "pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate_demo.hdf5": 603.1,
+   "pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate_demo.hdf5": 570.0,
+   "pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate_demo.hdf5": 640.5,
+   "pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate_demo.hdf5": 483.7,
+   "pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate_demo.hdf5": 554.2,
+   "pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate_demo.hdf5": 678.7,
+   "pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate_demo.hdf5": 656.9
+  },
+  "dataset_total_GiB": 5.81
+ },
+ "results": {},
+ "elapsed_min": 1.6
+}

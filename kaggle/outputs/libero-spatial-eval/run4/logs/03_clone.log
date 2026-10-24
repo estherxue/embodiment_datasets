@@ -1,0 +1,3 @@
+
+$ rm -rf /kaggle/tmp/LIBERO; git clone -q https://github.com/Lifelong-Robot-Learning/LIBERO /kaggle/tmp/LIBERO && cd /kaggle/tmp/LIBERO && git checkout -q 8f1084e && git log -1 --format='%H %cd %s' --date=short
+8f1084e3132a39270c3a13ebe37270a43ece2a01 2025-03-15 Add support for dataset download from huggingface

@@ -1,0 +1,5 @@
+
+$ cd /kaggle/tmp/LIBERO && sed -i 's/^from multiprocessing.context import Process$/from multiprocessing import get_context as _get_context; Process = _get_context("spawn").Process  # [kaggle patch]/' libero/libero/envs/venv.py && grep -n 'kaggle patch' libero/libero/envs/venv.py && git diff --stat
+12:from multiprocessing import get_context as _get_context; Process = _get_context("spawn").Process  # [kaggle patch]
+ libero/libero/envs/venv.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)

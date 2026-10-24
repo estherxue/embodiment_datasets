@@ -1,0 +1,513 @@
+{
+ "suite": "libero_spatial",
+ "task_id": 5,
+ "task": "pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate",
+ "language": "pick up the black bowl on the ramekin and place it on the plate",
+ "n_demos": 50,
+ "n_success": 41,
+ "success_rate": 0.82,
+ "mean_steps_to_success": 101.1219512195122,
+ "mean_demo_len": 115.92,
+ "records": [
+  {
+   "task_id": 5,
+   "demo": "demo_0",
+   "n_actions": 137,
+   "success": false,
+   "success_step": null,
+   "final_success": false,
+   "max_state_drift": 9.1982,
+   "seconds": 10.8
+  },
+  {
+   "task_id": 5,
+   "demo": "demo_1",
+   "n_actions": 131,
+   "success": true,
+   "success_step": 102,
+   "final_success": true,
+   "max_state_drift": 4.9064,
+   "seconds": 8.4
+  },
+  {
+   "task_id": 5,
+   "demo": "demo_2",
+   "n_actions": 121,
+   "success": false,
+   "success_step": null,
+   "final_success": false,
+   "max_state_drift": 12.522,
+   "seconds": 9.5
+  },
+  {
+   "task_id": 5,
+   "demo": "demo_3",
+   "n_actions": 121,
+   "success": false,
+   "success_step": null,
+   "final_success": false,
+   "max_state_drift": 4.6638,
+   "seconds": 10.0
+  },
+  {
+   "task_id": 5,
+   "demo": "demo_4",
+   "n_actions": 119,
+   "success": true,
+   "success_step": 91,
+   "final_success": true,
+   "max_state_drift": 11.4251,
+   "seconds": 8.4
+  },
+  {
+   "task_id": 5,
+   "demo": "demo_5",
+   "n_actions": 100,
+   "success": true,
+   "success_step": 87,
+   "final_success": true,
+   "max_state_drift": 9.4983,
+   "seconds": 7.8
+  },
+  {
+   "task_id": 5,
+   "demo": "demo_6",
+   "n_actions": 101,
+   "success": true,
+   "success_step": 90,
+   "final_success": true,
+   "max_state_drift": 2.9396,
+   "seconds": 7.9
+  },
+  {
+   "task_id": 5,
+   "demo": "demo_7",
+   "n_actions": 129,
+   "success": true,
+   "success_step": 113,
+   "final_success": true,
+   "max_state_drift": 3.2987,
+   "seconds": 9.3
+  },
+  {
+   "task_id": 5,
+   "demo": "demo_8",
+   "n_actions": 123,
+   "success": true,
+   "success_step": 104,
+   "final_success": true,
+   "max_state_drift": 7.0413,
+   "seconds": 9.4
+  },
+  {
+   "task_id": 5,
+   "demo": "demo_9",
+   "n_actions": 118,
+   "success": true,
+   "success_step": 93,
+   "final_success": true,
+   "max_state_drift": 6.1434,
+   "seconds": 8.7
+  },
+  {
+   "task_id": 5,
+   "demo": "demo_10",
+   "n_actions": 137,
+   "success": true,
+   "success_step": 125,
+   "final_success": true,
+   "max_state_drift": 4.7531,
+   "seconds": 9.7
+  },
+  {
+   "task_id": 5,
+   "demo": "demo_11",
+   "n_actions": 100,
+   "success": true,
+   "success_step": 91,
+   "final_success": true,
+   "max_state_drift": 5.2577,
+   "seconds": 7.9
+  },
+  {
+   "task_id": 5,
+   "demo": "demo_12",
+   "n_actions": 96,
+   "success": false,
+   "success_step": null,
+   "final_success": false,
+   "max_state_drift": 9.2237,
+   "seconds": 8.0
+  },
+  {
+   "task_id": 5,
+   "demo": "demo_13",
+   "n_actions": 128,
+   "success": true,
+   "success_step": 115,
+   "final_success": true,
+   "max_state_drift": 7.9431,
+   "seconds": 9.7
+  },
+  {
+   "task_id": 5,
+   "demo": "demo_14",
+   "n_actions": 154,
+   "success": true,
+   "success_step": 143,
+   "final_success": true,
+   "max_state_drift": 5.1802,
+   "seconds": 10.9
+  },
+  {
+   "task_id": 5,
+   "demo": "demo_15",
+   "n_actions": 102,
+   "success": true,
+   "success_step": 89,
+   "final_success": true,
+   "max_state_drift": 5.9112,
+   "seconds": 7.7
+  },
+  {
+   "task_id": 5,
+   "demo": "demo_16",
+   "n_actions": 116,
+   "success": true,
+   "success_step": 105,
+   "final_success": true,
+   "max_state_drift": 9.5568,
+   "seconds": 8.9
+  },
+  {
+   "task_id": 5,
+   "demo": "demo_17",
+   "n_actions": 120,
+   "success": true,
+   "success_step": 90,
+   "final_success": true,
+   "max_state_drift": 4.9151,
+   "seconds": 8.1
+  },
+  {
+   "task_id": 5,
+   "demo": "demo_18",
+   "n_actions": 114,
+   "success": false,
+   "success_step": null,
+   "final_success": false,
+   "max_state_drift": 12.5591,
+   "seconds": 9.4
+  },
+  {
+   "task_id": 5,
+   "demo": "demo_19",
+   "n_actions": 98,
+   "success": true,
+   "success_step": 89,
+   "final_success": true,
+   "max_state_drift": 3.1977,
+   "seconds": 7.8
+  },
+  {
+   "task_id": 5,
+   "demo": "demo_20",
+   "n_actions": 118,
+   "success": false,
+   "success_step": null,
+   "final_success": false,
+   "max_state_drift": 27.0229,
+   "seconds": 9.5
+  },
+  {
+   "task_id": 5,
+   "demo": "demo_21",
+   "n_actions": 129,
+   "success": true,
+   "success_step": 110,
+   "final_success": true,
+   "max_state_drift": 4.8896,
+   "seconds": 8.7
+  },
+  {
+   "task_id": 5,
+   "demo": "demo_22",
+   "n_actions": 107,
+   "success": true,
+   "success_step": 96,
+   "final_success": true,
+   "max_state_drift": 5.9116,
+   "seconds": 8.7
+  },
+  {
+   "task_id": 5,
+   "demo": "demo_23",
+   "n_actions": 138,
+   "success": true,
+   "success_step": 120,
+   "final_success": true,
+   "max_state_drift": 7.4195,
+   "seconds": 9.6
+  },
+  {
+   "task_id": 5,
+   "demo": "demo_24",
+   "n_actions": 98,
+   "success": false,
+   "success_step": null,
+   "final_success": false,
+   "max_state_drift": 3.492,
+   "seconds": 9.2
+  },
+  {
+   "task_id": 5,
+   "demo": "demo_25",
+   "n_actions": 91,
+   "success": true,
+   "success_step": 81,
+   "final_success": true,
+   "max_state_drift": 3.5564,
+   "seconds": 7.7
+  },
+  {
+   "task_id": 5,
+   "demo": "demo_26",
+   "n_actions": 98,
+   "success": true,
+   "success_step": 86,
+   "final_success": true,
+   "max_state_drift": 4.2526,
+   "seconds": 8.2
+  },
+  {
+   "task_id": 5,
+   "demo": "demo_27",
+   "n_actions": 147,
+   "success": true,
+   "success_step": 126,
+   "final_success": true,
+   "max_state_drift": 6.4805,
+   "seconds": 9.9
+  },
+  {
+   "task_id": 5,
+   "demo": "demo_28",
+   "n_actions": 106,
+   "success": false,
+   "success_step": null,
+   "final_success": false,
+   "max_state_drift": 6.2667,
+   "seconds": 9.1
+  },
+  {
+   "task_id": 5,
+   "demo": "demo_29",
+   "n_actions": 116,
+   "success": true,
+   "success_step": 102,
+   "final_success": true,
+   "max_state_drift": 8.2277,
+   "seconds": 8.6
+  },
+  {
+   "task_id": 5,
+   "demo": "demo_30",
+   "n_actions": 119,
+   "success": true,
+   "success_step": 101,
+   "final_success": true,
+   "max_state_drift": 6.601,
+   "seconds": 8.3
+  },
+  {
+   "task_id": 5,
+   "demo": "demo_31",
+   "n_actions": 118,
+   "success": true,
+   "success_step": 107,
+   "final_success": true,
+   "max_state_drift": 4.5934,
+   "seconds": 8.5
+  },
+  {
+   "task_id": 5,
+   "demo": "demo_32",
+   "n_actions": 111,
+   "success": true,
+   "success_step": 99,
+   "final_success": true,
+   "max_state_drift": 3.6338,
+   "seconds": 8.2
+  },
+  {
+   "task_id": 5,
+   "demo": "demo_33",
+   "n_actions": 109,
+   "success": true,
+   "success_step": 98,
+   "final_success": true,
+   "max_state_drift": 6.6055,
+   "seconds": 8.3
+  },
+  {
+   "task_id": 5,
+   "demo": "demo_34",
+   "n_actions": 111,
+   "success": true,
+   "success_step": 92,
+   "final_success": true,
+   "max_state_drift": 2.8013,
+   "seconds": 7.6
+  },
+  {
+   "task_id": 5,
+   "demo": "demo_35",
+   "n_actions": 128,
+   "success": true,
+   "success_step": 114,
+   "final_success": true,
+   "max_state_drift": 6.5452,
+   "seconds": 9.3
+  },
+  {
+   "task_id": 5,
+   "demo": "demo_36",
+   "n_actions": 110,
+   "success": true,
+   "success_step": 89,
+   "final_success": true,
+   "max_state_drift": 7.764,
+   "seconds": 7.6
+  },
+  {
+   "task_id": 5,
+   "demo": "demo_37",
+   "n_actions": 102,
+   "success": true,
+   "success_step": 93,
+   "final_success": true,
+   "max_state_drift": 5.0361,
+   "seconds": 8.0
+  },
+  {
+   "task_id": 5,
+   "demo": "demo_38",
+   "n_actions": 98,
+   "success": true,
+   "success_step": 86,
+   "final_success": true,
+   "max_state_drift": 5.2367,
+   "seconds": 8.3
+  },
+  {
+   "task_id": 5,
+   "demo": "demo_39",
+   "n_actions": 86,
+   "success": true,
+   "success_step": 76,
+   "final_success": true,
+   "max_state_drift": 3.6503,
+   "seconds": 7.3
+  },
+  {
+   "task_id": 5,
+   "demo": "demo_40",
+   "n_actions": 117,
+   "success": true,
+   "success_step": 94,
+   "final_success": true,
+   "max_state_drift": 4.959,
+   "seconds": 8.1
+  },
+  {
+   "task_id": 5,
+   "demo": "demo_41",
+   "n_actions": 128,
+   "success": true,
+   "success_step": 116,
+   "final_success": true,
+   "max_state_drift": 3.884,
+   "seconds": 9.3
+  },
+  {
+   "task_id": 5,
+   "demo": "demo_42",
+   "n_actions": 144,
+   "success": true,
+   "success_step": 132,
+   "final_success": true,
+   "max_state_drift": 8.8849,
+   "seconds": 10.3
+  },
+  {
+   "task_id": 5,
+   "demo": "demo_43",
+   "n_actions": 113,
+   "success": true,
+   "success_step": 92,
+   "final_success": true,
+   "max_state_drift": 3.5431,
+   "seconds": 8.0
+  },
+  {
+   "task_id": 5,
+   "demo": "demo_44",
+   "n_actions": 142,
+   "success": true,
+   "success_step": 125,
+   "final_success": true,
+   "max_state_drift": 5.4436,
+   "seconds": 9.7
+  },
+  {
+   "task_id": 5,
+   "demo": "demo_45",
+   "n_actions": 112,
+   "success": true,
+   "success_step": 101,
+   "final_success": true,
+   "max_state_drift": 3.4259,
+   "seconds": 8.4
+  },
+  {
+   "task_id": 5,
+   "demo": "demo_46",
+   "n_actions": 108,
+   "success": true,
+   "success_step": 97,
+   "final_success": true,
+   "max_state_drift": 2.633,
+   "seconds": 8.1
+  },
+  {
+   "task_id": 5,
+   "demo": "demo_47",
+   "n_actions": 110,
+   "success": true,
+   "success_step": 84,
+   "final_success": true,
+   "max_state_drift": 4.1824,
+   "seconds": 7.6
+  },
+  {
+   "task_id": 5,
+   "demo": "demo_48",
+   "n_actions": 108,
+   "success": false,
+   "success_step": null,
+   "final_success": false,
+   "max_state_drift": 6.3656,
+   "seconds": 9.3
+  },
+  {
+   "task_id": 5,
+   "demo": "demo_49",
+   "n_actions": 109,
+   "success": true,
+   "success_step": 102,
+   "final_success": true,
+   "max_state_drift": 4.1999,
+   "seconds": 8.4
+  }
+ ]
+}

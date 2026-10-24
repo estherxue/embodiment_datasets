@@ -1,0 +1,81 @@
+[14:20:58 +   0.0m] start; WORK=/kaggle/working TMP=/kaggle/tmp
+[14:20:58 +   0.0m] [00_sysinfo] $ nvidia-smi || true; python -V; nproc; free -g; df -h / /kaggle/working /tmp 2>/dev/null; head -2 /etc/os-release; echo HOME=$HOME; echo PYTHONPATH=$PYTHONPATH; ldconfig -p | grep -i -E 'libEGL|OSMesa' || true
+[14:20:58 +   0.0m] [00_sysinfo] rc=0 (1s)
+[14:20:58 +   0.0m] [01_apt] $ export DEBIAN_FRONTEND=noninteractive; (apt-get update -qq || true) && apt-get install -y -qq --no-install-recommends libegl1 libgl1 libglvnd0 libosmesa6 libosmesa6-dev > /dev/null; ldconfig -p | grep -i -E 'libEGL|OSMesa' || true
+[14:21:15 +   0.3m] [01_apt] rc=0 (17s)
+[14:21:15 +   0.3m] [02_uv] $ /usr/bin/python3 -m pip install -q uv && uv --version
+[14:21:20 +   0.4m] [02_uv] rc=0 (4s)
+[14:21:20 +   0.4m] [02_venv] $ uv venv --python 3.10 /kaggle/tmp/venv && /kaggle/tmp/venv/bin/python -V
+[14:21:21 +   0.4m] [02_venv] rc=0 (2s)
+[14:21:21 +   0.4m] [03_clone] $ rm -rf /kaggle/tmp/LIBERO; git clone -q https://github.com/Lifelong-Robot-Learning/LIBERO /kaggle/tmp/LIBERO && cd /kaggle/tmp/LIBERO && git checkout -q 8f1084e && git log -1 --format='%H %cd %s' --date=short
+[14:21:35 +   0.6m] [03_clone] rc=0 (13s)
+[14:21:35 +   0.6m] [04_torch] $ uv pip install --python /kaggle/tmp/venv/bin/python -q torch==2.5.1 torchvision==0.20.1 --index-url https://download.pytorch.org/whl/cpu
+[14:21:39 +   0.7m] [04_torch] rc=0 (4s)
+[14:21:39 +   0.7m] [04_reqs] $ cd /kaggle/tmp/LIBERO && uv pip install --python /kaggle/tmp/venv/bin/python -q -r requirements.txt huggingface_hub h5py mujoco==2.3.2
+[14:22:01 +   1.1m] [04_reqs] rc=0 (22s)
+[14:22:01 +   1.1m] [04_libero] $ cd /kaggle/tmp/LIBERO && uv pip install --python /kaggle/tmp/venv/bin/python -q -e . && uv pip freeze --python /kaggle/tmp/venv/bin/python > /kaggle/working/requirements-kaggle-freeze.txt && grep -i -E '^(torch|torchvision|numpy|robosuite|mujoco|bddl|robomimic|transformers|hydra-core|gym|h5py|huggingface-hub|tokenizers)=' /kaggle/working/requirements-kaggle-freeze.txt
+[14:22:02 +   1.1m] [04_libero] rc=0 (1s)
+[14:22:02 +   1.1m] wrote /root/.libero/config.yaml: {'benchmark_root': '/kaggle/tmp/LIBERO/libero/libero', 'bddl_files': '/kaggle/tmp/LIBERO/libero/libero/bddl_files', 'init_states': '/kaggle/tmp/LIBERO/libero/libero/init_files', 'assets': '/kaggle/tmp/LIBERO/libero/libero/assets', 'datasets': '/kaggle/tmp/datasets'}
+[14:22:02 +   1.1m] [05_import] $ cd /kaggle/tmp/LIBERO && /kaggle/tmp/venv/bin/python -c "import torch, numpy, robosuite, mujoco, h5py, transformers; from libero.libero import get_libero_path, benchmark; print('torch', torch.__version__, 'numpy', numpy.__version__, 'robosuite', robosuite.__version__, 'mujoco', mujoco.__version__); print('datasets path', get_libero_path('datasets')); print('benchmarks', list(benchmark.get_benchmark_dict().keys()))"
+[14:22:07 +   1.2m] [05_import] rc=0 (6s)
+[14:22:07 +   1.2m] [06_smoke_egl] $ cd /kaggle/tmp/LIBERO && /kaggle/tmp/venv/bin/python local_eval/smoke_render.py
+[14:22:37 +   1.7m] [06_smoke_egl] rc=0 (29s)
+[14:22:37 +   1.7m] render backend = egl
+[14:22:37 +   1.7m] [07_dataset] $ cd /kaggle/tmp/LIBERO && /kaggle/tmp/venv/bin/python benchmark_scripts/download_libero_datasets.py --datasets libero_spatial --use-huggingface --download-dir /kaggle/tmp/datasets < /dev/null
+[14:23:01 +   2.1m] [07_dataset] rc=0 (25s)
+[14:23:01 +   2.1m] dataset: 10 hdf5 files, 5.81 GiB
+[14:23:01 +   2.1m] [08_bert] $ cd /kaggle/tmp/LIBERO && /kaggle/tmp/venv/bin/python local_eval/fetch_bert.py
+[14:23:09 +   2.2m] [08_bert] rc=0 (8s)
+[14:23:09 +   2.2m] [09_replay_A] $ cd /kaggle/tmp/LIBERO && /kaggle/tmp/venv/bin/python local_eval/replay_demos.py --suite libero_spatial --tasks 0 1 2 3 4 --n-demos 50 --out /kaggle/working/replay
+[14:23:09 +   2.2m] [09_replay_B] $ cd /kaggle/tmp/LIBERO && /kaggle/tmp/venv/bin/python local_eval/replay_demos.py --suite libero_spatial --tasks 5 6 7 8 9 --n-demos 50 --out /kaggle/working/replay
+[18:07:00 + 226.0m] [09_replay_A] rc=0 (13431s)
+[18:23:10 + 242.2m] [09_replay_B] TIMEOUT -> killing
+[18:23:10 + 242.2m] [09_replay_B] rc=-9 (14401s)
+[18:23:10 + 242.2m] replay task 0: 48/50 = 96%  drift mean 4.864  38.8s/demo
+[18:23:10 + 242.2m] replay task 1: 45/50 = 90%  drift mean 5.486  56.4s/demo
+[18:23:10 + 242.2m] replay task 2: 48/50 = 96%  drift mean 3.463  54.3s/demo
+[18:23:10 + 242.2m] replay task 3: 45/50 = 90%  drift mean 4.544  47.4s/demo
+[18:23:10 + 242.2m] replay task 4: 41/50 = 82%  drift mean 4.345  71.1s/demo
+[18:23:10 + 242.2m] replay task 5: 41/50 = 82%  drift mean 6.353  48.3s/demo
+[18:23:10 + 242.2m] replay task 6: 48/50 = 96%  drift mean 5.793  54.9s/demo
+[18:23:10 + 242.2m] replay task 7: 42/50 = 84%  drift mean 5.584  70.7s/demo
+[18:23:10 + 242.2m] replay task 8: 46/50 = 92%  drift mean 4.774  55.5s/demo
+[18:23:10 + 242.2m] replay overall: 404/450 = 89.8%
+[18:23:10 + 242.2m] [10_random_ckpt] $ cd /kaggle/tmp/LIBERO && /kaggle/tmp/venv/bin/python local_eval/make_random_ckpt.py && find experiments -name '*.pth' | xargs ls -la
+[18:23:22 + 242.4m] [10_random_ckpt] rc=0 (13s)
+[18:23:22 + 242.4m] [10_eval_task0_env20] $ cd /kaggle/tmp/LIBERO && /kaggle/tmp/venv/bin/python local_eval/evaluate_cpu.py --benchmark libero_spatial --task_id 0 --algo multitask --policy bc_transformer_policy --seed 10000 --ep 0 --env-num 20; free -g | head -2
+[18:23:25 + 242.5m] [10_eval_task0_env20] rc=0 (3s)
+[18:23:25 + 242.5m] task 0: eval with 20 envs failed (rc=0) -> retry with 10 envs
+[18:23:25 + 242.5m] [10_eval_task0_env10] $ cd /kaggle/tmp/LIBERO && /kaggle/tmp/venv/bin/python local_eval/evaluate_cpu.py --benchmark libero_spatial --task_id 0 --algo multitask --policy bc_transformer_policy --seed 10000 --ep 0 --env-num 10; free -g | head -2
+[18:23:28 + 242.5m] [10_eval_task0_env10] rc=0 (3s)
+[18:23:28 + 242.5m] protocol task 0: rc=0 summary=None
+[18:23:28 + 242.5m] [10_eval_task1_env10] $ cd /kaggle/tmp/LIBERO && /kaggle/tmp/venv/bin/python local_eval/evaluate_cpu.py --benchmark libero_spatial --task_id 1 --algo multitask --policy bc_transformer_policy --seed 10000 --ep 0 --env-num 10; free -g | head -2
+[18:23:31 + 242.6m] [10_eval_task1_env10] rc=0 (3s)
+[18:23:31 + 242.6m] protocol task 1: rc=0 summary=None
+[18:23:31 + 242.6m] [10_eval_task2_env10] $ cd /kaggle/tmp/LIBERO && /kaggle/tmp/venv/bin/python local_eval/evaluate_cpu.py --benchmark libero_spatial --task_id 2 --algo multitask --policy bc_transformer_policy --seed 10000 --ep 0 --env-num 10; free -g | head -2
+[18:23:33 + 242.6m] [10_eval_task2_env10] rc=0 (3s)
+[18:23:33 + 242.6m] protocol task 2: rc=0 summary=None
+[18:23:33 + 242.6m] [10_eval_task3_env10] $ cd /kaggle/tmp/LIBERO && /kaggle/tmp/venv/bin/python local_eval/evaluate_cpu.py --benchmark libero_spatial --task_id 3 --algo multitask --policy bc_transformer_policy --seed 10000 --ep 0 --env-num 10; free -g | head -2
+[18:23:36 + 242.6m] [10_eval_task3_env10] rc=0 (3s)
+[18:23:36 + 242.6m] protocol task 3: rc=0 summary=None
+[18:23:36 + 242.6m] [10_eval_task4_env10] $ cd /kaggle/tmp/LIBERO && /kaggle/tmp/venv/bin/python local_eval/evaluate_cpu.py --benchmark libero_spatial --task_id 4 --algo multitask --policy bc_transformer_policy --seed 10000 --ep 0 --env-num 10; free -g | head -2
+[18:23:39 + 242.7m] [10_eval_task4_env10] rc=0 (3s)
+[18:23:39 + 242.7m] protocol task 4: rc=0 summary=None
+[18:23:39 + 242.7m] [10_eval_task5_env10] $ cd /kaggle/tmp/LIBERO && /kaggle/tmp/venv/bin/python local_eval/evaluate_cpu.py --benchmark libero_spatial --task_id 5 --algo multitask --policy bc_transformer_policy --seed 10000 --ep 0 --env-num 10; free -g | head -2
+[18:23:41 + 242.7m] [10_eval_task5_env10] rc=0 (3s)
+[18:23:41 + 242.7m] protocol task 5: rc=0 summary=None
+[18:23:41 + 242.7m] [10_eval_task6_env10] $ cd /kaggle/tmp/LIBERO && /kaggle/tmp/venv/bin/python local_eval/evaluate_cpu.py --benchmark libero_spatial --task_id 6 --algo multitask --policy bc_transformer_policy --seed 10000 --ep 0 --env-num 10; free -g | head -2
+[18:23:44 + 242.8m] [10_eval_task6_env10] rc=0 (3s)
+[18:23:44 + 242.8m] protocol task 6: rc=0 summary=None
+[18:23:44 + 242.8m] [10_eval_task7_env10] $ cd /kaggle/tmp/LIBERO && /kaggle/tmp/venv/bin/python local_eval/evaluate_cpu.py --benchmark libero_spatial --task_id 7 --algo multitask --policy bc_transformer_policy --seed 10000 --ep 0 --env-num 10; free -g | head -2
+[18:23:47 + 242.8m] [10_eval_task7_env10] rc=0 (3s)
+[18:23:47 + 242.8m] protocol task 7: rc=0 summary=None
+[18:23:47 + 242.8m] [10_eval_task8_env10] $ cd /kaggle/tmp/LIBERO && /kaggle/tmp/venv/bin/python local_eval/evaluate_cpu.py --benchmark libero_spatial --task_id 8 --algo multitask --policy bc_transformer_policy --seed 10000 --ep 0 --env-num 10; free -g | head -2
+[18:23:50 + 242.9m] [10_eval_task8_env10] rc=0 (3s)
+[18:23:50 + 242.9m] protocol task 8: rc=0 summary=None
+[18:23:50 + 242.9m] [10_eval_task9_env10] $ cd /kaggle/tmp/LIBERO && /kaggle/tmp/venv/bin/python local_eval/evaluate_cpu.py --benchmark libero_spatial --task_id 9 --algo multitask --policy bc_transformer_policy --seed 10000 --ep 0 --env-num 10; free -g | head -2
+[18:23:52 + 242.9m] [10_eval_task9_env10] rc=0 (3s)
+[18:23:52 + 242.9m] protocol task 9: rc=0 summary=None
+[18:23:52 + 242.9m] [11_disk] $ du -sh /kaggle/tmp/* /kaggle/working/* 2>/dev/null | sort -h | tail -15; free -g | head -2
+[18:23:53 + 242.9m] [11_disk] rc=0 (0s)
+[18:23:53 + 242.9m] ALL_DONE

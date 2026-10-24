@@ -1,0 +1,433 @@
+[{"stream_name":"stderr","time":0.922601,"data":"/kaggle/src/script.py:42: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).\n"}
+,{"stream_name":"stderr","time":0.922638395,"data":"  summary = {\"started_utc\": datetime.datetime.utcnow().isoformat(), \"stages\": {}, \"env\": {}, \"results\": {}}\n"}
+,{"stream_name":"stdout","time":0.924669617,"data":"[14:20:58 +   0.0m] start; WORK=/kaggle/working TMP=/kaggle/tmp\n"}
+,{"stream_name":"stdout","time":0.924828483,"data":"[14:20:58 +   0.0m] [00_sysinfo] $ nvidia-smi || true; python -V; nproc; free -g; df -h / /kaggle/working /tmp 2\u003e/dev/null; head -2 /etc/os-release; echo HOME=$HOME; echo PYTHONPATH=$PYTHONPATH; ldconfig -p | grep -i -E 'libEGL|OSMesa' || true\n"}
+,{"stream_name":"stdout","time":1.492223273,"data":"    | Mem:              31           1          26           0           4          30\n"}
+,{"stream_name":"stdout","time":1.492248113,"data":"    | Swap:              0           0           0\n"}
+,{"stream_name":"stdout","time":1.492253048,"data":"    | Filesystem      Size  Used Avail Use% Mounted on\n"}
+,{"stream_name":"stdout","time":1.4922575980000001,"data":"    | overlay         8.0T  7.0T  1.1T  88% /\n"}
+,{"stream_name":"stdout","time":1.492261623,"data":"    | /dev/loop2       20G  196K   20G   1% /kaggle/working\n"}
+,{"stream_name":"stdout","time":1.492265393,"data":"    | overlay         8.0T  7.0T  1.1T  88% /\n"}
+,{"stream_name":"stdout","time":1.492269221,"data":"    | PRETTY_NAME=\"Ubuntu 24.04.1 LTS\"\n"}
+,{"stream_name":"stdout","time":1.492273581,"data":"    | NAME=\"Ubuntu\"\n"}
+,{"stream_name":"stdout","time":1.492277678,"data":"    | HOME=/root\n"}
+,{"stream_name":"stdout","time":1.4922813160000001,"data":"    | PYTHONPATH=/kaggle/tmp/LIBERO\n"}
+,{"stream_name":"stdout","time":1.492285013,"data":"    | \tlibEGL_mesa.so.0 (libc6,x86-64) =\u003e /lib/x86_64-linux-gnu/libEGL_mesa.so.0\n"}
+,{"stream_name":"stdout","time":1.492289358,"data":"    | \tlibEGL.so.1 (libc6,x86-64) =\u003e /lib/x86_64-linux-gnu/libEGL.so.1\n"}
+,{"stream_name":"stdout","time":1.492385329,"data":"[14:20:58 +   0.0m] [00_sysinfo] rc=0 (1s)\n"}
+,{"stream_name":"stdout","time":1.532014194,"data":"[14:20:58 +   0.0m] [01_apt] $ export DEBIAN_FRONTEND=noninteractive; (apt-get update -qq || true) \u0026\u0026 apt-get install -y -qq --no-install-recommends libegl1 libgl1 libglvnd0 libosmesa6 libosmesa6-dev \u003e /dev/null; ldconfig -p | grep -i -E 'libEGL|OSMesa' || true\n"}
+,{"stream_name":"stdout","time":18.788635155,"data":"    | \n"}
+,{"stream_name":"stdout","time":18.788666273,"data":"    | $ export DEBIAN_FRONTEND=noninteractive; (apt-get update -qq || true) \u0026\u0026 apt-get install -y -qq --no-install-recommends libegl1 libgl1 libglvnd0 libosmesa6 libosmesa6-dev \u003e /dev/null; ldconfig -p | grep -i -E 'libEGL|OSMesa' || true\n"}
+,{"stream_name":"stdout","time":18.788672486,"data":"    | W: Skipping acquire of configured file 'main/source/Sources' as repository 'https://r2u.stat.illinois.edu/ubuntu noble InRelease' does not seem to provide it (sources.list entry misspelt?)\n"}
+,{"stream_name":"stdout","time":18.78867645,"data":"    | W: https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2404/x86_64/InRelease: Key is stored in legacy trusted.gpg keyring (/etc/apt/trusted.gpg), see the DEPRECATION section in apt-key(8) for details.\n"}
+,{"stream_name":"stdout","time":18.788680517,"data":"    | \tlibOSMesa.so.8 (libc6,x86-64) =\u003e /lib/x86_64-linux-gnu/libOSMesa.so.8\n"}
+,{"stream_name":"stdout","time":18.78868418,"data":"    | \tlibOSMesa.so (libc6,x86-64) =\u003e /lib/x86_64-linux-gnu/libOSMesa.so\n"}
+,{"stream_name":"stdout","time":18.78871745,"data":"    | \tlibEGL_nvidia.so.0 (libc6,x86-64) =\u003e /usr/local/nvidia/lib64/libEGL_nvidia.so.0\n"}
+,{"stream_name":"stdout","time":18.788720502,"data":"    | \tlibEGL_mesa.so.0 (libc6,x86-64) =\u003e /lib/x86_64-linux-gnu/libEGL_mesa.so.0\n"}
+,{"stream_name":"stdout","time":18.788723336,"data":"    | \tlibEGL.so.1 (libc6,x86-64) =\u003e /usr/local/nvidia/lib64/libEGL.so.1\n"}
+,{"stream_name":"stdout","time":18.788737767,"data":"    | \tlibEGL.so.1 (libc6,x86-64) =\u003e /lib/x86_64-linux-gnu/libEGL.so.1\n"}
+,{"stream_name":"stdout","time":18.78874526,"data":"    | \tlibEGL.so (libc6,x86-64) =\u003e /usr/local/nvidia/lib64/libEGL.so\n"}
+,{"stream_name":"stdout","time":18.788761388,"data":"[14:21:15 +   0.3m] [01_apt] rc=0 (17s)\n"}
+,{"stream_name":"stdout","time":18.789177882,"data":"[14:21:15 +   0.3m] [02_uv] $ /usr/bin/python3 -m pip install -q uv \u0026\u0026 uv --version\n"}
+,{"stream_name":"stdout","time":23.063271584,"data":"    | \n"}
+,{"stream_name":"stdout","time":23.06330207,"data":"    | $ /usr/bin/python3 -m pip install -q uv \u0026\u0026 uv --version\n"}
+,{"stream_name":"stdout","time":23.063307294,"data":"    | uv 0.13.5 (x86_64-unknown-linux-gnu)\n"}
+,{"stream_name":"stdout","time":23.063310761,"data":"[14:21:20 +   0.4m] [02_uv] rc=0 (4s)\n"}
+,{"stream_name":"stdout","time":23.06365548,"data":"[14:21:20 +   0.4m] [02_venv] $ uv venv --python 3.10 /kaggle/tmp/venv \u0026\u0026 /kaggle/tmp/venv/bin/python -V\n"}
+,{"stream_name":"stdout","time":24.832550036,"data":"    | \n"}
+,{"stream_name":"stdout","time":24.832590366,"data":"    | $ uv venv --python 3.10 /kaggle/tmp/venv \u0026\u0026 /kaggle/tmp/venv/bin/python -V\n"}
+,{"stream_name":"stdout","time":24.832598212,"data":"    | warning: The `--system` flag has no effect, `uv venv` always ignores virtual environments when finding a Python interpreter; did you mean `--no-managed-python`?\n"}
+,{"stream_name":"stdout","time":24.83260548,"data":"    | Downloading cpython-3.10.22-linux-x86_64-gnu (download) (28.0MiB)\n"}
+,{"stream_name":"stdout","time":24.8326082,"data":"    |  Downloaded cpython-3.10.22-linux-x86_64-gnu (download)\n"}
+,{"stream_name":"stdout","time":24.832610693,"data":"    | Using CPython 3.10.22\n"}
+,{"stream_name":"stdout","time":24.832613113,"data":"    | Creating virtual environment at: /kaggle/tmp/venv\n"}
+,{"stream_name":"stdout","time":24.83261547,"data":"    | Activate with: source /kaggle/tmp/venv/bin/activate\n"}
+,{"stream_name":"stdout","time":24.832617877,"data":"    | Python 3.10.22\n"}
+,{"stream_name":"stdout","time":24.832620172,"data":"[14:21:21 +   0.4m] [02_venv] rc=0 (2s)\n"}
+,{"stream_name":"stdout","time":24.832907992,"data":"[14:21:21 +   0.4m] [03_clone] $ rm -rf /kaggle/tmp/LIBERO; git clone -q https://github.com/Lifelong-Robot-Learning/LIBERO /kaggle/tmp/LIBERO \u0026\u0026 cd /kaggle/tmp/LIBERO \u0026\u0026 git checkout -q 8f1084e \u0026\u0026 git log -1 --format='%H %cd %s' --date=short\n"}
+,{"stream_name":"stdout","time":38.03545978,"data":"    | \n"}
+,{"stream_name":"stdout","time":38.035499632,"data":"    | $ rm -rf /kaggle/tmp/LIBERO; git clone -q https://github.com/Lifelong-Robot-Learning/LIBERO /kaggle/tmp/LIBERO \u0026\u0026 cd /kaggle/tmp/LIBERO \u0026\u0026 git checkout -q 8f1084e \u0026\u0026 git log -1 --format='%H %cd %s' --date=short\n"}
+,{"stream_name":"stdout","time":38.03550853,"data":"    | 8f1084e3132a39270c3a13ebe37270a43ece2a01 2025-03-15 Add support for dataset download from huggingface\n"}
+,{"stream_name":"stdout","time":38.035513244,"data":"[14:21:35 +   0.6m] [03_clone] rc=0 (13s)\n"}
+,{"stream_name":"stdout","time":38.0363769,"data":"[14:21:35 +   0.6m] [04_torch] $ uv pip install --python /kaggle/tmp/venv/bin/python -q torch==2.5.1 torchvision==0.20.1 --index-url https://download.pytorch.org/whl/cpu\n"}
+,{"stream_name":"stdout","time":42.21293356,"data":"    | \n"}
+,{"stream_name":"stdout","time":42.212975866,"data":"    | $ uv pip install --python /kaggle/tmp/venv/bin/python -q torch==2.5.1 torchvision==0.20.1 --index-url https://download.pytorch.org/whl/cpu\n"}
+,{"stream_name":"stdout","time":42.212980543,"data":"[14:21:39 +   0.7m] [04_torch] rc=0 (4s)\n"}
+,{"stream_name":"stdout","time":42.213280591,"data":"[14:21:39 +   0.7m] [04_reqs] $ cd /kaggle/tmp/LIBERO \u0026\u0026 uv pip install --python /kaggle/tmp/venv/bin/python -q -r requirements.txt huggingface_hub h5py mujoco==2.3.2\n"}
+,{"stream_name":"stdout","time":64.094141393,"data":"    | \n"}
+,{"stream_name":"stdout","time":64.094167129,"data":"    | $ cd /kaggle/tmp/LIBERO \u0026\u0026 uv pip install --python /kaggle/tmp/venv/bin/python -q -r requirements.txt huggingface_hub h5py mujoco==2.3.2\n"}
+,{"stream_name":"stdout","time":64.094185918,"data":"[14:22:01 +   1.1m] [04_reqs] rc=0 (22s)\n"}
+,{"stream_name":"stdout","time":64.094405929,"data":"[14:22:01 +   1.1m] [04_libero] $ cd /kaggle/tmp/LIBERO \u0026\u0026 uv pip install --python /kaggle/tmp/venv/bin/python -q -e . \u0026\u0026 uv pip freeze --python /kaggle/tmp/venv/bin/python \u003e /kaggle/working/requirements-kaggle-freeze.txt \u0026\u0026 grep -i -E '^(torch|torchvision|numpy|robosuite|mujoco|bddl|robomimic|transformers|hydra-core|gym|h5py|huggingface-hub|tokenizers)=' /kaggle/working/requirements-kaggle-freeze.txt\n"}
+,{"stream_name":"stdout","time":65.06143552,"data":"    | gym==0.25.2\n"}
+,{"stream_name":"stdout","time":65.061459395,"data":"    | h5py==3.16.0\n"}
+,{"stream_name":"stdout","time":65.061463648,"data":"    | huggingface-hub==0.36.2\n"}
+,{"stream_name":"stdout","time":65.061467297,"data":"    | hydra-core==1.2.0\n"}
+,{"stream_name":"stdout","time":65.061470842,"data":"    | mujoco==2.3.2\n"}
+,{"stream_name":"stdout","time":65.061474298,"data":"    | numpy==1.22.4\n"}
+,{"stream_name":"stdout","time":65.061477793,"data":"    | robomimic==0.2.0\n"}
+,{"stream_name":"stdout","time":65.061481537,"data":"    | robosuite==1.4.0\n"}
+,{"stream_name":"stdout","time":65.061484951,"data":"    | tokenizers==0.12.1\n"}
+,{"stream_name":"stdout","time":65.061488298,"data":"    | torch==2.5.1+cpu\n"}
+,{"stream_name":"stdout","time":65.061492048,"data":"    | torchvision==0.20.1+cpu\n"}
+,{"stream_name":"stdout","time":65.061495395,"data":"    | transformers==4.21.1\n"}
+,{"stream_name":"stdout","time":65.061498893,"data":"[14:22:02 +   1.1m] [04_libero] rc=0 (1s)\n"}
+,{"stream_name":"stdout","time":65.062431748,"data":"[14:22:02 +   1.1m] wrote /root/.libero/config.yaml: {'benchmark_root': '/kaggle/tmp/LIBERO/libero/libero', 'bddl_files': '/kaggle/tmp/LIBERO/libero/libero/bddl_files', 'init_states': '/kaggle/tmp/LIBERO/libero/libero/init_files', 'assets': '/kaggle/tmp/LIBERO/libero/libero/assets', 'datasets': '/kaggle/tmp/datasets'}\n"}
+,{"stream_name":"stdout","time":65.062543835,"data":"[14:22:02 +   1.1m] [05_import] $ cd /kaggle/tmp/LIBERO \u0026\u0026 /kaggle/tmp/venv/bin/python -c \"import torch, numpy, robosuite, mujoco, h5py, transformers; from libero.libero import get_libero_path, benchmark; print('torch', torch.__version__, 'numpy', numpy.__version__, 'robosuite', robosuite.__version__, 'mujoco', mujoco.__version__); print('datasets path', get_libero_path('datasets')); print('benchmarks', list(benchmark.get_benchmark_dict().keys()))\"\n"}
+,{"stream_name":"stdout","time":70.791983337,"data":"    | \n"}
+,{"stream_name":"stdout","time":70.792025484,"data":"    | $ cd /kaggle/tmp/LIBERO \u0026\u0026 /kaggle/tmp/venv/bin/python -c \"import torch, numpy, robosuite, mujoco, h5py, transformers; from libero.libero import get_libero_path, benchmark; print('torch', torch.__version__, 'numpy', numpy.__version__, 'robosuite', robosuite.__version__, 'mujoco', mujoco.__version__)\n"}
+,{"stream_name":"stdout","time":70.792059729,"data":"    | [robosuite WARNING] No private macro file found! (__init__.py:7)\n"}
+,{"stream_name":"stdout","time":70.792064684,"data":"    | [robosuite WARNING] It is recommended to use a private macro file (__init__.py:8)\n"}
+,{"stream_name":"stdout","time":70.792068746,"data":"    | [robosuite WARNING] To setup, run: python /kaggle/tmp/venv/lib/python3.10/site-packages/robosuite/scripts/setup_macros.py (__init__.py:9)\n"}
+,{"stream_name":"stdout","time":70.792072913,"data":"    | torch 2.5.1+cpu numpy 1.22.4 robosuite 1.4.0 mujoco 2.3.2\n"}
+,{"stream_name":"stdout","time":70.792076673,"data":"    | datasets path /kaggle/tmp/datasets\n"}
+,{"stream_name":"stdout","time":70.792080393,"data":"    | benchmarks ['libero_spatial', 'libero_object', 'libero_goal', 'libero_90', 'libero_10', 'libero_100']\n"}
+,{"stream_name":"stdout","time":70.792084378,"data":"[14:22:07 +   1.2m] [05_import] rc=0 (6s)\n"}
+,{"stream_name":"stdout","time":70.792696384,"data":"[14:22:07 +   1.2m] [06_smoke_egl] $ cd /kaggle/tmp/LIBERO \u0026\u0026 /kaggle/tmp/venv/bin/python local_eval/smoke_render.py\n"}
+,{"stream_name":"stdout","time":99.947077293,"data":"    | [robosuite WARNING] No private macro file found! (__init__.py:7)\n"}
+,{"stream_name":"stdout","time":99.947104505,"data":"    | [robosuite WARNING] It is recommended to use a private macro file (__init__.py:8)\n"}
+,{"stream_name":"stdout","time":99.947108031,"data":"    | [robosuite WARNING] To setup, run: python /kaggle/tmp/venv/lib/python3.10/site-packages/robosuite/scripts/setup_macros.py (__init__.py:9)\n"}
+,{"stream_name":"stdout","time":99.947111079,"data":"    | Gym has been unmaintained since 2022 and does not support NumPy 2.0 amongst other critical functionality.\n"}
+,{"stream_name":"stdout","time":99.94711351,"data":"    | Please upgrade to Gymnasium, the maintained drop-in replacement of Gym, or contact the authors of your software and request that they upgrade.\n"}
+,{"stream_name":"stdout","time":99.947115938,"data":"    | See the migration guide at https://gymnasium.farama.org/introduction/migration_guide/ for additional information.\n"}
+,{"stream_name":"stdout","time":99.947119238,"data":"    | [info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]\n"}
+,{"stream_name":"stdout","time":99.947143419,"data":"    | obs keys: ['agentview_image', 'akita_black_bowl_1_pos', 'akita_black_bowl_1_quat', 'akita_black_bowl_1_to_robot0_eef_pos', 'akita_black_bowl_1_to_robot0_eef_quat', 'akita_black_bowl_2_pos', 'akita_black_bowl_2_quat', 'akita_black_bowl_2_to_robot0_eef_pos', 'akita_black_bowl_2_to_robot0_eef_quat', 'c\n"}
+,{"stream_name":"stdout","time":99.947148158,"data":"    | agentview_image (128, 128, 3) uint8 std=50.23 | eye_in_hand (128, 128, 3)\n"}
+,{"stream_name":"stdout","time":99.947152359,"data":"    | robot0 state: joint_pos (7,) gripper_qpos (2,)\n"}
+,{"stream_name":"stdout","time":99.947156135,"data":"    | action dim: 7\n"}
+,{"stream_name":"stdout","time":99.947160153,"data":"    | SMOKE_OK backend=egl 26.2s\n"}
+,{"stream_name":"stdout","time":99.947164022,"data":"[14:22:37 +   1.7m] [06_smoke_egl] rc=0 (29s)\n"}
+,{"stream_name":"stdout","time":99.947634398,"data":"[14:22:37 +   1.7m] render backend = egl\n"}
+,{"stream_name":"stdout","time":99.947777097,"data":"[14:22:37 +   1.7m] [07_dataset] $ cd /kaggle/tmp/LIBERO \u0026\u0026 /kaggle/tmp/venv/bin/python benchmark_scripts/download_libero_datasets.py --datasets libero_spatial --use-huggingface --download-dir /kaggle/tmp/datasets \u003c /dev/null\n"}
+,{"stream_name":"stdout","time":124.526238871,"data":"    | Fetching 10 files:  90%|█████████ | 9/10 [00:22\u003c00:02,  2.54s/it]\n"}
+,{"stream_name":"stdout","time":124.52630713,"data":"    | Fetching 10 files: 100%|██████████| 10/10 [00:23\u003c00:00,  2.31s/it]\n"}
+,{"stream_name":"stdout","time":124.526322872,"data":"    | Downloaded 10 files for libero_spatial\n"}
+,{"stream_name":"stdout","time":124.526326989,"data":"    | \n"}
+,{"stream_name":"stdout","time":124.526330372,"data":"    | \n"}
+,{"stream_name":"stdout","time":124.526333561,"data":"    | \n"}
+,{"stream_name":"stdout","time":124.526336691,"data":"    | \n"}
+,{"stream_name":"stdout","time":124.526339897,"data":"    | [ ] Dataset libero_object not found!!!\n"}
+,{"stream_name":"stdout","time":124.526343341,"data":"    | [ ] Dataset libero_goal not found!!!\n"}
+,{"stream_name":"stdout","time":124.526346606,"data":"    | [X] Dataset libero_spatial is complete\n"}
+,{"stream_name":"stdout","time":124.526349869,"data":"    | [ ] Dataset libero_10 not found!!!\n"}
+,{"stream_name":"stdout","time":124.526353081,"data":"    | [ ] Dataset libero_90 not found!!!\n"}
+,{"stream_name":"stdout","time":124.526356367,"data":"[14:23:01 +   2.1m] [07_dataset] rc=0 (25s)\n"}
+,{"stream_name":"stdout","time":124.527666655,"data":"[14:23:01 +   2.1m] dataset: 10 hdf5 files, 5.81 GiB\n"}
+,{"stream_name":"stdout","time":124.527942598,"data":"[14:23:01 +   2.1m] [08_bert] $ cd /kaggle/tmp/LIBERO \u0026\u0026 /kaggle/tmp/venv/bin/python local_eval/fetch_bert.py\n"}
+,{"stream_name":"stdout","time":132.267202914,"data":"    | \n"}
+,{"stream_name":"stdout","time":132.267233579,"data":"    | $ cd /kaggle/tmp/LIBERO \u0026\u0026 /kaggle/tmp/venv/bin/python local_eval/fetch_bert.py\n"}
+,{"stream_name":"stdout","time":132.267240848,"data":"    | ok bert-base-cased/config.json 570\n"}
+,{"stream_name":"stdout","time":132.267246733,"data":"    | ok bert-base-cased/vocab.txt 213450\n"}
+,{"stream_name":"stdout","time":132.267252573,"data":"    | ok bert-base-cased/tokenizer_config.json 49\n"}
+,{"stream_name":"stdout","time":132.267258335,"data":"    | ok bert-base-cased/tokenizer.json 435797\n"}
+,{"stream_name":"stdout","time":132.267263673,"data":"    | ok bert-base-cased/pytorch_model.bin 435779157\n"}
+,{"stream_name":"stdout","time":132.267269116,"data":"    | BERT_DONE\n"}
+,{"stream_name":"stdout","time":132.267274925,"data":"[14:23:09 +   2.2m] [08_bert] rc=0 (8s)\n"}
+,{"stream_name":"stdout","time":132.268059707,"data":"[14:23:09 +   2.2m] [09_replay_A] $ cd /kaggle/tmp/LIBERO \u0026\u0026 /kaggle/tmp/venv/bin/python local_eval/replay_demos.py --suite libero_spatial --tasks 0 1 2 3 4 --n-demos 50 --out /kaggle/working/replay\n"}
+,{"stream_name":"stdout","time":132.268948026,"data":"[14:23:09 +   2.2m] [09_replay_B] $ cd /kaggle/tmp/LIBERO \u0026\u0026 /kaggle/tmp/venv/bin/python local_eval/replay_demos.py --suite libero_spatial --tasks 5 6 7 8 9 --n-demos 50 --out /kaggle/working/replay\n"}
+,{"stream_name":"stdout","time":13562.894282651,"data":"    |     demo_40: success=True step=123/157 drift=5.679 (65.2s)\n"}
+,{"stream_name":"stdout","time":13562.894328271,"data":"    |     demo_41: success=True step=124/134 drift=3.872 (64.8s)\n"}
+,{"stream_name":"stdout","time":13562.894335161,"data":"    |     demo_42: success=True step=114/127 drift=4.081 (59.4s)\n"}
+,{"stream_name":"stdout","time":13562.894340579,"data":"    |     demo_43: success=True step=115/137 drift=2.688 (61.0s)\n"}
+,{"stream_name":"stdout","time":13562.894345646,"data":"    |     demo_44: success=True step=127/137 drift=3.400 (69.3s)\n"}
+,{"stream_name":"stdout","time":13562.894350597,"data":"    |     demo_45: success=True step=138/169 drift=6.412 (74.7s)\n"}
+,{"stream_name":"stdout","time":13562.894376825,"data":"    |     demo_46: success=True step=122/147 drift=2.629 (62.9s)\n"}
+,{"stream_name":"stdout","time":13562.894381515,"data":"    |     demo_47: success=True step=133/151 drift=5.153 (68.7s)\n"}
+,{"stream_name":"stdout","time":13562.894385482,"data":"    |     demo_48: success=True step=126/134 drift=2.835 (69.5s)\n"}
+,{"stream_name":"stdout","time":13562.894389459,"data":"    |     demo_49: success=False step=None/137 drift=3.981 (69.6s)\n"}
+,{"stream_name":"stdout","time":13562.894393651,"data":"    | [task 4] success 41/50 = 0.82 -\u003e /kaggle/working/replay/libero_spatial_task4_replay.json\n"}
+,{"stream_name":"stdout","time":13562.894398183,"data":"    | REPLAY_DONE\n"}
+,{"stream_name":"stdout","time":13562.894401744,"data":"[18:07:00 + 226.0m] [09_replay_A] rc=0 (13431s)\n"}
+,{"stream_name":"stdout","time":14532.917789982,"data":"[18:23:10 + 242.2m] [09_replay_B] TIMEOUT -\u003e killing\n"}
+,{"stream_name":"stdout","time":14532.918366735,"data":"    |     demo_33: success=True step=132/144 drift=4.852 (56.3s)\n"}
+,{"stream_name":"stdout","time":14532.91840339,"data":"    |     demo_34: success=True step=127/145 drift=2.261 (56.9s)\n"}
+,{"stream_name":"stdout","time":14532.918410233,"data":"    |     demo_35: success=True step=113/125 drift=6.834 (53.8s)\n"}
+,{"stream_name":"stdout","time":14532.918416291,"data":"    |     demo_36: success=True step=122/133 drift=4.593 (53.1s)\n"}
+,{"stream_name":"stdout","time":14532.918422037,"data":"    |     demo_37: success=True step=128/138 drift=3.079 (55.7s)\n"}
+,{"stream_name":"stdout","time":14532.918428274,"data":"    |     demo_38: success=True step=119/140 drift=3.366 (53.5s)\n"}
+,{"stream_name":"stdout","time":14532.918434407,"data":"    |     demo_39: success=True step=116/127 drift=3.007 (56.1s)\n"}
+,{"stream_name":"stdout","time":14532.918440655,"data":"    |     demo_40: success=True step=119/139 drift=2.080 (56.6s)\n"}
+,{"stream_name":"stdout","time":14532.918447049,"data":"    |     demo_41: success=True step=118/128 drift=7.291 (57.0s)\n"}
+,{"stream_name":"stdout","time":14532.918453768,"data":"    |     demo_42: success=False step=None/132 drift=6.773 (57.4s)\n"}
+,{"stream_name":"stdout","time":14532.918460091,"data":"    |     demo_43: success=True step=118/128 drift=4.748 (51.0s)\n"}
+,{"stream_name":"stdout","time":14532.918470136,"data":"    |     demo_44: success=True step=119/131 drift=4.963 (56.6s)\n"}
+,{"stream_name":"stdout","time":14532.918476664,"data":"[18:23:10 + 242.2m] [09_replay_B] rc=-9 (14401s)\n"}
+,{"stream_name":"stdout","time":14533.082975488,"data":"[18:23:10 + 242.2m] replay task 0: 48/50 = 96%  drift mean 4.864  38.8s/demo\n"}
+,{"stream_name":"stdout","time":14533.08300642,"data":"[18:23:10 + 242.2m] replay task 1: 45/50 = 90%  drift mean 5.486  56.4s/demo\n"}
+,{"stream_name":"stdout","time":14533.083046368,"data":"[18:23:10 + 242.2m] replay task 2: 48/50 = 96%  drift mean 3.463  54.3s/demo\n"}
+,{"stream_name":"stdout","time":14533.083055108,"data":"[18:23:10 + 242.2m] replay task 3: 45/50 = 90%  drift mean 4.544  47.4s/demo\n"}
+,{"stream_name":"stdout","time":14533.083178348,"data":"[18:23:10 + 242.2m] replay task 4: 41/50 = 82%  drift mean 4.345  71.1s/demo\n"}
+,{"stream_name":"stdout","time":14533.08321284,"data":"[18:23:10 + 242.2m] replay task 5: 41/50 = 82%  drift mean 6.353  48.3s/demo\n"}
+,{"stream_name":"stdout","time":14533.083309549,"data":"[18:23:10 + 242.2m] replay task 6: 48/50 = 96%  drift mean 5.793  54.9s/demo\n"}
+,{"stream_name":"stdout","time":14533.083366467,"data":"[18:23:10 + 242.2m] replay task 7: 42/50 = 84%  drift mean 5.584  70.7s/demo\n"}
+,{"stream_name":"stdout","time":14533.083432938,"data":"[18:23:10 + 242.2m] replay task 8: 46/50 = 92%  drift mean 4.774  55.5s/demo\n"}
+,{"stream_name":"stdout","time":14533.083511734,"data":"[18:23:10 + 242.2m] replay overall: 404/450 = 89.8%\n"}
+,{"stream_name":"stdout","time":14533.084788191,"data":"[18:23:10 + 242.2m] [10_random_ckpt] $ cd /kaggle/tmp/LIBERO \u0026\u0026 /kaggle/tmp/venv/bin/python local_eval/make_random_ckpt.py \u0026\u0026 find experiments -name '*.pth' | xargs ls -la\n"}
+,{"stream_name":"stdout","time":14545.842629108,"data":"    | shape_meta: {'ac_dim': 7, 'all_shapes': OrderedDict([('agentview_rgb', [3, 128, 128]), ('eye_in_hand_rgb', [3, 128, 128]), ('gripper_states', [2]), ('joint_states', [7])]), 'all_obs_keys': ['agentview_rgb', 'eye_in_hand_rgb', 'gripper_states', 'joint_states'], 'use_images': True}\n"}
+,{"stream_name":"stdout","time":14545.842662823,"data":"    | /kaggle/tmp/venv/lib/python3.10/site-packages/transformers/modeling_utils.py:367: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arb\n"}
+,{"stream_name":"stdout","time":14545.842667257,"data":"    |   return torch.load(checkpoint_file, map_location=\"cpu\")\n"}
+,{"stream_name":"stdout","time":14545.842670189,"data":"    | task_embs: (10, 768)\n"}
+,{"stream_name":"stdout","time":14545.842672942,"data":"    | /kaggle/tmp/venv/lib/python3.10/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.\n"}
+,{"stream_name":"stdout","time":14545.842675907,"data":"    |   warnings.warn(\n"}
+,{"stream_name":"stdout","time":14545.842678538,"data":"    | /kaggle/tmp/venv/lib/python3.10/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=None`.\n"}
+,{"stream_name":"stdout","time":14545.842681638,"data":"    |   warnings.warn(msg)\n"}
+,{"stream_name":"stdout","time":14545.842684212,"data":"    | /kaggle/tmp/venv/lib/python3.10/site-packages/torch/functional.py:534: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at ../aten/src/ATen/native/TensorShape.cpp:3595.)\n"}
+,{"stream_name":"stdout","time":14545.842687498,"data":"    |   return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]\n"}
+,{"stream_name":"stdout","time":14545.842690302,"data":"    | saved untrained policy (5.38 M params) to ./experiments/LIBERO_SPATIAL/Multitask/BCTransformerPolicy_seed10000/run_001/multitask_model_ep0.pth\n"}
+,{"stream_name":"stdout","time":14545.842693063,"data":"    | -rw-r--r-- 1 root root 21636832 Oct 23 18:23 experiments/LIBERO_SPATIAL/Multitask/BCTransformerPolicy_seed10000/run_001/multitask_model_ep0.pth\n"}
+,{"stream_name":"stdout","time":14545.842695832,"data":"[18:23:22 + 242.4m] [10_random_ckpt] rc=0 (13s)\n"}
+,{"stream_name":"stdout","time":14545.844193837,"data":"[18:23:22 + 242.4m] [10_eval_task0_env20] $ cd /kaggle/tmp/LIBERO \u0026\u0026 /kaggle/tmp/venv/bin/python local_eval/evaluate_cpu.py --benchmark libero_spatial --task_id 0 --algo multitask --policy bc_transformer_policy --seed 10000 --ep 0 --env-num 20; free -g | head -2\n"}
+,{"stream_name":"stdout","time":14548.819152167,"data":"    |     from .wandb_artifacts import Artifact  # noqa: F401\n"}
+,{"stream_name":"stdout","time":14548.81919253,"data":"    |   File \"/kaggle/tmp/venv/lib/python3.10/site-packages/wandb/sdk/wandb_artifacts.py\", line 29, in \u003cmodule\u003e\n"}
+,{"stream_name":"stdout","time":14548.819199512,"data":"    |     from wandb.apis import InternalApi, PublicApi\n"}
+,{"stream_name":"stdout","time":14548.819203962,"data":"    |   File \"/kaggle/tmp/venv/lib/python3.10/site-packages/wandb/apis/__init__.py\", line 31, in \u003cmodule\u003e\n"}
+,{"stream_name":"stdout","time":14548.8192316,"data":"    |     from .internal import Api as InternalApi  # noqa\n"}
+,{"stream_name":"stdout","time":14548.819234922,"data":"    |   File \"/kaggle/tmp/venv/lib/python3.10/site-packages/wandb/apis/internal.py\", line 1, in \u003cmodule\u003e\n"}
+,{"stream_name":"stdout","time":14548.819237807,"data":"    |     from wandb.sdk.internal.internal_api import Api as InternalApi\n"}
+,{"stream_name":"stdout","time":14548.819240524,"data":"    |   File \"/kaggle/tmp/venv/lib/python3.10/site-packages/wandb/sdk/internal/internal_api.py\", line 30, in \u003cmodule\u003e\n"}
+,{"stream_name":"stdout","time":14548.819243393,"data":"    |     from pkg_resources import parse_version\n"}
+,{"stream_name":"stdout","time":14548.819245949,"data":"    | ModuleNotFoundError: No module named 'pkg_resources'\n"}
+,{"stream_name":"stdout","time":14548.819248545,"data":"    |                total        used        free      shared  buff/cache   available\n"}
+,{"stream_name":"stdout","time":14548.819251303,"data":"    | Mem:              31           1           5           0          24          29\n"}
+,{"stream_name":"stdout","time":14548.819253923,"data":"[18:23:25 + 242.5m] [10_eval_task0_env20] rc=0 (3s)\n"}
+,{"stream_name":"stdout","time":14548.820630461,"data":"[18:23:25 + 242.5m] task 0: eval with 20 envs failed (rc=0) -\u003e retry with 10 envs\n"}
+,{"stream_name":"stdout","time":14548.820647334,"data":"[18:23:25 + 242.5m] [10_eval_task0_env10] $ cd /kaggle/tmp/LIBERO \u0026\u0026 /kaggle/tmp/venv/bin/python local_eval/evaluate_cpu.py --benchmark libero_spatial --task_id 0 --algo multitask --policy bc_transformer_policy --seed 10000 --ep 0 --env-num 10; free -g | head -2\n"}
+,{"stream_name":"stdout","time":14551.494225331,"data":"    |     from .wandb_artifacts import Artifact  # noqa: F401\n"}
+,{"stream_name":"stdout","time":14551.494255137,"data":"    |   File \"/kaggle/tmp/venv/lib/python3.10/site-packages/wandb/sdk/wandb_artifacts.py\", line 29, in \u003cmodule\u003e\n"}
+,{"stream_name":"stdout","time":14551.494261503,"data":"    |     from wandb.apis import InternalApi, PublicApi\n"}
+,{"stream_name":"stdout","time":14551.494265643,"data":"    |   File \"/kaggle/tmp/venv/lib/python3.10/site-packages/wandb/apis/__init__.py\", line 31, in \u003cmodule\u003e\n"}
+,{"stream_name":"stdout","time":14551.494270243,"data":"    |     from .internal import Api as InternalApi  # noqa\n"}
+,{"stream_name":"stdout","time":14551.494274353,"data":"    |   File \"/kaggle/tmp/venv/lib/python3.10/site-packages/wandb/apis/internal.py\", line 1, in \u003cmodule\u003e\n"}
+,{"stream_name":"stdout","time":14551.494278811,"data":"    |     from wandb.sdk.internal.internal_api import Api as InternalApi\n"}
+,{"stream_name":"stdout","time":14551.494282818,"data":"    |   File \"/kaggle/tmp/venv/lib/python3.10/site-packages/wandb/sdk/internal/internal_api.py\", line 30, in \u003cmodule\u003e\n"}
+,{"stream_name":"stdout","time":14551.494287072,"data":"    |     from pkg_resources import parse_version\n"}
+,{"stream_name":"stdout","time":14551.494290873,"data":"    | ModuleNotFoundError: No module named 'pkg_resources'\n"}
+,{"stream_name":"stdout","time":14551.494294621,"data":"    |                total        used        free      shared  buff/cache   available\n"}
+,{"stream_name":"stdout","time":14551.494298473,"data":"    | Mem:              31           1           5           0          24          29\n"}
+,{"stream_name":"stdout","time":14551.494302381,"data":"[18:23:28 + 242.5m] [10_eval_task0_env10] rc=0 (3s)\n"}
+,{"stream_name":"stdout","time":14551.495507279,"data":"[18:23:28 + 242.5m] protocol task 0: rc=0 summary=None\n"}
+,{"stream_name":"stdout","time":14551.49610456,"data":"[18:23:28 + 242.5m] [10_eval_task1_env10] $ cd /kaggle/tmp/LIBERO \u0026\u0026 /kaggle/tmp/venv/bin/python local_eval/evaluate_cpu.py --benchmark libero_spatial --task_id 1 --algo multitask --policy bc_transformer_policy --seed 10000 --ep 0 --env-num 10; free -g | head -2\n"}
+,{"stream_name":"stdout","time":14554.122450991,"data":"    |     from .wandb_artifacts import Artifact  # noqa: F401\n"}
+,{"stream_name":"stdout","time":14554.122485345,"data":"    |   File \"/kaggle/tmp/venv/lib/python3.10/site-packages/wandb/sdk/wandb_artifacts.py\", line 29, in \u003cmodule\u003e\n"}
+,{"stream_name":"stdout","time":14554.122491743,"data":"    |     from wandb.apis import InternalApi, PublicApi\n"}
+,{"stream_name":"stdout","time":14554.122496758,"data":"    |   File \"/kaggle/tmp/venv/lib/python3.10/site-packages/wandb/apis/__init__.py\", line 31, in \u003cmodule\u003e\n"}
+,{"stream_name":"stdout","time":14554.122502732,"data":"    |     from .internal import Api as InternalApi  # noqa\n"}
+,{"stream_name":"stdout","time":14554.122507624,"data":"    |   File \"/kaggle/tmp/venv/lib/python3.10/site-packages/wandb/apis/internal.py\", line 1, in \u003cmodule\u003e\n"}
+,{"stream_name":"stdout","time":14554.122512872,"data":"    |     from wandb.sdk.internal.internal_api import Api as InternalApi\n"}
+,{"stream_name":"stdout","time":14554.122517958,"data":"    |   File \"/kaggle/tmp/venv/lib/python3.10/site-packages/wandb/sdk/internal/internal_api.py\", line 30, in \u003cmodule\u003e\n"}
+,{"stream_name":"stdout","time":14554.122522352,"data":"    |     from pkg_resources import parse_version\n"}
+,{"stream_name":"stdout","time":14554.122526276,"data":"    | ModuleNotFoundError: No module named 'pkg_resources'\n"}
+,{"stream_name":"stdout","time":14554.122530221,"data":"    |                total        used        free      shared  buff/cache   available\n"}
+,{"stream_name":"stdout","time":14554.122534247,"data":"    | Mem:              31           1           5           0          24          29\n"}
+,{"stream_name":"stdout","time":14554.12253826,"data":"[18:23:31 + 242.6m] [10_eval_task1_env10] rc=0 (3s)\n"}
+,{"stream_name":"stdout","time":14554.123399235,"data":"[18:23:31 + 242.6m] protocol task 1: rc=0 summary=None\n"}
+,{"stream_name":"stdout","time":14554.124125668,"data":"[18:23:31 + 242.6m] [10_eval_task2_env10] $ cd /kaggle/tmp/LIBERO \u0026\u0026 /kaggle/tmp/venv/bin/python local_eval/evaluate_cpu.py --benchmark libero_spatial --task_id 2 --algo multitask --policy bc_transformer_policy --seed 10000 --ep 0 --env-num 10; free -g | head -2\n"}
+,{"stream_name":"stdout","time":14556.747993328,"data":"    |     from .wandb_artifacts import Artifact  # noqa: F401\n"}
+,{"stream_name":"stdout","time":14556.748026072,"data":"    |   File \"/kaggle/tmp/venv/lib/python3.10/site-packages/wandb/sdk/wandb_artifacts.py\", line 29, in \u003cmodule\u003e\n"}
+,{"stream_name":"stdout","time":14556.748033098,"data":"    |     from wandb.apis import InternalApi, PublicApi\n"}
+,{"stream_name":"stdout","time":14556.748036878,"data":"    |   File \"/kaggle/tmp/venv/lib/python3.10/site-packages/wandb/apis/__init__.py\", line 31, in \u003cmodule\u003e\n"}
+,{"stream_name":"stdout","time":14556.748040906,"data":"    |     from .internal import Api as InternalApi  # noqa\n"}
+,{"stream_name":"stdout","time":14556.748044619,"data":"    |   File \"/kaggle/tmp/venv/lib/python3.10/site-packages/wandb/apis/internal.py\", line 1, in \u003cmodule\u003e\n"}
+,{"stream_name":"stdout","time":14556.748049006,"data":"    |     from wandb.sdk.internal.internal_api import Api as InternalApi\n"}
+,{"stream_name":"stdout","time":14556.748053083,"data":"    |   File \"/kaggle/tmp/venv/lib/python3.10/site-packages/wandb/sdk/internal/internal_api.py\", line 30, in \u003cmodule\u003e\n"}
+,{"stream_name":"stdout","time":14556.748070412,"data":"    |     from pkg_resources import parse_version\n"}
+,{"stream_name":"stdout","time":14556.748074449,"data":"    | ModuleNotFoundError: No module named 'pkg_resources'\n"}
+,{"stream_name":"stdout","time":14556.748078122,"data":"    |                total        used        free      shared  buff/cache   available\n"}
+,{"stream_name":"stdout","time":14556.748082053,"data":"    | Mem:              31           1           5           0          24          29\n"}
+,{"stream_name":"stdout","time":14556.748086006,"data":"[18:23:33 + 242.6m] [10_eval_task2_env10] rc=0 (3s)\n"}
+,{"stream_name":"stdout","time":14556.749109259,"data":"[18:23:33 + 242.6m] protocol task 2: rc=0 summary=None\n"}
+,{"stream_name":"stdout","time":14556.749697947,"data":"[18:23:33 + 242.6m] [10_eval_task3_env10] $ cd /kaggle/tmp/LIBERO \u0026\u0026 /kaggle/tmp/venv/bin/python local_eval/evaluate_cpu.py --benchmark libero_spatial --task_id 3 --algo multitask --policy bc_transformer_policy --seed 10000 --ep 0 --env-num 10; free -g | head -2\n"}
+,{"stream_name":"stdout","time":14559.423645989,"data":"    |     from .wandb_artifacts import Artifact  # noqa: F401\n"}
+,{"stream_name":"stdout","time":14559.423675203,"data":"    |   File \"/kaggle/tmp/venv/lib/python3.10/site-packages/wandb/sdk/wandb_artifacts.py\", line 29, in \u003cmodule\u003e\n"}
+,{"stream_name":"stdout","time":14559.423679517,"data":"    |     from wandb.apis import InternalApi, PublicApi\n"}
+,{"stream_name":"stdout","time":14559.423682401,"data":"    |   File \"/kaggle/tmp/venv/lib/python3.10/site-packages/wandb/apis/__init__.py\", line 31, in \u003cmodule\u003e\n"}
+,{"stream_name":"stdout","time":14559.423685635,"data":"    |     from .internal import Api as InternalApi  # noqa\n"}
+,{"stream_name":"stdout","time":14559.423688258,"data":"    |   File \"/kaggle/tmp/venv/lib/python3.10/site-packages/wandb/apis/internal.py\", line 1, in \u003cmodule\u003e\n"}
+,{"stream_name":"stdout","time":14559.423691047,"data":"    |     from wandb.sdk.internal.internal_api import Api as InternalApi\n"}
+,{"stream_name":"stdout","time":14559.423693839,"data":"    |   File \"/kaggle/tmp/venv/lib/python3.10/site-packages/wandb/sdk/internal/internal_api.py\", line 30, in \u003cmodule\u003e\n"}
+,{"stream_name":"stdout","time":14559.423696647,"data":"    |     from pkg_resources import parse_version\n"}
+,{"stream_name":"stdout","time":14559.423699255,"data":"    | ModuleNotFoundError: No module named 'pkg_resources'\n"}
+,{"stream_name":"stdout","time":14559.423701763,"data":"    |                total        used        free      shared  buff/cache   available\n"}
+,{"stream_name":"stdout","time":14559.423704305,"data":"    | Mem:              31           1           5           0          24          29\n"}
+,{"stream_name":"stdout","time":14559.423706872,"data":"[18:23:36 + 242.6m] [10_eval_task3_env10] rc=0 (3s)\n"}
+,{"stream_name":"stdout","time":14559.424779313,"data":"[18:23:36 + 242.6m] protocol task 3: rc=0 summary=None\n"}
+,{"stream_name":"stdout","time":14559.425604235,"data":"[18:23:36 + 242.6m] [10_eval_task4_env10] $ cd /kaggle/tmp/LIBERO \u0026\u0026 /kaggle/tmp/venv/bin/python local_eval/evaluate_cpu.py --benchmark libero_spatial --task_id 4 --algo multitask --policy bc_transformer_policy --seed 10000 --ep 0 --env-num 10; free -g | head -2\n"}
+,{"stream_name":"stdout","time":14562.149617038,"data":"    |     from .wandb_artifacts import Artifact  # noqa: F401\n"}
+,{"stream_name":"stdout","time":14562.149677102,"data":"    |   File \"/kaggle/tmp/venv/lib/python3.10/site-packages/wandb/sdk/wandb_artifacts.py\", line 29, in \u003cmodule\u003e\n"}
+,{"stream_name":"stdout","time":14562.149685567,"data":"    |     from wandb.apis import InternalApi, PublicApi\n"}
+,{"stream_name":"stdout","time":14562.149690048,"data":"    |   File \"/kaggle/tmp/venv/lib/python3.10/site-packages/wandb/apis/__init__.py\", line 31, in \u003cmodule\u003e\n"}
+,{"stream_name":"stdout","time":14562.149707114,"data":"    |     from .internal import Api as InternalApi  # noqa\n"}
+,{"stream_name":"stdout","time":14562.149711759,"data":"    |   File \"/kaggle/tmp/venv/lib/python3.10/site-packages/wandb/apis/internal.py\", line 1, in \u003cmodule\u003e\n"}
+,{"stream_name":"stdout","time":14562.149716662,"data":"    |     from wandb.sdk.internal.internal_api import Api as InternalApi\n"}
+,{"stream_name":"stdout","time":14562.149721009,"data":"    |   File \"/kaggle/tmp/venv/lib/python3.10/site-packages/wandb/sdk/internal/internal_api.py\", line 30, in \u003cmodule\u003e\n"}
+,{"stream_name":"stdout","time":14562.149725962,"data":"    |     from pkg_resources import parse_version\n"}
+,{"stream_name":"stdout","time":14562.149730487,"data":"    | ModuleNotFoundError: No module named 'pkg_resources'\n"}
+,{"stream_name":"stdout","time":14562.149734972,"data":"    |                total        used        free      shared  buff/cache   available\n"}
+,{"stream_name":"stdout","time":14562.149739457,"data":"    | Mem:              31           1           5           0          24          29\n"}
+,{"stream_name":"stdout","time":14562.149744077,"data":"[18:23:39 + 242.7m] [10_eval_task4_env10] rc=0 (3s)\n"}
+,{"stream_name":"stdout","time":14562.15075732,"data":"[18:23:39 + 242.7m] protocol task 4: rc=0 summary=None\n"}
+,{"stream_name":"stdout","time":14562.151702633,"data":"[18:23:39 + 242.7m] [10_eval_task5_env10] $ cd /kaggle/tmp/LIBERO \u0026\u0026 /kaggle/tmp/venv/bin/python local_eval/evaluate_cpu.py --benchmark libero_spatial --task_id 5 --algo multitask --policy bc_transformer_policy --seed 10000 --ep 0 --env-num 10; free -g | head -2\n"}
+,{"stream_name":"stdout","time":14564.876313729,"data":"    |     from .wandb_artifacts import Artifact  # noqa: F401\n"}
+,{"stream_name":"stdout","time":14564.876368165,"data":"    |   File \"/kaggle/tmp/venv/lib/python3.10/site-packages/wandb/sdk/wandb_artifacts.py\", line 29, in \u003cmodule\u003e\n"}
+,{"stream_name":"stdout","time":14564.876374526,"data":"    |     from wandb.apis import InternalApi, PublicApi\n"}
+,{"stream_name":"stdout","time":14564.876378304,"data":"    |   File \"/kaggle/tmp/venv/lib/python3.10/site-packages/wandb/apis/__init__.py\", line 31, in \u003cmodule\u003e\n"}
+,{"stream_name":"stdout","time":14564.876382528,"data":"    |     from .internal import Api as InternalApi  # noqa\n"}
+,{"stream_name":"stdout","time":14564.876386143,"data":"    |   File \"/kaggle/tmp/venv/lib/python3.10/site-packages/wandb/apis/internal.py\", line 1, in \u003cmodule\u003e\n"}
+,{"stream_name":"stdout","time":14564.876390251,"data":"    |     from wandb.sdk.internal.internal_api import Api as InternalApi\n"}
+,{"stream_name":"stdout","time":14564.876393807,"data":"    |   File \"/kaggle/tmp/venv/lib/python3.10/site-packages/wandb/sdk/internal/internal_api.py\", line 30, in \u003cmodule\u003e\n"}
+,{"stream_name":"stdout","time":14564.876397478,"data":"    |     from pkg_resources import parse_version\n"}
+,{"stream_name":"stdout","time":14564.876400881,"data":"    | ModuleNotFoundError: No module named 'pkg_resources'\n"}
+,{"stream_name":"stdout","time":14564.876404189,"data":"    |                total        used        free      shared  buff/cache   available\n"}
+,{"stream_name":"stdout","time":14564.87640779,"data":"    | Mem:              31           1           5           0          24          29\n"}
+,{"stream_name":"stdout","time":14564.876411261,"data":"[18:23:41 + 242.7m] [10_eval_task5_env10] rc=0 (3s)\n"}
+,{"stream_name":"stdout","time":14564.877399765,"data":"[18:23:41 + 242.7m] protocol task 5: rc=0 summary=None\n"}
+,{"stream_name":"stdout","time":14564.878251185,"data":"[18:23:41 + 242.7m] [10_eval_task6_env10] $ cd /kaggle/tmp/LIBERO \u0026\u0026 /kaggle/tmp/venv/bin/python local_eval/evaluate_cpu.py --benchmark libero_spatial --task_id 6 --algo multitask --policy bc_transformer_policy --seed 10000 --ep 0 --env-num 10; free -g | head -2\n"}
+,{"stream_name":"stdout","time":14567.502325849,"data":"    |     from .wandb_artifacts import Artifact  # noqa: F401\n"}
+,{"stream_name":"stdout","time":14567.502357754,"data":"    |   File \"/kaggle/tmp/venv/lib/python3.10/site-packages/wandb/sdk/wandb_artifacts.py\", line 29, in \u003cmodule\u003e\n"}
+,{"stream_name":"stdout","time":14567.502364006,"data":"    |     from wandb.apis import InternalApi, PublicApi\n"}
+,{"stream_name":"stdout","time":14567.502381368,"data":"    |   File \"/kaggle/tmp/venv/lib/python3.10/site-packages/wandb/apis/__init__.py\", line 31, in \u003cmodule\u003e\n"}
+,{"stream_name":"stdout","time":14567.502386063,"data":"    |     from .internal import Api as InternalApi  # noqa\n"}
+,{"stream_name":"stdout","time":14567.50239035,"data":"    |   File \"/kaggle/tmp/venv/lib/python3.10/site-packages/wandb/apis/internal.py\", line 1, in \u003cmodule\u003e\n"}
+,{"stream_name":"stdout","time":14567.502394831,"data":"    |     from wandb.sdk.internal.internal_api import Api as InternalApi\n"}
+,{"stream_name":"stdout","time":14567.50239892,"data":"    |   File \"/kaggle/tmp/venv/lib/python3.10/site-packages/wandb/sdk/internal/internal_api.py\", line 30, in \u003cmodule\u003e\n"}
+,{"stream_name":"stdout","time":14567.502403205,"data":"    |     from pkg_resources import parse_version\n"}
+,{"stream_name":"stdout","time":14567.502407156,"data":"    | ModuleNotFoundError: No module named 'pkg_resources'\n"}
+,{"stream_name":"stdout","time":14567.502410863,"data":"    |                total        used        free      shared  buff/cache   available\n"}
+,{"stream_name":"stdout","time":14567.502415018,"data":"    | Mem:              31           1           5           0          24          29\n"}
+,{"stream_name":"stdout","time":14567.502419266,"data":"[18:23:44 + 242.8m] [10_eval_task6_env10] rc=0 (3s)\n"}
+,{"stream_name":"stdout","time":14567.503529126,"data":"[18:23:44 + 242.8m] protocol task 6: rc=0 summary=None\n"}
+,{"stream_name":"stdout","time":14567.504346087,"data":"[18:23:44 + 242.8m] [10_eval_task7_env10] $ cd /kaggle/tmp/LIBERO \u0026\u0026 /kaggle/tmp/venv/bin/python local_eval/evaluate_cpu.py --benchmark libero_spatial --task_id 7 --algo multitask --policy bc_transformer_policy --seed 10000 --ep 0 --env-num 10; free -g | head -2\n"}
+,{"stream_name":"stdout","time":14570.229289189,"data":"    |     from .wandb_artifacts import Artifact  # noqa: F401\n"}
+,{"stream_name":"stdout","time":14570.229318479,"data":"    |   File \"/kaggle/tmp/venv/lib/python3.10/site-packages/wandb/sdk/wandb_artifacts.py\", line 29, in \u003cmodule\u003e\n"}
+,{"stream_name":"stdout","time":14570.229324715,"data":"    |     from wandb.apis import InternalApi, PublicApi\n"}
+,{"stream_name":"stdout","time":14570.229329007,"data":"    |   File \"/kaggle/tmp/venv/lib/python3.10/site-packages/wandb/apis/__init__.py\", line 31, in \u003cmodule\u003e\n"}
+,{"stream_name":"stdout","time":14570.229333061,"data":"    |     from .internal import Api as InternalApi  # noqa\n"}
+,{"stream_name":"stdout","time":14570.229337145,"data":"    |   File \"/kaggle/tmp/venv/lib/python3.10/site-packages/wandb/apis/internal.py\", line 1, in \u003cmodule\u003e\n"}
+,{"stream_name":"stdout","time":14570.22934148,"data":"    |     from wandb.sdk.internal.internal_api import Api as InternalApi\n"}
+,{"stream_name":"stdout","time":14570.229345488,"data":"    |   File \"/kaggle/tmp/venv/lib/python3.10/site-packages/wandb/sdk/internal/internal_api.py\", line 30, in \u003cmodule\u003e\n"}
+,{"stream_name":"stdout","time":14570.229349923,"data":"    |     from pkg_resources import parse_version\n"}
+,{"stream_name":"stdout","time":14570.229369451,"data":"    | ModuleNotFoundError: No module named 'pkg_resources'\n"}
+,{"stream_name":"stdout","time":14570.22937333,"data":"    |                total        used        free      shared  buff/cache   available\n"}
+,{"stream_name":"stdout","time":14570.229385995,"data":"    | Mem:              31           1           5           0          24          30\n"}
+,{"stream_name":"stdout","time":14570.229390264,"data":"[18:23:47 + 242.8m] [10_eval_task7_env10] rc=0 (3s)\n"}
+,{"stream_name":"stdout","time":14570.230399577,"data":"[18:23:47 + 242.8m] protocol task 7: rc=0 summary=None\n"}
+,{"stream_name":"stdout","time":14570.231209956,"data":"[18:23:47 + 242.8m] [10_eval_task8_env10] $ cd /kaggle/tmp/LIBERO \u0026\u0026 /kaggle/tmp/venv/bin/python local_eval/evaluate_cpu.py --benchmark libero_spatial --task_id 8 --algo multitask --policy bc_transformer_policy --seed 10000 --ep 0 --env-num 10; free -g | head -2\n"}
+,{"stream_name":"stdout","time":14573.005345328,"data":"    |     from .wandb_artifacts import Artifact  # noqa: F401\n"}
+,{"stream_name":"stdout","time":14573.005398594,"data":"    |   File \"/kaggle/tmp/venv/lib/python3.10/site-packages/wandb/sdk/wandb_artifacts.py\", line 29, in \u003cmodule\u003e\n"}
+,{"stream_name":"stdout","time":14573.005406771,"data":"    |     from wandb.apis import InternalApi, PublicApi\n"}
+,{"stream_name":"stdout","time":14573.005411413,"data":"    |   File \"/kaggle/tmp/venv/lib/python3.10/site-packages/wandb/apis/__init__.py\", line 31, in \u003cmodule\u003e\n"}
+,{"stream_name":"stdout","time":14573.005416294,"data":"    |     from .internal import Api as InternalApi  # noqa\n"}
+,{"stream_name":"stdout","time":14573.005420547,"data":"    |   File \"/kaggle/tmp/venv/lib/python3.10/site-packages/wandb/apis/internal.py\", line 1, in \u003cmodule\u003e\n"}
+,{"stream_name":"stdout","time":14573.005425133,"data":"    |     from wandb.sdk.internal.internal_api import Api as InternalApi\n"}
+,{"stream_name":"stdout","time":14573.005429438,"data":"    |   File \"/kaggle/tmp/venv/lib/python3.10/site-packages/wandb/sdk/internal/internal_api.py\", line 30, in \u003cmodule\u003e\n"}
+,{"stream_name":"stdout","time":14573.00543491,"data":"    |     from pkg_resources import parse_version\n"}
+,{"stream_name":"stdout","time":14573.005439213,"data":"    | ModuleNotFoundError: No module named 'pkg_resources'\n"}
+,{"stream_name":"stdout","time":14573.005443887,"data":"    |                total        used        free      shared  buff/cache   available\n"}
+,{"stream_name":"stdout","time":14573.005448434,"data":"    | Mem:              31           1           5           0          24          29\n"}
+,{"stream_name":"stdout","time":14573.005452865,"data":"[18:23:50 + 242.9m] [10_eval_task8_env10] rc=0 (3s)\n"}
+,{"stream_name":"stdout","time":14573.006608783,"data":"[18:23:50 + 242.9m] protocol task 8: rc=0 summary=None\n"}
+,{"stream_name":"stdout","time":14573.007610504,"data":"[18:23:50 + 242.9m] [10_eval_task9_env10] $ cd /kaggle/tmp/LIBERO \u0026\u0026 /kaggle/tmp/venv/bin/python local_eval/evaluate_cpu.py --benchmark libero_spatial --task_id 9 --algo multitask --policy bc_transformer_policy --seed 10000 --ep 0 --env-num 10; free -g | head -2\n"}
+,{"stream_name":"stdout","time":14575.731333478,"data":"    |     from .wandb_artifacts import Artifact  # noqa: F401\n"}
+,{"stream_name":"stdout","time":14575.731368326,"data":"    |   File \"/kaggle/tmp/venv/lib/python3.10/site-packages/wandb/sdk/wandb_artifacts.py\", line 29, in \u003cmodule\u003e\n"}
+,{"stream_name":"stdout","time":14575.731376164,"data":"    |     from wandb.apis import InternalApi, PublicApi\n"}
+,{"stream_name":"stdout","time":14575.731381132,"data":"    |   File \"/kaggle/tmp/venv/lib/python3.10/site-packages/wandb/apis/__init__.py\", line 31, in \u003cmodule\u003e\n"}
+,{"stream_name":"stdout","time":14575.731410948,"data":"    |     from .internal import Api as InternalApi  # noqa\n"}
+,{"stream_name":"stdout","time":14575.731416572,"data":"    |   File \"/kaggle/tmp/venv/lib/python3.10/site-packages/wandb/apis/internal.py\", line 1, in \u003cmodule\u003e\n"}
+,{"stream_name":"stdout","time":14575.731421096,"data":"    |     from wandb.sdk.internal.internal_api import Api as InternalApi\n"}
+,{"stream_name":"stdout","time":14575.731425117,"data":"    |   File \"/kaggle/tmp/venv/lib/python3.10/site-packages/wandb/sdk/internal/internal_api.py\", line 30, in \u003cmodule\u003e\n"}
+,{"stream_name":"stdout","time":14575.731429409,"data":"    |     from pkg_resources import parse_version\n"}
+,{"stream_name":"stdout","time":14575.73143333,"data":"    | ModuleNotFoundError: No module named 'pkg_resources'\n"}
+,{"stream_name":"stdout","time":14575.731441529,"data":"    |                total        used        free      shared  buff/cache   available\n"}
+,{"stream_name":"stdout","time":14575.731444457,"data":"    | Mem:              31           1           5           0          24          30\n"}
+,{"stream_name":"stdout","time":14575.731448812,"data":"[18:23:52 + 242.9m] [10_eval_task9_env10] rc=0 (3s)\n"}
+,{"stream_name":"stdout","time":14575.732501598,"data":"[18:23:52 + 242.9m] protocol task 9: rc=0 summary=None\n"}
+,{"stream_name":"stdout","time":14575.734159347,"data":"[18:23:52 + 242.9m] [11_disk] $ du -sh /kaggle/tmp/* /kaggle/working/* 2\u003e/dev/null | sort -h | tail -15; free -g | head -2\n"}
+,{"stream_name":"stdout","time":14576.200354914,"data":"    | 4.0K\t/kaggle/working/requirements-kaggle-freeze.txt\n"}
+,{"stream_name":"stdout","time":14576.200390484,"data":"    | 12K\t/kaggle/working/driver.log\n"}
+,{"stream_name":"stdout","time":14576.200395962,"data":"    | 12K\t/kaggle/working/summary.json\n"}
+,{"stream_name":"stdout","time":14576.200400002,"data":"    | 112K\t/kaggle/working/replay\n"}
+,{"stream_name":"stdout","time":14576.200404278,"data":"    | 156K\t/kaggle/working/logs\n"}
+,{"stream_name":"stdout","time":14576.200412977,"data":"    | 728K\t/kaggle/tmp/hf\n"}
+,{"stream_name":"stdout","time":14576.200415749,"data":"    | 66M\t/kaggle/tmp/venv\n"}
+,{"stream_name":"stdout","time":14576.200418458,"data":"    | 1.2G\t/kaggle/tmp/LIBERO\n"}
+,{"stream_name":"stdout","time":14576.200421147,"data":"    | 2.3G\t/kaggle/tmp/uv-cache\n"}
+,{"stream_name":"stdout","time":14576.20042381,"data":"    | 5.9G\t/kaggle/tmp/datasets\n"}
+,{"stream_name":"stdout","time":14576.200426548,"data":"    |                total        used        free      shared  buff/cache   available\n"}
+,{"stream_name":"stdout","time":14576.200429331,"data":"    | Mem:              31           1           5           0          24          30\n"}
+,{"stream_name":"stdout","time":14576.200432398,"data":"[18:23:53 + 242.9m] [11_disk] rc=0 (0s)\n"}
+,{"stream_name":"stdout","time":14576.202396708,"data":"# LIBERO libero_spatial on Kaggle - summary\n"}
+,{"stream_name":"stdout","time":14576.202414653,"data":"\n"}
+,{"stream_name":"stdout","time":14576.20241939,"data":"- started (UTC): 2026-10-23T14:20:58.042121  elapsed: 242.9 min\n"}
+,{"stream_name":"stdout","time":14576.202423978,"data":"- GPU: Tesla T4, 15360 MiB\n"}
+,{"stream_name":"stdout","time":14576.202427834,"data":"Tesla T4, 15360 MiB  nproc: 4  render backend: egl\n"}
+,{"stream_name":"stdout","time":14576.202431633,"data":"- LIBERO commit: 8f1084e; dataset: 5.81 GiB, 10 hdf5 files\n"}
+,{"stream_name":"stdout","time":14576.202435504,"data":"\n"}
+,{"stream_name":"stdout","time":14576.202439037,"data":"## Demo replay (open-loop action replay of the recorded demos, success = env.step done)\n"}
+,{"stream_name":"stdout","time":14576.202456847,"data":"\n"}
+,{"stream_name":"stdout","time":14576.202459847,"data":"| task | n | succ | rate | SE | mean steps→succ | mean len | mean max drift | s/demo | language |\n"}
+,{"stream_name":"stdout","time":14576.202463042,"data":"|---|---|---|---|---|---|---|---|---|---|\n"}
+,{"stream_name":"stdout","time":14576.202465602,"data":"| 0 | 50 | 48 | 96% | 0.0277 | 81.58333333333333 | 101.36 | 4.864 | 38.8 | pick up the black bowl between the plate and the ramekin and place it on the plate |\n"}
+,{"stream_name":"stdout","time":14576.202468326,"data":"| 1 | 50 | 45 | 90% | 0.0424 | 110.42222222222222 | 134.14 | 5.486 | 56.4 | pick up the black bowl next to the ramekin and place it on the plate |\n"}
+,{"stream_name":"stdout","time":14576.202470985,"data":"| 2 | 50 | 48 | 96% | 0.0277 | 98.77083333333333 | 117.64 | 3.463 | 54.3 | pick up the black bowl from table center and place it on the plate |\n"}
+,{"stream_name":"stdout","time":14576.202473643,"data":"| 3 | 50 | 45 | 90% | 0.0424 | 84.28888888888889 | 101.04 | 4.544 | 47.4 | pick up the black bowl on the cookie box and place it on the plate |\n"}
+,{"stream_name":"stdout","time":14576.202476718,"data":"| 4 | 50 | 41 | 82% | 0.0543 | 130.09756097560975 | 149.58 | 4.345 | 71.1 | pick up the black bowl in the top drawer of the wooden cabinet and place it on the plate |\n"}
+,{"stream_name":"stdout","time":14576.202479429,"data":"| 5 | 50 | 41 | 82% | 0.0543 | 101.1219512195122 | 115.92 | 6.353 | 48.3 | pick up the black bowl on the ramekin and place it on the plate |\n"}
+,{"stream_name":"stdout","time":14576.202482079,"data":"| 6 | 50 | 48 | 96% | 0.0277 | 109.14583333333333 | 126.24 | 5.793 | 54.9 | pick up the black bowl next to the cookie box and place it on the plate |\n"}
+,{"stream_name":"stdout","time":14576.202484753,"data":"| 7 | 50 | 42 | 84% | 0.0518 | 122.57142857142857 | 142.22 | 5.584 | 70.7 | pick up the black bowl on the stove and place it on the plate |\n"}
+,{"stream_name":"stdout","time":14576.202487701,"data":"| 8 | 50 | 46 | 92% | 0.0384 | 100.91304347826087 | 119.26 | 4.774 | 55.5 | pick up the black bowl next to the plate and place it on the plate |\n"}
+,{"stream_name":"stdout","time":14576.20249034,"data":"\n"}
+,{"stream_name":"stdout","time":14576.202492678,"data":"overall: 404/450 = 89.8%  (mean of per-task rates 89.8%)\n"}
+,{"stream_name":"stdout","time":14576.202495175,"data":"\n"}
+,{"stream_name":"stdout","time":14576.202497591,"data":"## evaluate.py protocol check with an UNTRAINED checkpoint (numbers are meaningless by construction)\n"}
+,{"stream_name":"stdout","time":14576.202500172,"data":"\n"}
+,{"stream_name":"stdout","time":14576.202503389,"data":"| task | env_num (episodes) | steps run | max_steps | successes | success_rate | seconds | rc |\n"}
+,{"stream_name":"stdout","time":14576.202506007,"data":"|---|---|---|---|---|---|---|---|\n"}
+,{"stream_name":"stdout","time":14576.20250846,"data":"| 0 | 10 | None | None | None | None | None | 0 |\n"}
+,{"stream_name":"stdout","time":14576.202510977,"data":"| 1 | 10 | None | None | None | None | None | 0 |\n"}
+,{"stream_name":"stdout","time":14576.202513439,"data":"| 2 | 10 | None | None | None | None | None | 0 |\n"}
+,{"stream_name":"stdout","time":14576.202515881,"data":"| 3 | 10 | None | None | None | None | None | 0 |\n"}
+,{"stream_name":"stdout","time":14576.202518326,"data":"| 4 | 10 | None | None | None | None | None | 0 |\n"}
+,{"stream_name":"stdout","time":14576.202520767,"data":"| 5 | 10 | None | None | None | None | None | 0 |\n"}
+,{"stream_name":"stdout","time":14576.202523202,"data":"| 6 | 10 | None | None | None | None | None | 0 |\n"}
+,{"stream_name":"stdout","time":14576.202525643,"data":"| 7 | 10 | None | None | None | None | None | 0 |\n"}
+,{"stream_name":"stdout","time":14576.202530854,"data":"| 8 | 10 | None | None | None | None | None | 0 |\n"}
+,{"stream_name":"stdout","time":14576.202533548,"data":"| 9 | 10 | None | None | None | None | None | 0 |\n"}
+,{"stream_name":"stdout","time":14576.202536038,"data":"\n"}
+,{"stream_name":"stdout","time":14576.2025384,"data":"## Stages\n"}
+,{"stream_name":"stdout","time":14576.202540813,"data":"\n"}
+,{"stream_name":"stdout","time":14576.202543162,"data":"| stage | rc | seconds |\n"}
+,{"stream_name":"stdout","time":14576.202575875,"data":"|---|---|---|\n"}
+,{"stream_name":"stdout","time":14576.202584188,"data":"| 00_sysinfo | 0 | 0.6 |\n"}
+,{"stream_name":"stdout","time":14576.202588642,"data":"| 01_apt | 0 | 17.3 |\n"}
+,{"stream_name":"stdout","time":14576.202592929,"data":"| 02_uv | 0 | 4.3 |\n"}
+,{"stream_name":"stdout","time":14576.202596539,"data":"| 02_venv | 0 | 1.8 |\n"}
+,{"stream_name":"stdout","time":14576.202600179,"data":"| 03_clone | 0 | 13.2 |\n"}
+,{"stream_name":"stdout","time":14576.202603865,"data":"| 04_torch | 0 | 4.2 |\n"}
+,{"stream_name":"stdout","time":14576.202607483,"data":"| 04_reqs | 0 | 21.9 |\n"}
+,{"stream_name":"stdout","time":14576.202611129,"data":"| 04_libero | 0 | 1.0 |\n"}
+,{"stream_name":"stdout","time":14576.202614795,"data":"| 05_import | 0 | 5.7 |\n"}
+,{"stream_name":"stdout","time":14576.202619063,"data":"| 06_smoke_egl | 0 | 29.2 |\n"}
+,{"stream_name":"stdout","time":14576.202622737,"data":"| 07_dataset | 0 | 24.6 |\n"}
+,{"stream_name":"stdout","time":14576.202626343,"data":"| 08_bert | 0 | 7.7 |\n"}
+,{"stream_name":"stdout","time":14576.202629989,"data":"| 09_replay_A | 0 | 13430.6 |\n"}
+,{"stream_name":"stdout","time":14576.202633698,"data":"| 09_replay_B | -9 | 14400.6 |\n"}
+,{"stream_name":"stdout","time":14576.202641697,"data":"| 10_random_ckpt | 0 | 12.8 |\n"}
+,{"stream_name":"stdout","time":14576.202644489,"data":"| 10_eval_task0_env20 | 0 | 3.0 |\n"}
+,{"stream_name":"stdout","time":14576.202646971,"data":"| 10_eval_task0_env10 | 0 | 2.7 |\n"}
+,{"stream_name":"stdout","time":14576.202649399,"data":"| 10_eval_task1_env10 | 0 | 2.6 |\n"}
+,{"stream_name":"stdout","time":14576.202651829,"data":"| 10_eval_task2_env10 | 0 | 2.6 |\n"}
+,{"stream_name":"stdout","time":14576.20265425,"data":"| 10_eval_task3_env10 | 0 | 2.7 |\n"}
+,{"stream_name":"stdout","time":14576.20265665,"data":"| 10_eval_task4_env10 | 0 | 2.7 |\n"}
+,{"stream_name":"stdout","time":14576.202659047,"data":"| 10_eval_task5_env10 | 0 | 2.7 |\n"}
+,{"stream_name":"stdout","time":14576.202661464,"data":"| 10_eval_task6_env10 | 0 | 2.6 |\n"}
+,{"stream_name":"stdout","time":14576.20266388,"data":"| 10_eval_task7_env10 | 0 | 2.7 |\n"}
+,{"stream_name":"stdout","time":14576.202666396,"data":"| 10_eval_task8_env10 | 0 | 2.8 |\n"}
+,{"stream_name":"stdout","time":14576.202668797,"data":"| 10_eval_task9_env10 | 0 | 2.7 |\n"}
+,{"stream_name":"stdout","time":14576.202671285,"data":"| 11_disk | 0 | 0.5 |\n"}
+,{"stream_name":"stdout","time":14576.202673725,"data":"[18:23:53 + 242.9m] ALL_DONE\n"}
+,{"stream_name":"stderr","time":14578.857137819,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":14578.857175853,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":14579.31986393,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":14579.31989343,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":14580.683230587,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":14582.068936122,"data":"[NbConvertApp] Writing 417718 bytes to __results__.html\n"}
+]
