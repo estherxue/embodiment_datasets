@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Kaggle script kernel (variant): ALOHA sim insertion ONLY, with the simulator pinned to the versions the checkpoint
 was trained/evaluated with: gym-aloha==0.1.1, mujoco==2.3.7, dm-control==1.0.14, numpy<2 (gym-aloha>=0.1.2 moved to
-MuJoCo 3.x, under which lerobot/act_aloha_sim_insertion_human only reaches ~11% instead of the reported 83%).
+MuJoCo 3.x, under which lerobot/act_aloha_sim_insertion_human only reaches ~11% vs. 20.6% on its model card; the 83%
+in its eval_info.json is the transfer-cube file uploaded by mistake, see lerobot/EVAL_NOTES.md section 6).
 
 Original full pipeline docstring follows.
 

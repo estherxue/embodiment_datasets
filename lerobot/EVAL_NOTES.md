@@ -10,7 +10,7 @@
 |---|---|---|---|---|
 | `pusht_act_keypoints` | `alexandersoare/act_pusht_keypoints` | PushT，`obs_type=environment_state_agent_pos`（16 维 T 块关键点 + 2 维 agent 位置，**不是像素**） | LeRobot 核心维护者 2024-07 发布的 ACT（chunk 16 / n_action_steps 16，VAE，min-max 归一化），数据集 `lerobot/pusht_keypoints`。Hydra 旧格式，需转换 config.json（见 §4） | 64.0% / 500 episodes（仓库自带 eval_info.json） |
 | `pusht_act_pixels` | `arclabmit/pusht_act_model` | PushT，`obs_type=pixels_agent_pos`（96×96 图像 + 2 维 agent 位置） | 社区 2025-08 用 lerobot 新格式训练的 ACT（数据 `lerobot/pusht`，200k steps，batch 64），但沿用了 ALOHA 的默认 chunk_size=100 / n_action_steps=100：PushT 是 10 fps，相当于每次开环执行 10 秒，基本不工作 | 无 |
-| `aloha_insertion_act` | `lerobot/act_aloha_sim_insertion_human` | gym-aloha `AlohaInsertion-v0`，顶视相机 480×640 + 14 维关节状态 | LeRobot 官方 ACT（数据 `lerobot/aloha_sim_insertion_human`，100k steps，chunk 100 / n_action_steps 100，VAE，resnet18） | 83.0% / 500 episodes（avg_max_reward 3.546） |
+| `aloha_insertion_act` | `lerobot/act_aloha_sim_insertion_human` | gym-aloha `AlohaInsertion-v0`，顶视相机 480×640 + 14 维关节状态 | LeRobot 官方 ACT（数据 `lerobot/aloha_sim_insertion_human`，100k steps，chunk 100 / n_action_steps 100，VAE，resnet18） | **20.6% / 500 episodes**（模型卡正文；原论文 20%）。仓库自带的 eval_info.json 写的 83.0% 不是插接成绩，是 transfer cube 的文件被错传进来的，见 §6 |
 | `pusht_diffusion`（参照，非 ACT） | `lerobot/diffusion_pusht` | PushT，像素 | LeRobot 官方 Diffusion Policy，用来对照“同一评测流程下官方像素策略能到多少” | 65.4% / 500 episodes |
 | `pusht_random`（下限） | 均匀随机动作 | PushT | 自写脚本，同 seed、同 300 步上限 | — |
 | `pusht_act_pepijn223`（可选） | `pepijn223/act-pusht` | PushT，像素 | 社区 2025-01 的旧格式 ACT，转换后可加载，本地结果 0% | 无 |
@@ -45,7 +45,7 @@ Hub 上以 `act_pusht` 搜索到的二十来个仓库全是社区训练结果；
 解读：
 - PushT 上 **关键点 ACT 62.7% ± 2.3**，与作者自报的 64%/500 episodes 一致；官方 Diffusion Policy 在同一流程下 66.0%（作者自报 65.4%），说明评测流程本身是对的。三个 seed 的结果与本地 macOS CPU 跑出的 66/58/66 略有出入（GPU 与 CPU 的浮点差异导致个别 episode 翻转），差异在置信区间内。
 - 像素 ACT（arclabmit）2.0% ± 3.5，与本地完全一致（PushT 仿真是确定性的）：chunk/n_action_steps=100 的 ALOHA 默认超参直接套到 10 fps 的 PushT 上，每次开环执行 10 秒，无法完成精细对齐（avg_max_reward≈0.4 说明能推到一半重叠就停了）。
-- **ALOHA 插接 ACT 只有 10.7% ± 2.3，远低于作者自报的 83%。** 原因是仿真器版本：该权重（及其 83% 的 eval_info.json）对应 gym-aloha 0.1.1 + MuJoCo 2.3.7（lerobot 0.3.3 发布时 gym-aloha 只有 0.1.1，且钉死 `mujoco<3`），而 2025-10 之后发布的 gym-aloha 0.1.2+ 改用 MuJoCo ≥3，Kaggle 上解析到了 gym-aloha 0.1.5 + mujoco 3.8.1 + dm-control 1.0.41。MuJoCo 3 的接触求解和渲染都与 2.3.7 不同，像素策略对渲染差异也敏感。max_reward 分布（seed 1000）：0 分 13 个、1 分 9 个、2 分 2 个、3 分（插销触到插座）20 个、4 分（插入成功）6 个，即策略流程大体对、最后插入阶段失败，符合物理差异导致的表现。
+- **ALOHA 插接 ACT 10.7% ± 2.3，低于模型卡自报的 20.6%（103/500 episodes；原论文 20%）。** 这一轮用的是 Kaggle 解析到的 gym-aloha 0.1.5 + mujoco 3.8.1 + dm-control 1.0.41，而该权重对应 gym-aloha 0.1.1 + MuJoCo 2.3.7（lerobot 0.3.3 发布时 gym-aloha 只有 0.1.1，且钉死 `mujoco<3`；2025-10 之后发布的 gym-aloha 0.1.2+ 改用 MuJoCo ≥3）。MuJoCo 3 的接触求解和渲染都与 2.3.7 不同，像素策略对渲染差异也敏感。max_reward 分布（seed 1000）：0 分 13 个、1 分 9 个、2 分 2 个、3 分（插销触到插座）20 个、4 分（插入成功）6 个，即策略流程大体对、最后插入阶段失败。16/150 对 103/500 的双比例 z 检验 p=0.006，差异显著，所以在 §2.a' 把仿真器钉回权重发布时的版本重跑。（最初误把该仓库 eval_info.json 里的 83.0% 当成插接的自报成绩，排查见 §6。）
 - 每个 ALOHA seed 在 T4 上跑了约 87 分钟（50 个同步并行 env × 400 步，每步 480×640 EGL 渲染），这也是整个 kernel 跑了 6 小时的原因。
 
 
@@ -61,9 +61,9 @@ kernel `cindyxue1122/lerobot-act-eval-aloha-mj237`（脚本 `embodiment_datasets
 
 - 跨 3 个 seed：**均值 16.7%，seed 间标准差 3.1 个百分点**（16%, 20%, 14%）。
 - 每个 seed 的 max_reward 分布（0/1/2/3/4 分的 episode 数；3 = 插销触到插座，4 = 插入成功）：seed 1000 [8, 6, 4, 24, 8]，seed 2000 [1, 7, 4, 28, 10]，seed 3000 [5, 6, 4, 28, 7]。
-- 与 MuJoCo 3.8.1 下的结果相比：成功率 10.7% → 16.7%，avg_max_reward 1.9–2.1 → 2.4–2.8，avg_sum_reward 181–213 → 243–309。仿真器版本确实有影响，但**仍远低于作者自报的 83%（avg_max_reward 3.55）**，剩下的差距没有找到确定原因。可能的因素：作者的 eval_info.json 是 2025 年初用当时的 lerobot 代码跑的，权重后来被转成了新格式（2025-01-29 仓库重建、2025-03-06 配置重构），lerobot 0.3.3 的 ACT/eval 实现与当时可能有细节差异；像素策略对渲染器（驱动、EGL 实现）差异也敏感。如果要继续排查，最便宜的办法是用同一流程评 `lerobot/act_aloha_sim_transfer_cube_human`（更简单的任务）：如果它也大幅低于自报成绩，问题在代码/权重格式而不是插接任务本身。
+- 与 MuJoCo 3.8.1 下的结果相比：成功率 10.7% → 16.7%，avg_max_reward 1.9–2.1 → 2.4–2.8，avg_sum_reward 181–213 → 243–309。**16.7%（25/150，Wilson 95% CI [11.6, 23.4]）与模型卡自报的 20.6%（103/500，CI [17.3, 24.4]）在统计上一致**（双比例 z 检验 z=−1.06，p=0.29）；MuJoCo 3.8.1 下的 10.7% 则显著偏低（p=0.006）。两个 MuJoCo 版本之间的差异本身 p=0.13，不算显著，但方向与 avg_max_reward / avg_sum_reward 的变化一致。排查过程见 §6。
 
-**最终给 ALOHA 插接的数字：ACT 成功率 16.7%（50 episodes × 3 seeds，seed 间标准差 3.1 点，单 seed 内 Bernoulli 方差 0.12–0.16），评测环境 = 权重发布时的仿真器版本；MuJoCo 3.8.1 下为 10.7%（标准差 2.3 点）。**
+**最终给 ALOHA 插接的数字：ACT 成功率 16.7%（50 episodes × 3 seeds，seed 间标准差 3.1 点，单 seed 内 Bernoulli 方差 0.12–0.16），评测环境 = 权重发布时的仿真器版本，与模型卡自报的 20.6% 一致；MuJoCo 3.8.1 下为 10.7%（标准差 2.3 点）。**
 
 <!-- KAGGLE_RESULTS_END -->
 
@@ -124,9 +124,29 @@ lerobot-eval --policy.path=lerobot/act_aloha_sim_insertion_human --policy.device
 5. **渲染后端。** gym-aloha（dm_control/mujoco）需要 OpenGL 上下文：Kaggle 上先试 `MUJOCO_GL=egl`，不行就 `apt-get install libosmesa6` 换 `osmesa`（纯 CPU 渲染，慢但稳）。PushT 用 pygame，设 `SDL_VIDEODRIVER=dummy` 即可。
 6. **gym-aloha 的 MuJoCo 大版本变化。** lerobot 0.3.3 的 extra 只写了 `gym-aloha>=0.1.1`，2025-10 之后 pip 会解析到 gym-aloha 0.1.2+（要求 mujoco>=3），而 ALOHA 权重是在 gym-aloha 0.1.1 + mujoco 2.3.7 下训练/评测的。评旧权重时要显式钉 `gym-aloha==0.1.1 mujoco==2.3.7 dm-control==1.0.14 numpy<2`（mujoco 2.3.7 的轮子是 numpy 1.x ABI）。
 7. **Kaggle 输出目录。** `/kaggle/working` 下的所有东西都会被当作 kernel 输出保存，venv / 源码 / HF 缓存都放到 `/kaggle/tmp`，只把 `eval/*/eval_info.json`、日志、summary 留在 working。
+8. **Hub 仓库里的 eval_info.json 不一定属于这个权重。** `lerobot/act_aloha_sim_insertion_human` 的 eval_info.json（pc_success 83.0）与 `lerobot/act_aloha_sim_transfer_cube_human` 的是同一个文件（sha256 相同，video_paths 指向 `outputs/eval/act_aloha_transfer/080000/`），模型卡正文写的才是插接成绩（20.6%）。对照“作者自报成绩”时以模型卡为准，并检查 eval_info.json 的 video_paths 和 max_reward 分布是否与任务相符（插接任务会有大量 3 分的 episode，这个文件里一个都没有）。
 
 ## 5. 输出文件
 
 - Kaggle 拉回的结果：`embodiment_datasets/kaggle/outputs/lerobot-act-eval-pusht-aloha/`（第一轮，全部任务）和 `embodiment_datasets/kaggle/outputs/lerobot-act-eval-aloha-mj237/`（ALOHA 复现，旧版仿真器）（`summary.md`、`summary.json`、`eval/<run>/eval_info.json`、`logs/*.log`、`env/requirements-freeze.txt`、kernel 日志）。
 - 本地 macOS 结果：`embodiment_datasets/lerobot/outputs/eval/<run>/eval_info.json`，日志在 `embodiment_datasets/lerobot/outputs/logs/`，转换后的权重在 `embodiment_datasets/lerobot/outputs/converted_ckpts/`。
 - 工具脚本：`embodiment_datasets/lerobot/outputs/convert_old_act_ckpt.py`、`eval_stats.py`、`pusht_random_baseline.py`。
+
+## 6. 排查：ALOHA 插接为什么“远低于 83%”
+
+结论：**83% 不是插接的成绩，是 transfer cube 的。** MuJoCo 2.3.7 下的 16.7% 与插接模型卡自报的 20.6% 在统计上一致，没有待解释的差距；MuJoCo 3.x 会把成功率再拉低到 10.7%，评旧权重时要钉回旧版仿真器。
+
+证据（2026-10-24 用 Hub API 核对）：
+
+1. `lerobot/act_aloha_sim_insertion_human` 的模型卡 README 写的是 `Success rate for 500 episodes (%) | Ours 20.6 | Theirs 20`（Theirs = 原论文），评测命令 `eval.py --env.task=AlohaInsertion-v0 --eval.n_episodes=500 --eval.batch_size=50 --use_amp=false`，代码版本 LeRobot@3c0a209（2025-01，当时 gym-aloha 只有 0.1.1 / MuJoCo 2.3.7）。train_config.json 里 `env.episode_length=400`、`policy.temporal_ensemble_coeff=null`、`n_action_steps=100`，与我们评测时加载的 config.json 一致。
+2. 该仓库的 `eval_info.json`（pc_success 83.0，avg_max_reward 3.546）与 `lerobot/act_aloha_sim_transfer_cube_human` 的 `eval_info.json` sha256 完全相同（566d1661…），文件里的 `video_paths` 全部指向 `outputs/eval/act_aloha_transfer/080000/`，max_reward 直方图 {0: 8, 1: 41, 2: 36, 4: 415} 没有一个 3 分 episode，而插接任务里 3 分（插销触到插座）是最常见的中间状态（§2.a' 每个 seed 都有 24–28 个）。transfer cube 模型卡自报的正是 83.0%。
+3. 权重本身没变过：`model.safetensors` 在 2025-01-29 → 2025-03-06 的全部 commit 里 LFS oid 相同（ad37bb2e…），config.json 只在 03-06 加了 device / use_amp 字段，排除“转格式时换了 checkpoint”的猜想。
+4. 统计对照：
+
+   | 评测 | 成功 | pc_success | Wilson 95% CI | 与模型卡 103/500 比较 |
+   |---|---|---|---|---|
+   | 模型卡（LeRobot@3c0a209，gym-aloha 0.1.1 / MuJoCo 2.3.7） | 103/500 | 20.6% | [17.3, 24.4] | — |
+   | §2.a'（lerobot 0.3.3，gym-aloha 0.1.1 / MuJoCo 2.3.7） | 25/150 | 16.7% | [11.6, 23.4] | z=−1.06，p=0.29，一致 |
+   | §2.a（lerobot 0.3.3，gym-aloha 0.1.5 / MuJoCo 3.8.1） | 16/150 | 10.7% | [6.7, 16.6] | z=−2.76，p=0.006，显著偏低 |
+
+5. 正向对照：kernel `cindyxue1122/lerobot-act-eval-aloha-transfer-mj237`（脚本 `embodiment_datasets/kaggle/lerobot-eval-aloha-transfer-mj237/`）用同一流程、同一仿真器版本评 `lerobot/act_aloha_sim_transfer_cube_human`，即那份 eval_info.json 真正对应的权重，预期 ≈83%。结果：<!-- TRANSFER_CONTROL_RESULT -->（待 kernel 跑完填入）

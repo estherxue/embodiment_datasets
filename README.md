@@ -21,7 +21,7 @@
 | 同上，MuJoCo 2.3.7 + gym-aloha 0.1.1（权重发布时版本） | AlohaInsertion-v0 | 16 / 20 / 14% | 16.7% ± 3.1 |
 | lerobot/diffusion_pusht（非 ACT 参照） | PushT | 66% | 与官方 65.4% 一致 |
 
-ALOHA 远低于作者自报的 83%，原因未定位，详见 `lerobot/EVAL_NOTES.md`。
+ALOHA 插接模型卡自报 20.6%（500 episodes；原论文 20%），MuJoCo 2.3.7 下的 16.7% 与之统计上一致（p=0.29）。之前笔记里写的“自报 83%”来自该仓库的 eval_info.json，排查发现那是 transfer cube 的文件被错传进了插接仓库，排查过程见 `lerobot/EVAL_NOTES.md` §6。
 
 **LIBERO（libero_spatial）**
 
