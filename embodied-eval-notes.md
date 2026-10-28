@@ -13,6 +13,7 @@
 | ALOHA 插接，预训练 ACT（`lerobot/act_aloha_sim_insertion_human`），MuJoCo 2.3.7 | 150 | **16.7%** | [11.6, 23.4] | 模型卡 20.6% / 500 eps（p=0.29，一致） |
 | 同上，MuJoCo 3.8.1（pip 默认解析到的版本） | 150 | 10.7% | [6.7, 16.6] | 比模型卡显著低（p=0.006） |
 | ALOHA transfer cube，预训练 ACT（流程正向对照） | 2 × 50 = 100 | 76.0% | [66.8, 83.3] | 模型卡 83.0% / 500 eps（p=0.10） |
+| ALOHA 插接，同一权重，时限改成 demo 长度 500 步 | 2 × 50 = 100 | 21.0% | [14.2, 30.0] | 模型卡 20.6%（p=0.93）；vs 400 步 16.7%（p=0.39） |
 | **PushT，自己短训的 ACT（10k 步，3 个训练 seed × 3 个评测 seed）** | 见 §3 | <!-- TRAIN_HEADLINE --> | | 100k 步的同配方权重 64% |
 | LIBERO libero_spatial，demo 开环回放（无可加载的官方权重） | 10 任务 × 50 = 500 | 90.2% | [87.3, 92.5] | 回放上限，不是策略成绩 |
 
@@ -28,7 +29,7 @@
 
 ## 2. 预训练权重评测（详表）
 
-数据来源：`kaggle/outputs/lerobot-act-eval-pusht-aloha/`（PushT 全部 + ALOHA MuJoCo 3.8.1）、`kaggle/outputs/lerobot-act-eval-aloha-mj237/`（ALOHA MuJoCo 2.3.7）、`kaggle/outputs/lerobot-act-eval-aloha-transfer-mj237/`（transfer cube 对照）。lerobot 0.3.3（b883328e），torch 2.7.1+cu126。
+数据来源：`kaggle/outputs/lerobot-act-eval-pusht-aloha/`（PushT 全部 + ALOHA MuJoCo 3.8.1）、`kaggle/outputs/lerobot-act-eval-aloha-mj237/`（ALOHA MuJoCo 2.3.7）、`kaggle/outputs/lerobot-act-eval-aloha-transfer-mj237/`（transfer cube 对照）、`kaggle/outputs/lerobot-act-eval-aloha-ep500-mj237/`（插接 500 步口径）。lerobot 0.3.3（b883328e），torch 2.7.1+cu126。
 
 | 组 | run | 成功 k/n | 成功率 | Wilson 95% CI | 样本方差 | episode seed 范围 | avg_max_reward |
 |---|---|---|---|---|---|---|---|
@@ -49,6 +50,8 @@
 | ALOHA 插接 · ACT，MuJoCo 2.3.7 | aloha_insertion_act_seed3000 | 7/50 | 14.0% | [7.0, 26.2] | 0.123 | 3000–3049 | 2.520 |
 | ALOHA transfer cube · ACT，MuJoCo 2.3.7（对照） | aloha_transfer_act_seed1000 | 37/50 | 74.0% | [60.4, 84.1] | 0.196 | 1000–1049 | 3.300 |
 | ALOHA transfer cube · ACT，MuJoCo 2.3.7（对照） | aloha_transfer_act_seed2000 | 39/50 | 78.0% | [64.8, 87.2] | 0.175 | 2000–2049 | 3.480 |
+| ALOHA 插接 · ACT，MuJoCo 2.3.7，episode_length=500 | aloha_insertion_act_ep500_seed1000 | 10/50 | 20.0% | [11.2, 33.0] | 0.163 | 1000–1049 | 2.420 |
+| ALOHA 插接 · ACT，MuJoCo 2.3.7，episode_length=500 | aloha_insertion_act_ep500_seed2000 | 11/50 | 22.0% | [12.8, 35.2] | 0.175 | 2000–2049 | 2.820 |
 
 按组汇总（跨 seed 标准差 vs. 单次 n=50 本身的 Bernoulli SE）：
 
@@ -59,6 +62,7 @@
 | ALOHA 插接 · ACT，MuJoCo 3.8.1 | 3 | 10.7% | 2.3 | 4.4 | 16/150 | 10.7% | [6.7, 16.6] |
 | ALOHA 插接 · ACT，MuJoCo 2.3.7 | 3 | 16.7% | 3.1 | 5.3 | 25/150 | 16.7% | [11.6, 23.4] |
 | ALOHA transfer cube · ACT，MuJoCo 2.3.7（对照） | 2 | 76.0% | 2.8 | 6.0 | 76/100 | 76.0% | [66.8, 83.3] |
+| ALOHA 插接 · ACT，MuJoCo 2.3.7，episode_length=500 | 2 | 21.0% | 1.4 | 5.8 | 21/100 | 21.0% | [14.2, 30.0] |
 
 说明：
 - 官方没有 `lerobot/act_pusht`，PushT 的 ACT 主结果是关键点观测版本（LeRobot 维护者发布，自带 500 episodes 的 eval_info.json 可对照）。像素版社区权重质量差，照实记录。
@@ -102,7 +106,7 @@ kernel `cindyxue1122/lerobot-train-act-pusht`（源码 `kaggle/lerobot-train-act
 
 **(d) 仿真器与硬件。** 同一权重、同一 seed：MuJoCo 3.8.1 → 2.3.7 把 ALOHA 插接从 10.7% 提到 16.7%（6 pts，比任何 seed 效应都大）；PushT 关键点 ACT 在本地 CPU（torch 2.2.2）与 Kaggle GPU 上同 seed 的结果 66/58/66 vs 64/60/64——个别 episode 因浮点差异翻转，总体在 CI 内。这类差异是系统性的，不会随 n 变小，只能靠钉版本来消除（三个 kernel 和本地 venv 现在都钉在 gym-aloha 0.1.1 / mujoco 2.3.7）。
 
-**(e) 评测协议。** 时限：ALOHA 插接 demo 每条 500 帧，而模型卡评测用 400 步（Hub discussion #1 报告 500 步时 23.2% vs 20.6%）；我们的插接数字都是 400 步口径，500 步补测 kernel `cindyxue1122/lerobot-act-eval-aloha-ep500-mj237` 的结果：<!-- EP500_RESULT -->（待填）。LIBERO 则相反：每个任务固定 50 个初始状态（`.pruned_init`），不随 seed 采样，所以 LIBERO 的跨 run 方差只来自策略本身（回放时为 0）。
+**(e) 评测协议。** 时限：ALOHA 插接 demo 每条 500 帧，而模型卡评测用 400 步（Hub discussion #1 报告 500 步时 23.2% vs 20.6%）；我们的插接数字都是 400 步口径，500 步补测（kernel `cindyxue1122/lerobot-act-eval-aloha-ep500-mj237`，同权重、同 seed 1000/2000、MuJoCo 2.3.7）得到 10/50 和 11/50，合并 21.0% [14.2, 30.0]，与模型卡 20.6% 重合（p=0.93），比 400 步口径高约 4 个点但不显著（p=0.39）。同 seed 逐一看，seed 1000 从 8/50 变 10/50、seed 2000 从 10/50 变 11/50：初始状态没变，多出来的成功是原本到 400 步还卡在 3 分（触到插座未插入）的 episode。所以时限是一个会系统性移动几个点的协议参数，报数字时要带上 episode_length。LIBERO 则相反：每个任务固定 50 个初始状态（`.pruned_init`），不随 seed 采样，所以 LIBERO 的跨 run 方差只来自策略本身（回放时为 0）。
 
 ## 5. 产出物索引
 

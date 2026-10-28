@@ -1,0 +1,105 @@
+{
+  "meta": {
+    "lerobot_commit": "b883328e6c95681ca90a18b102e4ae5e1f91e2bf",
+    "n_episodes": 50,
+    "batch_size": 50,
+    "started_utc": "2026-10-28 00:54:13",
+    "gpu": {
+      "torch": "2.7.1+cu126",
+      "cuda_available": true,
+      "device_name": "Tesla T4",
+      "capability": [
+        7,
+        5
+      ],
+      "gpu_ok": true
+    },
+    "device": "cuda",
+    "elapsed_s": 12968.1,
+    "mujoco_gl": "egl",
+    "render_check": "egl (480, 640, 3) uint8 39.91 render() (480, 640, 3) 2.8s"
+  },
+  "runs": {
+    "aloha_insertion_act_ep500_seed1000": {
+      "group": "aloha_insertion_act_ep500",
+      "policy": "lerobot/act_aloha_sim_insertion_human",
+      "policy_path": "lerobot/act_aloha_sim_insertion_human",
+      "env": "--env.type=aloha --env.task=AlohaInsertion-v0 --env.episode_length=500",
+      "seed": 1000,
+      "device": "cuda",
+      "batch_size": 50,
+      "mujoco_gl": "egl",
+      "rc": 0,
+      "wall_s": 6211.2,
+      "cmd": "/kaggle/tmp/venv/bin/lerobot-eval --policy.path=lerobot/act_aloha_sim_insertion_human --policy.device=cuda --env.type=aloha --env.task=AlohaInsertion-v0 --env.episode_length=500 --eval.n_episodes=50 --eval.batch_size=50 --seed=1000 --output_dir=/kaggle/working/eval/aloha_insertion_act_ep500_seed1000",
+      "stats": {
+        "n_episodes": 50,
+        "n_success": 10,
+        "pc_success": 20.0,
+        "success_var_sample": 0.16326530612244902,
+        "success_std_sample": 0.4040610178208843,
+        "success_var_bernoulli": 0.16000000000000003,
+        "success_std_bernoulli": 0.4,
+        "se_mean": 0.05656854249492381,
+        "ci95_normal": [
+          8.912565670994935,
+          31.08743432900507
+        ],
+        "ci95_wilson": [
+          11.243629945973886,
+          33.03737210448524
+        ],
+        "avg_sum_reward": 315.22,
+        "avg_max_reward": 2.42,
+        "eval_s": 6189.790337562561,
+        "eval_ep_s": 123.7958067703247,
+        "episode_seeds": [
+          1000,
+          1049
+        ],
+        "reported_pc_success": 20.0
+      }
+    },
+    "aloha_insertion_act_ep500_seed2000": {
+      "group": "aloha_insertion_act_ep500",
+      "policy": "lerobot/act_aloha_sim_insertion_human",
+      "policy_path": "lerobot/act_aloha_sim_insertion_human",
+      "env": "--env.type=aloha --env.task=AlohaInsertion-v0 --env.episode_length=500",
+      "seed": 2000,
+      "device": "cuda",
+      "batch_size": 50,
+      "mujoco_gl": "egl",
+      "rc": 0,
+      "wall_s": 6623.3,
+      "cmd": "/kaggle/tmp/venv/bin/lerobot-eval --policy.path=lerobot/act_aloha_sim_insertion_human --policy.device=cuda --env.type=aloha --env.task=AlohaInsertion-v0 --env.episode_length=500 --eval.n_episodes=50 --eval.batch_size=50 --seed=2000 --output_dir=/kaggle/working/eval/aloha_insertion_act_ep500_seed2000",
+      "stats": {
+        "n_episodes": 50,
+        "n_success": 11,
+        "pc_success": 22.0,
+        "success_var_sample": 0.17510204081632652,
+        "success_std_sample": 0.4184519575964803,
+        "success_var_bernoulli": 0.1716,
+        "success_std_bernoulli": 0.4142463035441596,
+        "se_mean": 0.05858327406350724,
+        "ci95_normal": [
+          10.51767828355258,
+          33.482321716447416
+        ],
+        "ci95_wilson": [
+          12.753786224302289,
+          35.24181568945956
+        ],
+        "avg_sum_reward": 433.12,
+        "avg_max_reward": 2.82,
+        "eval_s": 6604.307935476303,
+        "eval_ep_s": 132.08615872859954,
+        "episode_seeds": [
+          2000,
+          2049
+        ],
+        "reported_pc_success": 22.0
+      }
+    }
+  },
+  "errors": []
+}

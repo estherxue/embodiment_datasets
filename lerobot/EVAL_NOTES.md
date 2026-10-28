@@ -76,6 +76,17 @@ kernel `cindyxue1122/lerobot-act-eval-aloha-mj237`（脚本 `embodiment_datasets
 - 跨 2 个 seed：**均值 76.0%，seed 间标准差 2.8 个百分点**；合并 76/100，Wilson 95% CI [66.8, 83.3]。模型卡自报 83.0%（415/500，avg_sum_reward 228.5，avg_max_reward 3.546）；双比例 z 检验 z=−1.66，p=0.10，差异不显著。max_reward 分布：seed 1000 {1: 9, 2: 4, 4: 37}，seed 2000 {1: 4, 2: 7, 4: 39}，与作者文件的 {0: 8, 1: 41, 2: 36, 4: 415} 同样几乎没有 3 分。
 - 结论：同一条流程在 transfer cube 上复现了作者的量级（76% vs 83%），在插接上也复现了（16.7% vs 20.6%）。两项都比作者低几个点、都不显著，可能的共同来源是 lerobot 0.3.3 与作者用的 3c0a209 之间的 eval/ACT 实现差异，或 T4 + EGL 与作者 A100 的渲染差异，这里没有继续拆分。
 
+### 2.a''' Kaggle 补测：ALOHA 插接按 demo 长度 `--env.episode_length=500`（kernel `cindyxue1122/lerobot-act-eval-aloha-ep500-mj237`，gym-aloha 0.1.1 / MuJoCo 2.3.7，总耗时 3.6 h）
+
+| run | seed | 成功 | pc_success | 样本方差 | Bernoulli 方差 | 95% CI (Wilson) | avg_sum_reward | avg_max_reward | 耗时 |
+|---|---|---|---|---|---|---|---|---|---|
+| aloha_insertion_act_ep500_seed1000 | 1000 | 10/50 | 20.0% | 0.163 | 0.160 | [11.2, 33.0] | 315.2 | 2.420 | 6190 s |
+| aloha_insertion_act_ep500_seed2000 | 2000 | 11/50 | 22.0% | 0.175 | 0.172 | [12.8, 35.2] | 433.1 | 2.820 | 6604 s |
+
+- 跨 2 个 seed：**均值 21.0%，seed 间标准差 1.4 个百分点**；合并 21/100，Wilson 95% CI [14.2, 30.0]。与模型卡 20.6%（103/500）z=0.09，p=0.93；与 §2.a' 的 400 步口径 16.7%（25/150）z=0.87，p=0.39；与 §2.a 的 MuJoCo 3.8.1 10.7% z=2.25，p=0.02。
+- 同 seed 的 400 步 vs 500 步：seed 1000 8/50 → 10/50，seed 2000 10/50 → 11/50。初始状态相同（同 seed），多出的成功来自原本在 400 步时还停在 3 分的 episode。avg_sum_reward 从 400 步时的 243 / 309 提到 315 / 433，主要是因为成功后剩余步数每步都记 4 分，多出的 100 步把这个数放大，不是策略变好。
+- 结论：时限从 400 改到 500 对这个权重大约值 4 个点，但在 n=100–150 下分不清；两种口径都与模型卡一致。记录时必须注明 episode_length，因为 lerobot 对 `AlohaInsertion-v0` 的默认值 400 比 demo 短 100 步。
+
 <!-- KAGGLE_RESULTS_END -->
 
 ### 2.b 附表：本地 Intel Mac（CPU）结果，lerobot 同一 commit，torch 2.2.2
@@ -141,7 +152,7 @@ lerobot-eval --policy.path=lerobot/act_aloha_sim_insertion_human --policy.device
 
 ## 5. 输出文件
 
-- Kaggle 拉回的结果：`embodiment_datasets/kaggle/outputs/lerobot-act-eval-pusht-aloha/`（第一轮，全部任务）和 `embodiment_datasets/kaggle/outputs/lerobot-act-eval-aloha-mj237/`（ALOHA 复现，旧版仿真器）、`.../lerobot-act-eval-aloha-transfer-mj237/`（transfer cube 正向对照）、`.../lerobot-act-eval-aloha-ep500-mj237/`（插接 episode_length=500）（`summary.md`、`summary.json`、`eval/<run>/eval_info.json`、`logs/*.log`、`env/requirements-freeze.txt`、kernel 日志）。
+- Kaggle 拉回的结果：`embodiment_datasets/kaggle/outputs/lerobot-act-eval-pusht-aloha/`（第一轮，全部任务）和 `embodiment_datasets/kaggle/outputs/lerobot-act-eval-aloha-mj237/`（ALOHA 复现，旧版仿真器）、`.../lerobot-act-eval-aloha-transfer-mj237/`（transfer cube 正向对照）、`.../lerobot-act-eval-aloha-ep500-mj237/`（插接 episode_length=500，§2.a'''）（`summary.md`、`summary.json`、`eval/<run>/eval_info.json`、`logs/*.log`、`env/requirements-freeze.txt`、kernel 日志）。
 - 本地 macOS 结果：`embodiment_datasets/lerobot/outputs/eval/<run>/eval_info.json`，日志在 `embodiment_datasets/lerobot/outputs/logs/`，转换后的权重在 `embodiment_datasets/lerobot/outputs/converted_ckpts/`。
 - 工具脚本：`embodiment_datasets/lerobot/outputs/convert_old_act_ckpt.py`、`eval_stats.py`、`pusht_random_baseline.py`。
 
@@ -164,4 +175,4 @@ lerobot-eval --policy.path=lerobot/act_aloha_sim_insertion_human --policy.device
 
 5. 正向对照：kernel `cindyxue1122/lerobot-act-eval-aloha-transfer-mj237`（脚本 `embodiment_datasets/kaggle/lerobot-eval-aloha-transfer-mj237/`）用同一流程、同一仿真器版本评 `lerobot/act_aloha_sim_transfer_cube_human`，即那份 eval_info.json 真正对应的权重，预期 ≈83%。结果：**74% / 78%，均值 76.0%（76/100，Wilson CI [66.8, 83.3]）**，与模型卡 83.0% 的差异不显著（z=−1.66，p=0.10），详见 §2.a''。流程能复现作者数字，排查闭环。
 6. 上游状态：这个错误在 Hub 上已有人报告——`lerobot/act_aloha_sim_insertion_human` discussion #3「Is the eval_info.json correct?」（2025-05-10 开，2025-10、2026-05 又有两人追问，截至 2026-10-28 维护者未回复，文件也没换）。我们的 sha256 / video_paths 证据可以直接贴进去；本机没有配置 HF token，没有代发。
-7. 顺带发现的协议差异：同仓库 discussion #1「Should episode_length be increased to 500?」指出插接 demo 每条 500 帧（10 s），而模型卡评测沿用了 transfer cube 的默认 `episode_length=400`，报告者改成 500 后得到 23.2%。我们所有插接数字都是 400 步（与模型卡口径一致）；另起 kernel `cindyxue1122/lerobot-act-eval-aloha-ep500-mj237`（脚本 `kaggle/lerobot-eval-aloha-ep500-mj237/`，2 seeds × 50 episodes，MuJoCo 2.3.7）测 500 步口径。结果：<!-- EP500_RESULT -->（kernel 2026-10-28 启动，跑完后填入）
+7. 顺带发现的协议差异：同仓库 discussion #1「Should episode_length be increased to 500?」指出插接 demo 每条 500 帧（10 s），而模型卡评测沿用了 transfer cube 的默认 `episode_length=400`，报告者改成 500 后得到 23.2%。我们所有插接数字都是 400 步（与模型卡口径一致）；另起 kernel `cindyxue1122/lerobot-act-eval-aloha-ep500-mj237`（脚本 `kaggle/lerobot-eval-aloha-ep500-mj237/`，2 seeds × 50 episodes，MuJoCo 2.3.7）测 500 步口径。结果：**20% / 22%，均值 21.0%（21/100，Wilson CI [14.2, 30.0]）**，与模型卡 20.6% 几乎重合（z=0.09，p=0.93），比我们 400 步口径的 16.7% 高 4.3 个点但不显著（z=0.87，p=0.39），与 discussion #1 报告的 23.2% 同量级。max_reward 分布 seed 1000 {0: 8, 1: 6, 2: 3, 3: 23, 4: 10}、seed 2000 {0: 1, 1: 7, 2: 3, 3: 28, 4: 11}：3 分（触到插座但没插进去）仍是最大的一档，多给 100 步只把少数 3 分 episode 推成 4 分，不改变"最后插入阶段失败"的结论。详见 §2.a'''。

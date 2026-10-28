@@ -1,0 +1,295 @@
+[{"stream_name":"stdout","time":0.953693025,"data":"[      0s] $ nvidia-smi || true; echo; python -V; echo; head -3 /etc/os-release; nproc; free -g; df -h /kaggle/working /tmp | cat; echo; env | grep -E '^(CUDA|NVIDIA|KAGGLE)' | sort\n"}
+,{"stream_name":"stdout","time":1.439064879,"data":"    | \n"}
+,{"stream_name":"stdout","time":1.43909416,"data":"    | +-----------------------------------------------------------------------------------------+\n"}
+,{"stream_name":"stdout","time":1.439100043,"data":"    | | Processes:                                                                              |\n"}
+,{"stream_name":"stdout","time":1.439104866,"data":"    | |  GPU   GI   CI              PID   Type   Process name                        GPU Memory |\n"}
+,{"stream_name":"stdout","time":1.439109899,"data":"    | |        ID   ID                                                               Usage      |\n"}
+,{"stream_name":"stdout","time":1.439114837,"data":"    | |=========================================================================================|\n"}
+,{"stream_name":"stdout","time":1.439119282,"data":"    | |  No running processes found                                                             |\n"}
+,{"stream_name":"stdout","time":1.4391239439999999,"data":"    | +-----------------------------------------------------------------------------------------+\n"}
+,{"stream_name":"stdout","time":1.439128614,"data":"    | \n"}
+,{"stream_name":"stdout","time":1.4391324,"data":"    | Python 3.13.15\n"}
+,{"stream_name":"stdout","time":1.439136358,"data":"    | \n"}
+,{"stream_name":"stdout","time":1.439140366,"data":"    | PRETTY_NAME=\"Ubuntu 24.04.1 LTS\"\n"}
+,{"stream_name":"stdout","time":1.439144526,"data":"    | NAME=\"Ubuntu\"\n"}
+,{"stream_name":"stdout","time":1.439148354,"data":"    | VERSION_ID=\"24.04\"\n"}
+,{"stream_name":"stdout","time":1.43915243,"data":"    | 4\n"}
+,{"stream_name":"stdout","time":1.43915627,"data":"    |                total        used        free      shared  buff/cache   available\n"}
+,{"stream_name":"stdout","time":1.439160081,"data":"    | Mem:              31           1          26           0           3          30\n"}
+,{"stream_name":"stdout","time":1.439163707,"data":"    | Swap:              0           0           0\n"}
+,{"stream_name":"stdout","time":1.4391672070000001,"data":"    | Filesystem      Size  Used Avail Use% Mounted on\n"}
+,{"stream_name":"stdout","time":1.439170732,"data":"    | /dev/loop2       20G  168K   20G   1% /kaggle/working\n"}
+,{"stream_name":"stdout","time":1.439192777,"data":"    | overlay         8.0T  7.0T  1.1T  88% /\n"}
+,{"stream_name":"stdout","time":1.43921684,"data":"    | \n"}
+,{"stream_name":"stdout","time":1.439221381,"data":"    | CUDA_HOME=/usr/local/cuda\n"}
+,{"stream_name":"stdout","time":1.43922497,"data":"    | CUDA_VERSION=12.8.1\n"}
+,{"stream_name":"stdout","time":1.4392284,"data":"    | KAGGLE_API_V1_TOKEN=/etc/secrets/kaggle/api-v1-token\n"}
+,{"stream_name":"stdout","time":1.439232138,"data":"    | KAGGLE_CONTAINER_NAME=kaggle_txiN9Y0toEFdQnvBJcjT6wSyAPgsOIVl2COrMzKE-363002273-webtier\n"}
+,{"stream_name":"stdout","time":1.43923577,"data":"    | KAGGLE_DATA_PROXY_PROJECT=kaggle-161607\n"}
+,{"stream_name":"stdout","time":1.439256902,"data":"    | KAGGLE_DATA_PROXY_TOKEN=eyJhbGciOiJBMTI4S1ciLCJlbmMiOiJBMTI4Q0JDLUhTMjU2In0.9AMRLhCTT_T-BdVFKWXuOllhRQ7ejhQE1bPEBZ5cIZmqrrP_LfXFgw.W0VBZhzRcgIqBbSuFF2x5g.Se1R9Cx1T6sUNWHMNpnUb6Q6OlLUHCcxKsHkam1jjtJDLdmLDEDODuaeqqlNq3h5I5\n"}
+,{"stream_name":"stdout","time":1.439261202,"data":"    | KAGGLE_DATA_PROXY_URL=https://dp.kaggle.net\n"}
+,{"stream_name":"stdout","time":1.439263617,"data":"    | KAGGLE_DOCKER_IMAGE=gcr.io/kaggle-gpu-images/python@sha256:9a6bcfda6d03b2cd9aa347ee8c1bae62043328ed0f4afe9bda014e4f8bbf9435\n"}
+,{"stream_name":"stdout","time":1.439273602,"data":"    | KAGGLE_GCP_ZONE=us-central1-f\n"}
+,{"stream_name":"stdout","time":1.439276126,"data":"    | KAGGLE_GRPC_DATA_PROXY_URL=dp.kaggle.net:443\n"}
+,{"stream_name":"stdout","time":1.439278484,"data":"    | KAGGLE_KERNEL_INTEGRATIONS=\n"}
+,{"stream_name":"stdout","time":1.4392813150000001,"data":"    | KAGGLE_KERNEL_RUN_TYPE=Batch\n"}
+,{"stream_name":"stdout","time":1.4393077939999999,"data":"    | KAGGLE_URL_BASE=https://www.kaggle.com\n"}
+,{"stream_name":"stdout","time":1.4393117100000001,"data":"    | KAGGLE_USER_SECRETS_TOKEN=eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2In0..WU440mXYwDhDpWgiG-P5lA.6e6BE8Ql34YaSbq6qkRS8BnuGknsPKKnv3ldUzw1RqHww6GRdAfIxMCoCFHoEMNcOXvvgiGyUh87F1xRRO8m80yWD1ys5k59WqTsKagsm9evX8egmvqeXVYqUY\n"}
+,{"stream_name":"stdout","time":1.439316187,"data":"    | NVIDIA_DRIVER_CAPABILITIES=compute,utility\n"}
+,{"stream_name":"stdout","time":1.439319641,"data":"    | NVIDIA_PRODUCT_NAME=CUDA\n"}
+,{"stream_name":"stdout","time":1.439340869,"data":"    | NVIDIA_REQUIRE_CUDA=cuda\u003e=12.8 brand=unknown,driver\u003e=470,driver\u003c471 brand=grid,driver\u003e=470,driver\u003c471 brand=tesla,driver\u003e=470,driver\u003c471 brand=nvidia,driver\u003e=470,driver\u003c471 brand=quadro,driver\u003e=470,driver\u003c471 brand=quadr\n"}
+,{"stream_name":"stdout","time":1.439346536,"data":"    | NVIDIA_VISIBLE_DEVICES=all\n"}
+,{"stream_name":"stdout","time":1.439350005,"data":"[      0s] -\u003e rc=0  (00_env_info)\n"}
+,{"stream_name":"stdout","time":1.443512908,"data":"[      0s] $ /usr/local/bin/uv --version\n"}
+,{"stream_name":"stdout","time":1.533175329,"data":"    | \n"}
+,{"stream_name":"stdout","time":1.5332139919999999,"data":"    | ===== [00:54:13] $ /usr/local/bin/uv --version\n"}
+,{"stream_name":"stdout","time":1.5332209909999999,"data":"    | uv 0.13.5 (x86_64-unknown-linux-gnu)\n"}
+,{"stream_name":"stdout","time":1.533224954,"data":"[      1s] -\u003e rc=0  (01_install)\n"}
+,{"stream_name":"stdout","time":1.533229334,"data":"[      1s] $ /usr/local/bin/uv venv --python 3.10 /kaggle/tmp/venv\n"}
+,{"stream_name":"stdout","time":3.188972836,"data":"    | \n"}
+,{"stream_name":"stdout","time":3.189000872,"data":"    | ===== [00:54:13] $ /usr/local/bin/uv --version\n"}
+,{"stream_name":"stdout","time":3.189015112,"data":"    | uv 0.13.5 (x86_64-unknown-linux-gnu)\n"}
+,{"stream_name":"stdout","time":3.189019993,"data":"    | \n"}
+,{"stream_name":"stdout","time":3.189023685,"data":"    | ===== [00:54:13] $ /usr/local/bin/uv venv --python 3.10 /kaggle/tmp/venv\n"}
+,{"stream_name":"stdout","time":3.189028411,"data":"    | warning: The `--system` flag has no effect, `uv venv` always ignores virtual environments when finding a Python interpreter; did you mean `--no-managed-python`?\n"}
+,{"stream_name":"stdout","time":3.1890331,"data":"    | Downloading cpython-3.10.22-linux-x86_64-gnu (download) (28.0MiB)\n"}
+,{"stream_name":"stdout","time":3.189037374,"data":"    |  Downloaded cpython-3.10.22-linux-x86_64-gnu (download)\n"}
+,{"stream_name":"stdout","time":3.18904142,"data":"    | Using CPython 3.10.22\n"}
+,{"stream_name":"stdout","time":3.189044919,"data":"    | Creating virtual environment at: /kaggle/tmp/venv\n"}
+,{"stream_name":"stdout","time":3.189048445,"data":"    | Activate with: source /kaggle/tmp/venv/bin/activate\n"}
+,{"stream_name":"stdout","time":3.18905217,"data":"[      2s] -\u003e rc=0  (01_install)\n"}
+,{"stream_name":"stdout","time":3.189061115,"data":"[      2s] $ git clone -q https://github.com/huggingface/lerobot /kaggle/tmp/lerobot \u0026\u0026 cd /kaggle/tmp/lerobot \u0026\u0026 git checkout -q b883328e6c95681ca90a18b102e4ae5e1f91e2bf \u0026\u0026 git log -1 --format='%H %cd %s' --date=short\n"}
+,{"stream_name":"stdout","time":17.275349936,"data":"    | \n"}
+,{"stream_name":"stdout","time":17.27537606,"data":"    | ===== [00:54:13] $ /usr/local/bin/uv --version\n"}
+,{"stream_name":"stdout","time":17.275381003,"data":"    | uv 0.13.5 (x86_64-unknown-linux-gnu)\n"}
+,{"stream_name":"stdout","time":17.275384688,"data":"    | \n"}
+,{"stream_name":"stdout","time":17.275388383,"data":"    | ===== [00:54:13] $ /usr/local/bin/uv venv --python 3.10 /kaggle/tmp/venv\n"}
+,{"stream_name":"stdout","time":17.275392442,"data":"    | warning: The `--system` flag has no effect, `uv venv` always ignores virtual environments when finding a Python interpreter; did you mean `--no-managed-python`?\n"}
+,{"stream_name":"stdout","time":17.275396676,"data":"    | Downloading cpython-3.10.22-linux-x86_64-gnu (download) (28.0MiB)\n"}
+,{"stream_name":"stdout","time":17.275400535,"data":"    |  Downloaded cpython-3.10.22-linux-x86_64-gnu (download)\n"}
+,{"stream_name":"stdout","time":17.275404274,"data":"    | Using CPython 3.10.22\n"}
+,{"stream_name":"stdout","time":17.275408595,"data":"    | Creating virtual environment at: /kaggle/tmp/venv\n"}
+,{"stream_name":"stdout","time":17.275411933,"data":"    | Activate with: source /kaggle/tmp/venv/bin/activate\n"}
+,{"stream_name":"stdout","time":17.2754161,"data":"    | \n"}
+,{"stream_name":"stdout","time":17.275419643,"data":"    | ===== [00:54:15] $ git clone -q https://github.com/huggingface/lerobot /kaggle/tmp/lerobot \u0026\u0026 cd /kaggle/tmp/lerobot \u0026\u0026 git checkout -q b883328e6c95681ca90a18b102e4ae5e1f91e2bf \u0026\u0026 git log -1 --format='%H %cd %s' --date=s\n"}
+,{"stream_name":"stdout","time":17.275426325,"data":"    | b883328e6c95681ca90a18b102e4ae5e1f91e2bf 2025-08-06 chore: Bump to 0.3.3 (#1690)\n"}
+,{"stream_name":"stdout","time":17.275430146,"data":"[     16s] -\u003e rc=0  (01_install)\n"}
+,{"stream_name":"stdout","time":17.275436605,"data":"[     16s] $ /usr/local/bin/uv pip install --python /kaggle/tmp/venv/bin/python --reinstall-package torch --reinstall-package torchvision torch==2.7.1 torchvision==0.22.1 --index-url https://download.pytorch.org/whl/cu126\n"}
+,{"stream_name":"stdout","time":47.739556966,"data":"    |  + nvidia-cuda-cupti-cu12==12.6.80\n"}
+,{"stream_name":"stdout","time":47.739586254,"data":"    |  + nvidia-cuda-nvrtc-cu12==12.6.77\n"}
+,{"stream_name":"stdout","time":47.739591602,"data":"    |  + nvidia-cuda-runtime-cu12==12.6.77\n"}
+,{"stream_name":"stdout","time":47.739596186,"data":"    |  + nvidia-cudnn-cu12==9.5.1.17\n"}
+,{"stream_name":"stdout","time":47.739600591,"data":"    |  + nvidia-cufft-cu12==11.3.0.4\n"}
+,{"stream_name":"stdout","time":47.73960489,"data":"    |  + nvidia-cufile-cu12==1.11.1.6\n"}
+,{"stream_name":"stdout","time":47.739609117,"data":"    |  + nvidia-curand-cu12==10.3.7.77\n"}
+,{"stream_name":"stdout","time":47.739613414,"data":"    |  + nvidia-cusolver-cu12==11.7.1.2\n"}
+,{"stream_name":"stdout","time":47.739617679,"data":"    |  + nvidia-cusparse-cu12==12.5.4.2\n"}
+,{"stream_name":"stdout","time":47.739622013,"data":"    |  + nvidia-cusparselt-cu12==0.6.3\n"}
+,{"stream_name":"stdout","time":47.739626221,"data":"    |  + nvidia-nccl-cu12==2.26.2\n"}
+,{"stream_name":"stdout","time":47.739630577,"data":"    |  + nvidia-nvjitlink-cu12==12.6.85\n"}
+,{"stream_name":"stdout","time":47.739634873,"data":"    |  + nvidia-nvtx-cu12==12.6.77\n"}
+,{"stream_name":"stdout","time":47.739639218,"data":"    |  + pillow==12.3.0\n"}
+,{"stream_name":"stdout","time":47.739643341,"data":"    |  + setuptools==78.1.0\n"}
+,{"stream_name":"stdout","time":47.739655086,"data":"    |  + sympy==1.14.0\n"}
+,{"stream_name":"stdout","time":47.739658586,"data":"    |  + torch==2.7.1+cu126\n"}
+,{"stream_name":"stdout","time":47.739661963,"data":"    |  + torchvision==0.22.1+cu126\n"}
+,{"stream_name":"stdout","time":47.739665369,"data":"    |  + triton==3.3.1\n"}
+,{"stream_name":"stdout","time":47.739668752,"data":"    |  + typing-extensions==4.16.0\n"}
+,{"stream_name":"stdout","time":47.739672233,"data":"[     47s] -\u003e rc=0  (01_install)\n"}
+,{"stream_name":"stdout","time":47.739686952,"data":"[     47s] $ /usr/local/bin/uv pip install --python /kaggle/tmp/venv/bin/python --no-deps torchcodec==0.4.0\n"}
+,{"stream_name":"stdout","time":49.646271799,"data":"    |  + nvidia-cusparselt-cu12==0.6.3\n"}
+,{"stream_name":"stdout","time":49.646293424,"data":"    |  + nvidia-nccl-cu12==2.26.2\n"}
+,{"stream_name":"stdout","time":49.646298449,"data":"    |  + nvidia-nvjitlink-cu12==12.6.85\n"}
+,{"stream_name":"stdout","time":49.646302035,"data":"    |  + nvidia-nvtx-cu12==12.6.77\n"}
+,{"stream_name":"stdout","time":49.646305285,"data":"    |  + pillow==12.3.0\n"}
+,{"stream_name":"stdout","time":49.646308354,"data":"    |  + setuptools==78.1.0\n"}
+,{"stream_name":"stdout","time":49.646311364,"data":"    |  + sympy==1.14.0\n"}
+,{"stream_name":"stdout","time":49.646314605,"data":"    |  + torch==2.7.1+cu126\n"}
+,{"stream_name":"stdout","time":49.646317915,"data":"    |  + torchvision==0.22.1+cu126\n"}
+,{"stream_name":"stdout","time":49.64632108,"data":"    |  + triton==3.3.1\n"}
+,{"stream_name":"stdout","time":49.646324403,"data":"    |  + typing-extensions==4.16.0\n"}
+,{"stream_name":"stdout","time":49.64632758,"data":"    | \n"}
+,{"stream_name":"stdout","time":49.646330833,"data":"    | ===== [00:55:00] $ /usr/local/bin/uv pip install --python /kaggle/tmp/venv/bin/python --no-deps torchcodec==0.4.0\n"}
+,{"stream_name":"stdout","time":49.646334265,"data":"    | Using Python 3.10.22 environment at: /kaggle/tmp/venv\n"}
+,{"stream_name":"stdout","time":49.646337823,"data":"    | Resolved 1 package in 1.77s\n"}
+,{"stream_name":"stdout","time":49.646341603,"data":"    | Downloading torchcodec (1.3MiB)\n"}
+,{"stream_name":"stdout","time":49.646345281,"data":"    |  Downloaded torchcodec\n"}
+,{"stream_name":"stdout","time":49.646348956,"data":"    | Prepared 1 package in 115ms\n"}
+,{"stream_name":"stdout","time":49.646352994,"data":"    | Installed 1 package in 2ms\n"}
+,{"stream_name":"stdout","time":49.646356593,"data":"    |  + torchcodec==0.4.0\n"}
+,{"stream_name":"stdout","time":49.646903535,"data":"[     49s] -\u003e rc=0  (01_install)\n"}
+,{"stream_name":"stdout","time":49.646921065,"data":"[     49s] $ /usr/local/bin/uv pip install --python /kaggle/tmp/venv/bin/python -e \"/kaggle/tmp/lerobot[pusht,aloha]\" -c /kaggle/tmp/constraints.txt\n"}
+,{"stream_name":"stdout","time":106.442173534,"data":"    |  + scipy==1.15.3\n"}
+,{"stream_name":"stdout","time":106.442217769,"data":"    |  + shapely==2.1.2\n"}
+,{"stream_name":"stdout","time":106.442224782,"data":"    |  + six==1.17.0\n"}
+,{"stream_name":"stdout","time":106.442229973,"data":"    |  + sniffio==1.3.1\n"}
+,{"stream_name":"stdout","time":106.442234912,"data":"    |  + termcolor==3.3.0\n"}
+,{"stream_name":"stdout","time":106.442240319,"data":"    |  + toml==0.10.2\n"}
+,{"stream_name":"stdout","time":106.442244924,"data":"    |  + tomli==2.5.0\n"}
+,{"stream_name":"stdout","time":106.442249486,"data":"    |  + tqdm==4.70.1\n"}
+,{"stream_name":"stdout","time":106.442253573,"data":"    |  + typing-inspect==0.9.0\n"}
+,{"stream_name":"stdout","time":106.44226572,"data":"    |  + typing-inspection==0.4.4\n"}
+,{"stream_name":"stdout","time":106.442274858,"data":"    |  + tzdata==2026.5\n"}
+,{"stream_name":"stdout","time":106.442278655,"data":"    |  + urllib3==2.8.0\n"}
+,{"stream_name":"stdout","time":106.442295857,"data":"    |  + wandb==0.31.0\n"}
+,{"stream_name":"stdout","time":106.442299547,"data":"    |  + werkzeug==3.1.9\n"}
+,{"stream_name":"stdout","time":106.442303808,"data":"    |  + wrapt==2.5.1\n"}
+,{"stream_name":"stdout","time":106.442307608,"data":"    |  + xxhash==4.0.2\n"}
+,{"stream_name":"stdout","time":106.442311226,"data":"    |  + yarl==1.25.1\n"}
+,{"stream_name":"stdout","time":106.442314528,"data":"    |  + zipp==4.1.2\n"}
+,{"stream_name":"stdout","time":106.442318815,"data":"    | warning: The package `huggingface-hub==1.33.0` does not have an extra named `hf-transfer`\n"}
+,{"stream_name":"stdout","time":106.442322972,"data":"    | warning: The package `huggingface-hub==1.33.0` does not have an extra named `cli`\n"}
+,{"stream_name":"stdout","time":106.442326436,"data":"[    105s] -\u003e rc=0  (01_install)\n"}
+,{"stream_name":"stdout","time":106.442348144,"data":"[    105s] $ /usr/local/bin/uv pip install --python /kaggle/tmp/venv/bin/python \"gym-aloha==0.1.1\" \"mujoco==2.3.7\" \"dm-control==1.0.14\" \"numpy\u003c2\" -c /kaggle/tmp/constraints.txt\n"}
+,{"stream_name":"stdout","time":106.460209257,"data":"    |  + termcolor==3.3.0\n"}
+,{"stream_name":"stdout","time":106.460231263,"data":"    |  + toml==0.10.2\n"}
+,{"stream_name":"stdout","time":106.46023586,"data":"    |  + tomli==2.5.0\n"}
+,{"stream_name":"stdout","time":106.460239577,"data":"    |  + tqdm==4.70.1\n"}
+,{"stream_name":"stdout","time":106.46024327,"data":"    |  + typing-inspect==0.9.0\n"}
+,{"stream_name":"stdout","time":106.460247125,"data":"    |  + typing-inspection==0.4.4\n"}
+,{"stream_name":"stdout","time":106.460250858,"data":"    |  + tzdata==2026.5\n"}
+,{"stream_name":"stdout","time":106.46025435,"data":"    |  + urllib3==2.8.0\n"}
+,{"stream_name":"stdout","time":106.460258105,"data":"    |  + wandb==0.31.0\n"}
+,{"stream_name":"stdout","time":106.460262127,"data":"    |  + werkzeug==3.1.9\n"}
+,{"stream_name":"stdout","time":106.46026573,"data":"    |  + wrapt==2.5.1\n"}
+,{"stream_name":"stdout","time":106.460269128,"data":"    |  + xxhash==4.0.2\n"}
+,{"stream_name":"stdout","time":106.460272919,"data":"    |  + yarl==1.25.1\n"}
+,{"stream_name":"stdout","time":106.460276686,"data":"    |  + zipp==4.1.2\n"}
+,{"stream_name":"stdout","time":106.460280228,"data":"    | warning: The package `huggingface-hub==1.33.0` does not have an extra named `hf-transfer`\n"}
+,{"stream_name":"stdout","time":106.46028363,"data":"    | warning: The package `huggingface-hub==1.33.0` does not have an extra named `cli`\n"}
+,{"stream_name":"stdout","time":106.460288242,"data":"    | \n"}
+,{"stream_name":"stdout","time":106.460292078,"data":"    | ===== [00:55:58] $ /usr/local/bin/uv pip install --python /kaggle/tmp/venv/bin/python \"gym-aloha==0.1.1\" \"mujoco==2.3.7\" \"dm-control==1.0.14\" \"numpy\u003c2\" -c /kaggle/tmp/constraints.txt\n"}
+,{"stream_name":"stdout","time":106.46029777,"data":"    | Using Python 3.10.22 environment at: /kaggle/tmp/venv\n"}
+,{"stream_name":"stdout","time":106.460301862,"data":"    | Checked 4 packages in 5ms\n"}
+,{"stream_name":"stdout","time":106.460308582,"data":"[    106s] -\u003e rc=0  (01_install)\n"}
+,{"stream_name":"stdout","time":106.460315282,"data":"[    106s] $ /kaggle/tmp/venv/bin/python -c 'import gym_aloha, mujoco, dm_control, numpy; print(\"SIM_VERSIONS\", mujoco.__version__, dm_control.__version__, numpy.__version__)'\n"}
+,{"stream_name":"stdout","time":108.120499779,"data":"    |  + typing-inspection==0.4.4\n"}
+,{"stream_name":"stdout","time":108.120544184,"data":"    |  + tzdata==2026.5\n"}
+,{"stream_name":"stdout","time":108.120550495,"data":"    |  + urllib3==2.8.0\n"}
+,{"stream_name":"stdout","time":108.120558227,"data":"    |  + wandb==0.31.0\n"}
+,{"stream_name":"stdout","time":108.120562095,"data":"    |  + werkzeug==3.1.9\n"}
+,{"stream_name":"stdout","time":108.120565694,"data":"    |  + wrapt==2.5.1\n"}
+,{"stream_name":"stdout","time":108.120569438,"data":"    |  + xxhash==4.0.2\n"}
+,{"stream_name":"stdout","time":108.120573164,"data":"    |  + yarl==1.25.1\n"}
+,{"stream_name":"stdout","time":108.120576891,"data":"    |  + zipp==4.1.2\n"}
+,{"stream_name":"stdout","time":108.120580664,"data":"    | warning: The package `huggingface-hub==1.33.0` does not have an extra named `hf-transfer`\n"}
+,{"stream_name":"stdout","time":108.120584945,"data":"    | warning: The package `huggingface-hub==1.33.0` does not have an extra named `cli`\n"}
+,{"stream_name":"stdout","time":108.120588972,"data":"    | \n"}
+,{"stream_name":"stdout","time":108.120592512,"data":"    | ===== [00:55:58] $ /usr/local/bin/uv pip install --python /kaggle/tmp/venv/bin/python \"gym-aloha==0.1.1\" \"mujoco==2.3.7\" \"dm-control==1.0.14\" \"numpy\u003c2\" -c /kaggle/tmp/constraints.txt\n"}
+,{"stream_name":"stdout","time":108.120600337,"data":"    | Using Python 3.10.22 environment at: /kaggle/tmp/venv\n"}
+,{"stream_name":"stdout","time":108.12060391,"data":"    | Checked 4 packages in 5ms\n"}
+,{"stream_name":"stdout","time":108.120607481,"data":"    | \n"}
+,{"stream_name":"stdout","time":108.120610979,"data":"    | ===== [00:55:58] $ /kaggle/tmp/venv/bin/python -c 'import gym_aloha, mujoco, dm_control, numpy; print(\"SIM_VERSIONS\", mujoco.__version__, dm_control.__version__, numpy.__version__)'\n"}
+,{"stream_name":"stdout","time":108.120617016,"data":"    | Traceback (most recent call last):\n"}
+,{"stream_name":"stdout","time":108.120624278,"data":"    |   File \"\u003cstring\u003e\", line 1, in \u003cmodule\u003e\n"}
+,{"stream_name":"stdout","time":108.120626993,"data":"    | AttributeError: module 'dm_control' has no attribute '__version__'\n"}
+,{"stream_name":"stdout","time":108.120629533,"data":"[    107s] -\u003e rc=1  (01_install)\n"}
+,{"stream_name":"stdout","time":108.12063501,"data":"[    107s] $ /kaggle/tmp/venv/bin/python -c 'import lerobot, torch, torchvision, numpy; print(\"VERSIONS\", lerobot.__version__, torch.__version__, torchvision.__version__, numpy.__version__)'\n"}
+,{"stream_name":"stdout","time":116.308020986,"data":"    |  + wandb==0.31.0\n"}
+,{"stream_name":"stdout","time":116.308071394,"data":"    |  + werkzeug==3.1.9\n"}
+,{"stream_name":"stdout","time":116.308076644,"data":"    |  + wrapt==2.5.1\n"}
+,{"stream_name":"stdout","time":116.308080724,"data":"    |  + xxhash==4.0.2\n"}
+,{"stream_name":"stdout","time":116.308084467,"data":"    |  + yarl==1.25.1\n"}
+,{"stream_name":"stdout","time":116.308087804,"data":"    |  + zipp==4.1.2\n"}
+,{"stream_name":"stdout","time":116.308091008,"data":"    | warning: The package `huggingface-hub==1.33.0` does not have an extra named `hf-transfer`\n"}
+,{"stream_name":"stdout","time":116.308094741,"data":"    | warning: The package `huggingface-hub==1.33.0` does not have an extra named `cli`\n"}
+,{"stream_name":"stdout","time":116.30809811,"data":"    | \n"}
+,{"stream_name":"stdout","time":116.308101423,"data":"    | ===== [00:55:58] $ /usr/local/bin/uv pip install --python /kaggle/tmp/venv/bin/python \"gym-aloha==0.1.1\" \"mujoco==2.3.7\" \"dm-control==1.0.14\" \"numpy\u003c2\" -c /kaggle/tmp/constraints.txt\n"}
+,{"stream_name":"stdout","time":116.308121881,"data":"    | Using Python 3.10.22 environment at: /kaggle/tmp/venv\n"}
+,{"stream_name":"stdout","time":116.308124675,"data":"    | Checked 4 packages in 5ms\n"}
+,{"stream_name":"stdout","time":116.308126854,"data":"    | \n"}
+,{"stream_name":"stdout","time":116.308129361,"data":"    | ===== [00:55:58] $ /kaggle/tmp/venv/bin/python -c 'import gym_aloha, mujoco, dm_control, numpy; print(\"SIM_VERSIONS\", mujoco.__version__, dm_control.__version__, numpy.__version__)'\n"}
+,{"stream_name":"stdout","time":116.308131921,"data":"    | Traceback (most recent call last):\n"}
+,{"stream_name":"stdout","time":116.308134214,"data":"    |   File \"\u003cstring\u003e\", line 1, in \u003cmodule\u003e\n"}
+,{"stream_name":"stdout","time":116.308136663,"data":"    | AttributeError: module 'dm_control' has no attribute '__version__'\n"}
+,{"stream_name":"stdout","time":116.308139014,"data":"    | \n"}
+,{"stream_name":"stdout","time":116.30814118,"data":"    | ===== [00:56:00] $ /kaggle/tmp/venv/bin/python -c 'import lerobot, torch, torchvision, numpy; print(\"VERSIONS\", lerobot.__version__, torch.__version__, torchvision.__version__, numpy.__version__)'\n"}
+,{"stream_name":"stdout","time":116.308143748,"data":"    | VERSIONS 0.3.3 2.7.1+cu126 0.22.1+cu126 1.26.4\n"}
+,{"stream_name":"stdout","time":116.308146027,"data":"[    115s] -\u003e rc=0  (01_install)\n"}
+,{"stream_name":"stdout","time":116.308363381,"data":"[    115s] $ /kaggle/tmp/venv/bin/python /kaggle/tmp/gpu_check.py\n"}
+,{"stream_name":"stdout","time":119.162640871,"data":"    | \n"}
+,{"stream_name":"stdout","time":119.162684929,"data":"    | ===== [00:56:08] $ /kaggle/tmp/venv/bin/python /kaggle/tmp/gpu_check.py\n"}
+,{"stream_name":"stdout","time":119.162690855,"data":"    | GPU_CHECK {\"torch\": \"2.7.1+cu126\", \"cuda_available\": true, \"device_name\": \"Tesla T4\", \"capability\": [7, 5], \"gpu_ok\": true}\n"}
+,{"stream_name":"stdout","time":119.162696093,"data":"[    118s] -\u003e rc=0  (02_gpu_check)\n"}
+,{"stream_name":"stdout","time":119.162904996,"data":"[    118s] DEVICE = cuda  gpu={'torch': '2.7.1+cu126', 'cuda_available': True, 'device_name': 'Tesla T4', 'capability': [7, 5], 'gpu_ok': True}\n"}
+,{"stream_name":"stdout","time":119.162912692,"data":"[    118s] $ /usr/local/bin/uv pip freeze --python /kaggle/tmp/venv/bin/python \u003e /kaggle/working/env/requirements-freeze.txt; wc -l /kaggle/working/env/requirements-freeze.txt\n"}
+,{"stream_name":"stdout","time":119.181069033,"data":"    | ===== [00:56:11] $ /usr/local/bin/uv pip freeze --python /kaggle/tmp/venv/bin/python \u003e /kaggle/working/env/requirements-freeze.txt; wc -l /kaggle/working/env/requirements-freeze.txt\n"}
+,{"stream_name":"stdout","time":119.18108962,"data":"    | Using Python 3.10.22 environment at: /kaggle/tmp/venv\n"}
+,{"stream_name":"stdout","time":119.18109422,"data":"    | 139 /kaggle/working/env/requirements-freeze.txt\n"}
+,{"stream_name":"stdout","time":119.181098319,"data":"[    118s] -\u003e rc=0  (01_install)\n"}
+,{"stream_name":"stdout","time":119.181514464,"data":"[    118s] $ apt-get update -qq \u003e /dev/null 2\u003e\u00261; DEBIAN_FRONTEND=noninteractive apt-get install -y -qq libegl1 libgl1 libglvnd0 libosmesa6 libglfw3 \u003e /dev/null 2\u003e\u00261; ls /usr/lib/x86_64-linux-gnu/ | grep -i -E 'EGL|OSMesa' | head\n"}
+,{"stream_name":"stdout","time":131.324472342,"data":"    | libEGL_mesa.so.0.0.0\n"}
+,{"stream_name":"stdout","time":131.324500848,"data":"    | libEGL.so.1\n"}
+,{"stream_name":"stdout","time":131.324504241,"data":"    | libEGL.so.1.1.0\n"}
+,{"stream_name":"stdout","time":131.324506765,"data":"    | libOSMesa.so.6\n"}
+,{"stream_name":"stdout","time":131.324508967,"data":"    | libOSMesa.so.8\n"}
+,{"stream_name":"stdout","time":131.324517963,"data":"    | libOSMesa.so.8.0.0\n"}
+,{"stream_name":"stdout","time":131.324520369,"data":"    | libwayland-egl.so.1\n"}
+,{"stream_name":"stdout","time":131.324522614,"data":"    | libwayland-egl.so.1.22.0\n"}
+,{"stream_name":"stdout","time":131.324524907,"data":"[    130s] -\u003e rc=0  (03_render_check)\n"}
+,{"stream_name":"stdout","time":131.324675324,"data":"[    130s] $ /kaggle/tmp/venv/bin/python /kaggle/tmp/render_check.py\n"}
+,{"stream_name":"stdout","time":134.458603196,"data":"    | \n"}
+,{"stream_name":"stdout","time":134.458635142,"data":"    | ===== [00:56:11] $ apt-get update -qq \u003e /dev/null 2\u003e\u00261; DEBIAN_FRONTEND=noninteractive apt-get install -y -qq libegl1 libgl1 libglvnd0 libosmesa6 libglfw3 \u003e /dev/null 2\u003e\u00261; ls /usr/lib/x86_64-linux-gnu/ | grep -i -E 'EGL\n"}
+,{"stream_name":"stdout","time":134.45863956,"data":"    | libEGL_mesa.so.0\n"}
+,{"stream_name":"stdout","time":134.458641884,"data":"    | libEGL_mesa.so.0.0.0\n"}
+,{"stream_name":"stdout","time":134.458644412,"data":"    | libEGL.so.1\n"}
+,{"stream_name":"stdout","time":134.458660483,"data":"    | libEGL.so.1.1.0\n"}
+,{"stream_name":"stdout","time":134.458664294,"data":"    | libOSMesa.so.6\n"}
+,{"stream_name":"stdout","time":134.458668067,"data":"    | libOSMesa.so.8\n"}
+,{"stream_name":"stdout","time":134.458671602,"data":"    | libOSMesa.so.8.0.0\n"}
+,{"stream_name":"stdout","time":134.458675452,"data":"    | libwayland-egl.so.1\n"}
+,{"stream_name":"stdout","time":134.458679209,"data":"    | libwayland-egl.so.1.22.0\n"}
+,{"stream_name":"stdout","time":134.458682748,"data":"    | \n"}
+,{"stream_name":"stdout","time":134.4586859,"data":"    | ===== [00:56:23] $ /kaggle/tmp/venv/bin/python /kaggle/tmp/render_check.py\n"}
+,{"stream_name":"stdout","time":134.458689725,"data":"    | RENDER_OK egl (480, 640, 3) uint8 39.91 render() (480, 640, 3) 2.8s\n"}
+,{"stream_name":"stdout","time":134.458693061,"data":"[    134s] -\u003e rc=0  (03_render_check)\n"}
+,{"stream_name":"stdout","time":134.45890653,"data":"[    134s] ALOHA rendering OK with MUJOCO_GL=egl\n"}
+,{"stream_name":"stdout","time":134.459471459,"data":"[    134s] $ /kaggle/tmp/venv/bin/lerobot-eval --policy.path=lerobot/act_aloha_sim_insertion_human --policy.device=cuda --env.type=aloha --env.task=AlohaInsertion-v0 --env.episode_length=500 --eval.n_episodes=50 --eval.batch_size=50 --seed=1000 --output_dir=/kaggle/working/eval/aloha_insertion_act_ep500_seed1000\n"}
+,{"stream_name":"stdout","time":6345.701240378,"data":"    | Running rollout with at most 500 steps: 100%|██████████| 500/500 [1:42:27\u003c00:00, 15.64s/it, running_success_rate=20.0%]\u001b[A\n"}
+,{"stream_name":"stdout","time":6345.701312818,"data":"    | \n"}
+,{"stream_name":"stdout","time":6345.701317838,"data":"    |                                                                                                                        \u001b[A\n"}
+,{"stream_name":"stdout","time":6345.701321888,"data":"    | Stepping through eval batches:   0%|          | 0/1 [1:42:47\u003c?, ?it/s, running_success_rate=20.0%]\n"}
+,{"stream_name":"stdout","time":6345.701325547,"data":"    | Stepping through eval batches: 100%|██████████| 1/1 [1:42:47\u003c00:00, 6167.39s/it, running_success_rate=20.0%]\n"}
+,{"stream_name":"stdout","time":6345.701329277,"data":"    | Stepping through eval batches: 100%|██████████| 1/1 [1:42:47\u003c00:00, 6167.39s/it, running_success_rate=20.0%]\n"}
+,{"stream_name":"stdout","time":6345.701332953,"data":"    | {'avg_sum_reward': 315.22, 'avg_max_reward': 2.42, 'pc_success': 20.0, 'eval_s': 6189.790337562561, 'eval_ep_s': 123.7958067703247}\n"}
+,{"stream_name":"stdout","time":6345.701348201,"data":"    | INFO 2026-10-28 02:39:55 pts/eval.py:501 End of eval\n"}
+,{"stream_name":"stdout","time":6345.701351072,"data":"[   6345s] -\u003e rc=0  (aloha_insertion_act_ep500_seed1000)\n"}
+,{"stream_name":"stdout","time":6345.70195166,"data":"[   6345s] RESULT aloha_insertion_act_ep500_seed1000: 10/50 = 20.0%  CI95 [11.2, 33.0]  avg_max_reward=2.420  eval_s=6190\n"}
+,{"stream_name":"stdout","time":6345.702859702,"data":"[   6345s] $ /kaggle/tmp/venv/bin/lerobot-eval --policy.path=lerobot/act_aloha_sim_insertion_human --policy.device=cuda --env.type=aloha --env.task=AlohaInsertion-v0 --env.episode_length=500 --eval.n_episodes=50 --eval.batch_size=50 --seed=2000 --output_dir=/kaggle/working/eval/aloha_insertion_act_ep500_seed2000\n"}
+,{"stream_name":"stdout","time":12969.004589752,"data":"    | Running rollout with at most 500 steps: 100%|██████████| 500/500 [1:49:22\u003c00:00, 16.00s/it, running_success_rate=22.0%]\u001b[A\n"}
+,{"stream_name":"stdout","time":12969.004682349,"data":"    | \n"}
+,{"stream_name":"stdout","time":12969.004687352,"data":"    |                                                                                                                        \u001b[A\n"}
+,{"stream_name":"stdout","time":12969.004691308,"data":"    | Stepping through eval batches:   0%|          | 0/1 [1:49:42\u003c?, ?it/s, running_success_rate=22.0%]\n"}
+,{"stream_name":"stdout","time":12969.004695031,"data":"    | Stepping through eval batches: 100%|██████████| 1/1 [1:49:42\u003c00:00, 6582.37s/it, running_success_rate=22.0%]\n"}
+,{"stream_name":"stdout","time":12969.004698949,"data":"    | Stepping through eval batches: 100%|██████████| 1/1 [1:49:42\u003c00:00, 6582.37s/it, running_success_rate=22.0%]\n"}
+,{"stream_name":"stdout","time":12969.004719387,"data":"    | {'avg_sum_reward': 433.12, 'avg_max_reward': 2.82, 'pc_success': 22.0, 'eval_s': 6604.307935476303, 'eval_ep_s': 132.08615872859954}\n"}
+,{"stream_name":"stdout","time":12969.004725671,"data":"    | INFO 2026-10-28 04:30:19 pts/eval.py:501 End of eval\n"}
+,{"stream_name":"stdout","time":12969.004731135,"data":"[  12968s] -\u003e rc=0  (aloha_insertion_act_ep500_seed2000)\n"}
+,{"stream_name":"stdout","time":12969.00515584,"data":"[  12968s] RESULT aloha_insertion_act_ep500_seed2000: 11/50 = 22.0%  CI95 [12.8, 35.2]  avg_max_reward=2.820  eval_s=6604\n"}
+,{"stream_name":"stdout","time":12969.006522664,"data":"\n"}
+,{"stream_name":"stdout","time":12969.0065379,"data":"# LeRobot ACT evaluation on Kaggle (ALOHA insertion, episode_length=500, checkpoint-era simulator: gym-aloha 0.1.1 / mujoco 2.3.7)\n"}
+,{"stream_name":"stdout","time":12969.006543769,"data":"\n"}
+,{"stream_name":"stdout","time":12969.006548635,"data":"- lerobot commit: `b883328e6c95681ca90a18b102e4ae5e1f91e2bf` (v0.3.3)\n"}
+,{"stream_name":"stdout","time":12969.006554205,"data":"- device: cuda  |  GPU: Tesla T4  |  torch 2.7.1+cu126\n"}
+,{"stream_name":"stdout","time":12969.006559969,"data":"- MUJOCO_GL: egl  |  n_episodes=50 batch_size=50\n"}
+,{"stream_name":"stdout","time":12969.006566065,"data":"- started 2026-10-28 00:54:13 UTC, elapsed 216.1 min\n"}
+,{"stream_name":"stdout","time":12969.006572067,"data":"\n"}
+,{"stream_name":"stdout","time":12969.006577523,"data":"| run | policy | env / obs | seed | ok | success | pc_success | var (sample) | var (Bernoulli) | 95% CI (Wilson) | avg_sum_reward | avg_max_reward | eval_s |\n"}
+,{"stream_name":"stdout","time":12969.006583118,"data":"|---|---|---|---|---|---|---|---|---|---|---|---|---|\n"}
+,{"stream_name":"stdout","time":12969.006588172,"data":"| aloha_insertion_act_ep500_seed1000 | lerobot/act_aloha_sim_insertion_human | --env.type=aloha --env.task=AlohaInsertion-v0 --env.episode_length=500 | 1000 | rc=0 | 10/50 | 20.0% | 0.1633 | 0.1600 | [11.2, 33.0] | 315.22 | 2.420 | 6190 |\n"}
+,{"stream_name":"stdout","time":12969.006604653,"data":"| aloha_insertion_act_ep500_seed2000 | lerobot/act_aloha_sim_insertion_human | --env.type=aloha --env.task=AlohaInsertion-v0 --env.episode_length=500 | 2000 | rc=0 | 11/50 | 22.0% | 0.1751 | 0.1716 | [12.8, 35.2] | 433.12 | 2.820 | 6604 |\n"}
+,{"stream_name":"stdout","time":12969.006609311,"data":"\n"}
+,{"stream_name":"stdout","time":12969.00661297,"data":"## Across seeds (same policy, 50 episodes per seed)\n"}
+,{"stream_name":"stdout","time":12969.006616777,"data":"\n"}
+,{"stream_name":"stdout","time":12969.006620357,"data":"| group | seeds | mean pc_success | std across seeds (pts) | values |\n"}
+,{"stream_name":"stdout","time":12969.006624266,"data":"|---|---|---|---|---|\n"}
+,{"stream_name":"stdout","time":12969.006627939,"data":"| aloha_insertion_act_ep500 | [1000, 2000] | 21.0% | 1.4 | [20.0, 22.0] |\n"}
+,{"stream_name":"stdout","time":12969.006631908,"data":"\n"}
+,{"stream_name":"stdout","time":12969.006637561,"data":"[  12968s] KERNEL_DONE\n"}
+,{"stream_name":"stderr","time":12971.812093858,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":12971.812125264,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":12972.205478395,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":12972.205506244,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":12974.313572282,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":12975.488744807,"data":"[NbConvertApp] Writing 380740 bytes to __results__.html\n"}
+]

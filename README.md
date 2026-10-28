@@ -20,9 +20,10 @@
 | lerobot/act_aloha_sim_insertion_human，MuJoCo 3.8.1 | AlohaInsertion-v0 | 12 / 8 / 12% | 10.7% ± 2.3 |
 | 同上，MuJoCo 2.3.7 + gym-aloha 0.1.1（权重发布时版本） | AlohaInsertion-v0 | 16 / 20 / 14% | 16.7% ± 3.1（模型卡 20.6%） |
 | lerobot/act_aloha_sim_transfer_cube_human（正向对照），MuJoCo 2.3.7 | AlohaTransferCube-v0 | 74 / 78%（2 seeds） | 76.0% ± 2.8（模型卡 83.0%） |
+| lerobot/act_aloha_sim_insertion_human，MuJoCo 2.3.7，episode_length=500 | AlohaInsertion-v0 | 20 / 22%（2 seeds） | 21.0% ± 1.4（模型卡 20.6%，400 步） |
 | lerobot/diffusion_pusht（非 ACT 参照） | PushT | 66% | 与官方 65.4% 一致 |
 
-ALOHA 插接模型卡自报 20.6%（500 episodes；原论文 20%），MuJoCo 2.3.7 下的 16.7% 与之统计上一致（p=0.29）。之前笔记里写的“自报 83%”来自该仓库的 eval_info.json，排查发现那是 transfer cube 的文件被错传进了插接仓库，用同一流程评 transfer cube 得 76%（模型卡 83%，p=0.10），说明流程能复现作者数字。排查过程见 `lerobot/EVAL_NOTES.md` §6；插接按 500 步（demo 长度）口径的补测 kernel 正在跑。
+ALOHA 插接模型卡自报 20.6%（500 episodes；原论文 20%），MuJoCo 2.3.7 下的 16.7% 与之统计上一致（p=0.29）。之前笔记里写的“自报 83%”来自该仓库的 eval_info.json，排查发现那是 transfer cube 的文件被错传进了插接仓库，用同一流程评 transfer cube 得 76%（模型卡 83%，p=0.10），说明流程能复现作者数字。排查过程见 `lerobot/EVAL_NOTES.md` §6；插接按 500 步（demo 长度）口径补测得 21.0%（21/100），与模型卡重合，比 400 步口径高约 4 个点但不显著。
 
 **LIBERO（libero_spatial）**
 

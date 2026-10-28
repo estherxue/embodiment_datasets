@@ -1,0 +1,14 @@
+
+===== [00:56:11] $ apt-get update -qq > /dev/null 2>&1; DEBIAN_FRONTEND=noninteractive apt-get install -y -qq libegl1 libgl1 libglvnd0 libosmesa6 libglfw3 > /dev/null 2>&1; ls /usr/lib/x86_64-linux-gnu/ | grep -i -E 'EGL|OSMesa' | head
+libEGL_mesa.so.0
+libEGL_mesa.so.0.0.0
+libEGL.so.1
+libEGL.so.1.1.0
+libOSMesa.so.6
+libOSMesa.so.8
+libOSMesa.so.8.0.0
+libwayland-egl.so.1
+libwayland-egl.so.1.22.0
+
+===== [00:56:23] $ /kaggle/tmp/venv/bin/python /kaggle/tmp/render_check.py
+RENDER_OK egl (480, 640, 3) uint8 39.91 render() (480, 640, 3) 2.8s

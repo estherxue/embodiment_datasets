@@ -1,0 +1,373 @@
+{
+  "per_episode": [
+    {
+      "episode_ix": 0,
+      "sum_reward": 413.0,
+      "max_reward": 3.0,
+      "success": false,
+      "seed": 2000
+    },
+    {
+      "episode_ix": 1,
+      "sum_reward": 34.0,
+      "max_reward": 1.0,
+      "success": false,
+      "seed": 2001
+    },
+    {
+      "episode_ix": 2,
+      "sum_reward": 728.0,
+      "max_reward": 3.0,
+      "success": false,
+      "seed": 2002
+    },
+    {
+      "episode_ix": 3,
+      "sum_reward": 534.0,
+      "max_reward": 3.0,
+      "success": false,
+      "seed": 2003
+    },
+    {
+      "episode_ix": 4,
+      "sum_reward": 381.0,
+      "max_reward": 4.0,
+      "success": true,
+      "seed": 2004
+    },
+    {
+      "episode_ix": 5,
+      "sum_reward": 285.0,
+      "max_reward": 4.0,
+      "success": true,
+      "seed": 2005
+    },
+    {
+      "episode_ix": 6,
+      "sum_reward": 536.0,
+      "max_reward": 3.0,
+      "success": false,
+      "seed": 2006
+    },
+    {
+      "episode_ix": 7,
+      "sum_reward": 755.0,
+      "max_reward": 3.0,
+      "success": false,
+      "seed": 2007
+    },
+    {
+      "episode_ix": 8,
+      "sum_reward": 641.0,
+      "max_reward": 3.0,
+      "success": false,
+      "seed": 2008
+    },
+    {
+      "episode_ix": 9,
+      "sum_reward": 596.0,
+      "max_reward": 3.0,
+      "success": false,
+      "seed": 2009
+    },
+    {
+      "episode_ix": 10,
+      "sum_reward": 0.0,
+      "max_reward": 0.0,
+      "success": false,
+      "seed": 2010
+    },
+    {
+      "episode_ix": 11,
+      "sum_reward": 216.0,
+      "max_reward": 4.0,
+      "success": true,
+      "seed": 2011
+    },
+    {
+      "episode_ix": 12,
+      "sum_reward": 5.0,
+      "max_reward": 1.0,
+      "success": false,
+      "seed": 2012
+    },
+    {
+      "episode_ix": 13,
+      "sum_reward": 333.0,
+      "max_reward": 3.0,
+      "success": false,
+      "seed": 2013
+    },
+    {
+      "episode_ix": 14,
+      "sum_reward": 410.0,
+      "max_reward": 4.0,
+      "success": true,
+      "seed": 2014
+    },
+    {
+      "episode_ix": 15,
+      "sum_reward": 827.0,
+      "max_reward": 3.0,
+      "success": false,
+      "seed": 2015
+    },
+    {
+      "episode_ix": 16,
+      "sum_reward": 490.0,
+      "max_reward": 3.0,
+      "success": false,
+      "seed": 2016
+    },
+    {
+      "episode_ix": 17,
+      "sum_reward": 52.0,
+      "max_reward": 1.0,
+      "success": false,
+      "seed": 2017
+    },
+    {
+      "episode_ix": 18,
+      "sum_reward": 183.0,
+      "max_reward": 4.0,
+      "success": true,
+      "seed": 2018
+    },
+    {
+      "episode_ix": 19,
+      "sum_reward": 41.0,
+      "max_reward": 1.0,
+      "success": false,
+      "seed": 2019
+    },
+    {
+      "episode_ix": 20,
+      "sum_reward": 689.0,
+      "max_reward": 3.0,
+      "success": false,
+      "seed": 2020
+    },
+    {
+      "episode_ix": 21,
+      "sum_reward": 46.0,
+      "max_reward": 1.0,
+      "success": false,
+      "seed": 2021
+    },
+    {
+      "episode_ix": 22,
+      "sum_reward": 613.0,
+      "max_reward": 4.0,
+      "success": true,
+      "seed": 2022
+    },
+    {
+      "episode_ix": 23,
+      "sum_reward": 695.0,
+      "max_reward": 3.0,
+      "success": false,
+      "seed": 2023
+    },
+    {
+      "episode_ix": 24,
+      "sum_reward": 336.0,
+      "max_reward": 3.0,
+      "success": false,
+      "seed": 2024
+    },
+    {
+      "episode_ix": 25,
+      "sum_reward": 281.0,
+      "max_reward": 4.0,
+      "success": true,
+      "seed": 2025
+    },
+    {
+      "episode_ix": 26,
+      "sum_reward": 3.0,
+      "max_reward": 1.0,
+      "success": false,
+      "seed": 2026
+    },
+    {
+      "episode_ix": 27,
+      "sum_reward": 320.0,
+      "max_reward": 4.0,
+      "success": true,
+      "seed": 2027
+    },
+    {
+      "episode_ix": 28,
+      "sum_reward": 15.0,
+      "max_reward": 2.0,
+      "success": false,
+      "seed": 2028
+    },
+    {
+      "episode_ix": 29,
+      "sum_reward": 30.0,
+      "max_reward": 1.0,
+      "success": false,
+      "seed": 2029
+    },
+    {
+      "episode_ix": 30,
+      "sum_reward": 778.0,
+      "max_reward": 3.0,
+      "success": false,
+      "seed": 2030
+    },
+    {
+      "episode_ix": 31,
+      "sum_reward": 467.0,
+      "max_reward": 3.0,
+      "success": false,
+      "seed": 2031
+    },
+    {
+      "episode_ix": 32,
+      "sum_reward": 501.0,
+      "max_reward": 3.0,
+      "success": false,
+      "seed": 2032
+    },
+    {
+      "episode_ix": 33,
+      "sum_reward": 604.0,
+      "max_reward": 3.0,
+      "success": false,
+      "seed": 2033
+    },
+    {
+      "episode_ix": 34,
+      "sum_reward": 685.0,
+      "max_reward": 3.0,
+      "success": false,
+      "seed": 2034
+    },
+    {
+      "episode_ix": 35,
+      "sum_reward": 774.0,
+      "max_reward": 3.0,
+      "success": false,
+      "seed": 2035
+    },
+    {
+      "episode_ix": 36,
+      "sum_reward": 710.0,
+      "max_reward": 3.0,
+      "success": false,
+      "seed": 2036
+    },
+    {
+      "episode_ix": 37,
+      "sum_reward": 670.0,
+      "max_reward": 3.0,
+      "success": false,
+      "seed": 2037
+    },
+    {
+      "episode_ix": 38,
+      "sum_reward": 735.0,
+      "max_reward": 3.0,
+      "success": false,
+      "seed": 2038
+    },
+    {
+      "episode_ix": 39,
+      "sum_reward": 665.0,
+      "max_reward": 3.0,
+      "success": false,
+      "seed": 2039
+    },
+    {
+      "episode_ix": 40,
+      "sum_reward": 654.0,
+      "max_reward": 3.0,
+      "success": false,
+      "seed": 2040
+    },
+    {
+      "episode_ix": 41,
+      "sum_reward": 339.0,
+      "max_reward": 4.0,
+      "success": true,
+      "seed": 2041
+    },
+    {
+      "episode_ix": 42,
+      "sum_reward": 813.0,
+      "max_reward": 3.0,
+      "success": false,
+      "seed": 2042
+    },
+    {
+      "episode_ix": 43,
+      "sum_reward": 553.0,
+      "max_reward": 2.0,
+      "success": false,
+      "seed": 2043
+    },
+    {
+      "episode_ix": 44,
+      "sum_reward": 800.0,
+      "max_reward": 3.0,
+      "success": false,
+      "seed": 2044
+    },
+    {
+      "episode_ix": 45,
+      "sum_reward": 439.0,
+      "max_reward": 3.0,
+      "success": false,
+      "seed": 2045
+    },
+    {
+      "episode_ix": 46,
+      "sum_reward": 341.0,
+      "max_reward": 4.0,
+      "success": true,
+      "seed": 2046
+    },
+    {
+      "episode_ix": 47,
+      "sum_reward": 54.0,
+      "max_reward": 2.0,
+      "success": false,
+      "seed": 2047
+    },
+    {
+      "episode_ix": 48,
+      "sum_reward": 299.0,
+      "max_reward": 3.0,
+      "success": false,
+      "seed": 2048
+    },
+    {
+      "episode_ix": 49,
+      "sum_reward": 287.0,
+      "max_reward": 4.0,
+      "success": true,
+      "seed": 2049
+    }
+  ],
+  "aggregated": {
+    "avg_sum_reward": 433.12,
+    "avg_max_reward": 2.82,
+    "pc_success": 22.0,
+    "eval_s": 6604.307935476303,
+    "eval_ep_s": 132.08615872859954
+  },
+  "video_paths": [
+    "/kaggle/working/eval/aloha_insertion_act_ep500_seed2000/videos/eval_episode_0.mp4",
+    "/kaggle/working/eval/aloha_insertion_act_ep500_seed2000/videos/eval_episode_1.mp4",
+    "/kaggle/working/eval/aloha_insertion_act_ep500_seed2000/videos/eval_episode_2.mp4",
+    "/kaggle/working/eval/aloha_insertion_act_ep500_seed2000/videos/eval_episode_3.mp4",
+    "/kaggle/working/eval/aloha_insertion_act_ep500_seed2000/videos/eval_episode_4.mp4",
+    "/kaggle/working/eval/aloha_insertion_act_ep500_seed2000/videos/eval_episode_5.mp4",
+    "/kaggle/working/eval/aloha_insertion_act_ep500_seed2000/videos/eval_episode_6.mp4",
+    "/kaggle/working/eval/aloha_insertion_act_ep500_seed2000/videos/eval_episode_7.mp4",
+    "/kaggle/working/eval/aloha_insertion_act_ep500_seed2000/videos/eval_episode_8.mp4",
+    "/kaggle/working/eval/aloha_insertion_act_ep500_seed2000/videos/eval_episode_9.mp4"
+  ]
+}
