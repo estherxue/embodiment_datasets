@@ -1,0 +1,226 @@
+
+===== [04:12:32] $ /kaggle/tmp/venv/bin/lerobot-train --dataset.repo_id=lerobot/pusht --env.type=pusht --policy.type=act --policy.push_to_hub=false --policy.chunk_size=16 --policy.n_action_steps=16 --policy.n_decoder_layers=4 --policy.optimizer_lr=3e-5 --policy.device=cuda '--policy.normalization_mapping={"VISUAL":"MEAN_STD","STATE":"MIN_MAX","ACTION":"MIN_MAX"}' --output_dir=/kaggle/tmp/train/px_train3 --job_name=px_train3 --steps=10000 --save_freq=10000 --eval_freq=0 --log_freq=100 --batch_size=64 --num_workers=4 --seed=3 --wandb.enable=false
+INFO 2026-10-28 04:12:38 ts/train.py:111 {'batch_size': 64,
+ 'dataset': {'episodes': None,
+             'image_transforms': {'enable': False,
+                                  'max_num_transforms': 3,
+                                  'random_order': False,
+                                  'tfs': {'brightness': {'kwargs': {'brightness': [0.8,
+                                                                                   1.2]},
+                                                         'type': 'ColorJitter',
+                                                         'weight': 1.0},
+                                          'contrast': {'kwargs': {'contrast': [0.8,
+                                                                               1.2]},
+                                                       'type': 'ColorJitter',
+                                                       'weight': 1.0},
+                                          'hue': {'kwargs': {'hue': [-0.05,
+                                                                     0.05]},
+                                                  'type': 'ColorJitter',
+                                                  'weight': 1.0},
+                                          'saturation': {'kwargs': {'saturation': [0.5,
+                                                                                   1.5]},
+                                                         'type': 'ColorJitter',
+                                                         'weight': 1.0},
+                                          'sharpness': {'kwargs': {'sharpness': [0.5,
+                                                                                 1.5]},
+                                                        'type': 'SharpnessJitter',
+                                                        'weight': 1.0}}},
+             'repo_id': 'lerobot/pusht',
+             'revision': None,
+             'root': None,
+             'use_imagenet_stats': True,
+             'video_backend': 'torchcodec'},
+ 'env': {'episode_length': 300,
+         'features': {'action': {'shape': [2],
+                                 'type': <FeatureType.ACTION: 'ACTION'>},
+                      'agent_pos': {'shape': [2],
+                                    'type': <FeatureType.STATE: 'STATE'>},
+                      'pixels': {'shape': [384, 384, 3],
+                                 'type': <FeatureType.VISUAL: 'VISUAL'>}},
+         'features_map': {'action': 'action',
+                          'agent_pos': 'observation.state',
+                          'environment_state': 'observation.environment_state',
+                          'pixels': 'observation.image'},
+         'fps': 10,
+         'obs_type': 'pixels_agent_pos',
+         'render_mode': 'rgb_array',
+         'task': 'PushT-v0',
+         'type': 'pusht',
+         'visualization_height': 384,
+         'visualization_width': 384},
+ 'eval': {'batch_size': 50, 'n_episodes': 50, 'use_async_envs': False},
+ 'eval_freq': 0,
+ 'job_name': 'px_train3',
+ 'log_freq': 100,
+ 'num_workers': 4,
+ 'optimizer': {'betas': [0.9, 0.999],
+               'eps': 1e-08,
+               'grad_clip_norm': 10.0,
+               'lr': 3e-05,
+               'type': 'adamw',
+               'weight_decay': 0.0001},
+ 'output_dir': '/kaggle/tmp/train/px_train3',
+ 'policy': {'chunk_size': 16,
+            'device': 'cuda',
+            'dim_feedforward': 3200,
+            'dim_model': 512,
+            'dropout': 0.1,
+            'feedforward_activation': 'relu',
+            'input_features': {},
+            'kl_weight': 10.0,
+            'latent_dim': 32,
+            'license': None,
+            'n_action_steps': 16,
+            'n_decoder_layers': 4,
+            'n_encoder_layers': 4,
+            'n_heads': 8,
+            'n_obs_steps': 1,
+            'n_vae_encoder_layers': 4,
+            'normalization_mapping': {'ACTION': <NormalizationMode.MIN_MAX: 'MIN_MAX'>,
+                                      'STATE': <NormalizationMode.MIN_MAX: 'MIN_MAX'>,
+                                      'VISUAL': <NormalizationMode.MEAN_STD: 'MEAN_STD'>},
+            'optimizer_lr': 3e-05,
+            'optimizer_lr_backbone': 1e-05,
+            'optimizer_weight_decay': 0.0001,
+            'output_features': {},
+            'pre_norm': False,
+            'pretrained_backbone_weights': 'ResNet18_Weights.IMAGENET1K_V1',
+            'private': None,
+            'push_to_hub': False,
+            'replace_final_stride_with_dilation': False,
+            'repo_id': None,
+            'tags': None,
+            'temporal_ensemble_coeff': None,
+            'type': 'act',
+            'use_amp': False,
+            'use_vae': True,
+            'vision_backbone': 'resnet18'},
+ 'resume': False,
+ 'save_checkpoint': True,
+ 'save_freq': 10000,
+ 'scheduler': None,
+ 'seed': 3,
+ 'steps': 10000,
+ 'use_policy_training_preset': True,
+ 'wandb': {'disable_artifact': False,
+           'enable': False,
+           'entity': None,
+           'mode': None,
+           'notes': None,
+           'project': 'lerobot',
+           'run_id': None}}
+INFO 2026-10-28 04:12:38 ts/train.py:117 Logs will be saved locally.
+INFO 2026-10-28 04:12:38 ts/train.py:127 Creating dataset
+INFO 2026-10-28 04:12:39 _client.py:1025 HTTP Request: HEAD https://s3.amazonaws.com/datasets.huggingface.co/datasets/datasets/parquet/parquet.py "HTTP/1.1 404 Not Found"
+INFO 2026-10-28 04:12:39 ts/train.py:138 Creating policy
+INFO 2026-10-28 04:12:41 ts/train.py:144 Creating optimizer and scheduler
+INFO 2026-10-28 04:12:41 ts/train.py:156 Output dir: /kaggle/tmp/train/px_train3
+INFO 2026-10-28 04:12:41 ts/train.py:158 cfg.env.task='PushT-v0'
+INFO 2026-10-28 04:12:41 ts/train.py:159 cfg.steps=10000 (10K)
+INFO 2026-10-28 04:12:41 ts/train.py:160 dataset.num_frames=25650 (26K)
+INFO 2026-10-28 04:12:41 ts/train.py:161 dataset.num_episodes=206
+INFO 2026-10-28 04:12:41 ts/train.py:162 num_learnable_params=67700482 (68M)
+INFO 2026-10-28 04:12:41 ts/train.py:163 num_total_params=67700500 (68M)
+INFO 2026-10-28 04:12:41 ts/train.py:202 Start offline training on a fixed dataset
+INFO 2026-10-28 04:13:05 ts/train.py:232 step:100 smpl:6K ep:51 epch:0.25 loss:4.385 grdn:90.753 lr:3.0e-05 updt_s:0.220 data_s:0.024
+INFO 2026-10-28 04:13:27 ts/train.py:232 step:200 smpl:13K ep:103 epch:0.50 loss:1.702 grdn:39.002 lr:3.0e-05 updt_s:0.199 data_s:0.016
+INFO 2026-10-28 04:13:48 ts/train.py:232 step:300 smpl:19K ep:154 epch:0.75 loss:1.276 grdn:35.625 lr:3.0e-05 updt_s:0.193 data_s:0.016
+INFO 2026-10-28 04:14:09 ts/train.py:232 step:400 smpl:26K ep:206 epch:1.00 loss:0.975 grdn:31.391 lr:3.0e-05 updt_s:0.192 data_s:0.017
+INFO 2026-10-28 04:14:33 ts/train.py:232 step:500 smpl:32K ep:257 epch:1.25 loss:0.748 grdn:27.167 lr:3.0e-05 updt_s:0.208 data_s:0.030
+INFO 2026-10-28 04:14:55 ts/train.py:232 step:600 smpl:38K ep:308 epch:1.50 loss:0.587 grdn:24.729 lr:3.0e-05 updt_s:0.197 data_s:0.016
+INFO 2026-10-28 04:15:16 ts/train.py:232 step:700 smpl:45K ep:360 epch:1.75 loss:0.462 grdn:22.211 lr:3.0e-05 updt_s:0.198 data_s:0.019
+INFO 2026-10-28 04:15:38 ts/train.py:232 step:800 smpl:51K ep:411 epch:2.00 loss:0.371 grdn:18.719 lr:3.0e-05 updt_s:0.195 data_s:0.019
+INFO 2026-10-28 04:16:01 ts/train.py:232 step:900 smpl:58K ep:463 epch:2.25 loss:0.308 grdn:17.868 lr:3.0e-05 updt_s:0.198 data_s:0.030
+INFO 2026-10-28 04:16:23 ts/train.py:232 step:1K smpl:64K ep:514 epch:2.50 loss:0.266 grdn:16.639 lr:3.0e-05 updt_s:0.197 data_s:0.016
+INFO 2026-10-28 04:16:44 ts/train.py:232 step:1K smpl:70K ep:565 epch:2.74 loss:0.233 grdn:15.826 lr:3.0e-05 updt_s:0.194 data_s:0.024
+INFO 2026-10-28 04:17:06 ts/train.py:232 step:1K smpl:77K ep:617 epch:2.99 loss:0.210 grdn:14.539 lr:3.0e-05 updt_s:0.194 data_s:0.018
+INFO 2026-10-28 04:17:29 ts/train.py:232 step:1K smpl:83K ep:668 epch:3.24 loss:0.188 grdn:13.622 lr:3.0e-05 updt_s:0.197 data_s:0.031
+INFO 2026-10-28 04:17:50 ts/train.py:232 step:1K smpl:90K ep:720 epch:3.49 loss:0.176 grdn:12.893 lr:3.0e-05 updt_s:0.197 data_s:0.013
+INFO 2026-10-28 04:18:11 ts/train.py:232 step:2K smpl:96K ep:771 epch:3.74 loss:0.163 grdn:12.328 lr:3.0e-05 updt_s:0.197 data_s:0.016
+INFO 2026-10-28 04:18:32 ts/train.py:232 step:2K smpl:102K ep:822 epch:3.99 loss:0.154 grdn:11.960 lr:3.0e-05 updt_s:0.194 data_s:0.014
+INFO 2026-10-28 04:18:55 ts/train.py:232 step:2K smpl:109K ep:874 epch:4.24 loss:0.141 grdn:11.464 lr:3.0e-05 updt_s:0.192 data_s:0.033
+INFO 2026-10-28 04:19:16 ts/train.py:232 step:2K smpl:115K ep:925 epch:4.49 loss:0.135 grdn:11.009 lr:3.0e-05 updt_s:0.197 data_s:0.012
+INFO 2026-10-28 04:19:37 ts/train.py:232 step:2K smpl:122K ep:977 epch:4.74 loss:0.129 grdn:10.521 lr:3.0e-05 updt_s:0.193 data_s:0.019
+INFO 2026-10-28 04:19:59 ts/train.py:232 step:2K smpl:128K ep:1K epch:4.99 loss:0.123 grdn:10.295 lr:3.0e-05 updt_s:0.191 data_s:0.025
+INFO 2026-10-28 04:20:22 ts/train.py:232 step:2K smpl:134K ep:1K epch:5.24 loss:0.116 grdn:9.924 lr:3.0e-05 updt_s:0.195 data_s:0.034
+INFO 2026-10-28 04:20:44 ts/train.py:232 step:2K smpl:141K ep:1K epch:5.49 loss:0.113 grdn:9.585 lr:3.0e-05 updt_s:0.196 data_s:0.017
+INFO 2026-10-28 04:21:05 ts/train.py:232 step:2K smpl:147K ep:1K epch:5.74 loss:0.107 grdn:9.056 lr:3.0e-05 updt_s:0.195 data_s:0.019
+INFO 2026-10-28 04:21:26 ts/train.py:232 step:2K smpl:154K ep:1K epch:5.99 loss:0.103 grdn:8.558 lr:3.0e-05 updt_s:0.196 data_s:0.013
+INFO 2026-10-28 04:21:50 ts/train.py:232 step:2K smpl:160K ep:1K epch:6.24 loss:0.098 grdn:8.292 lr:3.0e-05 updt_s:0.197 data_s:0.036
+INFO 2026-10-28 04:22:12 ts/train.py:232 step:3K smpl:166K ep:1K epch:6.49 loss:0.094 grdn:7.953 lr:3.0e-05 updt_s:0.198 data_s:0.025
+INFO 2026-10-28 04:22:34 ts/train.py:232 step:3K smpl:173K ep:1K epch:6.74 loss:0.091 grdn:7.544 lr:3.0e-05 updt_s:0.197 data_s:0.024
+INFO 2026-10-28 04:22:57 ts/train.py:232 step:3K smpl:179K ep:1K epch:6.99 loss:0.091 grdn:7.772 lr:3.0e-05 updt_s:0.193 data_s:0.028
+INFO 2026-10-28 04:23:20 ts/train.py:232 step:3K smpl:186K ep:1K epch:7.24 loss:0.086 grdn:7.852 lr:3.0e-05 updt_s:0.196 data_s:0.039
+INFO 2026-10-28 04:23:42 ts/train.py:232 step:3K smpl:192K ep:2K epch:7.49 loss:0.083 grdn:7.025 lr:3.0e-05 updt_s:0.201 data_s:0.017
+INFO 2026-10-28 04:24:04 ts/train.py:232 step:3K smpl:198K ep:2K epch:7.73 loss:0.081 grdn:6.975 lr:3.0e-05 updt_s:0.196 data_s:0.019
+INFO 2026-10-28 04:24:25 ts/train.py:232 step:3K smpl:205K ep:2K epch:7.98 loss:0.081 grdn:7.129 lr:3.0e-05 updt_s:0.197 data_s:0.015
+INFO 2026-10-28 04:24:48 ts/train.py:232 step:3K smpl:211K ep:2K epch:8.23 loss:0.076 grdn:7.165 lr:3.0e-05 updt_s:0.195 data_s:0.035
+INFO 2026-10-28 04:25:09 ts/train.py:232 step:3K smpl:218K ep:2K epch:8.48 loss:0.074 grdn:6.665 lr:3.0e-05 updt_s:0.198 data_s:0.014
+INFO 2026-10-28 04:25:31 ts/train.py:232 step:4K smpl:224K ep:2K epch:8.73 loss:0.074 grdn:6.821 lr:3.0e-05 updt_s:0.196 data_s:0.022
+INFO 2026-10-28 04:25:53 ts/train.py:232 step:4K smpl:230K ep:2K epch:8.98 loss:0.072 grdn:6.364 lr:3.0e-05 updt_s:0.196 data_s:0.018
+INFO 2026-10-28 04:26:16 ts/train.py:232 step:4K smpl:237K ep:2K epch:9.23 loss:0.069 grdn:6.357 lr:3.0e-05 updt_s:0.193 data_s:0.034
+INFO 2026-10-28 04:26:37 ts/train.py:232 step:4K smpl:243K ep:2K epch:9.48 loss:0.067 grdn:5.758 lr:3.0e-05 updt_s:0.195 data_s:0.019
+INFO 2026-10-28 04:26:59 ts/train.py:232 step:4K smpl:250K ep:2K epch:9.73 loss:0.067 grdn:6.353 lr:3.0e-05 updt_s:0.193 data_s:0.023
+INFO 2026-10-28 04:27:21 ts/train.py:232 step:4K smpl:256K ep:2K epch:9.98 loss:0.066 grdn:6.019 lr:3.0e-05 updt_s:0.196 data_s:0.018
+INFO 2026-10-28 04:27:44 ts/train.py:232 step:4K smpl:262K ep:2K epch:10.23 loss:0.064 grdn:5.795 lr:3.0e-05 updt_s:0.195 data_s:0.032
+INFO 2026-10-28 04:28:05 ts/train.py:232 step:4K smpl:269K ep:2K epch:10.48 loss:0.062 grdn:5.497 lr:3.0e-05 updt_s:0.195 data_s:0.020
+INFO 2026-10-28 04:28:27 ts/train.py:232 step:4K smpl:275K ep:2K epch:10.73 loss:0.060 grdn:5.670 lr:3.0e-05 updt_s:0.197 data_s:0.016
+INFO 2026-10-28 04:28:49 ts/train.py:232 step:4K smpl:282K ep:2K epch:10.98 loss:0.061 grdn:5.829 lr:3.0e-05 updt_s:0.196 data_s:0.022
+INFO 2026-10-28 04:29:12 ts/train.py:232 step:4K smpl:288K ep:2K epch:11.23 loss:0.059 grdn:5.908 lr:3.0e-05 updt_s:0.195 data_s:0.031
+INFO 2026-10-28 04:29:33 ts/train.py:232 step:5K smpl:294K ep:2K epch:11.48 loss:0.058 grdn:5.478 lr:3.0e-05 updt_s:0.196 data_s:0.021
+INFO 2026-10-28 04:29:55 ts/train.py:232 step:5K smpl:301K ep:2K epch:11.73 loss:0.057 grdn:5.429 lr:3.0e-05 updt_s:0.196 data_s:0.016
+INFO 2026-10-28 04:30:17 ts/train.py:232 step:5K smpl:307K ep:2K epch:11.98 loss:0.057 grdn:5.420 lr:3.0e-05 updt_s:0.197 data_s:0.020
+INFO 2026-10-28 04:30:40 ts/train.py:232 step:5K smpl:314K ep:3K epch:12.23 loss:0.053 grdn:4.948 lr:3.0e-05 updt_s:0.196 data_s:0.031
+INFO 2026-10-28 04:31:01 ts/train.py:232 step:5K smpl:320K ep:3K epch:12.48 loss:0.053 grdn:5.403 lr:3.0e-05 updt_s:0.197 data_s:0.019
+INFO 2026-10-28 04:31:23 ts/train.py:232 step:5K smpl:326K ep:3K epch:12.73 loss:0.054 grdn:5.253 lr:3.0e-05 updt_s:0.195 data_s:0.018
+INFO 2026-10-28 04:31:44 ts/train.py:232 step:5K smpl:333K ep:3K epch:12.97 loss:0.053 grdn:5.002 lr:3.0e-05 updt_s:0.197 data_s:0.015
+INFO 2026-10-28 04:32:07 ts/train.py:232 step:5K smpl:339K ep:3K epch:13.22 loss:0.051 grdn:4.911 lr:3.0e-05 updt_s:0.194 data_s:0.032
+INFO 2026-10-28 04:32:28 ts/train.py:232 step:5K smpl:346K ep:3K epch:13.47 loss:0.050 grdn:4.762 lr:3.0e-05 updt_s:0.196 data_s:0.017
+INFO 2026-10-28 04:32:50 ts/train.py:232 step:6K smpl:352K ep:3K epch:13.72 loss:0.050 grdn:4.975 lr:3.0e-05 updt_s:0.195 data_s:0.022
+INFO 2026-10-28 04:33:11 ts/train.py:232 step:6K smpl:358K ep:3K epch:13.97 loss:0.050 grdn:4.682 lr:3.0e-05 updt_s:0.198 data_s:0.011
+INFO 2026-10-28 04:33:34 ts/train.py:232 step:6K smpl:365K ep:3K epch:14.22 loss:0.049 grdn:5.132 lr:3.0e-05 updt_s:0.198 data_s:0.026
+INFO 2026-10-28 04:33:56 ts/train.py:232 step:6K smpl:371K ep:3K epch:14.47 loss:0.049 grdn:4.855 lr:3.0e-05 updt_s:0.200 data_s:0.018
+INFO 2026-10-28 04:34:18 ts/train.py:232 step:6K smpl:378K ep:3K epch:14.72 loss:0.047 grdn:4.564 lr:3.0e-05 updt_s:0.199 data_s:0.022
+INFO 2026-10-28 04:34:40 ts/train.py:232 step:6K smpl:384K ep:3K epch:14.97 loss:0.049 grdn:5.261 lr:3.0e-05 updt_s:0.197 data_s:0.024
+INFO 2026-10-28 04:35:04 ts/train.py:232 step:6K smpl:390K ep:3K epch:15.22 loss:0.047 grdn:4.661 lr:3.0e-05 updt_s:0.199 data_s:0.041
+INFO 2026-10-28 04:35:28 ts/train.py:232 step:6K smpl:397K ep:3K epch:15.47 loss:0.046 grdn:4.842 lr:3.0e-05 updt_s:0.199 data_s:0.033
+INFO 2026-10-28 04:35:50 ts/train.py:232 step:6K smpl:403K ep:3K epch:15.72 loss:0.046 grdn:4.758 lr:3.0e-05 updt_s:0.201 data_s:0.027
+INFO 2026-10-28 04:36:12 ts/train.py:232 step:6K smpl:410K ep:3K epch:15.97 loss:0.046 grdn:4.746 lr:3.0e-05 updt_s:0.197 data_s:0.021
+INFO 2026-10-28 04:36:35 ts/train.py:232 step:6K smpl:416K ep:3K epch:16.22 loss:0.044 grdn:4.270 lr:3.0e-05 updt_s:0.196 data_s:0.033
+INFO 2026-10-28 04:36:58 ts/train.py:232 step:7K smpl:422K ep:3K epch:16.47 loss:0.046 grdn:5.179 lr:3.0e-05 updt_s:0.200 data_s:0.022
+INFO 2026-10-28 04:37:20 ts/train.py:232 step:7K smpl:429K ep:3K epch:16.72 loss:0.044 grdn:4.397 lr:3.0e-05 updt_s:0.197 data_s:0.023
+INFO 2026-10-28 04:37:42 ts/train.py:232 step:7K smpl:435K ep:3K epch:16.97 loss:0.044 grdn:4.488 lr:3.0e-05 updt_s:0.195 data_s:0.024
+INFO 2026-10-28 04:38:05 ts/train.py:232 step:7K smpl:442K ep:4K epch:17.22 loss:0.043 grdn:4.491 lr:3.0e-05 updt_s:0.195 data_s:0.032
+INFO 2026-10-28 04:38:27 ts/train.py:232 step:7K smpl:448K ep:4K epch:17.47 loss:0.042 grdn:4.107 lr:3.0e-05 updt_s:0.198 data_s:0.019
+INFO 2026-10-28 04:38:50 ts/train.py:232 step:7K smpl:454K ep:4K epch:17.72 loss:0.043 grdn:4.581 lr:3.0e-05 updt_s:0.193 data_s:0.036
+INFO 2026-10-28 04:39:12 ts/train.py:232 step:7K smpl:461K ep:4K epch:17.96 loss:0.042 grdn:4.364 lr:3.0e-05 updt_s:0.198 data_s:0.020
+INFO 2026-10-28 04:39:36 ts/train.py:232 step:7K smpl:467K ep:4K epch:18.21 loss:0.042 grdn:4.357 lr:3.0e-05 updt_s:0.195 data_s:0.045
+INFO 2026-10-28 04:39:58 ts/train.py:232 step:7K smpl:474K ep:4K epch:18.46 loss:0.041 grdn:4.203 lr:3.0e-05 updt_s:0.198 data_s:0.025
+INFO 2026-10-28 04:40:21 ts/train.py:232 step:8K smpl:480K ep:4K epch:18.71 loss:0.041 grdn:4.347 lr:3.0e-05 updt_s:0.202 data_s:0.021
+INFO 2026-10-28 04:40:44 ts/train.py:232 step:8K smpl:486K ep:4K epch:18.96 loss:0.041 grdn:4.573 lr:3.0e-05 updt_s:0.202 data_s:0.028
+INFO 2026-10-28 04:41:08 ts/train.py:232 step:8K smpl:493K ep:4K epch:19.21 loss:0.040 grdn:4.530 lr:3.0e-05 updt_s:0.201 data_s:0.043
+INFO 2026-10-28 04:41:31 ts/train.py:232 step:8K smpl:499K ep:4K epch:19.46 loss:0.039 grdn:3.838 lr:3.0e-05 updt_s:0.204 data_s:0.020
+INFO 2026-10-28 04:41:54 ts/train.py:232 step:8K smpl:506K ep:4K epch:19.71 loss:0.041 grdn:4.388 lr:3.0e-05 updt_s:0.198 data_s:0.031
+INFO 2026-10-28 04:42:17 ts/train.py:232 step:8K smpl:512K ep:4K epch:19.96 loss:0.041 grdn:4.525 lr:3.0e-05 updt_s:0.201 data_s:0.026
+INFO 2026-10-28 04:42:40 ts/train.py:232 step:8K smpl:518K ep:4K epch:20.21 loss:0.039 grdn:4.458 lr:3.0e-05 updt_s:0.197 data_s:0.036
+INFO 2026-10-28 04:43:03 ts/train.py:232 step:8K smpl:525K ep:4K epch:20.46 loss:0.039 grdn:4.133 lr:3.0e-05 updt_s:0.200 data_s:0.023
+INFO 2026-10-28 04:43:25 ts/train.py:232 step:8K smpl:531K ep:4K epch:20.71 loss:0.038 grdn:3.890 lr:3.0e-05 updt_s:0.198 data_s:0.023
+INFO 2026-10-28 04:43:47 ts/train.py:232 step:8K smpl:538K ep:4K epch:20.96 loss:0.039 grdn:4.081 lr:3.0e-05 updt_s:0.196 data_s:0.022
+INFO 2026-10-28 04:44:10 ts/train.py:232 step:8K smpl:544K ep:4K epch:21.21 loss:0.038 grdn:3.865 lr:3.0e-05 updt_s:0.197 data_s:0.032
+INFO 2026-10-28 04:44:32 ts/train.py:232 step:9K smpl:550K ep:4K epch:21.46 loss:0.037 grdn:3.696 lr:3.0e-05 updt_s:0.198 data_s:0.023
+INFO 2026-10-28 04:44:54 ts/train.py:232 step:9K smpl:557K ep:4K epch:21.71 loss:0.038 grdn:3.864 lr:3.0e-05 updt_s:0.196 data_s:0.023
+INFO 2026-10-28 04:45:16 ts/train.py:232 step:9K smpl:563K ep:5K epch:21.96 loss:0.038 grdn:4.235 lr:3.0e-05 updt_s:0.200 data_s:0.017
+INFO 2026-10-28 04:45:39 ts/train.py:232 step:9K smpl:570K ep:5K epch:22.21 loss:0.037 grdn:4.064 lr:3.0e-05 updt_s:0.195 data_s:0.035
+INFO 2026-10-28 04:46:01 ts/train.py:232 step:9K smpl:576K ep:5K epch:22.46 loss:0.036 grdn:3.730 lr:3.0e-05 updt_s:0.201 data_s:0.016
+INFO 2026-10-28 04:46:23 ts/train.py:232 step:9K smpl:582K ep:5K epch:22.71 loss:0.036 grdn:3.700 lr:3.0e-05 updt_s:0.197 data_s:0.021
+INFO 2026-10-28 04:46:45 ts/train.py:232 step:9K smpl:589K ep:5K epch:22.96 loss:0.038 grdn:4.353 lr:3.0e-05 updt_s:0.196 data_s:0.023
+INFO 2026-10-28 04:47:08 ts/train.py:232 step:9K smpl:595K ep:5K epch:23.20 loss:0.036 grdn:3.879 lr:3.0e-05 updt_s:0.197 data_s:0.030
+INFO 2026-10-28 04:47:30 ts/train.py:232 step:9K smpl:602K ep:5K epch:23.45 loss:0.036 grdn:4.032 lr:3.0e-05 updt_s:0.199 data_s:0.022
+INFO 2026-10-28 04:47:52 ts/train.py:232 step:10K smpl:608K ep:5K epch:23.70 loss:0.036 grdn:3.890 lr:3.0e-05 updt_s:0.195 data_s:0.022
+INFO 2026-10-28 04:48:14 ts/train.py:232 step:10K smpl:614K ep:5K epch:23.95 loss:0.036 grdn:3.903 lr:3.0e-05 updt_s:0.201 data_s:0.018
+INFO 2026-10-28 04:48:38 ts/train.py:232 step:10K smpl:621K ep:5K epch:24.20 loss:0.036 grdn:3.994 lr:3.0e-05 updt_s:0.195 data_s:0.037
+INFO 2026-10-28 04:48:59 ts/train.py:232 step:10K smpl:627K ep:5K epch:24.45 loss:0.035 grdn:3.502 lr:3.0e-05 updt_s:0.198 data_s:0.018
+INFO 2026-10-28 04:49:21 ts/train.py:232 step:10K smpl:634K ep:5K epch:24.70 loss:0.035 grdn:3.945 lr:3.0e-05 updt_s:0.200 data_s:0.018
+INFO 2026-10-28 04:49:43 ts/train.py:232 step:10K smpl:640K ep:5K epch:24.95 loss:0.035 grdn:3.591 lr:3.0e-05 updt_s:0.197 data_s:0.022
+INFO 2026-10-28 04:49:43 ts/train.py:241 Checkpoint policy after step 10000
+INFO 2026-10-28 04:49:45 ts/train.py:283 End of training

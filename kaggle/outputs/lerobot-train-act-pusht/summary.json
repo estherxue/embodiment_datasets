@@ -1,0 +1,5935 @@
+{
+  "meta": {
+    "lerobot_commit": "b883328e6c95681ca90a18b102e4ae5e1f91e2bf",
+    "steps": 10000,
+    "batch_train": 64,
+    "train_seeds": [
+      1,
+      2,
+      3
+    ],
+    "eval_seeds": [
+      1000,
+      2000,
+      3000
+    ],
+    "n_episodes": 50,
+    "batch_eval": 50,
+    "policy_args": "--policy.type=act --policy.push_to_hub=false --policy.chunk_size=16 --policy.n_action_steps=16 --policy.n_decoder_layers=4 --policy.optimizer_lr=3e-5",
+    "variants": {
+      "kp": {
+        "dataset": "lerobot/pusht_keypoints",
+        "env": "--env.type=pusht --env.obs_type=environment_state_agent_pos",
+        "norm": "{\"ENV\":\"MIN_MAX\",\"STATE\":\"MIN_MAX\",\"ACTION\":\"MIN_MAX\"}",
+        "label": "ACT keypoints (16-D keypoints + agent pos)"
+      },
+      "px": {
+        "dataset": "lerobot/pusht",
+        "env": "--env.type=pusht",
+        "norm": "{\"VISUAL\":\"MEAN_STD\",\"STATE\":\"MIN_MAX\",\"ACTION\":\"MIN_MAX\"}",
+        "label": "ACT pixels (96x96 image + agent pos, resnet18)"
+      }
+    },
+    "started_utc": "2026-10-28 01:12:50",
+    "gpu": {
+      "torch": "2.7.1+cu126",
+      "cuda_available": true,
+      "device_name": "Tesla T4",
+      "capability": [
+        7,
+        5
+      ],
+      "gpu_ok": true
+    },
+    "device": "cuda",
+    "pusht_check_rc": 0,
+    "elapsed_s": 13249.2
+  },
+  "train": {
+    "kp_train1": {
+      "variant": "kp",
+      "seed": 1,
+      "rc": 0,
+      "wall_s": 1804.1,
+      "cmd": "/kaggle/tmp/venv/bin/lerobot-train --dataset.repo_id=lerobot/pusht_keypoints --env.type=pusht --env.obs_type=environment_state_agent_pos --policy.type=act --policy.push_to_hub=false --policy.chunk_size=16 --policy.n_action_steps=16 --policy.n_decoder_layers=4 --policy.optimizer_lr=3e-5 --policy.device=cuda '--policy.normalization_mapping={\"ENV\":\"MIN_MAX\",\"STATE\":\"MIN_MAX\",\"ACTION\":\"MIN_MAX\"}' --output_dir=/kaggle/tmp/train/kp_train1 --job_name=kp_train1 --steps=10000 --save_freq=10000 --eval_freq=0 --log_freq=100 --batch_size=64 --num_workers=4 --seed=1 --wandb.enable=false",
+      "dataset": "lerobot/pusht_keypoints",
+      "ckpt": "/kaggle/tmp/train/kp_train1/checkpoints/010000/pretrained_model",
+      "curve": [
+        {
+          "step": 100,
+          "loss": 4.414,
+          "grad_norm": 89.279,
+          "lr": 3e-05,
+          "epoch": 0.25
+        },
+        {
+          "step": 200,
+          "loss": 1.718,
+          "grad_norm": 38.837,
+          "lr": 3e-05,
+          "epoch": 0.5
+        },
+        {
+          "step": 300,
+          "loss": 1.319,
+          "grad_norm": 34.585,
+          "lr": 3e-05,
+          "epoch": 0.75
+        },
+        {
+          "step": 400,
+          "loss": 1.027,
+          "grad_norm": 31.703,
+          "lr": 3e-05,
+          "epoch": 1.0
+        },
+        {
+          "step": 500,
+          "loss": 0.808,
+          "grad_norm": 28.296,
+          "lr": 3e-05,
+          "epoch": 1.25
+        },
+        {
+          "step": 600,
+          "loss": 0.634,
+          "grad_norm": 24.846,
+          "lr": 3e-05,
+          "epoch": 1.5
+        },
+        {
+          "step": 700,
+          "loss": 0.499,
+          "grad_norm": 22.502,
+          "lr": 3e-05,
+          "epoch": 1.75
+        },
+        {
+          "step": 800,
+          "loss": 0.404,
+          "grad_norm": 20.462,
+          "lr": 3e-05,
+          "epoch": 2.0
+        },
+        {
+          "step": 900,
+          "loss": 0.337,
+          "grad_norm": 18.479,
+          "lr": 3e-05,
+          "epoch": 2.25
+        },
+        {
+          "step": 1,
+          "loss": 0.29,
+          "grad_norm": 17.104,
+          "lr": 3e-05,
+          "epoch": 2.5
+        },
+        {
+          "step": 1,
+          "loss": 0.255,
+          "grad_norm": 15.71,
+          "lr": 3e-05,
+          "epoch": 2.74
+        },
+        {
+          "step": 1,
+          "loss": 0.231,
+          "grad_norm": 14.638,
+          "lr": 3e-05,
+          "epoch": 2.99
+        },
+        {
+          "step": 1,
+          "loss": 0.212,
+          "grad_norm": 14.22,
+          "lr": 3e-05,
+          "epoch": 3.24
+        },
+        {
+          "step": 1,
+          "loss": 0.197,
+          "grad_norm": 13.157,
+          "lr": 3e-05,
+          "epoch": 3.49
+        },
+        {
+          "step": 2,
+          "loss": 0.184,
+          "grad_norm": 12.463,
+          "lr": 3e-05,
+          "epoch": 3.74
+        },
+        {
+          "step": 2,
+          "loss": 0.172,
+          "grad_norm": 11.76,
+          "lr": 3e-05,
+          "epoch": 3.99
+        },
+        {
+          "step": 2,
+          "loss": 0.162,
+          "grad_norm": 11.128,
+          "lr": 3e-05,
+          "epoch": 4.24
+        },
+        {
+          "step": 2,
+          "loss": 0.159,
+          "grad_norm": 10.68,
+          "lr": 3e-05,
+          "epoch": 4.49
+        },
+        {
+          "step": 2,
+          "loss": 0.149,
+          "grad_norm": 10.193,
+          "lr": 3e-05,
+          "epoch": 4.74
+        },
+        {
+          "step": 2,
+          "loss": 0.145,
+          "grad_norm": 10.004,
+          "lr": 3e-05,
+          "epoch": 4.99
+        },
+        {
+          "step": 2,
+          "loss": 0.138,
+          "grad_norm": 9.53,
+          "lr": 3e-05,
+          "epoch": 5.24
+        },
+        {
+          "step": 2,
+          "loss": 0.134,
+          "grad_norm": 8.971,
+          "lr": 3e-05,
+          "epoch": 5.49
+        },
+        {
+          "step": 2,
+          "loss": 0.129,
+          "grad_norm": 8.641,
+          "lr": 3e-05,
+          "epoch": 5.74
+        },
+        {
+          "step": 2,
+          "loss": 0.125,
+          "grad_norm": 8.3,
+          "lr": 3e-05,
+          "epoch": 5.99
+        },
+        {
+          "step": 2,
+          "loss": 0.123,
+          "grad_norm": 7.557,
+          "lr": 3e-05,
+          "epoch": 6.24
+        },
+        {
+          "step": 3,
+          "loss": 0.119,
+          "grad_norm": 7.697,
+          "lr": 3e-05,
+          "epoch": 6.49
+        },
+        {
+          "step": 3,
+          "loss": 0.116,
+          "grad_norm": 7.378,
+          "lr": 3e-05,
+          "epoch": 6.74
+        },
+        {
+          "step": 3,
+          "loss": 0.112,
+          "grad_norm": 7.12,
+          "lr": 3e-05,
+          "epoch": 6.99
+        },
+        {
+          "step": 3,
+          "loss": 0.111,
+          "grad_norm": 7.269,
+          "lr": 3e-05,
+          "epoch": 7.24
+        },
+        {
+          "step": 3,
+          "loss": 0.109,
+          "grad_norm": 7.193,
+          "lr": 3e-05,
+          "epoch": 7.49
+        },
+        {
+          "step": 3,
+          "loss": 0.106,
+          "grad_norm": 6.791,
+          "lr": 3e-05,
+          "epoch": 7.73
+        },
+        {
+          "step": 3,
+          "loss": 0.106,
+          "grad_norm": 6.687,
+          "lr": 3e-05,
+          "epoch": 7.98
+        },
+        {
+          "step": 3,
+          "loss": 0.102,
+          "grad_norm": 6.258,
+          "lr": 3e-05,
+          "epoch": 8.23
+        },
+        {
+          "step": 3,
+          "loss": 0.1,
+          "grad_norm": 5.952,
+          "lr": 3e-05,
+          "epoch": 8.48
+        },
+        {
+          "step": 4,
+          "loss": 0.101,
+          "grad_norm": 6.25,
+          "lr": 3e-05,
+          "epoch": 8.73
+        },
+        {
+          "step": 4,
+          "loss": 0.098,
+          "grad_norm": 5.925,
+          "lr": 3e-05,
+          "epoch": 8.98
+        },
+        {
+          "step": 4,
+          "loss": 0.098,
+          "grad_norm": 5.95,
+          "lr": 3e-05,
+          "epoch": 9.23
+        },
+        {
+          "step": 4,
+          "loss": 0.096,
+          "grad_norm": 5.696,
+          "lr": 3e-05,
+          "epoch": 9.48
+        },
+        {
+          "step": 4,
+          "loss": 0.095,
+          "grad_norm": 5.692,
+          "lr": 3e-05,
+          "epoch": 9.73
+        },
+        {
+          "step": 4,
+          "loss": 0.093,
+          "grad_norm": 5.521,
+          "lr": 3e-05,
+          "epoch": 9.98
+        },
+        {
+          "step": 4,
+          "loss": 0.092,
+          "grad_norm": 5.224,
+          "lr": 3e-05,
+          "epoch": 10.23
+        },
+        {
+          "step": 4,
+          "loss": 0.091,
+          "grad_norm": 5.624,
+          "lr": 3e-05,
+          "epoch": 10.48
+        },
+        {
+          "step": 4,
+          "loss": 0.09,
+          "grad_norm": 5.656,
+          "lr": 3e-05,
+          "epoch": 10.73
+        },
+        {
+          "step": 4,
+          "loss": 0.091,
+          "grad_norm": 5.346,
+          "lr": 3e-05,
+          "epoch": 10.98
+        },
+        {
+          "step": 4,
+          "loss": 0.089,
+          "grad_norm": 5.303,
+          "lr": 3e-05,
+          "epoch": 11.23
+        },
+        {
+          "step": 5,
+          "loss": 0.087,
+          "grad_norm": 5.071,
+          "lr": 3e-05,
+          "epoch": 11.48
+        },
+        {
+          "step": 5,
+          "loss": 0.086,
+          "grad_norm": 5.203,
+          "lr": 3e-05,
+          "epoch": 11.73
+        },
+        {
+          "step": 5,
+          "loss": 0.088,
+          "grad_norm": 5.436,
+          "lr": 3e-05,
+          "epoch": 11.98
+        },
+        {
+          "step": 5,
+          "loss": 0.084,
+          "grad_norm": 4.836,
+          "lr": 3e-05,
+          "epoch": 12.23
+        },
+        {
+          "step": 5,
+          "loss": 0.083,
+          "grad_norm": 4.781,
+          "lr": 3e-05,
+          "epoch": 12.48
+        },
+        {
+          "step": 5,
+          "loss": 0.084,
+          "grad_norm": 4.832,
+          "lr": 3e-05,
+          "epoch": 12.73
+        },
+        {
+          "step": 5,
+          "loss": 0.084,
+          "grad_norm": 4.827,
+          "lr": 3e-05,
+          "epoch": 12.97
+        },
+        {
+          "step": 5,
+          "loss": 0.084,
+          "grad_norm": 4.937,
+          "lr": 3e-05,
+          "epoch": 13.22
+        },
+        {
+          "step": 5,
+          "loss": 0.082,
+          "grad_norm": 4.995,
+          "lr": 3e-05,
+          "epoch": 13.47
+        },
+        {
+          "step": 6,
+          "loss": 0.081,
+          "grad_norm": 4.915,
+          "lr": 3e-05,
+          "epoch": 13.72
+        },
+        {
+          "step": 6,
+          "loss": 0.081,
+          "grad_norm": 4.803,
+          "lr": 3e-05,
+          "epoch": 13.97
+        },
+        {
+          "step": 6,
+          "loss": 0.08,
+          "grad_norm": 4.629,
+          "lr": 3e-05,
+          "epoch": 14.22
+        },
+        {
+          "step": 6,
+          "loss": 0.079,
+          "grad_norm": 4.22,
+          "lr": 3e-05,
+          "epoch": 14.47
+        },
+        {
+          "step": 6,
+          "loss": 0.079,
+          "grad_norm": 4.453,
+          "lr": 3e-05,
+          "epoch": 14.72
+        },
+        {
+          "step": 6,
+          "loss": 0.078,
+          "grad_norm": 4.307,
+          "lr": 3e-05,
+          "epoch": 14.97
+        },
+        {
+          "step": 6,
+          "loss": 0.078,
+          "grad_norm": 4.323,
+          "lr": 3e-05,
+          "epoch": 15.22
+        },
+        {
+          "step": 6,
+          "loss": 0.079,
+          "grad_norm": 4.633,
+          "lr": 3e-05,
+          "epoch": 15.47
+        },
+        {
+          "step": 6,
+          "loss": 0.077,
+          "grad_norm": 4.339,
+          "lr": 3e-05,
+          "epoch": 15.72
+        },
+        {
+          "step": 6,
+          "loss": 0.077,
+          "grad_norm": 4.186,
+          "lr": 3e-05,
+          "epoch": 15.97
+        },
+        {
+          "step": 6,
+          "loss": 0.078,
+          "grad_norm": 4.082,
+          "lr": 3e-05,
+          "epoch": 16.22
+        },
+        {
+          "step": 7,
+          "loss": 0.076,
+          "grad_norm": 4.561,
+          "lr": 3e-05,
+          "epoch": 16.47
+        },
+        {
+          "step": 7,
+          "loss": 0.076,
+          "grad_norm": 4.217,
+          "lr": 3e-05,
+          "epoch": 16.72
+        },
+        {
+          "step": 7,
+          "loss": 0.075,
+          "grad_norm": 4.193,
+          "lr": 3e-05,
+          "epoch": 16.97
+        },
+        {
+          "step": 7,
+          "loss": 0.075,
+          "grad_norm": 4.16,
+          "lr": 3e-05,
+          "epoch": 17.22
+        },
+        {
+          "step": 7,
+          "loss": 0.074,
+          "grad_norm": 4.102,
+          "lr": 3e-05,
+          "epoch": 17.47
+        },
+        {
+          "step": 7,
+          "loss": 0.074,
+          "grad_norm": 4.121,
+          "lr": 3e-05,
+          "epoch": 17.72
+        },
+        {
+          "step": 7,
+          "loss": 0.074,
+          "grad_norm": 4.146,
+          "lr": 3e-05,
+          "epoch": 17.96
+        },
+        {
+          "step": 7,
+          "loss": 0.074,
+          "grad_norm": 4.029,
+          "lr": 3e-05,
+          "epoch": 18.21
+        },
+        {
+          "step": 7,
+          "loss": 0.075,
+          "grad_norm": 3.966,
+          "lr": 3e-05,
+          "epoch": 18.46
+        },
+        {
+          "step": 8,
+          "loss": 0.073,
+          "grad_norm": 3.908,
+          "lr": 3e-05,
+          "epoch": 18.71
+        },
+        {
+          "step": 8,
+          "loss": 0.074,
+          "grad_norm": 4.123,
+          "lr": 3e-05,
+          "epoch": 18.96
+        },
+        {
+          "step": 8,
+          "loss": 0.072,
+          "grad_norm": 4.461,
+          "lr": 3e-05,
+          "epoch": 19.21
+        },
+        {
+          "step": 8,
+          "loss": 0.071,
+          "grad_norm": 3.897,
+          "lr": 3e-05,
+          "epoch": 19.46
+        },
+        {
+          "step": 8,
+          "loss": 0.072,
+          "grad_norm": 3.965,
+          "lr": 3e-05,
+          "epoch": 19.71
+        },
+        {
+          "step": 8,
+          "loss": 0.072,
+          "grad_norm": 3.632,
+          "lr": 3e-05,
+          "epoch": 19.96
+        },
+        {
+          "step": 8,
+          "loss": 0.072,
+          "grad_norm": 3.885,
+          "lr": 3e-05,
+          "epoch": 20.21
+        },
+        {
+          "step": 8,
+          "loss": 0.072,
+          "grad_norm": 3.746,
+          "lr": 3e-05,
+          "epoch": 20.46
+        },
+        {
+          "step": 8,
+          "loss": 0.071,
+          "grad_norm": 3.641,
+          "lr": 3e-05,
+          "epoch": 20.71
+        },
+        {
+          "step": 8,
+          "loss": 0.07,
+          "grad_norm": 3.763,
+          "lr": 3e-05,
+          "epoch": 20.96
+        },
+        {
+          "step": 8,
+          "loss": 0.071,
+          "grad_norm": 3.822,
+          "lr": 3e-05,
+          "epoch": 21.21
+        },
+        {
+          "step": 9,
+          "loss": 0.071,
+          "grad_norm": 3.887,
+          "lr": 3e-05,
+          "epoch": 21.46
+        },
+        {
+          "step": 9,
+          "loss": 0.068,
+          "grad_norm": 3.527,
+          "lr": 3e-05,
+          "epoch": 21.71
+        },
+        {
+          "step": 9,
+          "loss": 0.07,
+          "grad_norm": 3.832,
+          "lr": 3e-05,
+          "epoch": 21.96
+        },
+        {
+          "step": 9,
+          "loss": 0.07,
+          "grad_norm": 3.647,
+          "lr": 3e-05,
+          "epoch": 22.21
+        },
+        {
+          "step": 9,
+          "loss": 0.07,
+          "grad_norm": 4.044,
+          "lr": 3e-05,
+          "epoch": 22.46
+        },
+        {
+          "step": 9,
+          "loss": 0.069,
+          "grad_norm": 3.794,
+          "lr": 3e-05,
+          "epoch": 22.71
+        },
+        {
+          "step": 9,
+          "loss": 0.069,
+          "grad_norm": 3.486,
+          "lr": 3e-05,
+          "epoch": 22.96
+        },
+        {
+          "step": 9,
+          "loss": 0.067,
+          "grad_norm": 3.42,
+          "lr": 3e-05,
+          "epoch": 23.2
+        },
+        {
+          "step": 9,
+          "loss": 0.068,
+          "grad_norm": 3.361,
+          "lr": 3e-05,
+          "epoch": 23.45
+        },
+        {
+          "step": 10,
+          "loss": 0.069,
+          "grad_norm": 3.366,
+          "lr": 3e-05,
+          "epoch": 23.7
+        },
+        {
+          "step": 10,
+          "loss": 0.067,
+          "grad_norm": 3.437,
+          "lr": 3e-05,
+          "epoch": 23.95
+        },
+        {
+          "step": 10,
+          "loss": 0.067,
+          "grad_norm": 3.513,
+          "lr": 3e-05,
+          "epoch": 24.2
+        },
+        {
+          "step": 10,
+          "loss": 0.066,
+          "grad_norm": 3.197,
+          "lr": 3e-05,
+          "epoch": 24.45
+        },
+        {
+          "step": 10,
+          "loss": 0.066,
+          "grad_norm": 3.506,
+          "lr": 3e-05,
+          "epoch": 24.7
+        },
+        {
+          "step": 10,
+          "loss": 0.068,
+          "grad_norm": 3.599,
+          "lr": 3e-05,
+          "epoch": 24.95
+        }
+      ]
+    },
+    "kp_train2": {
+      "variant": "kp",
+      "seed": 2,
+      "rc": 0,
+      "wall_s": 1780.2,
+      "cmd": "/kaggle/tmp/venv/bin/lerobot-train --dataset.repo_id=lerobot/pusht_keypoints --env.type=pusht --env.obs_type=environment_state_agent_pos --policy.type=act --policy.push_to_hub=false --policy.chunk_size=16 --policy.n_action_steps=16 --policy.n_decoder_layers=4 --policy.optimizer_lr=3e-5 --policy.device=cuda '--policy.normalization_mapping={\"ENV\":\"MIN_MAX\",\"STATE\":\"MIN_MAX\",\"ACTION\":\"MIN_MAX\"}' --output_dir=/kaggle/tmp/train/kp_train2 --job_name=kp_train2 --steps=10000 --save_freq=10000 --eval_freq=0 --log_freq=100 --batch_size=64 --num_workers=4 --seed=2 --wandb.enable=false",
+      "dataset": "lerobot/pusht_keypoints",
+      "ckpt": "/kaggle/tmp/train/kp_train2/checkpoints/010000/pretrained_model",
+      "curve": [
+        {
+          "step": 100,
+          "loss": 5.381,
+          "grad_norm": 108.106,
+          "lr": 3e-05,
+          "epoch": 0.25
+        },
+        {
+          "step": 200,
+          "loss": 1.772,
+          "grad_norm": 40.517,
+          "lr": 3e-05,
+          "epoch": 0.5
+        },
+        {
+          "step": 300,
+          "loss": 1.328,
+          "grad_norm": 34.774,
+          "lr": 3e-05,
+          "epoch": 0.75
+        },
+        {
+          "step": 400,
+          "loss": 1.015,
+          "grad_norm": 31.066,
+          "lr": 3e-05,
+          "epoch": 1.0
+        },
+        {
+          "step": 500,
+          "loss": 0.786,
+          "grad_norm": 27.341,
+          "lr": 3e-05,
+          "epoch": 1.25
+        },
+        {
+          "step": 600,
+          "loss": 0.61,
+          "grad_norm": 23.293,
+          "lr": 3e-05,
+          "epoch": 1.5
+        },
+        {
+          "step": 700,
+          "loss": 0.497,
+          "grad_norm": 23.165,
+          "lr": 3e-05,
+          "epoch": 1.75
+        },
+        {
+          "step": 800,
+          "loss": 0.404,
+          "grad_norm": 19.452,
+          "lr": 3e-05,
+          "epoch": 2.0
+        },
+        {
+          "step": 900,
+          "loss": 0.342,
+          "grad_norm": 18.178,
+          "lr": 3e-05,
+          "epoch": 2.25
+        },
+        {
+          "step": 1,
+          "loss": 0.295,
+          "grad_norm": 16.127,
+          "lr": 3e-05,
+          "epoch": 2.5
+        },
+        {
+          "step": 1,
+          "loss": 0.26,
+          "grad_norm": 15.363,
+          "lr": 3e-05,
+          "epoch": 2.74
+        },
+        {
+          "step": 1,
+          "loss": 0.238,
+          "grad_norm": 14.81,
+          "lr": 3e-05,
+          "epoch": 2.99
+        },
+        {
+          "step": 1,
+          "loss": 0.217,
+          "grad_norm": 13.308,
+          "lr": 3e-05,
+          "epoch": 3.24
+        },
+        {
+          "step": 1,
+          "loss": 0.204,
+          "grad_norm": 13.434,
+          "lr": 3e-05,
+          "epoch": 3.49
+        },
+        {
+          "step": 2,
+          "loss": 0.189,
+          "grad_norm": 12.551,
+          "lr": 3e-05,
+          "epoch": 3.74
+        },
+        {
+          "step": 2,
+          "loss": 0.183,
+          "grad_norm": 12.129,
+          "lr": 3e-05,
+          "epoch": 3.99
+        },
+        {
+          "step": 2,
+          "loss": 0.171,
+          "grad_norm": 11.47,
+          "lr": 3e-05,
+          "epoch": 4.24
+        },
+        {
+          "step": 2,
+          "loss": 0.164,
+          "grad_norm": 10.978,
+          "lr": 3e-05,
+          "epoch": 4.49
+        },
+        {
+          "step": 2,
+          "loss": 0.156,
+          "grad_norm": 10.431,
+          "lr": 3e-05,
+          "epoch": 4.74
+        },
+        {
+          "step": 2,
+          "loss": 0.152,
+          "grad_norm": 10.713,
+          "lr": 3e-05,
+          "epoch": 4.99
+        },
+        {
+          "step": 2,
+          "loss": 0.145,
+          "grad_norm": 10.0,
+          "lr": 3e-05,
+          "epoch": 5.24
+        },
+        {
+          "step": 2,
+          "loss": 0.139,
+          "grad_norm": 9.683,
+          "lr": 3e-05,
+          "epoch": 5.49
+        },
+        {
+          "step": 2,
+          "loss": 0.135,
+          "grad_norm": 9.119,
+          "lr": 3e-05,
+          "epoch": 5.74
+        },
+        {
+          "step": 2,
+          "loss": 0.132,
+          "grad_norm": 8.758,
+          "lr": 3e-05,
+          "epoch": 5.99
+        },
+        {
+          "step": 2,
+          "loss": 0.126,
+          "grad_norm": 8.173,
+          "lr": 3e-05,
+          "epoch": 6.24
+        },
+        {
+          "step": 3,
+          "loss": 0.124,
+          "grad_norm": 8.172,
+          "lr": 3e-05,
+          "epoch": 6.49
+        },
+        {
+          "step": 3,
+          "loss": 0.121,
+          "grad_norm": 8.139,
+          "lr": 3e-05,
+          "epoch": 6.74
+        },
+        {
+          "step": 3,
+          "loss": 0.117,
+          "grad_norm": 7.358,
+          "lr": 3e-05,
+          "epoch": 6.99
+        },
+        {
+          "step": 3,
+          "loss": 0.114,
+          "grad_norm": 7.34,
+          "lr": 3e-05,
+          "epoch": 7.24
+        },
+        {
+          "step": 3,
+          "loss": 0.113,
+          "grad_norm": 7.111,
+          "lr": 3e-05,
+          "epoch": 7.49
+        },
+        {
+          "step": 3,
+          "loss": 0.112,
+          "grad_norm": 7.411,
+          "lr": 3e-05,
+          "epoch": 7.73
+        },
+        {
+          "step": 3,
+          "loss": 0.109,
+          "grad_norm": 7.218,
+          "lr": 3e-05,
+          "epoch": 7.98
+        },
+        {
+          "step": 3,
+          "loss": 0.108,
+          "grad_norm": 7.149,
+          "lr": 3e-05,
+          "epoch": 8.23
+        },
+        {
+          "step": 3,
+          "loss": 0.105,
+          "grad_norm": 6.765,
+          "lr": 3e-05,
+          "epoch": 8.48
+        },
+        {
+          "step": 4,
+          "loss": 0.103,
+          "grad_norm": 6.708,
+          "lr": 3e-05,
+          "epoch": 8.73
+        },
+        {
+          "step": 4,
+          "loss": 0.101,
+          "grad_norm": 6.443,
+          "lr": 3e-05,
+          "epoch": 8.98
+        },
+        {
+          "step": 4,
+          "loss": 0.099,
+          "grad_norm": 6.169,
+          "lr": 3e-05,
+          "epoch": 9.23
+        },
+        {
+          "step": 4,
+          "loss": 0.097,
+          "grad_norm": 5.926,
+          "lr": 3e-05,
+          "epoch": 9.48
+        },
+        {
+          "step": 4,
+          "loss": 0.097,
+          "grad_norm": 6.031,
+          "lr": 3e-05,
+          "epoch": 9.73
+        },
+        {
+          "step": 4,
+          "loss": 0.095,
+          "grad_norm": 5.49,
+          "lr": 3e-05,
+          "epoch": 9.98
+        },
+        {
+          "step": 4,
+          "loss": 0.094,
+          "grad_norm": 5.714,
+          "lr": 3e-05,
+          "epoch": 10.23
+        },
+        {
+          "step": 4,
+          "loss": 0.093,
+          "grad_norm": 6.049,
+          "lr": 3e-05,
+          "epoch": 10.48
+        },
+        {
+          "step": 4,
+          "loss": 0.092,
+          "grad_norm": 5.603,
+          "lr": 3e-05,
+          "epoch": 10.73
+        },
+        {
+          "step": 4,
+          "loss": 0.09,
+          "grad_norm": 5.27,
+          "lr": 3e-05,
+          "epoch": 10.98
+        },
+        {
+          "step": 4,
+          "loss": 0.091,
+          "grad_norm": 5.534,
+          "lr": 3e-05,
+          "epoch": 11.23
+        },
+        {
+          "step": 5,
+          "loss": 0.088,
+          "grad_norm": 5.396,
+          "lr": 3e-05,
+          "epoch": 11.48
+        },
+        {
+          "step": 5,
+          "loss": 0.088,
+          "grad_norm": 5.342,
+          "lr": 3e-05,
+          "epoch": 11.73
+        },
+        {
+          "step": 5,
+          "loss": 0.087,
+          "grad_norm": 5.118,
+          "lr": 3e-05,
+          "epoch": 11.98
+        },
+        {
+          "step": 5,
+          "loss": 0.086,
+          "grad_norm": 5.003,
+          "lr": 3e-05,
+          "epoch": 12.23
+        },
+        {
+          "step": 5,
+          "loss": 0.086,
+          "grad_norm": 5.002,
+          "lr": 3e-05,
+          "epoch": 12.48
+        },
+        {
+          "step": 5,
+          "loss": 0.085,
+          "grad_norm": 5.088,
+          "lr": 3e-05,
+          "epoch": 12.73
+        },
+        {
+          "step": 5,
+          "loss": 0.083,
+          "grad_norm": 4.74,
+          "lr": 3e-05,
+          "epoch": 12.97
+        },
+        {
+          "step": 5,
+          "loss": 0.084,
+          "grad_norm": 5.233,
+          "lr": 3e-05,
+          "epoch": 13.22
+        },
+        {
+          "step": 5,
+          "loss": 0.082,
+          "grad_norm": 4.814,
+          "lr": 3e-05,
+          "epoch": 13.47
+        },
+        {
+          "step": 6,
+          "loss": 0.081,
+          "grad_norm": 4.666,
+          "lr": 3e-05,
+          "epoch": 13.72
+        },
+        {
+          "step": 6,
+          "loss": 0.081,
+          "grad_norm": 4.854,
+          "lr": 3e-05,
+          "epoch": 13.97
+        },
+        {
+          "step": 6,
+          "loss": 0.079,
+          "grad_norm": 4.33,
+          "lr": 3e-05,
+          "epoch": 14.22
+        },
+        {
+          "step": 6,
+          "loss": 0.08,
+          "grad_norm": 4.707,
+          "lr": 3e-05,
+          "epoch": 14.47
+        },
+        {
+          "step": 6,
+          "loss": 0.078,
+          "grad_norm": 4.306,
+          "lr": 3e-05,
+          "epoch": 14.72
+        },
+        {
+          "step": 6,
+          "loss": 0.078,
+          "grad_norm": 4.256,
+          "lr": 3e-05,
+          "epoch": 14.97
+        },
+        {
+          "step": 6,
+          "loss": 0.078,
+          "grad_norm": 4.315,
+          "lr": 3e-05,
+          "epoch": 15.22
+        },
+        {
+          "step": 6,
+          "loss": 0.078,
+          "grad_norm": 4.337,
+          "lr": 3e-05,
+          "epoch": 15.47
+        },
+        {
+          "step": 6,
+          "loss": 0.077,
+          "grad_norm": 4.279,
+          "lr": 3e-05,
+          "epoch": 15.72
+        },
+        {
+          "step": 6,
+          "loss": 0.076,
+          "grad_norm": 4.419,
+          "lr": 3e-05,
+          "epoch": 15.97
+        },
+        {
+          "step": 6,
+          "loss": 0.074,
+          "grad_norm": 4.066,
+          "lr": 3e-05,
+          "epoch": 16.22
+        },
+        {
+          "step": 7,
+          "loss": 0.076,
+          "grad_norm": 4.245,
+          "lr": 3e-05,
+          "epoch": 16.47
+        },
+        {
+          "step": 7,
+          "loss": 0.076,
+          "grad_norm": 4.251,
+          "lr": 3e-05,
+          "epoch": 16.72
+        },
+        {
+          "step": 7,
+          "loss": 0.075,
+          "grad_norm": 3.992,
+          "lr": 3e-05,
+          "epoch": 16.97
+        },
+        {
+          "step": 7,
+          "loss": 0.074,
+          "grad_norm": 4.073,
+          "lr": 3e-05,
+          "epoch": 17.22
+        },
+        {
+          "step": 7,
+          "loss": 0.074,
+          "grad_norm": 4.077,
+          "lr": 3e-05,
+          "epoch": 17.47
+        },
+        {
+          "step": 7,
+          "loss": 0.074,
+          "grad_norm": 4.035,
+          "lr": 3e-05,
+          "epoch": 17.72
+        },
+        {
+          "step": 7,
+          "loss": 0.073,
+          "grad_norm": 3.97,
+          "lr": 3e-05,
+          "epoch": 17.96
+        },
+        {
+          "step": 7,
+          "loss": 0.073,
+          "grad_norm": 3.93,
+          "lr": 3e-05,
+          "epoch": 18.21
+        },
+        {
+          "step": 7,
+          "loss": 0.074,
+          "grad_norm": 3.97,
+          "lr": 3e-05,
+          "epoch": 18.46
+        },
+        {
+          "step": 8,
+          "loss": 0.073,
+          "grad_norm": 4.007,
+          "lr": 3e-05,
+          "epoch": 18.71
+        },
+        {
+          "step": 8,
+          "loss": 0.072,
+          "grad_norm": 3.778,
+          "lr": 3e-05,
+          "epoch": 18.96
+        },
+        {
+          "step": 8,
+          "loss": 0.072,
+          "grad_norm": 3.991,
+          "lr": 3e-05,
+          "epoch": 19.21
+        },
+        {
+          "step": 8,
+          "loss": 0.071,
+          "grad_norm": 3.84,
+          "lr": 3e-05,
+          "epoch": 19.46
+        },
+        {
+          "step": 8,
+          "loss": 0.072,
+          "grad_norm": 3.984,
+          "lr": 3e-05,
+          "epoch": 19.71
+        },
+        {
+          "step": 8,
+          "loss": 0.071,
+          "grad_norm": 3.76,
+          "lr": 3e-05,
+          "epoch": 19.96
+        },
+        {
+          "step": 8,
+          "loss": 0.071,
+          "grad_norm": 4.027,
+          "lr": 3e-05,
+          "epoch": 20.21
+        },
+        {
+          "step": 8,
+          "loss": 0.07,
+          "grad_norm": 3.643,
+          "lr": 3e-05,
+          "epoch": 20.46
+        },
+        {
+          "step": 8,
+          "loss": 0.069,
+          "grad_norm": 3.741,
+          "lr": 3e-05,
+          "epoch": 20.71
+        },
+        {
+          "step": 8,
+          "loss": 0.069,
+          "grad_norm": 3.795,
+          "lr": 3e-05,
+          "epoch": 20.96
+        },
+        {
+          "step": 8,
+          "loss": 0.07,
+          "grad_norm": 3.653,
+          "lr": 3e-05,
+          "epoch": 21.21
+        },
+        {
+          "step": 9,
+          "loss": 0.069,
+          "grad_norm": 3.704,
+          "lr": 3e-05,
+          "epoch": 21.46
+        },
+        {
+          "step": 9,
+          "loss": 0.07,
+          "grad_norm": 4.045,
+          "lr": 3e-05,
+          "epoch": 21.71
+        },
+        {
+          "step": 9,
+          "loss": 0.069,
+          "grad_norm": 3.745,
+          "lr": 3e-05,
+          "epoch": 21.96
+        },
+        {
+          "step": 9,
+          "loss": 0.07,
+          "grad_norm": 4.024,
+          "lr": 3e-05,
+          "epoch": 22.21
+        },
+        {
+          "step": 9,
+          "loss": 0.067,
+          "grad_norm": 3.64,
+          "lr": 3e-05,
+          "epoch": 22.46
+        },
+        {
+          "step": 9,
+          "loss": 0.067,
+          "grad_norm": 3.603,
+          "lr": 3e-05,
+          "epoch": 22.71
+        },
+        {
+          "step": 9,
+          "loss": 0.069,
+          "grad_norm": 3.607,
+          "lr": 3e-05,
+          "epoch": 22.96
+        },
+        {
+          "step": 9,
+          "loss": 0.069,
+          "grad_norm": 3.392,
+          "lr": 3e-05,
+          "epoch": 23.2
+        },
+        {
+          "step": 9,
+          "loss": 0.067,
+          "grad_norm": 3.778,
+          "lr": 3e-05,
+          "epoch": 23.45
+        },
+        {
+          "step": 10,
+          "loss": 0.067,
+          "grad_norm": 3.665,
+          "lr": 3e-05,
+          "epoch": 23.7
+        },
+        {
+          "step": 10,
+          "loss": 0.067,
+          "grad_norm": 3.32,
+          "lr": 3e-05,
+          "epoch": 23.95
+        },
+        {
+          "step": 10,
+          "loss": 0.068,
+          "grad_norm": 3.461,
+          "lr": 3e-05,
+          "epoch": 24.2
+        },
+        {
+          "step": 10,
+          "loss": 0.068,
+          "grad_norm": 3.463,
+          "lr": 3e-05,
+          "epoch": 24.45
+        },
+        {
+          "step": 10,
+          "loss": 0.066,
+          "grad_norm": 3.627,
+          "lr": 3e-05,
+          "epoch": 24.7
+        },
+        {
+          "step": 10,
+          "loss": 0.066,
+          "grad_norm": 3.429,
+          "lr": 3e-05,
+          "epoch": 24.95
+        }
+      ]
+    },
+    "kp_train3": {
+      "variant": "kp",
+      "seed": 3,
+      "rc": 0,
+      "wall_s": 1787.1,
+      "cmd": "/kaggle/tmp/venv/bin/lerobot-train --dataset.repo_id=lerobot/pusht_keypoints --env.type=pusht --env.obs_type=environment_state_agent_pos --policy.type=act --policy.push_to_hub=false --policy.chunk_size=16 --policy.n_action_steps=16 --policy.n_decoder_layers=4 --policy.optimizer_lr=3e-5 --policy.device=cuda '--policy.normalization_mapping={\"ENV\":\"MIN_MAX\",\"STATE\":\"MIN_MAX\",\"ACTION\":\"MIN_MAX\"}' --output_dir=/kaggle/tmp/train/kp_train3 --job_name=kp_train3 --steps=10000 --save_freq=10000 --eval_freq=0 --log_freq=100 --batch_size=64 --num_workers=4 --seed=3 --wandb.enable=false",
+      "dataset": "lerobot/pusht_keypoints",
+      "ckpt": "/kaggle/tmp/train/kp_train3/checkpoints/010000/pretrained_model",
+      "curve": [
+        {
+          "step": 100,
+          "loss": 4.432,
+          "grad_norm": 94.001,
+          "lr": 3e-05,
+          "epoch": 0.25
+        },
+        {
+          "step": 200,
+          "loss": 1.72,
+          "grad_norm": 39.299,
+          "lr": 3e-05,
+          "epoch": 0.5
+        },
+        {
+          "step": 300,
+          "loss": 1.294,
+          "grad_norm": 35.04,
+          "lr": 3e-05,
+          "epoch": 0.75
+        },
+        {
+          "step": 400,
+          "loss": 0.984,
+          "grad_norm": 30.498,
+          "lr": 3e-05,
+          "epoch": 1.0
+        },
+        {
+          "step": 500,
+          "loss": 0.759,
+          "grad_norm": 27.001,
+          "lr": 3e-05,
+          "epoch": 1.25
+        },
+        {
+          "step": 600,
+          "loss": 0.592,
+          "grad_norm": 24.113,
+          "lr": 3e-05,
+          "epoch": 1.5
+        },
+        {
+          "step": 700,
+          "loss": 0.471,
+          "grad_norm": 20.895,
+          "lr": 3e-05,
+          "epoch": 1.75
+        },
+        {
+          "step": 800,
+          "loss": 0.382,
+          "grad_norm": 19.257,
+          "lr": 3e-05,
+          "epoch": 2.0
+        },
+        {
+          "step": 900,
+          "loss": 0.32,
+          "grad_norm": 17.786,
+          "lr": 3e-05,
+          "epoch": 2.25
+        },
+        {
+          "step": 1,
+          "loss": 0.279,
+          "grad_norm": 16.288,
+          "lr": 3e-05,
+          "epoch": 2.5
+        },
+        {
+          "step": 1,
+          "loss": 0.249,
+          "grad_norm": 15.009,
+          "lr": 3e-05,
+          "epoch": 2.74
+        },
+        {
+          "step": 1,
+          "loss": 0.225,
+          "grad_norm": 14.419,
+          "lr": 3e-05,
+          "epoch": 2.99
+        },
+        {
+          "step": 1,
+          "loss": 0.207,
+          "grad_norm": 13.459,
+          "lr": 3e-05,
+          "epoch": 3.24
+        },
+        {
+          "step": 1,
+          "loss": 0.194,
+          "grad_norm": 12.75,
+          "lr": 3e-05,
+          "epoch": 3.49
+        },
+        {
+          "step": 2,
+          "loss": 0.183,
+          "grad_norm": 12.005,
+          "lr": 3e-05,
+          "epoch": 3.74
+        },
+        {
+          "step": 2,
+          "loss": 0.175,
+          "grad_norm": 11.517,
+          "lr": 3e-05,
+          "epoch": 3.99
+        },
+        {
+          "step": 2,
+          "loss": 0.164,
+          "grad_norm": 11.133,
+          "lr": 3e-05,
+          "epoch": 4.24
+        },
+        {
+          "step": 2,
+          "loss": 0.158,
+          "grad_norm": 10.195,
+          "lr": 3e-05,
+          "epoch": 4.49
+        },
+        {
+          "step": 2,
+          "loss": 0.151,
+          "grad_norm": 10.183,
+          "lr": 3e-05,
+          "epoch": 4.74
+        },
+        {
+          "step": 2,
+          "loss": 0.144,
+          "grad_norm": 9.45,
+          "lr": 3e-05,
+          "epoch": 4.99
+        },
+        {
+          "step": 2,
+          "loss": 0.14,
+          "grad_norm": 9.27,
+          "lr": 3e-05,
+          "epoch": 5.24
+        },
+        {
+          "step": 2,
+          "loss": 0.136,
+          "grad_norm": 8.997,
+          "lr": 3e-05,
+          "epoch": 5.49
+        },
+        {
+          "step": 2,
+          "loss": 0.131,
+          "grad_norm": 8.84,
+          "lr": 3e-05,
+          "epoch": 5.74
+        },
+        {
+          "step": 2,
+          "loss": 0.13,
+          "grad_norm": 8.978,
+          "lr": 3e-05,
+          "epoch": 5.99
+        },
+        {
+          "step": 2,
+          "loss": 0.125,
+          "grad_norm": 8.29,
+          "lr": 3e-05,
+          "epoch": 6.24
+        },
+        {
+          "step": 3,
+          "loss": 0.121,
+          "grad_norm": 7.881,
+          "lr": 3e-05,
+          "epoch": 6.49
+        },
+        {
+          "step": 3,
+          "loss": 0.119,
+          "grad_norm": 7.535,
+          "lr": 3e-05,
+          "epoch": 6.74
+        },
+        {
+          "step": 3,
+          "loss": 0.115,
+          "grad_norm": 7.556,
+          "lr": 3e-05,
+          "epoch": 6.99
+        },
+        {
+          "step": 3,
+          "loss": 0.113,
+          "grad_norm": 7.312,
+          "lr": 3e-05,
+          "epoch": 7.24
+        },
+        {
+          "step": 3,
+          "loss": 0.111,
+          "grad_norm": 7.015,
+          "lr": 3e-05,
+          "epoch": 7.49
+        },
+        {
+          "step": 3,
+          "loss": 0.108,
+          "grad_norm": 6.515,
+          "lr": 3e-05,
+          "epoch": 7.73
+        },
+        {
+          "step": 3,
+          "loss": 0.107,
+          "grad_norm": 6.585,
+          "lr": 3e-05,
+          "epoch": 7.98
+        },
+        {
+          "step": 3,
+          "loss": 0.105,
+          "grad_norm": 6.709,
+          "lr": 3e-05,
+          "epoch": 8.23
+        },
+        {
+          "step": 3,
+          "loss": 0.103,
+          "grad_norm": 6.571,
+          "lr": 3e-05,
+          "epoch": 8.48
+        },
+        {
+          "step": 4,
+          "loss": 0.101,
+          "grad_norm": 6.63,
+          "lr": 3e-05,
+          "epoch": 8.73
+        },
+        {
+          "step": 4,
+          "loss": 0.1,
+          "grad_norm": 6.135,
+          "lr": 3e-05,
+          "epoch": 8.98
+        },
+        {
+          "step": 4,
+          "loss": 0.097,
+          "grad_norm": 6.027,
+          "lr": 3e-05,
+          "epoch": 9.23
+        },
+        {
+          "step": 4,
+          "loss": 0.097,
+          "grad_norm": 5.876,
+          "lr": 3e-05,
+          "epoch": 9.48
+        },
+        {
+          "step": 4,
+          "loss": 0.095,
+          "grad_norm": 5.587,
+          "lr": 3e-05,
+          "epoch": 9.73
+        },
+        {
+          "step": 4,
+          "loss": 0.096,
+          "grad_norm": 5.805,
+          "lr": 3e-05,
+          "epoch": 9.98
+        },
+        {
+          "step": 4,
+          "loss": 0.091,
+          "grad_norm": 5.53,
+          "lr": 3e-05,
+          "epoch": 10.23
+        },
+        {
+          "step": 4,
+          "loss": 0.092,
+          "grad_norm": 5.432,
+          "lr": 3e-05,
+          "epoch": 10.48
+        },
+        {
+          "step": 4,
+          "loss": 0.091,
+          "grad_norm": 5.574,
+          "lr": 3e-05,
+          "epoch": 10.73
+        },
+        {
+          "step": 4,
+          "loss": 0.091,
+          "grad_norm": 5.509,
+          "lr": 3e-05,
+          "epoch": 10.98
+        },
+        {
+          "step": 4,
+          "loss": 0.088,
+          "grad_norm": 5.162,
+          "lr": 3e-05,
+          "epoch": 11.23
+        },
+        {
+          "step": 5,
+          "loss": 0.087,
+          "grad_norm": 5.154,
+          "lr": 3e-05,
+          "epoch": 11.48
+        },
+        {
+          "step": 5,
+          "loss": 0.087,
+          "grad_norm": 5.059,
+          "lr": 3e-05,
+          "epoch": 11.73
+        },
+        {
+          "step": 5,
+          "loss": 0.086,
+          "grad_norm": 5.137,
+          "lr": 3e-05,
+          "epoch": 11.98
+        },
+        {
+          "step": 5,
+          "loss": 0.084,
+          "grad_norm": 4.958,
+          "lr": 3e-05,
+          "epoch": 12.23
+        },
+        {
+          "step": 5,
+          "loss": 0.084,
+          "grad_norm": 4.999,
+          "lr": 3e-05,
+          "epoch": 12.48
+        },
+        {
+          "step": 5,
+          "loss": 0.083,
+          "grad_norm": 4.876,
+          "lr": 3e-05,
+          "epoch": 12.73
+        },
+        {
+          "step": 5,
+          "loss": 0.083,
+          "grad_norm": 4.885,
+          "lr": 3e-05,
+          "epoch": 12.97
+        },
+        {
+          "step": 5,
+          "loss": 0.082,
+          "grad_norm": 5.015,
+          "lr": 3e-05,
+          "epoch": 13.22
+        },
+        {
+          "step": 5,
+          "loss": 0.083,
+          "grad_norm": 4.724,
+          "lr": 3e-05,
+          "epoch": 13.47
+        },
+        {
+          "step": 6,
+          "loss": 0.08,
+          "grad_norm": 4.571,
+          "lr": 3e-05,
+          "epoch": 13.72
+        },
+        {
+          "step": 6,
+          "loss": 0.08,
+          "grad_norm": 4.613,
+          "lr": 3e-05,
+          "epoch": 13.97
+        },
+        {
+          "step": 6,
+          "loss": 0.08,
+          "grad_norm": 4.538,
+          "lr": 3e-05,
+          "epoch": 14.22
+        },
+        {
+          "step": 6,
+          "loss": 0.08,
+          "grad_norm": 4.619,
+          "lr": 3e-05,
+          "epoch": 14.47
+        },
+        {
+          "step": 6,
+          "loss": 0.078,
+          "grad_norm": 4.688,
+          "lr": 3e-05,
+          "epoch": 14.72
+        },
+        {
+          "step": 6,
+          "loss": 0.078,
+          "grad_norm": 4.381,
+          "lr": 3e-05,
+          "epoch": 14.97
+        },
+        {
+          "step": 6,
+          "loss": 0.077,
+          "grad_norm": 4.184,
+          "lr": 3e-05,
+          "epoch": 15.22
+        },
+        {
+          "step": 6,
+          "loss": 0.078,
+          "grad_norm": 4.234,
+          "lr": 3e-05,
+          "epoch": 15.47
+        },
+        {
+          "step": 6,
+          "loss": 0.076,
+          "grad_norm": 4.296,
+          "lr": 3e-05,
+          "epoch": 15.72
+        },
+        {
+          "step": 6,
+          "loss": 0.075,
+          "grad_norm": 4.237,
+          "lr": 3e-05,
+          "epoch": 15.97
+        },
+        {
+          "step": 6,
+          "loss": 0.075,
+          "grad_norm": 4.196,
+          "lr": 3e-05,
+          "epoch": 16.22
+        },
+        {
+          "step": 7,
+          "loss": 0.075,
+          "grad_norm": 4.192,
+          "lr": 3e-05,
+          "epoch": 16.47
+        },
+        {
+          "step": 7,
+          "loss": 0.076,
+          "grad_norm": 4.15,
+          "lr": 3e-05,
+          "epoch": 16.72
+        },
+        {
+          "step": 7,
+          "loss": 0.075,
+          "grad_norm": 3.912,
+          "lr": 3e-05,
+          "epoch": 16.97
+        },
+        {
+          "step": 7,
+          "loss": 0.073,
+          "grad_norm": 3.999,
+          "lr": 3e-05,
+          "epoch": 17.22
+        },
+        {
+          "step": 7,
+          "loss": 0.073,
+          "grad_norm": 3.939,
+          "lr": 3e-05,
+          "epoch": 17.47
+        },
+        {
+          "step": 7,
+          "loss": 0.074,
+          "grad_norm": 3.966,
+          "lr": 3e-05,
+          "epoch": 17.72
+        },
+        {
+          "step": 7,
+          "loss": 0.074,
+          "grad_norm": 4.21,
+          "lr": 3e-05,
+          "epoch": 17.96
+        },
+        {
+          "step": 7,
+          "loss": 0.07,
+          "grad_norm": 3.499,
+          "lr": 3e-05,
+          "epoch": 18.21
+        },
+        {
+          "step": 7,
+          "loss": 0.072,
+          "grad_norm": 3.725,
+          "lr": 3e-05,
+          "epoch": 18.46
+        },
+        {
+          "step": 8,
+          "loss": 0.074,
+          "grad_norm": 3.864,
+          "lr": 3e-05,
+          "epoch": 18.71
+        },
+        {
+          "step": 8,
+          "loss": 0.073,
+          "grad_norm": 3.955,
+          "lr": 3e-05,
+          "epoch": 18.96
+        },
+        {
+          "step": 8,
+          "loss": 0.071,
+          "grad_norm": 3.977,
+          "lr": 3e-05,
+          "epoch": 19.21
+        },
+        {
+          "step": 8,
+          "loss": 0.071,
+          "grad_norm": 3.928,
+          "lr": 3e-05,
+          "epoch": 19.46
+        },
+        {
+          "step": 8,
+          "loss": 0.071,
+          "grad_norm": 3.725,
+          "lr": 3e-05,
+          "epoch": 19.71
+        },
+        {
+          "step": 8,
+          "loss": 0.072,
+          "grad_norm": 4.178,
+          "lr": 3e-05,
+          "epoch": 19.96
+        },
+        {
+          "step": 8,
+          "loss": 0.07,
+          "grad_norm": 3.891,
+          "lr": 3e-05,
+          "epoch": 20.21
+        },
+        {
+          "step": 8,
+          "loss": 0.069,
+          "grad_norm": 3.386,
+          "lr": 3e-05,
+          "epoch": 20.46
+        },
+        {
+          "step": 8,
+          "loss": 0.069,
+          "grad_norm": 3.565,
+          "lr": 3e-05,
+          "epoch": 20.71
+        },
+        {
+          "step": 8,
+          "loss": 0.069,
+          "grad_norm": 3.694,
+          "lr": 3e-05,
+          "epoch": 20.96
+        },
+        {
+          "step": 8,
+          "loss": 0.069,
+          "grad_norm": 3.593,
+          "lr": 3e-05,
+          "epoch": 21.21
+        },
+        {
+          "step": 9,
+          "loss": 0.069,
+          "grad_norm": 3.91,
+          "lr": 3e-05,
+          "epoch": 21.46
+        },
+        {
+          "step": 9,
+          "loss": 0.069,
+          "grad_norm": 3.755,
+          "lr": 3e-05,
+          "epoch": 21.71
+        },
+        {
+          "step": 9,
+          "loss": 0.067,
+          "grad_norm": 3.616,
+          "lr": 3e-05,
+          "epoch": 21.96
+        },
+        {
+          "step": 9,
+          "loss": 0.068,
+          "grad_norm": 3.631,
+          "lr": 3e-05,
+          "epoch": 22.21
+        },
+        {
+          "step": 9,
+          "loss": 0.068,
+          "grad_norm": 3.736,
+          "lr": 3e-05,
+          "epoch": 22.46
+        },
+        {
+          "step": 9,
+          "loss": 0.066,
+          "grad_norm": 3.891,
+          "lr": 3e-05,
+          "epoch": 22.71
+        },
+        {
+          "step": 9,
+          "loss": 0.068,
+          "grad_norm": 3.429,
+          "lr": 3e-05,
+          "epoch": 22.96
+        },
+        {
+          "step": 9,
+          "loss": 0.068,
+          "grad_norm": 3.543,
+          "lr": 3e-05,
+          "epoch": 23.2
+        },
+        {
+          "step": 9,
+          "loss": 0.067,
+          "grad_norm": 3.477,
+          "lr": 3e-05,
+          "epoch": 23.45
+        },
+        {
+          "step": 10,
+          "loss": 0.067,
+          "grad_norm": 3.542,
+          "lr": 3e-05,
+          "epoch": 23.7
+        },
+        {
+          "step": 10,
+          "loss": 0.068,
+          "grad_norm": 3.639,
+          "lr": 3e-05,
+          "epoch": 23.95
+        },
+        {
+          "step": 10,
+          "loss": 0.066,
+          "grad_norm": 3.27,
+          "lr": 3e-05,
+          "epoch": 24.2
+        },
+        {
+          "step": 10,
+          "loss": 0.066,
+          "grad_norm": 3.571,
+          "lr": 3e-05,
+          "epoch": 24.45
+        },
+        {
+          "step": 10,
+          "loss": 0.066,
+          "grad_norm": 3.426,
+          "lr": 3e-05,
+          "epoch": 24.7
+        },
+        {
+          "step": 10,
+          "loss": 0.065,
+          "grad_norm": 3.397,
+          "lr": 3e-05,
+          "epoch": 24.95
+        }
+      ]
+    },
+    "px_train1": {
+      "variant": "px",
+      "seed": 1,
+      "rc": 0,
+      "wall_s": 2255.1,
+      "cmd": "/kaggle/tmp/venv/bin/lerobot-train --dataset.repo_id=lerobot/pusht --env.type=pusht --policy.type=act --policy.push_to_hub=false --policy.chunk_size=16 --policy.n_action_steps=16 --policy.n_decoder_layers=4 --policy.optimizer_lr=3e-5 --policy.device=cuda '--policy.normalization_mapping={\"VISUAL\":\"MEAN_STD\",\"STATE\":\"MIN_MAX\",\"ACTION\":\"MIN_MAX\"}' --output_dir=/kaggle/tmp/train/px_train1 --job_name=px_train1 --steps=10000 --save_freq=10000 --eval_freq=0 --log_freq=100 --batch_size=64 --num_workers=4 --seed=1 --wandb.enable=false",
+      "dataset": "lerobot/pusht",
+      "ckpt": "/kaggle/tmp/train/px_train1/checkpoints/010000/pretrained_model",
+      "curve": [
+        {
+          "step": 100,
+          "loss": 4.452,
+          "grad_norm": 90.064,
+          "lr": 3e-05,
+          "epoch": 0.25
+        },
+        {
+          "step": 200,
+          "loss": 1.721,
+          "grad_norm": 39.519,
+          "lr": 3e-05,
+          "epoch": 0.5
+        },
+        {
+          "step": 300,
+          "loss": 1.306,
+          "grad_norm": 34.59,
+          "lr": 3e-05,
+          "epoch": 0.75
+        },
+        {
+          "step": 400,
+          "loss": 1.021,
+          "grad_norm": 31.805,
+          "lr": 3e-05,
+          "epoch": 1.0
+        },
+        {
+          "step": 500,
+          "loss": 0.798,
+          "grad_norm": 29.388,
+          "lr": 3e-05,
+          "epoch": 1.25
+        },
+        {
+          "step": 600,
+          "loss": 0.623,
+          "grad_norm": 25.093,
+          "lr": 3e-05,
+          "epoch": 1.5
+        },
+        {
+          "step": 700,
+          "loss": 0.493,
+          "grad_norm": 22.547,
+          "lr": 3e-05,
+          "epoch": 1.75
+        },
+        {
+          "step": 800,
+          "loss": 0.395,
+          "grad_norm": 20.649,
+          "lr": 3e-05,
+          "epoch": 2.0
+        },
+        {
+          "step": 900,
+          "loss": 0.322,
+          "grad_norm": 18.888,
+          "lr": 3e-05,
+          "epoch": 2.25
+        },
+        {
+          "step": 1,
+          "loss": 0.275,
+          "grad_norm": 17.788,
+          "lr": 3e-05,
+          "epoch": 2.5
+        },
+        {
+          "step": 1,
+          "loss": 0.238,
+          "grad_norm": 15.73,
+          "lr": 3e-05,
+          "epoch": 2.74
+        },
+        {
+          "step": 1,
+          "loss": 0.214,
+          "grad_norm": 14.834,
+          "lr": 3e-05,
+          "epoch": 2.99
+        },
+        {
+          "step": 1,
+          "loss": 0.193,
+          "grad_norm": 14.15,
+          "lr": 3e-05,
+          "epoch": 3.24
+        },
+        {
+          "step": 1,
+          "loss": 0.177,
+          "grad_norm": 13.672,
+          "lr": 3e-05,
+          "epoch": 3.49
+        },
+        {
+          "step": 2,
+          "loss": 0.163,
+          "grad_norm": 12.822,
+          "lr": 3e-05,
+          "epoch": 3.74
+        },
+        {
+          "step": 2,
+          "loss": 0.152,
+          "grad_norm": 11.663,
+          "lr": 3e-05,
+          "epoch": 3.99
+        },
+        {
+          "step": 2,
+          "loss": 0.14,
+          "grad_norm": 11.566,
+          "lr": 3e-05,
+          "epoch": 4.24
+        },
+        {
+          "step": 2,
+          "loss": 0.135,
+          "grad_norm": 10.821,
+          "lr": 3e-05,
+          "epoch": 4.49
+        },
+        {
+          "step": 2,
+          "loss": 0.127,
+          "grad_norm": 10.799,
+          "lr": 3e-05,
+          "epoch": 4.74
+        },
+        {
+          "step": 2,
+          "loss": 0.121,
+          "grad_norm": 10.272,
+          "lr": 3e-05,
+          "epoch": 4.99
+        },
+        {
+          "step": 2,
+          "loss": 0.113,
+          "grad_norm": 9.587,
+          "lr": 3e-05,
+          "epoch": 5.24
+        },
+        {
+          "step": 2,
+          "loss": 0.109,
+          "grad_norm": 9.003,
+          "lr": 3e-05,
+          "epoch": 5.49
+        },
+        {
+          "step": 2,
+          "loss": 0.105,
+          "grad_norm": 9.134,
+          "lr": 3e-05,
+          "epoch": 5.74
+        },
+        {
+          "step": 2,
+          "loss": 0.101,
+          "grad_norm": 8.608,
+          "lr": 3e-05,
+          "epoch": 5.99
+        },
+        {
+          "step": 2,
+          "loss": 0.096,
+          "grad_norm": 8.254,
+          "lr": 3e-05,
+          "epoch": 6.24
+        },
+        {
+          "step": 3,
+          "loss": 0.092,
+          "grad_norm": 7.778,
+          "lr": 3e-05,
+          "epoch": 6.49
+        },
+        {
+          "step": 3,
+          "loss": 0.09,
+          "grad_norm": 7.635,
+          "lr": 3e-05,
+          "epoch": 6.74
+        },
+        {
+          "step": 3,
+          "loss": 0.087,
+          "grad_norm": 7.595,
+          "lr": 3e-05,
+          "epoch": 6.99
+        },
+        {
+          "step": 3,
+          "loss": 0.082,
+          "grad_norm": 6.658,
+          "lr": 3e-05,
+          "epoch": 7.24
+        },
+        {
+          "step": 3,
+          "loss": 0.081,
+          "grad_norm": 6.899,
+          "lr": 3e-05,
+          "epoch": 7.49
+        },
+        {
+          "step": 3,
+          "loss": 0.08,
+          "grad_norm": 7.036,
+          "lr": 3e-05,
+          "epoch": 7.73
+        },
+        {
+          "step": 3,
+          "loss": 0.077,
+          "grad_norm": 6.473,
+          "lr": 3e-05,
+          "epoch": 7.98
+        },
+        {
+          "step": 3,
+          "loss": 0.075,
+          "grad_norm": 6.899,
+          "lr": 3e-05,
+          "epoch": 8.23
+        },
+        {
+          "step": 3,
+          "loss": 0.073,
+          "grad_norm": 6.819,
+          "lr": 3e-05,
+          "epoch": 8.48
+        },
+        {
+          "step": 4,
+          "loss": 0.071,
+          "grad_norm": 6.552,
+          "lr": 3e-05,
+          "epoch": 8.73
+        },
+        {
+          "step": 4,
+          "loss": 0.071,
+          "grad_norm": 6.42,
+          "lr": 3e-05,
+          "epoch": 8.98
+        },
+        {
+          "step": 4,
+          "loss": 0.067,
+          "grad_norm": 6.243,
+          "lr": 3e-05,
+          "epoch": 9.23
+        },
+        {
+          "step": 4,
+          "loss": 0.067,
+          "grad_norm": 6.048,
+          "lr": 3e-05,
+          "epoch": 9.48
+        },
+        {
+          "step": 4,
+          "loss": 0.065,
+          "grad_norm": 5.823,
+          "lr": 3e-05,
+          "epoch": 9.73
+        },
+        {
+          "step": 4,
+          "loss": 0.065,
+          "grad_norm": 5.775,
+          "lr": 3e-05,
+          "epoch": 9.98
+        },
+        {
+          "step": 4,
+          "loss": 0.062,
+          "grad_norm": 5.61,
+          "lr": 3e-05,
+          "epoch": 10.23
+        },
+        {
+          "step": 4,
+          "loss": 0.062,
+          "grad_norm": 5.799,
+          "lr": 3e-05,
+          "epoch": 10.48
+        },
+        {
+          "step": 4,
+          "loss": 0.061,
+          "grad_norm": 5.936,
+          "lr": 3e-05,
+          "epoch": 10.73
+        },
+        {
+          "step": 4,
+          "loss": 0.061,
+          "grad_norm": 5.899,
+          "lr": 3e-05,
+          "epoch": 10.98
+        },
+        {
+          "step": 4,
+          "loss": 0.059,
+          "grad_norm": 5.786,
+          "lr": 3e-05,
+          "epoch": 11.23
+        },
+        {
+          "step": 5,
+          "loss": 0.058,
+          "grad_norm": 5.398,
+          "lr": 3e-05,
+          "epoch": 11.48
+        },
+        {
+          "step": 5,
+          "loss": 0.058,
+          "grad_norm": 5.5,
+          "lr": 3e-05,
+          "epoch": 11.73
+        },
+        {
+          "step": 5,
+          "loss": 0.056,
+          "grad_norm": 5.135,
+          "lr": 3e-05,
+          "epoch": 11.98
+        },
+        {
+          "step": 5,
+          "loss": 0.054,
+          "grad_norm": 5.1,
+          "lr": 3e-05,
+          "epoch": 12.23
+        },
+        {
+          "step": 5,
+          "loss": 0.054,
+          "grad_norm": 5.164,
+          "lr": 3e-05,
+          "epoch": 12.48
+        },
+        {
+          "step": 5,
+          "loss": 0.054,
+          "grad_norm": 5.027,
+          "lr": 3e-05,
+          "epoch": 12.73
+        },
+        {
+          "step": 5,
+          "loss": 0.053,
+          "grad_norm": 4.987,
+          "lr": 3e-05,
+          "epoch": 12.97
+        },
+        {
+          "step": 5,
+          "loss": 0.052,
+          "grad_norm": 5.094,
+          "lr": 3e-05,
+          "epoch": 13.22
+        },
+        {
+          "step": 5,
+          "loss": 0.052,
+          "grad_norm": 5.107,
+          "lr": 3e-05,
+          "epoch": 13.47
+        },
+        {
+          "step": 6,
+          "loss": 0.051,
+          "grad_norm": 4.871,
+          "lr": 3e-05,
+          "epoch": 13.72
+        },
+        {
+          "step": 6,
+          "loss": 0.051,
+          "grad_norm": 5.013,
+          "lr": 3e-05,
+          "epoch": 13.97
+        },
+        {
+          "step": 6,
+          "loss": 0.049,
+          "grad_norm": 4.816,
+          "lr": 3e-05,
+          "epoch": 14.22
+        },
+        {
+          "step": 6,
+          "loss": 0.049,
+          "grad_norm": 4.965,
+          "lr": 3e-05,
+          "epoch": 14.47
+        },
+        {
+          "step": 6,
+          "loss": 0.05,
+          "grad_norm": 4.896,
+          "lr": 3e-05,
+          "epoch": 14.72
+        },
+        {
+          "step": 6,
+          "loss": 0.049,
+          "grad_norm": 4.7,
+          "lr": 3e-05,
+          "epoch": 14.97
+        },
+        {
+          "step": 6,
+          "loss": 0.047,
+          "grad_norm": 4.829,
+          "lr": 3e-05,
+          "epoch": 15.22
+        },
+        {
+          "step": 6,
+          "loss": 0.048,
+          "grad_norm": 4.701,
+          "lr": 3e-05,
+          "epoch": 15.47
+        },
+        {
+          "step": 6,
+          "loss": 0.047,
+          "grad_norm": 4.549,
+          "lr": 3e-05,
+          "epoch": 15.72
+        },
+        {
+          "step": 6,
+          "loss": 0.047,
+          "grad_norm": 4.784,
+          "lr": 3e-05,
+          "epoch": 15.97
+        },
+        {
+          "step": 6,
+          "loss": 0.046,
+          "grad_norm": 4.691,
+          "lr": 3e-05,
+          "epoch": 16.22
+        },
+        {
+          "step": 7,
+          "loss": 0.046,
+          "grad_norm": 4.815,
+          "lr": 3e-05,
+          "epoch": 16.47
+        },
+        {
+          "step": 7,
+          "loss": 0.045,
+          "grad_norm": 4.425,
+          "lr": 3e-05,
+          "epoch": 16.72
+        },
+        {
+          "step": 7,
+          "loss": 0.045,
+          "grad_norm": 4.707,
+          "lr": 3e-05,
+          "epoch": 16.97
+        },
+        {
+          "step": 7,
+          "loss": 0.044,
+          "grad_norm": 4.438,
+          "lr": 3e-05,
+          "epoch": 17.22
+        },
+        {
+          "step": 7,
+          "loss": 0.044,
+          "grad_norm": 4.511,
+          "lr": 3e-05,
+          "epoch": 17.47
+        },
+        {
+          "step": 7,
+          "loss": 0.044,
+          "grad_norm": 4.634,
+          "lr": 3e-05,
+          "epoch": 17.72
+        },
+        {
+          "step": 7,
+          "loss": 0.044,
+          "grad_norm": 4.444,
+          "lr": 3e-05,
+          "epoch": 17.96
+        },
+        {
+          "step": 7,
+          "loss": 0.042,
+          "grad_norm": 4.185,
+          "lr": 3e-05,
+          "epoch": 18.21
+        },
+        {
+          "step": 7,
+          "loss": 0.043,
+          "grad_norm": 4.95,
+          "lr": 3e-05,
+          "epoch": 18.46
+        },
+        {
+          "step": 8,
+          "loss": 0.043,
+          "grad_norm": 3.976,
+          "lr": 3e-05,
+          "epoch": 18.71
+        },
+        {
+          "step": 8,
+          "loss": 0.043,
+          "grad_norm": 4.826,
+          "lr": 3e-05,
+          "epoch": 18.96
+        },
+        {
+          "step": 8,
+          "loss": 0.041,
+          "grad_norm": 4.382,
+          "lr": 3e-05,
+          "epoch": 19.21
+        },
+        {
+          "step": 8,
+          "loss": 0.042,
+          "grad_norm": 4.376,
+          "lr": 3e-05,
+          "epoch": 19.46
+        },
+        {
+          "step": 8,
+          "loss": 0.041,
+          "grad_norm": 4.083,
+          "lr": 3e-05,
+          "epoch": 19.71
+        },
+        {
+          "step": 8,
+          "loss": 0.04,
+          "grad_norm": 4.17,
+          "lr": 3e-05,
+          "epoch": 19.96
+        },
+        {
+          "step": 8,
+          "loss": 0.041,
+          "grad_norm": 4.526,
+          "lr": 3e-05,
+          "epoch": 20.21
+        },
+        {
+          "step": 8,
+          "loss": 0.039,
+          "grad_norm": 4.15,
+          "lr": 3e-05,
+          "epoch": 20.46
+        },
+        {
+          "step": 8,
+          "loss": 0.04,
+          "grad_norm": 4.315,
+          "lr": 3e-05,
+          "epoch": 20.71
+        },
+        {
+          "step": 8,
+          "loss": 0.04,
+          "grad_norm": 4.202,
+          "lr": 3e-05,
+          "epoch": 20.96
+        },
+        {
+          "step": 8,
+          "loss": 0.039,
+          "grad_norm": 4.247,
+          "lr": 3e-05,
+          "epoch": 21.21
+        },
+        {
+          "step": 9,
+          "loss": 0.039,
+          "grad_norm": 4.449,
+          "lr": 3e-05,
+          "epoch": 21.46
+        },
+        {
+          "step": 9,
+          "loss": 0.039,
+          "grad_norm": 4.032,
+          "lr": 3e-05,
+          "epoch": 21.71
+        },
+        {
+          "step": 9,
+          "loss": 0.039,
+          "grad_norm": 3.933,
+          "lr": 3e-05,
+          "epoch": 21.96
+        },
+        {
+          "step": 9,
+          "loss": 0.037,
+          "grad_norm": 3.95,
+          "lr": 3e-05,
+          "epoch": 22.21
+        },
+        {
+          "step": 9,
+          "loss": 0.038,
+          "grad_norm": 4.154,
+          "lr": 3e-05,
+          "epoch": 22.46
+        },
+        {
+          "step": 9,
+          "loss": 0.038,
+          "grad_norm": 3.533,
+          "lr": 3e-05,
+          "epoch": 22.71
+        },
+        {
+          "step": 9,
+          "loss": 0.038,
+          "grad_norm": 4.005,
+          "lr": 3e-05,
+          "epoch": 22.96
+        },
+        {
+          "step": 9,
+          "loss": 0.038,
+          "grad_norm": 4.154,
+          "lr": 3e-05,
+          "epoch": 23.2
+        },
+        {
+          "step": 9,
+          "loss": 0.037,
+          "grad_norm": 4.035,
+          "lr": 3e-05,
+          "epoch": 23.45
+        },
+        {
+          "step": 10,
+          "loss": 0.037,
+          "grad_norm": 4.168,
+          "lr": 3e-05,
+          "epoch": 23.7
+        },
+        {
+          "step": 10,
+          "loss": 0.036,
+          "grad_norm": 3.669,
+          "lr": 3e-05,
+          "epoch": 23.95
+        },
+        {
+          "step": 10,
+          "loss": 0.036,
+          "grad_norm": 3.881,
+          "lr": 3e-05,
+          "epoch": 24.2
+        },
+        {
+          "step": 10,
+          "loss": 0.036,
+          "grad_norm": 3.86,
+          "lr": 3e-05,
+          "epoch": 24.45
+        },
+        {
+          "step": 10,
+          "loss": 0.036,
+          "grad_norm": 3.477,
+          "lr": 3e-05,
+          "epoch": 24.7
+        },
+        {
+          "step": 10,
+          "loss": 0.036,
+          "grad_norm": 3.749,
+          "lr": 3e-05,
+          "epoch": 24.95
+        }
+      ]
+    },
+    "px_train2": {
+      "variant": "px",
+      "seed": 2,
+      "rc": 0,
+      "wall_s": 2218.2,
+      "cmd": "/kaggle/tmp/venv/bin/lerobot-train --dataset.repo_id=lerobot/pusht --env.type=pusht --policy.type=act --policy.push_to_hub=false --policy.chunk_size=16 --policy.n_action_steps=16 --policy.n_decoder_layers=4 --policy.optimizer_lr=3e-5 --policy.device=cuda '--policy.normalization_mapping={\"VISUAL\":\"MEAN_STD\",\"STATE\":\"MIN_MAX\",\"ACTION\":\"MIN_MAX\"}' --output_dir=/kaggle/tmp/train/px_train2 --job_name=px_train2 --steps=10000 --save_freq=10000 --eval_freq=0 --log_freq=100 --batch_size=64 --num_workers=4 --seed=2 --wandb.enable=false",
+      "dataset": "lerobot/pusht",
+      "ckpt": "/kaggle/tmp/train/px_train2/checkpoints/010000/pretrained_model",
+      "curve": [
+        {
+          "step": 100,
+          "loss": 5.415,
+          "grad_norm": 108.9,
+          "lr": 3e-05,
+          "epoch": 0.25
+        },
+        {
+          "step": 200,
+          "loss": 1.747,
+          "grad_norm": 38.569,
+          "lr": 3e-05,
+          "epoch": 0.5
+        },
+        {
+          "step": 300,
+          "loss": 1.307,
+          "grad_norm": 34.61,
+          "lr": 3e-05,
+          "epoch": 0.75
+        },
+        {
+          "step": 400,
+          "loss": 0.998,
+          "grad_norm": 31.035,
+          "lr": 3e-05,
+          "epoch": 1.0
+        },
+        {
+          "step": 500,
+          "loss": 0.773,
+          "grad_norm": 27.951,
+          "lr": 3e-05,
+          "epoch": 1.25
+        },
+        {
+          "step": 600,
+          "loss": 0.607,
+          "grad_norm": 24.692,
+          "lr": 3e-05,
+          "epoch": 1.5
+        },
+        {
+          "step": 700,
+          "loss": 0.487,
+          "grad_norm": 22.347,
+          "lr": 3e-05,
+          "epoch": 1.75
+        },
+        {
+          "step": 800,
+          "loss": 0.392,
+          "grad_norm": 19.651,
+          "lr": 3e-05,
+          "epoch": 2.0
+        },
+        {
+          "step": 900,
+          "loss": 0.326,
+          "grad_norm": 18.044,
+          "lr": 3e-05,
+          "epoch": 2.25
+        },
+        {
+          "step": 1,
+          "loss": 0.28,
+          "grad_norm": 17.053,
+          "lr": 3e-05,
+          "epoch": 2.5
+        },
+        {
+          "step": 1,
+          "loss": 0.248,
+          "grad_norm": 15.661,
+          "lr": 3e-05,
+          "epoch": 2.74
+        },
+        {
+          "step": 1,
+          "loss": 0.223,
+          "grad_norm": 14.923,
+          "lr": 3e-05,
+          "epoch": 2.99
+        },
+        {
+          "step": 1,
+          "loss": 0.199,
+          "grad_norm": 13.794,
+          "lr": 3e-05,
+          "epoch": 3.24
+        },
+        {
+          "step": 1,
+          "loss": 0.184,
+          "grad_norm": 13.096,
+          "lr": 3e-05,
+          "epoch": 3.49
+        },
+        {
+          "step": 2,
+          "loss": 0.172,
+          "grad_norm": 12.733,
+          "lr": 3e-05,
+          "epoch": 3.74
+        },
+        {
+          "step": 2,
+          "loss": 0.159,
+          "grad_norm": 12.149,
+          "lr": 3e-05,
+          "epoch": 3.99
+        },
+        {
+          "step": 2,
+          "loss": 0.148,
+          "grad_norm": 11.701,
+          "lr": 3e-05,
+          "epoch": 4.24
+        },
+        {
+          "step": 2,
+          "loss": 0.141,
+          "grad_norm": 11.214,
+          "lr": 3e-05,
+          "epoch": 4.49
+        },
+        {
+          "step": 2,
+          "loss": 0.135,
+          "grad_norm": 10.859,
+          "lr": 3e-05,
+          "epoch": 4.74
+        },
+        {
+          "step": 2,
+          "loss": 0.128,
+          "grad_norm": 10.356,
+          "lr": 3e-05,
+          "epoch": 4.99
+        },
+        {
+          "step": 2,
+          "loss": 0.12,
+          "grad_norm": 9.954,
+          "lr": 3e-05,
+          "epoch": 5.24
+        },
+        {
+          "step": 2,
+          "loss": 0.116,
+          "grad_norm": 9.691,
+          "lr": 3e-05,
+          "epoch": 5.49
+        },
+        {
+          "step": 2,
+          "loss": 0.111,
+          "grad_norm": 9.197,
+          "lr": 3e-05,
+          "epoch": 5.74
+        },
+        {
+          "step": 2,
+          "loss": 0.107,
+          "grad_norm": 9.062,
+          "lr": 3e-05,
+          "epoch": 5.99
+        },
+        {
+          "step": 2,
+          "loss": 0.101,
+          "grad_norm": 8.636,
+          "lr": 3e-05,
+          "epoch": 6.24
+        },
+        {
+          "step": 3,
+          "loss": 0.096,
+          "grad_norm": 8.248,
+          "lr": 3e-05,
+          "epoch": 6.49
+        },
+        {
+          "step": 3,
+          "loss": 0.095,
+          "grad_norm": 8.302,
+          "lr": 3e-05,
+          "epoch": 6.74
+        },
+        {
+          "step": 3,
+          "loss": 0.092,
+          "grad_norm": 7.787,
+          "lr": 3e-05,
+          "epoch": 6.99
+        },
+        {
+          "step": 3,
+          "loss": 0.087,
+          "grad_norm": 7.587,
+          "lr": 3e-05,
+          "epoch": 7.24
+        },
+        {
+          "step": 3,
+          "loss": 0.085,
+          "grad_norm": 7.268,
+          "lr": 3e-05,
+          "epoch": 7.49
+        },
+        {
+          "step": 3,
+          "loss": 0.083,
+          "grad_norm": 7.149,
+          "lr": 3e-05,
+          "epoch": 7.73
+        },
+        {
+          "step": 3,
+          "loss": 0.081,
+          "grad_norm": 7.255,
+          "lr": 3e-05,
+          "epoch": 7.98
+        },
+        {
+          "step": 3,
+          "loss": 0.077,
+          "grad_norm": 7.177,
+          "lr": 3e-05,
+          "epoch": 8.23
+        },
+        {
+          "step": 3,
+          "loss": 0.075,
+          "grad_norm": 6.643,
+          "lr": 3e-05,
+          "epoch": 8.48
+        },
+        {
+          "step": 4,
+          "loss": 0.076,
+          "grad_norm": 7.09,
+          "lr": 3e-05,
+          "epoch": 8.73
+        },
+        {
+          "step": 4,
+          "loss": 0.074,
+          "grad_norm": 6.682,
+          "lr": 3e-05,
+          "epoch": 8.98
+        },
+        {
+          "step": 4,
+          "loss": 0.071,
+          "grad_norm": 6.561,
+          "lr": 3e-05,
+          "epoch": 9.23
+        },
+        {
+          "step": 4,
+          "loss": 0.069,
+          "grad_norm": 6.356,
+          "lr": 3e-05,
+          "epoch": 9.48
+        },
+        {
+          "step": 4,
+          "loss": 0.069,
+          "grad_norm": 6.481,
+          "lr": 3e-05,
+          "epoch": 9.73
+        },
+        {
+          "step": 4,
+          "loss": 0.067,
+          "grad_norm": 5.522,
+          "lr": 3e-05,
+          "epoch": 9.98
+        },
+        {
+          "step": 4,
+          "loss": 0.065,
+          "grad_norm": 6.242,
+          "lr": 3e-05,
+          "epoch": 10.23
+        },
+        {
+          "step": 4,
+          "loss": 0.063,
+          "grad_norm": 5.713,
+          "lr": 3e-05,
+          "epoch": 10.48
+        },
+        {
+          "step": 4,
+          "loss": 0.062,
+          "grad_norm": 5.511,
+          "lr": 3e-05,
+          "epoch": 10.73
+        },
+        {
+          "step": 4,
+          "loss": 0.061,
+          "grad_norm": 5.634,
+          "lr": 3e-05,
+          "epoch": 10.98
+        },
+        {
+          "step": 4,
+          "loss": 0.06,
+          "grad_norm": 5.836,
+          "lr": 3e-05,
+          "epoch": 11.23
+        },
+        {
+          "step": 5,
+          "loss": 0.059,
+          "grad_norm": 5.741,
+          "lr": 3e-05,
+          "epoch": 11.48
+        },
+        {
+          "step": 5,
+          "loss": 0.058,
+          "grad_norm": 5.373,
+          "lr": 3e-05,
+          "epoch": 11.73
+        },
+        {
+          "step": 5,
+          "loss": 0.057,
+          "grad_norm": 5.878,
+          "lr": 3e-05,
+          "epoch": 11.98
+        },
+        {
+          "step": 5,
+          "loss": 0.055,
+          "grad_norm": 5.291,
+          "lr": 3e-05,
+          "epoch": 12.23
+        },
+        {
+          "step": 5,
+          "loss": 0.054,
+          "grad_norm": 4.787,
+          "lr": 3e-05,
+          "epoch": 12.48
+        },
+        {
+          "step": 5,
+          "loss": 0.054,
+          "grad_norm": 5.371,
+          "lr": 3e-05,
+          "epoch": 12.73
+        },
+        {
+          "step": 5,
+          "loss": 0.053,
+          "grad_norm": 5.035,
+          "lr": 3e-05,
+          "epoch": 12.97
+        },
+        {
+          "step": 5,
+          "loss": 0.052,
+          "grad_norm": 5.194,
+          "lr": 3e-05,
+          "epoch": 13.22
+        },
+        {
+          "step": 5,
+          "loss": 0.052,
+          "grad_norm": 5.185,
+          "lr": 3e-05,
+          "epoch": 13.47
+        },
+        {
+          "step": 6,
+          "loss": 0.051,
+          "grad_norm": 5.14,
+          "lr": 3e-05,
+          "epoch": 13.72
+        },
+        {
+          "step": 6,
+          "loss": 0.05,
+          "grad_norm": 5.179,
+          "lr": 3e-05,
+          "epoch": 13.97
+        },
+        {
+          "step": 6,
+          "loss": 0.049,
+          "grad_norm": 5.017,
+          "lr": 3e-05,
+          "epoch": 14.22
+        },
+        {
+          "step": 6,
+          "loss": 0.049,
+          "grad_norm": 4.694,
+          "lr": 3e-05,
+          "epoch": 14.47
+        },
+        {
+          "step": 6,
+          "loss": 0.049,
+          "grad_norm": 4.745,
+          "lr": 3e-05,
+          "epoch": 14.72
+        },
+        {
+          "step": 6,
+          "loss": 0.048,
+          "grad_norm": 4.696,
+          "lr": 3e-05,
+          "epoch": 14.97
+        },
+        {
+          "step": 6,
+          "loss": 0.047,
+          "grad_norm": 4.961,
+          "lr": 3e-05,
+          "epoch": 15.22
+        },
+        {
+          "step": 6,
+          "loss": 0.047,
+          "grad_norm": 5.105,
+          "lr": 3e-05,
+          "epoch": 15.47
+        },
+        {
+          "step": 6,
+          "loss": 0.048,
+          "grad_norm": 5.233,
+          "lr": 3e-05,
+          "epoch": 15.72
+        },
+        {
+          "step": 6,
+          "loss": 0.046,
+          "grad_norm": 4.371,
+          "lr": 3e-05,
+          "epoch": 15.97
+        },
+        {
+          "step": 6,
+          "loss": 0.045,
+          "grad_norm": 4.317,
+          "lr": 3e-05,
+          "epoch": 16.22
+        },
+        {
+          "step": 7,
+          "loss": 0.045,
+          "grad_norm": 4.439,
+          "lr": 3e-05,
+          "epoch": 16.47
+        },
+        {
+          "step": 7,
+          "loss": 0.043,
+          "grad_norm": 3.856,
+          "lr": 3e-05,
+          "epoch": 16.72
+        },
+        {
+          "step": 7,
+          "loss": 0.045,
+          "grad_norm": 4.561,
+          "lr": 3e-05,
+          "epoch": 16.97
+        },
+        {
+          "step": 7,
+          "loss": 0.043,
+          "grad_norm": 4.483,
+          "lr": 3e-05,
+          "epoch": 17.22
+        },
+        {
+          "step": 7,
+          "loss": 0.043,
+          "grad_norm": 4.137,
+          "lr": 3e-05,
+          "epoch": 17.47
+        },
+        {
+          "step": 7,
+          "loss": 0.043,
+          "grad_norm": 4.296,
+          "lr": 3e-05,
+          "epoch": 17.72
+        },
+        {
+          "step": 7,
+          "loss": 0.043,
+          "grad_norm": 4.446,
+          "lr": 3e-05,
+          "epoch": 17.96
+        },
+        {
+          "step": 7,
+          "loss": 0.042,
+          "grad_norm": 4.451,
+          "lr": 3e-05,
+          "epoch": 18.21
+        },
+        {
+          "step": 7,
+          "loss": 0.042,
+          "grad_norm": 4.513,
+          "lr": 3e-05,
+          "epoch": 18.46
+        },
+        {
+          "step": 8,
+          "loss": 0.041,
+          "grad_norm": 3.892,
+          "lr": 3e-05,
+          "epoch": 18.71
+        },
+        {
+          "step": 8,
+          "loss": 0.041,
+          "grad_norm": 4.054,
+          "lr": 3e-05,
+          "epoch": 18.96
+        },
+        {
+          "step": 8,
+          "loss": 0.04,
+          "grad_norm": 3.995,
+          "lr": 3e-05,
+          "epoch": 19.21
+        },
+        {
+          "step": 8,
+          "loss": 0.041,
+          "grad_norm": 4.345,
+          "lr": 3e-05,
+          "epoch": 19.46
+        },
+        {
+          "step": 8,
+          "loss": 0.04,
+          "grad_norm": 4.278,
+          "lr": 3e-05,
+          "epoch": 19.71
+        },
+        {
+          "step": 8,
+          "loss": 0.04,
+          "grad_norm": 4.251,
+          "lr": 3e-05,
+          "epoch": 19.96
+        },
+        {
+          "step": 8,
+          "loss": 0.04,
+          "grad_norm": 4.489,
+          "lr": 3e-05,
+          "epoch": 20.21
+        },
+        {
+          "step": 8,
+          "loss": 0.04,
+          "grad_norm": 4.459,
+          "lr": 3e-05,
+          "epoch": 20.46
+        },
+        {
+          "step": 8,
+          "loss": 0.04,
+          "grad_norm": 4.403,
+          "lr": 3e-05,
+          "epoch": 20.71
+        },
+        {
+          "step": 8,
+          "loss": 0.039,
+          "grad_norm": 3.861,
+          "lr": 3e-05,
+          "epoch": 20.96
+        },
+        {
+          "step": 8,
+          "loss": 0.039,
+          "grad_norm": 3.909,
+          "lr": 3e-05,
+          "epoch": 21.21
+        },
+        {
+          "step": 9,
+          "loss": 0.038,
+          "grad_norm": 4.059,
+          "lr": 3e-05,
+          "epoch": 21.46
+        },
+        {
+          "step": 9,
+          "loss": 0.038,
+          "grad_norm": 3.852,
+          "lr": 3e-05,
+          "epoch": 21.71
+        },
+        {
+          "step": 9,
+          "loss": 0.038,
+          "grad_norm": 3.96,
+          "lr": 3e-05,
+          "epoch": 21.96
+        },
+        {
+          "step": 9,
+          "loss": 0.037,
+          "grad_norm": 3.748,
+          "lr": 3e-05,
+          "epoch": 22.21
+        },
+        {
+          "step": 9,
+          "loss": 0.038,
+          "grad_norm": 3.94,
+          "lr": 3e-05,
+          "epoch": 22.46
+        },
+        {
+          "step": 9,
+          "loss": 0.038,
+          "grad_norm": 3.95,
+          "lr": 3e-05,
+          "epoch": 22.71
+        },
+        {
+          "step": 9,
+          "loss": 0.037,
+          "grad_norm": 3.82,
+          "lr": 3e-05,
+          "epoch": 22.96
+        },
+        {
+          "step": 9,
+          "loss": 0.036,
+          "grad_norm": 3.812,
+          "lr": 3e-05,
+          "epoch": 23.2
+        },
+        {
+          "step": 9,
+          "loss": 0.036,
+          "grad_norm": 3.816,
+          "lr": 3e-05,
+          "epoch": 23.45
+        },
+        {
+          "step": 10,
+          "loss": 0.036,
+          "grad_norm": 4.12,
+          "lr": 3e-05,
+          "epoch": 23.7
+        },
+        {
+          "step": 10,
+          "loss": 0.037,
+          "grad_norm": 4.11,
+          "lr": 3e-05,
+          "epoch": 23.95
+        },
+        {
+          "step": 10,
+          "loss": 0.036,
+          "grad_norm": 3.698,
+          "lr": 3e-05,
+          "epoch": 24.2
+        },
+        {
+          "step": 10,
+          "loss": 0.036,
+          "grad_norm": 3.374,
+          "lr": 3e-05,
+          "epoch": 24.45
+        },
+        {
+          "step": 10,
+          "loss": 0.035,
+          "grad_norm": 3.883,
+          "lr": 3e-05,
+          "epoch": 24.7
+        },
+        {
+          "step": 10,
+          "loss": 0.036,
+          "grad_norm": 3.995,
+          "lr": 3e-05,
+          "epoch": 24.95
+        }
+      ]
+    },
+    "px_train3": {
+      "variant": "px",
+      "seed": 3,
+      "rc": 0,
+      "wall_s": 2234.3,
+      "cmd": "/kaggle/tmp/venv/bin/lerobot-train --dataset.repo_id=lerobot/pusht --env.type=pusht --policy.type=act --policy.push_to_hub=false --policy.chunk_size=16 --policy.n_action_steps=16 --policy.n_decoder_layers=4 --policy.optimizer_lr=3e-5 --policy.device=cuda '--policy.normalization_mapping={\"VISUAL\":\"MEAN_STD\",\"STATE\":\"MIN_MAX\",\"ACTION\":\"MIN_MAX\"}' --output_dir=/kaggle/tmp/train/px_train3 --job_name=px_train3 --steps=10000 --save_freq=10000 --eval_freq=0 --log_freq=100 --batch_size=64 --num_workers=4 --seed=3 --wandb.enable=false",
+      "dataset": "lerobot/pusht",
+      "ckpt": "/kaggle/tmp/train/px_train3/checkpoints/010000/pretrained_model",
+      "curve": [
+        {
+          "step": 100,
+          "loss": 4.385,
+          "grad_norm": 90.753,
+          "lr": 3e-05,
+          "epoch": 0.25
+        },
+        {
+          "step": 200,
+          "loss": 1.702,
+          "grad_norm": 39.002,
+          "lr": 3e-05,
+          "epoch": 0.5
+        },
+        {
+          "step": 300,
+          "loss": 1.276,
+          "grad_norm": 35.625,
+          "lr": 3e-05,
+          "epoch": 0.75
+        },
+        {
+          "step": 400,
+          "loss": 0.975,
+          "grad_norm": 31.391,
+          "lr": 3e-05,
+          "epoch": 1.0
+        },
+        {
+          "step": 500,
+          "loss": 0.748,
+          "grad_norm": 27.167,
+          "lr": 3e-05,
+          "epoch": 1.25
+        },
+        {
+          "step": 600,
+          "loss": 0.587,
+          "grad_norm": 24.729,
+          "lr": 3e-05,
+          "epoch": 1.5
+        },
+        {
+          "step": 700,
+          "loss": 0.462,
+          "grad_norm": 22.211,
+          "lr": 3e-05,
+          "epoch": 1.75
+        },
+        {
+          "step": 800,
+          "loss": 0.371,
+          "grad_norm": 18.719,
+          "lr": 3e-05,
+          "epoch": 2.0
+        },
+        {
+          "step": 900,
+          "loss": 0.308,
+          "grad_norm": 17.868,
+          "lr": 3e-05,
+          "epoch": 2.25
+        },
+        {
+          "step": 1,
+          "loss": 0.266,
+          "grad_norm": 16.639,
+          "lr": 3e-05,
+          "epoch": 2.5
+        },
+        {
+          "step": 1,
+          "loss": 0.233,
+          "grad_norm": 15.826,
+          "lr": 3e-05,
+          "epoch": 2.74
+        },
+        {
+          "step": 1,
+          "loss": 0.21,
+          "grad_norm": 14.539,
+          "lr": 3e-05,
+          "epoch": 2.99
+        },
+        {
+          "step": 1,
+          "loss": 0.188,
+          "grad_norm": 13.622,
+          "lr": 3e-05,
+          "epoch": 3.24
+        },
+        {
+          "step": 1,
+          "loss": 0.176,
+          "grad_norm": 12.893,
+          "lr": 3e-05,
+          "epoch": 3.49
+        },
+        {
+          "step": 2,
+          "loss": 0.163,
+          "grad_norm": 12.328,
+          "lr": 3e-05,
+          "epoch": 3.74
+        },
+        {
+          "step": 2,
+          "loss": 0.154,
+          "grad_norm": 11.96,
+          "lr": 3e-05,
+          "epoch": 3.99
+        },
+        {
+          "step": 2,
+          "loss": 0.141,
+          "grad_norm": 11.464,
+          "lr": 3e-05,
+          "epoch": 4.24
+        },
+        {
+          "step": 2,
+          "loss": 0.135,
+          "grad_norm": 11.009,
+          "lr": 3e-05,
+          "epoch": 4.49
+        },
+        {
+          "step": 2,
+          "loss": 0.129,
+          "grad_norm": 10.521,
+          "lr": 3e-05,
+          "epoch": 4.74
+        },
+        {
+          "step": 2,
+          "loss": 0.123,
+          "grad_norm": 10.295,
+          "lr": 3e-05,
+          "epoch": 4.99
+        },
+        {
+          "step": 2,
+          "loss": 0.116,
+          "grad_norm": 9.924,
+          "lr": 3e-05,
+          "epoch": 5.24
+        },
+        {
+          "step": 2,
+          "loss": 0.113,
+          "grad_norm": 9.585,
+          "lr": 3e-05,
+          "epoch": 5.49
+        },
+        {
+          "step": 2,
+          "loss": 0.107,
+          "grad_norm": 9.056,
+          "lr": 3e-05,
+          "epoch": 5.74
+        },
+        {
+          "step": 2,
+          "loss": 0.103,
+          "grad_norm": 8.558,
+          "lr": 3e-05,
+          "epoch": 5.99
+        },
+        {
+          "step": 2,
+          "loss": 0.098,
+          "grad_norm": 8.292,
+          "lr": 3e-05,
+          "epoch": 6.24
+        },
+        {
+          "step": 3,
+          "loss": 0.094,
+          "grad_norm": 7.953,
+          "lr": 3e-05,
+          "epoch": 6.49
+        },
+        {
+          "step": 3,
+          "loss": 0.091,
+          "grad_norm": 7.544,
+          "lr": 3e-05,
+          "epoch": 6.74
+        },
+        {
+          "step": 3,
+          "loss": 0.091,
+          "grad_norm": 7.772,
+          "lr": 3e-05,
+          "epoch": 6.99
+        },
+        {
+          "step": 3,
+          "loss": 0.086,
+          "grad_norm": 7.852,
+          "lr": 3e-05,
+          "epoch": 7.24
+        },
+        {
+          "step": 3,
+          "loss": 0.083,
+          "grad_norm": 7.025,
+          "lr": 3e-05,
+          "epoch": 7.49
+        },
+        {
+          "step": 3,
+          "loss": 0.081,
+          "grad_norm": 6.975,
+          "lr": 3e-05,
+          "epoch": 7.73
+        },
+        {
+          "step": 3,
+          "loss": 0.081,
+          "grad_norm": 7.129,
+          "lr": 3e-05,
+          "epoch": 7.98
+        },
+        {
+          "step": 3,
+          "loss": 0.076,
+          "grad_norm": 7.165,
+          "lr": 3e-05,
+          "epoch": 8.23
+        },
+        {
+          "step": 3,
+          "loss": 0.074,
+          "grad_norm": 6.665,
+          "lr": 3e-05,
+          "epoch": 8.48
+        },
+        {
+          "step": 4,
+          "loss": 0.074,
+          "grad_norm": 6.821,
+          "lr": 3e-05,
+          "epoch": 8.73
+        },
+        {
+          "step": 4,
+          "loss": 0.072,
+          "grad_norm": 6.364,
+          "lr": 3e-05,
+          "epoch": 8.98
+        },
+        {
+          "step": 4,
+          "loss": 0.069,
+          "grad_norm": 6.357,
+          "lr": 3e-05,
+          "epoch": 9.23
+        },
+        {
+          "step": 4,
+          "loss": 0.067,
+          "grad_norm": 5.758,
+          "lr": 3e-05,
+          "epoch": 9.48
+        },
+        {
+          "step": 4,
+          "loss": 0.067,
+          "grad_norm": 6.353,
+          "lr": 3e-05,
+          "epoch": 9.73
+        },
+        {
+          "step": 4,
+          "loss": 0.066,
+          "grad_norm": 6.019,
+          "lr": 3e-05,
+          "epoch": 9.98
+        },
+        {
+          "step": 4,
+          "loss": 0.064,
+          "grad_norm": 5.795,
+          "lr": 3e-05,
+          "epoch": 10.23
+        },
+        {
+          "step": 4,
+          "loss": 0.062,
+          "grad_norm": 5.497,
+          "lr": 3e-05,
+          "epoch": 10.48
+        },
+        {
+          "step": 4,
+          "loss": 0.06,
+          "grad_norm": 5.67,
+          "lr": 3e-05,
+          "epoch": 10.73
+        },
+        {
+          "step": 4,
+          "loss": 0.061,
+          "grad_norm": 5.829,
+          "lr": 3e-05,
+          "epoch": 10.98
+        },
+        {
+          "step": 4,
+          "loss": 0.059,
+          "grad_norm": 5.908,
+          "lr": 3e-05,
+          "epoch": 11.23
+        },
+        {
+          "step": 5,
+          "loss": 0.058,
+          "grad_norm": 5.478,
+          "lr": 3e-05,
+          "epoch": 11.48
+        },
+        {
+          "step": 5,
+          "loss": 0.057,
+          "grad_norm": 5.429,
+          "lr": 3e-05,
+          "epoch": 11.73
+        },
+        {
+          "step": 5,
+          "loss": 0.057,
+          "grad_norm": 5.42,
+          "lr": 3e-05,
+          "epoch": 11.98
+        },
+        {
+          "step": 5,
+          "loss": 0.053,
+          "grad_norm": 4.948,
+          "lr": 3e-05,
+          "epoch": 12.23
+        },
+        {
+          "step": 5,
+          "loss": 0.053,
+          "grad_norm": 5.403,
+          "lr": 3e-05,
+          "epoch": 12.48
+        },
+        {
+          "step": 5,
+          "loss": 0.054,
+          "grad_norm": 5.253,
+          "lr": 3e-05,
+          "epoch": 12.73
+        },
+        {
+          "step": 5,
+          "loss": 0.053,
+          "grad_norm": 5.002,
+          "lr": 3e-05,
+          "epoch": 12.97
+        },
+        {
+          "step": 5,
+          "loss": 0.051,
+          "grad_norm": 4.911,
+          "lr": 3e-05,
+          "epoch": 13.22
+        },
+        {
+          "step": 5,
+          "loss": 0.05,
+          "grad_norm": 4.762,
+          "lr": 3e-05,
+          "epoch": 13.47
+        },
+        {
+          "step": 6,
+          "loss": 0.05,
+          "grad_norm": 4.975,
+          "lr": 3e-05,
+          "epoch": 13.72
+        },
+        {
+          "step": 6,
+          "loss": 0.05,
+          "grad_norm": 4.682,
+          "lr": 3e-05,
+          "epoch": 13.97
+        },
+        {
+          "step": 6,
+          "loss": 0.049,
+          "grad_norm": 5.132,
+          "lr": 3e-05,
+          "epoch": 14.22
+        },
+        {
+          "step": 6,
+          "loss": 0.049,
+          "grad_norm": 4.855,
+          "lr": 3e-05,
+          "epoch": 14.47
+        },
+        {
+          "step": 6,
+          "loss": 0.047,
+          "grad_norm": 4.564,
+          "lr": 3e-05,
+          "epoch": 14.72
+        },
+        {
+          "step": 6,
+          "loss": 0.049,
+          "grad_norm": 5.261,
+          "lr": 3e-05,
+          "epoch": 14.97
+        },
+        {
+          "step": 6,
+          "loss": 0.047,
+          "grad_norm": 4.661,
+          "lr": 3e-05,
+          "epoch": 15.22
+        },
+        {
+          "step": 6,
+          "loss": 0.046,
+          "grad_norm": 4.842,
+          "lr": 3e-05,
+          "epoch": 15.47
+        },
+        {
+          "step": 6,
+          "loss": 0.046,
+          "grad_norm": 4.758,
+          "lr": 3e-05,
+          "epoch": 15.72
+        },
+        {
+          "step": 6,
+          "loss": 0.046,
+          "grad_norm": 4.746,
+          "lr": 3e-05,
+          "epoch": 15.97
+        },
+        {
+          "step": 6,
+          "loss": 0.044,
+          "grad_norm": 4.27,
+          "lr": 3e-05,
+          "epoch": 16.22
+        },
+        {
+          "step": 7,
+          "loss": 0.046,
+          "grad_norm": 5.179,
+          "lr": 3e-05,
+          "epoch": 16.47
+        },
+        {
+          "step": 7,
+          "loss": 0.044,
+          "grad_norm": 4.397,
+          "lr": 3e-05,
+          "epoch": 16.72
+        },
+        {
+          "step": 7,
+          "loss": 0.044,
+          "grad_norm": 4.488,
+          "lr": 3e-05,
+          "epoch": 16.97
+        },
+        {
+          "step": 7,
+          "loss": 0.043,
+          "grad_norm": 4.491,
+          "lr": 3e-05,
+          "epoch": 17.22
+        },
+        {
+          "step": 7,
+          "loss": 0.042,
+          "grad_norm": 4.107,
+          "lr": 3e-05,
+          "epoch": 17.47
+        },
+        {
+          "step": 7,
+          "loss": 0.043,
+          "grad_norm": 4.581,
+          "lr": 3e-05,
+          "epoch": 17.72
+        },
+        {
+          "step": 7,
+          "loss": 0.042,
+          "grad_norm": 4.364,
+          "lr": 3e-05,
+          "epoch": 17.96
+        },
+        {
+          "step": 7,
+          "loss": 0.042,
+          "grad_norm": 4.357,
+          "lr": 3e-05,
+          "epoch": 18.21
+        },
+        {
+          "step": 7,
+          "loss": 0.041,
+          "grad_norm": 4.203,
+          "lr": 3e-05,
+          "epoch": 18.46
+        },
+        {
+          "step": 8,
+          "loss": 0.041,
+          "grad_norm": 4.347,
+          "lr": 3e-05,
+          "epoch": 18.71
+        },
+        {
+          "step": 8,
+          "loss": 0.041,
+          "grad_norm": 4.573,
+          "lr": 3e-05,
+          "epoch": 18.96
+        },
+        {
+          "step": 8,
+          "loss": 0.04,
+          "grad_norm": 4.53,
+          "lr": 3e-05,
+          "epoch": 19.21
+        },
+        {
+          "step": 8,
+          "loss": 0.039,
+          "grad_norm": 3.838,
+          "lr": 3e-05,
+          "epoch": 19.46
+        },
+        {
+          "step": 8,
+          "loss": 0.041,
+          "grad_norm": 4.388,
+          "lr": 3e-05,
+          "epoch": 19.71
+        },
+        {
+          "step": 8,
+          "loss": 0.041,
+          "grad_norm": 4.525,
+          "lr": 3e-05,
+          "epoch": 19.96
+        },
+        {
+          "step": 8,
+          "loss": 0.039,
+          "grad_norm": 4.458,
+          "lr": 3e-05,
+          "epoch": 20.21
+        },
+        {
+          "step": 8,
+          "loss": 0.039,
+          "grad_norm": 4.133,
+          "lr": 3e-05,
+          "epoch": 20.46
+        },
+        {
+          "step": 8,
+          "loss": 0.038,
+          "grad_norm": 3.89,
+          "lr": 3e-05,
+          "epoch": 20.71
+        },
+        {
+          "step": 8,
+          "loss": 0.039,
+          "grad_norm": 4.081,
+          "lr": 3e-05,
+          "epoch": 20.96
+        },
+        {
+          "step": 8,
+          "loss": 0.038,
+          "grad_norm": 3.865,
+          "lr": 3e-05,
+          "epoch": 21.21
+        },
+        {
+          "step": 9,
+          "loss": 0.037,
+          "grad_norm": 3.696,
+          "lr": 3e-05,
+          "epoch": 21.46
+        },
+        {
+          "step": 9,
+          "loss": 0.038,
+          "grad_norm": 3.864,
+          "lr": 3e-05,
+          "epoch": 21.71
+        },
+        {
+          "step": 9,
+          "loss": 0.038,
+          "grad_norm": 4.235,
+          "lr": 3e-05,
+          "epoch": 21.96
+        },
+        {
+          "step": 9,
+          "loss": 0.037,
+          "grad_norm": 4.064,
+          "lr": 3e-05,
+          "epoch": 22.21
+        },
+        {
+          "step": 9,
+          "loss": 0.036,
+          "grad_norm": 3.73,
+          "lr": 3e-05,
+          "epoch": 22.46
+        },
+        {
+          "step": 9,
+          "loss": 0.036,
+          "grad_norm": 3.7,
+          "lr": 3e-05,
+          "epoch": 22.71
+        },
+        {
+          "step": 9,
+          "loss": 0.038,
+          "grad_norm": 4.353,
+          "lr": 3e-05,
+          "epoch": 22.96
+        },
+        {
+          "step": 9,
+          "loss": 0.036,
+          "grad_norm": 3.879,
+          "lr": 3e-05,
+          "epoch": 23.2
+        },
+        {
+          "step": 9,
+          "loss": 0.036,
+          "grad_norm": 4.032,
+          "lr": 3e-05,
+          "epoch": 23.45
+        },
+        {
+          "step": 10,
+          "loss": 0.036,
+          "grad_norm": 3.89,
+          "lr": 3e-05,
+          "epoch": 23.7
+        },
+        {
+          "step": 10,
+          "loss": 0.036,
+          "grad_norm": 3.903,
+          "lr": 3e-05,
+          "epoch": 23.95
+        },
+        {
+          "step": 10,
+          "loss": 0.036,
+          "grad_norm": 3.994,
+          "lr": 3e-05,
+          "epoch": 24.2
+        },
+        {
+          "step": 10,
+          "loss": 0.035,
+          "grad_norm": 3.502,
+          "lr": 3e-05,
+          "epoch": 24.45
+        },
+        {
+          "step": 10,
+          "loss": 0.035,
+          "grad_norm": 3.945,
+          "lr": 3e-05,
+          "epoch": 24.7
+        },
+        {
+          "step": 10,
+          "loss": 0.035,
+          "grad_norm": 3.591,
+          "lr": 3e-05,
+          "epoch": 24.95
+        }
+      ]
+    }
+  },
+  "runs": {
+    "kp_train1_eval1000": {
+      "group": "kp_train1",
+      "variant": "kp",
+      "train_seed": 1,
+      "policy": "ACT keypoints (16-D keypoints + agent pos), train seed 1, 10000 steps",
+      "policy_path": "/kaggle/tmp/train/kp_train1/checkpoints/010000/pretrained_model",
+      "env": "--env.type=pusht --env.obs_type=environment_state_agent_pos",
+      "seed": 1000,
+      "device": "cuda",
+      "rc": 0,
+      "wall_s": 39.9,
+      "cmd": "/kaggle/tmp/venv/bin/lerobot-eval --policy.path=/kaggle/tmp/train/kp_train1/checkpoints/010000/pretrained_model --policy.device=cuda --env.type=pusht --env.obs_type=environment_state_agent_pos --eval.n_episodes=50 --eval.batch_size=50 --seed=1000 --output_dir=/kaggle/working/eval/kp_train1_eval1000",
+      "stats": {
+        "n_episodes": 50,
+        "n_success": 5,
+        "pc_success": 10.0,
+        "success_var_sample": 0.09183673469387756,
+        "success_var_bernoulli": 0.09000000000000001,
+        "se_mean": 0.042426406871192854,
+        "ci95_wilson": [
+          4.347512399157111,
+          21.36049033478839
+        ],
+        "avg_sum_reward": 108.13802988654396,
+        "avg_max_reward": 0.6873931728319147,
+        "eval_s": 30.819947719573975,
+        "eval_ep_s": 0.6163989686965943,
+        "episode_seeds": [
+          1000,
+          1049
+        ],
+        "successes": [
+          false,
+          false,
+          false,
+          true,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          true,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          true,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          true,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          true,
+          false,
+          false
+        ]
+      }
+    },
+    "kp_train1_eval2000": {
+      "group": "kp_train1",
+      "variant": "kp",
+      "train_seed": 1,
+      "policy": "ACT keypoints (16-D keypoints + agent pos), train seed 1, 10000 steps",
+      "policy_path": "/kaggle/tmp/train/kp_train1/checkpoints/010000/pretrained_model",
+      "env": "--env.type=pusht --env.obs_type=environment_state_agent_pos",
+      "seed": 2000,
+      "device": "cuda",
+      "rc": 0,
+      "wall_s": 39.2,
+      "cmd": "/kaggle/tmp/venv/bin/lerobot-eval --policy.path=/kaggle/tmp/train/kp_train1/checkpoints/010000/pretrained_model --policy.device=cuda --env.type=pusht --env.obs_type=environment_state_agent_pos --eval.n_episodes=50 --eval.batch_size=50 --seed=2000 --output_dir=/kaggle/working/eval/kp_train1_eval2000",
+      "stats": {
+        "n_episodes": 50,
+        "n_success": 3,
+        "pc_success": 6.0,
+        "success_var_sample": 0.05755102040816326,
+        "success_var_bernoulli": 0.05639999999999999,
+        "se_mean": 0.03358571124749333,
+        "ci95_wilson": [
+          2.0614596364630478,
+          16.217343370877003
+        ],
+        "avg_sum_reward": 116.29444528753311,
+        "avg_max_reward": 0.6963855079796787,
+        "eval_s": 30.177063465118408,
+        "eval_ep_s": 0.6035412788391114,
+        "episode_seeds": [
+          2000,
+          2049
+        ],
+        "successes": [
+          false,
+          false,
+          false,
+          false,
+          true,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          true,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          true,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ]
+      }
+    },
+    "kp_train1_eval3000": {
+      "group": "kp_train1",
+      "variant": "kp",
+      "train_seed": 1,
+      "policy": "ACT keypoints (16-D keypoints + agent pos), train seed 1, 10000 steps",
+      "policy_path": "/kaggle/tmp/train/kp_train1/checkpoints/010000/pretrained_model",
+      "env": "--env.type=pusht --env.obs_type=environment_state_agent_pos",
+      "seed": 3000,
+      "device": "cuda",
+      "rc": 0,
+      "wall_s": 38.6,
+      "cmd": "/kaggle/tmp/venv/bin/lerobot-eval --policy.path=/kaggle/tmp/train/kp_train1/checkpoints/010000/pretrained_model --policy.device=cuda --env.type=pusht --env.obs_type=environment_state_agent_pos --eval.n_episodes=50 --eval.batch_size=50 --seed=3000 --output_dir=/kaggle/working/eval/kp_train1_eval3000",
+      "stats": {
+        "n_episodes": 50,
+        "n_success": 7,
+        "pc_success": 14.000000000000002,
+        "success_var_sample": 0.12285714285714285,
+        "success_var_bernoulli": 0.12040000000000001,
+        "se_mean": 0.04907137658554119,
+        "ci95_wilson": [
+          6.950745262022862,
+          26.18645719852809
+        ],
+        "avg_sum_reward": 108.82749165682591,
+        "avg_max_reward": 0.7168132249195088,
+        "eval_s": 29.709846019744873,
+        "eval_ep_s": 0.5941969347000122,
+        "episode_seeds": [
+          3000,
+          3049
+        ],
+        "successes": [
+          false,
+          false,
+          false,
+          true,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          true,
+          false,
+          true,
+          false,
+          false,
+          false,
+          true,
+          false,
+          false,
+          false,
+          false,
+          true,
+          false,
+          false,
+          false,
+          true,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          true,
+          false
+        ]
+      }
+    },
+    "kp_train1_eval1000_repeat": {
+      "group": "kp_train1",
+      "variant": "kp",
+      "train_seed": 1,
+      "policy": "ACT keypoints (16-D keypoints + agent pos), train seed 1, 10000 steps",
+      "policy_path": "/kaggle/tmp/train/kp_train1/checkpoints/010000/pretrained_model",
+      "env": "--env.type=pusht --env.obs_type=environment_state_agent_pos",
+      "seed": 1000,
+      "device": "cuda",
+      "rc": 0,
+      "wall_s": 38.8,
+      "cmd": "/kaggle/tmp/venv/bin/lerobot-eval --policy.path=/kaggle/tmp/train/kp_train1/checkpoints/010000/pretrained_model --policy.device=cuda --env.type=pusht --env.obs_type=environment_state_agent_pos --eval.n_episodes=50 --eval.batch_size=50 --seed=1000 --output_dir=/kaggle/working/eval/kp_train1_eval1000_repeat",
+      "repeat": "kp_train1_eval1000",
+      "stats": {
+        "n_episodes": 50,
+        "n_success": 5,
+        "pc_success": 10.0,
+        "success_var_sample": 0.09183673469387756,
+        "success_var_bernoulli": 0.09000000000000001,
+        "se_mean": 0.042426406871192854,
+        "ci95_wilson": [
+          4.347512399157111,
+          21.36049033478839
+        ],
+        "avg_sum_reward": 108.13802988654396,
+        "avg_max_reward": 0.6873931728319147,
+        "eval_s": 29.884856939315796,
+        "eval_ep_s": 0.5976971530914307,
+        "episode_seeds": [
+          1000,
+          1049
+        ],
+        "successes": [
+          false,
+          false,
+          false,
+          true,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          true,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          true,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          true,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          true,
+          false,
+          false
+        ]
+      }
+    },
+    "kp_train2_eval1000": {
+      "group": "kp_train2",
+      "variant": "kp",
+      "train_seed": 2,
+      "policy": "ACT keypoints (16-D keypoints + agent pos), train seed 2, 10000 steps",
+      "policy_path": "/kaggle/tmp/train/kp_train2/checkpoints/010000/pretrained_model",
+      "env": "--env.type=pusht --env.obs_type=environment_state_agent_pos",
+      "seed": 1000,
+      "device": "cuda",
+      "rc": 0,
+      "wall_s": 39.6,
+      "cmd": "/kaggle/tmp/venv/bin/lerobot-eval --policy.path=/kaggle/tmp/train/kp_train2/checkpoints/010000/pretrained_model --policy.device=cuda --env.type=pusht --env.obs_type=environment_state_agent_pos --eval.n_episodes=50 --eval.batch_size=50 --seed=1000 --output_dir=/kaggle/working/eval/kp_train2_eval1000",
+      "stats": {
+        "n_episodes": 50,
+        "n_success": 15,
+        "pc_success": 30.0,
+        "success_var_sample": 0.21428571428571425,
+        "success_var_bernoulli": 0.21,
+        "se_mean": 0.0648074069840786,
+        "ci95_wilson": [
+          19.10338908960936,
+          43.75061227736339
+        ],
+        "avg_sum_reward": 112.29321852175876,
+        "avg_max_reward": 0.8210651822560497,
+        "eval_s": 30.701807260513306,
+        "eval_ep_s": 0.6140361595153808,
+        "episode_seeds": [
+          1000,
+          1049
+        ],
+        "successes": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          true,
+          false,
+          false,
+          true,
+          false,
+          true,
+          false,
+          true,
+          true,
+          false,
+          false,
+          false,
+          true,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          true,
+          false,
+          true,
+          false,
+          false,
+          false,
+          true,
+          false,
+          false,
+          false,
+          false,
+          true,
+          false,
+          true,
+          true,
+          false,
+          true,
+          false,
+          true,
+          false,
+          true,
+          false,
+          false
+        ]
+      }
+    },
+    "kp_train2_eval2000": {
+      "group": "kp_train2",
+      "variant": "kp",
+      "train_seed": 2,
+      "policy": "ACT keypoints (16-D keypoints + agent pos), train seed 2, 10000 steps",
+      "policy_path": "/kaggle/tmp/train/kp_train2/checkpoints/010000/pretrained_model",
+      "env": "--env.type=pusht --env.obs_type=environment_state_agent_pos",
+      "seed": 2000,
+      "device": "cuda",
+      "rc": 0,
+      "wall_s": 39.0,
+      "cmd": "/kaggle/tmp/venv/bin/lerobot-eval --policy.path=/kaggle/tmp/train/kp_train2/checkpoints/010000/pretrained_model --policy.device=cuda --env.type=pusht --env.obs_type=environment_state_agent_pos --eval.n_episodes=50 --eval.batch_size=50 --seed=2000 --output_dir=/kaggle/working/eval/kp_train2_eval2000",
+      "stats": {
+        "n_episodes": 50,
+        "n_success": 13,
+        "pc_success": 26.0,
+        "success_var_sample": 0.1963265306122449,
+        "success_var_bernoulli": 0.19240000000000002,
+        "se_mean": 0.06203224967708329,
+        "ci95_wilson": [
+          15.871379651367384,
+          39.55342198899992
+        ],
+        "avg_sum_reward": 115.1134470315673,
+        "avg_max_reward": 0.7681155796417818,
+        "eval_s": 30.17572546005249,
+        "eval_ep_s": 0.6035145187377929,
+        "episode_seeds": [
+          2000,
+          2049
+        ],
+        "successes": [
+          false,
+          true,
+          false,
+          false,
+          true,
+          true,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          true,
+          true,
+          false,
+          false,
+          true,
+          false,
+          true,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          true,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          true,
+          false,
+          false,
+          false,
+          false,
+          true,
+          true,
+          true,
+          true,
+          false
+        ]
+      }
+    },
+    "kp_train2_eval3000": {
+      "group": "kp_train2",
+      "variant": "kp",
+      "train_seed": 2,
+      "policy": "ACT keypoints (16-D keypoints + agent pos), train seed 2, 10000 steps",
+      "policy_path": "/kaggle/tmp/train/kp_train2/checkpoints/010000/pretrained_model",
+      "env": "--env.type=pusht --env.obs_type=environment_state_agent_pos",
+      "seed": 3000,
+      "device": "cuda",
+      "rc": 0,
+      "wall_s": 38.1,
+      "cmd": "/kaggle/tmp/venv/bin/lerobot-eval --policy.path=/kaggle/tmp/train/kp_train2/checkpoints/010000/pretrained_model --policy.device=cuda --env.type=pusht --env.obs_type=environment_state_agent_pos --eval.n_episodes=50 --eval.batch_size=50 --seed=3000 --output_dir=/kaggle/working/eval/kp_train2_eval3000",
+      "stats": {
+        "n_episodes": 50,
+        "n_success": 10,
+        "pc_success": 20.0,
+        "success_var_sample": 0.16326530612244902,
+        "success_var_bernoulli": 0.16000000000000003,
+        "se_mean": 0.05656854249492381,
+        "ci95_wilson": [
+          11.243629945973886,
+          33.03737210448524
+        ],
+        "avg_sum_reward": 116.61419287563218,
+        "avg_max_reward": 0.7506532028627558,
+        "eval_s": 29.0281662940979,
+        "eval_ep_s": 0.5805633401870728,
+        "episode_seeds": [
+          3000,
+          3049
+        ],
+        "successes": [
+          true,
+          false,
+          false,
+          true,
+          true,
+          false,
+          false,
+          true,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          true,
+          false,
+          false,
+          false,
+          true,
+          false,
+          false,
+          false,
+          false,
+          true,
+          false,
+          false,
+          true,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          true,
+          false,
+          false,
+          false,
+          true,
+          false,
+          false,
+          false,
+          false,
+          false
+        ]
+      }
+    },
+    "kp_train3_eval1000": {
+      "group": "kp_train3",
+      "variant": "kp",
+      "train_seed": 3,
+      "policy": "ACT keypoints (16-D keypoints + agent pos), train seed 3, 10000 steps",
+      "policy_path": "/kaggle/tmp/train/kp_train3/checkpoints/010000/pretrained_model",
+      "env": "--env.type=pusht --env.obs_type=environment_state_agent_pos",
+      "seed": 1000,
+      "device": "cuda",
+      "rc": 0,
+      "wall_s": 39.4,
+      "cmd": "/kaggle/tmp/venv/bin/lerobot-eval --policy.path=/kaggle/tmp/train/kp_train3/checkpoints/010000/pretrained_model --policy.device=cuda --env.type=pusht --env.obs_type=environment_state_agent_pos --eval.n_episodes=50 --eval.batch_size=50 --seed=1000 --output_dir=/kaggle/working/eval/kp_train3_eval1000",
+      "stats": {
+        "n_episodes": 50,
+        "n_success": 15,
+        "pc_success": 30.0,
+        "success_var_sample": 0.21428571428571425,
+        "success_var_bernoulli": 0.21,
+        "se_mean": 0.0648074069840786,
+        "ci95_wilson": [
+          19.10338908960936,
+          43.75061227736339
+        ],
+        "avg_sum_reward": 132.1977726496604,
+        "avg_max_reward": 0.8300387390188984,
+        "eval_s": 30.154621839523315,
+        "eval_ep_s": 0.6030924463272095,
+        "episode_seeds": [
+          1000,
+          1049
+        ],
+        "successes": [
+          false,
+          false,
+          false,
+          true,
+          true,
+          true,
+          false,
+          true,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          true,
+          false,
+          true,
+          false,
+          false,
+          false,
+          true,
+          false,
+          false,
+          false,
+          true,
+          false,
+          false,
+          false,
+          false,
+          false,
+          true,
+          false,
+          false,
+          true,
+          false,
+          false,
+          true,
+          true,
+          false,
+          false,
+          true,
+          false,
+          false,
+          true,
+          false,
+          true
+        ]
+      }
+    },
+    "kp_train3_eval2000": {
+      "group": "kp_train3",
+      "variant": "kp",
+      "train_seed": 3,
+      "policy": "ACT keypoints (16-D keypoints + agent pos), train seed 3, 10000 steps",
+      "policy_path": "/kaggle/tmp/train/kp_train3/checkpoints/010000/pretrained_model",
+      "env": "--env.type=pusht --env.obs_type=environment_state_agent_pos",
+      "seed": 2000,
+      "device": "cuda",
+      "rc": 0,
+      "wall_s": 39.1,
+      "cmd": "/kaggle/tmp/venv/bin/lerobot-eval --policy.path=/kaggle/tmp/train/kp_train3/checkpoints/010000/pretrained_model --policy.device=cuda --env.type=pusht --env.obs_type=environment_state_agent_pos --eval.n_episodes=50 --eval.batch_size=50 --seed=2000 --output_dir=/kaggle/working/eval/kp_train3_eval2000",
+      "stats": {
+        "n_episodes": 50,
+        "n_success": 15,
+        "pc_success": 30.0,
+        "success_var_sample": 0.21428571428571425,
+        "success_var_bernoulli": 0.21,
+        "se_mean": 0.0648074069840786,
+        "ci95_wilson": [
+          19.10338908960936,
+          43.75061227736339
+        ],
+        "avg_sum_reward": 109.58900336973862,
+        "avg_max_reward": 0.7551228342500038,
+        "eval_s": 29.963793516159058,
+        "eval_ep_s": 0.599275884628296,
+        "episode_seeds": [
+          2000,
+          2049
+        ],
+        "successes": [
+          false,
+          true,
+          false,
+          true,
+          false,
+          false,
+          true,
+          false,
+          false,
+          false,
+          false,
+          true,
+          true,
+          false,
+          false,
+          false,
+          false,
+          false,
+          true,
+          false,
+          false,
+          false,
+          true,
+          false,
+          false,
+          true,
+          false,
+          false,
+          false,
+          false,
+          false,
+          true,
+          false,
+          false,
+          true,
+          false,
+          false,
+          true,
+          false,
+          false,
+          true,
+          false,
+          false,
+          true,
+          false,
+          false,
+          true,
+          true,
+          false,
+          false
+        ]
+      }
+    },
+    "kp_train3_eval3000": {
+      "group": "kp_train3",
+      "variant": "kp",
+      "train_seed": 3,
+      "policy": "ACT keypoints (16-D keypoints + agent pos), train seed 3, 10000 steps",
+      "policy_path": "/kaggle/tmp/train/kp_train3/checkpoints/010000/pretrained_model",
+      "env": "--env.type=pusht --env.obs_type=environment_state_agent_pos",
+      "seed": 3000,
+      "device": "cuda",
+      "rc": 0,
+      "wall_s": 38.9,
+      "cmd": "/kaggle/tmp/venv/bin/lerobot-eval --policy.path=/kaggle/tmp/train/kp_train3/checkpoints/010000/pretrained_model --policy.device=cuda --env.type=pusht --env.obs_type=environment_state_agent_pos --eval.n_episodes=50 --eval.batch_size=50 --seed=3000 --output_dir=/kaggle/working/eval/kp_train3_eval3000",
+      "stats": {
+        "n_episodes": 50,
+        "n_success": 19,
+        "pc_success": 38.0,
+        "success_var_sample": 0.24040816326530615,
+        "success_var_bernoulli": 0.2356,
+        "se_mean": 0.06864400920692205,
+        "ci95_wilson": [
+          25.862595842577218,
+          51.849804977606425
+        ],
+        "avg_sum_reward": 120.25144838470868,
+        "avg_max_reward": 0.8802111280195635,
+        "eval_s": 29.946218013763428,
+        "eval_ep_s": 0.5989243745803833,
+        "episode_seeds": [
+          3000,
+          3049
+        ],
+        "successes": [
+          false,
+          true,
+          false,
+          false,
+          false,
+          true,
+          false,
+          true,
+          false,
+          true,
+          true,
+          false,
+          false,
+          true,
+          false,
+          false,
+          true,
+          true,
+          false,
+          true,
+          false,
+          true,
+          true,
+          false,
+          true,
+          false,
+          false,
+          false,
+          true,
+          false,
+          false,
+          false,
+          true,
+          false,
+          true,
+          false,
+          true,
+          false,
+          false,
+          true,
+          true,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          true,
+          false,
+          false
+        ]
+      }
+    },
+    "px_train1_eval1000": {
+      "group": "px_train1",
+      "variant": "px",
+      "train_seed": 1,
+      "policy": "ACT pixels (96x96 image + agent pos, resnet18), train seed 1, 10000 steps",
+      "policy_path": "/kaggle/tmp/train/px_train1/checkpoints/010000/pretrained_model",
+      "env": "--env.type=pusht",
+      "seed": 1000,
+      "device": "cuda",
+      "rc": 0,
+      "wall_s": 76.4,
+      "cmd": "/kaggle/tmp/venv/bin/lerobot-eval --policy.path=/kaggle/tmp/train/px_train1/checkpoints/010000/pretrained_model --policy.device=cuda --env.type=pusht --eval.n_episodes=50 --eval.batch_size=50 --seed=1000 --output_dir=/kaggle/working/eval/px_train1_eval1000",
+      "stats": {
+        "n_episodes": 50,
+        "n_success": 3,
+        "pc_success": 6.0,
+        "success_var_sample": 0.05755102040816326,
+        "success_var_bernoulli": 0.05639999999999999,
+        "se_mean": 0.03358571124749333,
+        "ci95_wilson": [
+          2.0614596364630478,
+          16.217343370877003
+        ],
+        "avg_sum_reward": 57.32397902708771,
+        "avg_max_reward": 0.4655369648930807,
+        "eval_s": 66.94949579238892,
+        "eval_ep_s": 1.3389899349212646,
+        "episode_seeds": [
+          1000,
+          1049
+        ],
+        "successes": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          true,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          true,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          true,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ]
+      }
+    },
+    "px_train1_eval2000": {
+      "group": "px_train1",
+      "variant": "px",
+      "train_seed": 1,
+      "policy": "ACT pixels (96x96 image + agent pos, resnet18), train seed 1, 10000 steps",
+      "policy_path": "/kaggle/tmp/train/px_train1/checkpoints/010000/pretrained_model",
+      "env": "--env.type=pusht",
+      "seed": 2000,
+      "device": "cuda",
+      "rc": 0,
+      "wall_s": 76.6,
+      "cmd": "/kaggle/tmp/venv/bin/lerobot-eval --policy.path=/kaggle/tmp/train/px_train1/checkpoints/010000/pretrained_model --policy.device=cuda --env.type=pusht --eval.n_episodes=50 --eval.batch_size=50 --seed=2000 --output_dir=/kaggle/working/eval/px_train1_eval2000",
+      "stats": {
+        "n_episodes": 50,
+        "n_success": 2,
+        "pc_success": 4.0,
+        "success_var_sample": 0.03918367346938775,
+        "success_var_bernoulli": 0.0384,
+        "se_mean": 0.027712812921102035,
+        "ci95_wilson": [
+          1.1038652660826578,
+          13.460337877954668
+        ],
+        "avg_sum_reward": 75.39313698102039,
+        "avg_max_reward": 0.5563317094214126,
+        "eval_s": 67.26237177848816,
+        "eval_ep_s": 1.3452474498748779,
+        "episode_seeds": [
+          2000,
+          2049
+        ],
+        "successes": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          true,
+          false,
+          false,
+          true,
+          false,
+          false,
+          false
+        ]
+      }
+    },
+    "px_train1_eval3000": {
+      "group": "px_train1",
+      "variant": "px",
+      "train_seed": 1,
+      "policy": "ACT pixels (96x96 image + agent pos, resnet18), train seed 1, 10000 steps",
+      "policy_path": "/kaggle/tmp/train/px_train1/checkpoints/010000/pretrained_model",
+      "env": "--env.type=pusht",
+      "seed": 3000,
+      "device": "cuda",
+      "rc": 0,
+      "wall_s": 76.5,
+      "cmd": "/kaggle/tmp/venv/bin/lerobot-eval --policy.path=/kaggle/tmp/train/px_train1/checkpoints/010000/pretrained_model --policy.device=cuda --env.type=pusht --eval.n_episodes=50 --eval.batch_size=50 --seed=3000 --output_dir=/kaggle/working/eval/px_train1_eval3000",
+      "stats": {
+        "n_episodes": 50,
+        "n_success": 2,
+        "pc_success": 4.0,
+        "success_var_sample": 0.03918367346938775,
+        "success_var_bernoulli": 0.0384,
+        "se_mean": 0.027712812921102035,
+        "ci95_wilson": [
+          1.1038652660826578,
+          13.460337877954668
+        ],
+        "avg_sum_reward": 88.69554366636575,
+        "avg_max_reward": 0.6858000619784693,
+        "eval_s": 67.02439069747925,
+        "eval_ep_s": 1.3404878282546997,
+        "episode_seeds": [
+          3000,
+          3049
+        ],
+        "successes": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          true,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          true,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ]
+      }
+    },
+    "px_train2_eval1000": {
+      "group": "px_train2",
+      "variant": "px",
+      "train_seed": 2,
+      "policy": "ACT pixels (96x96 image + agent pos, resnet18), train seed 2, 10000 steps",
+      "policy_path": "/kaggle/tmp/train/px_train2/checkpoints/010000/pretrained_model",
+      "env": "--env.type=pusht",
+      "seed": 1000,
+      "device": "cuda",
+      "rc": 0,
+      "wall_s": 77.3,
+      "cmd": "/kaggle/tmp/venv/bin/lerobot-eval --policy.path=/kaggle/tmp/train/px_train2/checkpoints/010000/pretrained_model --policy.device=cuda --env.type=pusht --eval.n_episodes=50 --eval.batch_size=50 --seed=1000 --output_dir=/kaggle/working/eval/px_train2_eval1000",
+      "stats": {
+        "n_episodes": 50,
+        "n_success": 3,
+        "pc_success": 6.0,
+        "success_var_sample": 0.05755102040816326,
+        "success_var_bernoulli": 0.05639999999999999,
+        "se_mean": 0.03358571124749333,
+        "ci95_wilson": [
+          2.0614596364630478,
+          16.217343370877003
+        ],
+        "avg_sum_reward": 80.186268579185,
+        "avg_max_reward": 0.6044687246946261,
+        "eval_s": 67.40388178825378,
+        "eval_ep_s": 1.3480776500701905,
+        "episode_seeds": [
+          1000,
+          1049
+        ],
+        "successes": [
+          false,
+          false,
+          false,
+          true,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          true,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          true,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ]
+      }
+    },
+    "px_train2_eval2000": {
+      "group": "px_train2",
+      "variant": "px",
+      "train_seed": 2,
+      "policy": "ACT pixels (96x96 image + agent pos, resnet18), train seed 2, 10000 steps",
+      "policy_path": "/kaggle/tmp/train/px_train2/checkpoints/010000/pretrained_model",
+      "env": "--env.type=pusht",
+      "seed": 2000,
+      "device": "cuda",
+      "rc": 0,
+      "wall_s": 77.7,
+      "cmd": "/kaggle/tmp/venv/bin/lerobot-eval --policy.path=/kaggle/tmp/train/px_train2/checkpoints/010000/pretrained_model --policy.device=cuda --env.type=pusht --eval.n_episodes=50 --eval.batch_size=50 --seed=2000 --output_dir=/kaggle/working/eval/px_train2_eval2000",
+      "stats": {
+        "n_episodes": 50,
+        "n_success": 6,
+        "pc_success": 12.0,
+        "success_var_sample": 0.10775510204081633,
+        "success_var_bernoulli": 0.1056,
+        "se_mean": 0.04595650117230423,
+        "ci95_wilson": [
+          5.617523710624646,
+          23.805078886623583
+        ],
+        "avg_sum_reward": 78.94802306308927,
+        "avg_max_reward": 0.602499234250639,
+        "eval_s": 67.9716944694519,
+        "eval_ep_s": 1.3594339036941527,
+        "episode_seeds": [
+          2000,
+          2049
+        ],
+        "successes": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          true,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          true,
+          false,
+          false,
+          false,
+          true,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          true,
+          false,
+          false,
+          false,
+          true,
+          false,
+          false,
+          true,
+          false
+        ]
+      }
+    },
+    "px_train2_eval3000": {
+      "group": "px_train2",
+      "variant": "px",
+      "train_seed": 2,
+      "policy": "ACT pixels (96x96 image + agent pos, resnet18), train seed 2, 10000 steps",
+      "policy_path": "/kaggle/tmp/train/px_train2/checkpoints/010000/pretrained_model",
+      "env": "--env.type=pusht",
+      "seed": 3000,
+      "device": "cuda",
+      "rc": 0,
+      "wall_s": 77.2,
+      "cmd": "/kaggle/tmp/venv/bin/lerobot-eval --policy.path=/kaggle/tmp/train/px_train2/checkpoints/010000/pretrained_model --policy.device=cuda --env.type=pusht --eval.n_episodes=50 --eval.batch_size=50 --seed=3000 --output_dir=/kaggle/working/eval/px_train2_eval3000",
+      "stats": {
+        "n_episodes": 50,
+        "n_success": 7,
+        "pc_success": 14.000000000000002,
+        "success_var_sample": 0.12285714285714285,
+        "success_var_bernoulli": 0.12040000000000001,
+        "se_mean": 0.04907137658554119,
+        "ci95_wilson": [
+          6.950745262022862,
+          26.18645719852809
+        ],
+        "avg_sum_reward": 80.50288710892706,
+        "avg_max_reward": 0.6552423257379368,
+        "eval_s": 67.63737273216248,
+        "eval_ep_s": 1.352747483253479,
+        "episode_seeds": [
+          3000,
+          3049
+        ],
+        "successes": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          true,
+          false,
+          false,
+          true,
+          false,
+          false,
+          false,
+          true,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          true,
+          false,
+          true,
+          true,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          true,
+          false,
+          false,
+          false
+        ]
+      }
+    },
+    "px_train3_eval1000": {
+      "group": "px_train3",
+      "variant": "px",
+      "train_seed": 3,
+      "policy": "ACT pixels (96x96 image + agent pos, resnet18), train seed 3, 10000 steps",
+      "policy_path": "/kaggle/tmp/train/px_train3/checkpoints/010000/pretrained_model",
+      "env": "--env.type=pusht",
+      "seed": 1000,
+      "device": "cuda",
+      "rc": 0,
+      "wall_s": 78.7,
+      "cmd": "/kaggle/tmp/venv/bin/lerobot-eval --policy.path=/kaggle/tmp/train/px_train3/checkpoints/010000/pretrained_model --policy.device=cuda --env.type=pusht --eval.n_episodes=50 --eval.batch_size=50 --seed=1000 --output_dir=/kaggle/working/eval/px_train3_eval1000",
+      "stats": {
+        "n_episodes": 50,
+        "n_success": 3,
+        "pc_success": 6.0,
+        "success_var_sample": 0.05755102040816326,
+        "success_var_bernoulli": 0.05639999999999999,
+        "se_mean": 0.03358571124749333,
+        "ci95_wilson": [
+          2.0614596364630478,
+          16.217343370877003
+        ],
+        "avg_sum_reward": 71.03780339522426,
+        "avg_max_reward": 0.5741576654027107,
+        "eval_s": 68.96420884132385,
+        "eval_ep_s": 1.379284200668335,
+        "episode_seeds": [
+          1000,
+          1049
+        ],
+        "successes": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          true,
+          false,
+          true,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          true,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ]
+      }
+    },
+    "px_train3_eval2000": {
+      "group": "px_train3",
+      "variant": "px",
+      "train_seed": 3,
+      "policy": "ACT pixels (96x96 image + agent pos, resnet18), train seed 3, 10000 steps",
+      "policy_path": "/kaggle/tmp/train/px_train3/checkpoints/010000/pretrained_model",
+      "env": "--env.type=pusht",
+      "seed": 2000,
+      "device": "cuda",
+      "rc": 0,
+      "wall_s": 76.7,
+      "cmd": "/kaggle/tmp/venv/bin/lerobot-eval --policy.path=/kaggle/tmp/train/px_train3/checkpoints/010000/pretrained_model --policy.device=cuda --env.type=pusht --eval.n_episodes=50 --eval.batch_size=50 --seed=2000 --output_dir=/kaggle/working/eval/px_train3_eval2000",
+      "stats": {
+        "n_episodes": 50,
+        "n_success": 5,
+        "pc_success": 10.0,
+        "success_var_sample": 0.09183673469387756,
+        "success_var_bernoulli": 0.09000000000000001,
+        "se_mean": 0.042426406871192854,
+        "ci95_wilson": [
+          4.347512399157111,
+          21.36049033478839
+        ],
+        "avg_sum_reward": 81.41432554541902,
+        "avg_max_reward": 0.684437668797156,
+        "eval_s": 67.13771963119507,
+        "eval_ep_s": 1.3427544021606446,
+        "episode_seeds": [
+          2000,
+          2049
+        ],
+        "successes": [
+          false,
+          true,
+          true,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          true,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          true,
+          false,
+          true,
+          false,
+          false
+        ]
+      }
+    },
+    "px_train3_eval3000": {
+      "group": "px_train3",
+      "variant": "px",
+      "train_seed": 3,
+      "policy": "ACT pixels (96x96 image + agent pos, resnet18), train seed 3, 10000 steps",
+      "policy_path": "/kaggle/tmp/train/px_train3/checkpoints/010000/pretrained_model",
+      "env": "--env.type=pusht",
+      "seed": 3000,
+      "device": "cuda",
+      "rc": 0,
+      "wall_s": 77.5,
+      "cmd": "/kaggle/tmp/venv/bin/lerobot-eval --policy.path=/kaggle/tmp/train/px_train3/checkpoints/010000/pretrained_model --policy.device=cuda --env.type=pusht --eval.n_episodes=50 --eval.batch_size=50 --seed=3000 --output_dir=/kaggle/working/eval/px_train3_eval3000",
+      "stats": {
+        "n_episodes": 50,
+        "n_success": 5,
+        "pc_success": 10.0,
+        "success_var_sample": 0.09183673469387756,
+        "success_var_bernoulli": 0.09000000000000001,
+        "se_mean": 0.042426406871192854,
+        "ci95_wilson": [
+          4.347512399157111,
+          21.36049033478839
+        ],
+        "avg_sum_reward": 83.04689002917874,
+        "avg_max_reward": 0.5845434876912938,
+        "eval_s": 67.94264769554138,
+        "eval_ep_s": 1.3588529682159425,
+        "episode_seeds": [
+          3000,
+          3049
+        ],
+        "successes": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          true,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          true,
+          false,
+          false,
+          false,
+          false,
+          true,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          true,
+          false,
+          false,
+          false,
+          true,
+          false
+        ]
+      }
+    }
+  },
+  "errors": []
+}
