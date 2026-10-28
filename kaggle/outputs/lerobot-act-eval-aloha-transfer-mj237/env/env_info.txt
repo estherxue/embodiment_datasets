@@ -1,0 +1,58 @@
+
+===== [13:49:48] $ nvidia-smi || true; echo; python -V; echo; head -3 /etc/os-release; nproc; free -g; df -h /kaggle/working /tmp | cat; echo; env | grep -E '^(CUDA|NVIDIA|KAGGLE)' | sort
+Sat Oct 24 13:49:48 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 580.178.04             Driver Version: 580.178.04     CUDA Version: 13.0     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  Tesla T4                       Off |   00000000:00:04.0 Off |                    0 |
+| N/A   49C    P8             10W /   70W |       0MiB /  15360MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  Tesla T4                       Off |   00000000:00:05.0 Off |                    0 |
+| N/A   50C    P8             10W /   70W |       0MiB /  15360MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+
+Python 3.13.15
+
+PRETTY_NAME="Ubuntu 24.04.1 LTS"
+NAME="Ubuntu"
+VERSION_ID="24.04"
+4
+               total        used        free      shared  buff/cache   available
+Mem:              31           1          26           0           4          30
+Swap:              0           0           0
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/loop2       20G  168K   20G   1% /kaggle/working
+overlay         8.0T  7.0T  1.1T  88% /
+
+CUDA_HOME=/usr/local/cuda
+CUDA_VERSION=12.8.1
+KAGGLE_API_V1_TOKEN=/etc/secrets/kaggle/api-v1-token
+KAGGLE_CONTAINER_NAME=kaggle_lY8IW8b6SfE5arusDGifTNRhlaFnBoNhXzUhtGxd6RQ-361818042-webtier
+KAGGLE_DATA_PROXY_PROJECT=kaggle-161607
+KAGGLE_DATA_PROXY_TOKEN=eyJhbGciOiJBMTI4S1ciLCJlbmMiOiJBMTI4Q0JDLUhTMjU2In0.AcPcsu3lt7fYnc2s-GnSvKkC8qQMCklAF75UAv2CWAYGO27U0yNEwg.hTIu3-8G5-awdl6TVcWeZw.oFXgmkH6XPwZR1gd3QQ8-d1vcAuSn0opX-Eb6xR4HZG-aOeuBWQXX_3nyk3YtMVIvLrjSfacXw87iYBIJj0XXx5Ra_Q0JRy-R78Imv7k8UabPiIuVunddxGwUsspWBd-15h5vESDJXCYlA6GLnLoI37pzEL__nRjT03Mq9l3uVe2uZ-VPrzuK99k8uyluD2zQ7bF9KQL_61o1Gglm2sObvrU2Q-h26Tgw0m3JguU3JXKg-U6HWniXaA5PQi4NvoZ0MUbb8d4udowNZuakYKj-G8TGXlDY30aSnR-wiEsJ1iEo33g_23J4QHVp_75IldH.x-JyjpR4wxootXQbW3YShA
+KAGGLE_DATA_PROXY_URL=https://dp.kaggle.net
+KAGGLE_DOCKER_IMAGE=gcr.io/kaggle-gpu-images/python@sha256:9a6bcfda6d03b2cd9aa347ee8c1bae62043328ed0f4afe9bda014e4f8bbf9435
+KAGGLE_GCP_ZONE=us-central1-b
+KAGGLE_GRPC_DATA_PROXY_URL=dp.kaggle.net:443
+KAGGLE_KERNEL_INTEGRATIONS=
+KAGGLE_KERNEL_RUN_TYPE=Batch
+KAGGLE_URL_BASE=https://www.kaggle.com
+KAGGLE_USER_SECRETS_TOKEN=eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2In0..bQeBFgTJz333VxMzjGglsQ.GC-w94c_UHiRVwF3FNn5iuHVIIdrA4JngoepjegeJGHUIXI27u6_jUzFcUFrMQj36LejkAOwds1bfE4pEmdgWGLE1LSjXujM0rWe1CXrz5lP7v46KTIS4dglwDUJDAKU7LK3zIKYCakZEvHBkHpXZA.-4Q4DFPOeQjFjOoiub5wow
+NVIDIA_DRIVER_CAPABILITIES=compute,utility
+NVIDIA_PRODUCT_NAME=CUDA
+NVIDIA_REQUIRE_CUDA=cuda>=12.8 brand=unknown,driver>=470,driver<471 brand=grid,driver>=470,driver<471 brand=tesla,driver>=470,driver<471 brand=nvidia,driver>=470,driver<471 brand=quadro,driver>=470,driver<471 brand=quadrortx,driver>=470,driver<471 brand=nvidiartx,driver>=470,driver<471 brand=vapps,driver>=470,driver<471 brand=vpc,driver>=470,driver<471 brand=vcs,driver>=470,driver<471 brand=vws,driver>=470,driver<471 brand=cloudgaming,driver>=470,driver<471 brand=unknown,driver>=535,driver<536 brand=grid,driver>=535,driver<536 brand=tesla,driver>=535,driver<536 brand=nvidia,driver>=535,driver<536 brand=quadro,driver>=535,driver<536 brand=quadrortx,driver>=535,driver<536 brand=nvidiartx,driver>=535,driver<536 brand=vapps,driver>=535,driver<536 brand=vpc,driver>=535,driver<536 brand=vcs,driver>=535,driver<536 brand=vws,driver>=535,driver<536 brand=cloudgaming,driver>=535,driver<536 brand=unknown,driver>=550,driver<551 brand=grid,driver>=550,driver<551 brand=tesla,driver>=550,driver<551 brand=nvidia,driver>=550,driver<551 brand=quadro,driver>=550,driver<551 brand=quadrortx,driver>=550,driver<551 brand=nvidiartx,driver>=550,driver<551 brand=vapps,driver>=550,driver<551 brand=vpc,driver>=550,driver<551 brand=vcs,driver>=550,driver<551 brand=vws,driver>=550,driver<551 brand=cloudgaming,driver>=550,driver<551 brand=unknown,driver>=560,driver<561 brand=grid,driver>=560,driver<561 brand=tesla,driver>=560,driver<561 brand=nvidia,driver>=560,driver<561 brand=quadro,driver>=560,driver<561 brand=quadrortx,driver>=560,driver<561 brand=nvidiartx,driver>=560,driver<561 brand=vapps,driver>=560,driver<561 brand=vpc,driver>=560,driver<561 brand=vcs,driver>=560,driver<561 brand=vws,driver>=560,driver<561 brand=cloudgaming,driver>=560,driver<561 brand=unknown,driver>=565,driver<566 brand=grid,driver>=565,driver<566 brand=tesla,driver>=565,driver<566 brand=nvidia,driver>=565,driver<566 brand=quadro,driver>=565,driver<566 brand=quadrortx,driver>=565,driver<566 brand=nvidiartx,driver>=565,driver<566 brand=vapps,driver>=565,driver<566 brand=vpc,driver>=565,driver<566 brand=vcs,driver>=565,driver<566 brand=vws,driver>=565,driver<566 brand=cloudgaming,driver>=565,driver<566
+NVIDIA_VISIBLE_DEVICES=all

@@ -6,7 +6,11 @@ kernel output). Every step is wrapped so that partial results are always saved t
 
 Pipeline
   1. uv venv 3.10 + lerobot @ b883328e (v0.3.3, 2025-08-06) with torch 2.7.1+cu126 (Kaggle's P100 is sm_60:
-     cu128 wheels dropped Pascal, cu126 still ships it) and the [pusht,aloha] extras.
+     cu128 wheels dropped Pascal, cu126 still ships it) and the [pusht,aloha] extras, with the simulator pinned to
+     the checkpoint-era versions gym-aloha==0.1.1 / mujoco==2.3.7 / dm-control==1.0.14 (lerobot 0.3.3 only says
+     gym-aloha>=0.1.1; gym-aloha>=0.1.2 moved to MuJoCo 3, which drops ACT insertion from ~17% to ~11%).
+     NOTE: the recorded v1 outputs in kaggle/outputs/lerobot-act-eval-pusht-aloha/ predate this pin and were
+     produced with gym-aloha 0.1.5 / mujoco 3.8.1; see lerobot/EVAL_NOTES.md sections 2.a' and 6.
   2. GPU self-check -> fallback torch 2.6.0+cu124 -> fallback CPU.
   3. Render self-check for gym-aloha: MUJOCO_GL=egl -> osmesa (apt libosmesa6).
   4. Convert the Hydra-era checkpoints alexandersoare/act_pusht_keypoints and pepijn223/act-pusht to the
@@ -45,6 +49,7 @@ VENV = TMP / "venv"
 PY = str(VENV / "bin" / "python")
 LEROBOT_EVAL = str(VENV / "bin" / "lerobot-eval")
 N_EPISODES, BATCH = 50, 50
+SIM_PINS = "gym-aloha==0.1.1\nmujoco==2.3.7\ndm-control==1.0.14\nnumpy<2\n"  # checkpoint-era simulator
 BUDGET_S = 9 * 3600  # do not start new runs after this (Kaggle hard limit: 12 h)
 
 SUMMARY = {
@@ -345,7 +350,7 @@ def install_torch(uv, torch_v, tv_v, tc_v, cu):
     rc = sh(f"{uv} pip install --python {PY} --reinstall-package torch --reinstall-package torchvision "
             f"torch=={torch_v} torchvision=={tv_v} --index-url https://download.pytorch.org/whl/{cu}", "01_install")
     rc2 = sh(f"{uv} pip install --python {PY} --no-deps torchcodec=={tc_v}", "01_install")
-    (TMP / "constraints.txt").write_text(f"torch=={torch_v}\ntorchvision=={tv_v}\ntorchcodec=={tc_v}\n")
+    (TMP / "constraints.txt").write_text(f"torch=={torch_v}\ntorchvision=={tv_v}\ntorchcodec=={tc_v}\n" + SIM_PINS)
     return rc == 0 and rc2 == 0
 
 
@@ -368,6 +373,9 @@ def step_install():
     assert install_torch(uv, "2.7.1", "0.22.1", "0.4.0", "cu126"), "torch install failed"
     assert sh(f'{uv} pip install --python {PY} -e "{SRC}[pusht,aloha]" -c {TMP}/constraints.txt', "01_install") == 0, \
         "lerobot install failed"
+    assert sh(f'{uv} pip install --python {PY} "gym-aloha==0.1.1" "mujoco==2.3.7" "dm-control==1.0.14" "numpy<2" -c {TMP}/constraints.txt',
+              "01_install") == 0, "sim pin install failed"
+    sh(f"{PY} -c 'import gym_aloha, mujoco, numpy; print(\"SIM_VERSIONS\", mujoco.__version__, numpy.__version__)'", "01_install")
     sh(f"{PY} -c 'import lerobot, torch, torchvision, numpy; print(\"VERSIONS\", lerobot.__version__, torch.__version__, "
        f"torchvision.__version__, numpy.__version__)'", "01_install")
 

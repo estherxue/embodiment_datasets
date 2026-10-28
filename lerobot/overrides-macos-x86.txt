@@ -1,3 +1,11 @@
 torch==2.2.2
 torchvision==0.17.2
 numpy<2
+# Checkpoint-era simulator for the lerobot/act_aloha_sim_* weights (lerobot 0.3.3 only requires gym-aloha>=0.1.1;
+# gym-aloha>=0.1.2 moved to MuJoCo 3, which lowers ACT insertion from ~17% to ~11%; see EVAL_NOTES.md sections 4.6 and 6).
+# macOS note: mujoco 2.3.7's cgl.py dlopens '/System/Library/OpenGL.framework/OpenGL', which does not exist on
+# macOS 11+; after installing, change it to '/System/Library/Frameworks/OpenGL.framework/OpenGL' in
+# .venv/lib/python3.10/site-packages/mujoco/cgl/cgl.py (EVAL_NOTES.md section 4.9).
+gym-aloha==0.1.1
+mujoco==2.3.7
+dm-control==1.0.14

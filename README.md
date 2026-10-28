@@ -6,7 +6,7 @@
 |---|---|
 | `lerobot/` | LeRobot clone（commit b883328e，v0.3.3）+ 本地 `.venv` + **`EVAL_NOTES.md`**（PushT ACT、ALOHA 插接 ACT 的全部结果、命令、踩坑） |
 | `LIBERO/` | LIBERO clone（commit 8f1084e）+ 本地 `.venv` + `datasets/libero_spatial`（5.8 GB）+ `local_eval/`（回放/协议脚本）+ **`EVAL_NOTES.md`**（套件结构、评测协议、demo 回放、协议走通） |
-| `kaggle/lerobot-eval/`、`kaggle/lerobot-eval-aloha-mj237/`、`kaggle/libero-eval/` | 三个 Kaggle script kernel 的源码与 `kernel-metadata.json` |
+| `kaggle/lerobot-eval/`、`kaggle/lerobot-eval-aloha-mj237/`、`kaggle/lerobot-eval-aloha-transfer-mj237/`、`kaggle/lerobot-eval-aloha-ep500-mj237/`、`kaggle/libero-eval/` | 五个 Kaggle script kernel 的源码与 `kernel-metadata.json` |
 | `kaggle/outputs/<kernel>/` | 从 Kaggle 拉回的 `summary.md` / `summary.json` / `eval_info.json` / 日志 / 视频 |
 
 ## 结果一眼看
@@ -18,10 +18,11 @@
 | alexandersoare/act_pusht_keypoints（ACT，关键点观测；官方没有 act_pusht） | PushT | 64 / 60 / 64% | 62.7% ± 2.3 |
 | arclabmit/pusht_act_model（ACT，像素；社区权重，基本不工作） | PushT | 0 / 0 / 6% | 2.0% ± 3.5 |
 | lerobot/act_aloha_sim_insertion_human，MuJoCo 3.8.1 | AlohaInsertion-v0 | 12 / 8 / 12% | 10.7% ± 2.3 |
-| 同上，MuJoCo 2.3.7 + gym-aloha 0.1.1（权重发布时版本） | AlohaInsertion-v0 | 16 / 20 / 14% | 16.7% ± 3.1 |
+| 同上，MuJoCo 2.3.7 + gym-aloha 0.1.1（权重发布时版本） | AlohaInsertion-v0 | 16 / 20 / 14% | 16.7% ± 3.1（模型卡 20.6%） |
+| lerobot/act_aloha_sim_transfer_cube_human（正向对照），MuJoCo 2.3.7 | AlohaTransferCube-v0 | 74 / 78%（2 seeds） | 76.0% ± 2.8（模型卡 83.0%） |
 | lerobot/diffusion_pusht（非 ACT 参照） | PushT | 66% | 与官方 65.4% 一致 |
 
-ALOHA 插接模型卡自报 20.6%（500 episodes；原论文 20%），MuJoCo 2.3.7 下的 16.7% 与之统计上一致（p=0.29）。之前笔记里写的“自报 83%”来自该仓库的 eval_info.json，排查发现那是 transfer cube 的文件被错传进了插接仓库，排查过程见 `lerobot/EVAL_NOTES.md` §6。
+ALOHA 插接模型卡自报 20.6%（500 episodes；原论文 20%），MuJoCo 2.3.7 下的 16.7% 与之统计上一致（p=0.29）。之前笔记里写的“自报 83%”来自该仓库的 eval_info.json，排查发现那是 transfer cube 的文件被错传进了插接仓库，用同一流程评 transfer cube 得 76%（模型卡 83%，p=0.10），说明流程能复现作者数字。排查过程见 `lerobot/EVAL_NOTES.md` §6；插接按 500 步（demo 长度）口径的补测 kernel 正在跑。
 
 **LIBERO（libero_spatial）**
 
