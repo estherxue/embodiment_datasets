@@ -1,0 +1,15 @@
+{
+  "id": "cindyxue1122/lerobot-train-act-pusht-100k-px",
+  "title": "lerobot-train-act-pusht-100k-px",
+  "code_file": "lerobot_train_act_pusht_100k_px.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_internet": true,
+  "dataset_sources": [],
+  "competition_sources": [],
+  "kernel_sources": [
+    "cindyxue1122/lerobot-train-act-pusht"
+  ]
+}
