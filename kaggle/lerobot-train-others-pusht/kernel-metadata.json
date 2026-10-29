@@ -1,0 +1,13 @@
+{
+  "id": "cindyxue1122/lerobot-train-others-pusht",
+  "title": "lerobot-train-others-pusht",
+  "code_file": "lerobot_train_others_pusht.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_internet": true,
+  "dataset_sources": [],
+  "competition_sources": [],
+  "kernel_sources": []
+}
