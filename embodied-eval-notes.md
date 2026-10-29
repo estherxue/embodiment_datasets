@@ -15,9 +15,10 @@
 | ALOHA transfer cube，预训练 ACT（流程正向对照） | 2 × 50 = 100 | 76.0% | [66.8, 83.3] | 模型卡 83.0% / 500 eps（p=0.10） |
 | ALOHA 插接，同一权重，时限改成 demo 长度 500 步 | 2 × 50 = 100 | 21.0% | [14.2, 30.0] | 模型卡 20.6%（p=0.93）；vs 400 步 16.7%（p=0.39） |
 | **PushT，自己短训的 ACT（10k 步，3 个训练 seed × 3 个评测 seed）** | 9 × 50 = 450 / 变体 | 关键点 **22.7%**；像素 8.0% | [19.0, 26.8]；[5.8, 10.9] | 100k 步的同配方权重 64%；**训练 seed 间 10% / 25% / 33%** |
+| **PushT，seed-1 checkpoint 续训到 100k 步（热启动再训 90k）** | 10 × 50 = 500 / 变体 | 关键点 **49.4%**；像素 35.0% | [45.0, 53.8]；[30.9, 39.3] | 作者同配方 100k 步 64.0%（p<0.001）；关键点版 50k 后在 30–52% 间震荡 |
 | LIBERO libero_spatial，demo 开环回放（无可加载的官方权重） | 10 任务 × 50 = 500 | 90.2% | [87.3, 92.5] | 回放上限，不是策略成绩 |
 
-方差从哪来（展开见 §4）：n=50 时 **Bernoulli 采样误差 5–7 个百分点**是主项；换评测 seed（= 换一批初始状态）带来的 seed 间标准差只有 2–3 个百分点，**小于**采样误差本身，说明初始状态没有额外的方差分量；仿真器版本能把 ALOHA 插接移动 6 个百分点，是比 seed 大得多的系统性因素；**训练 seed 是最大的一项**：同配方 10k 步的三个 checkpoint 成功率 10% / 25% / 33%，训练 seed 间标准差 11.6 个百分点，是评测 seed 分量（4.6）和采样误差（5.9）的两倍多（§3、§4c）。
+方差从哪来（展开见 §4）：n=50 时 **Bernoulli 采样误差 5–7 个百分点**是主项；换评测 seed（= 换一批初始状态）带来的 seed 间标准差只有 2–3 个百分点，**小于**采样误差本身，说明初始状态没有额外的方差分量；仿真器版本能把 ALOHA 插接移动 6 个百分点，是比 seed 大得多的系统性因素；**训练 seed 是最大的一项**：同配方 10k 步的三个 checkpoint 成功率 10% / 25% / 33%，训练 seed 间标准差 11.6 个百分点，是评测 seed 分量（4.6）和采样误差（5.9）的两倍多（§3、§4c）。续训到 100k 后又多出一层：关键点版 50k 步之后成功率不再上升，相邻 checkpoint 之间在 30% 到 52% 之间来回跳（标准差 7.9 pts，是 n=150 采样误差的两倍），**选哪个 checkpoint 也是一个比评测噪声大的方差来源**（§3.5）。
 
 ## 1. 统计口径（所有表共用）
 
@@ -142,6 +143,29 @@ kernel `cindyxue1122/lerobot-train-act-pusht`（源码 `kaggle/lerobot-train-act
 - **像素变体：成功率太低（8%），分不开。** 训练 seed 间 3.1 pts、评测 seed 间 2.8 pts，都在 Bernoulli SE 3.8 pts 以内，F=3.5 不显著。
 - 含义：**从头训的 checkpoint 单报一个数字是没有锚的。** 在 10k 步这个阶段，换一个训练 seed 可以把 PushT 成功率从 10% 变成 33%，比把 n 从 50 加到 450 能缩掉的误差还大。比较两个训练配方时，必须报多个训练 seed 的均值和 seed 间标准差，评测 seed 和 n 反而是次要的。100k 步时这个分量会不会收窄，这里没有数据（§2 的 100k 步权重只有一个）。
 
+### 3.5 续训到 100k 步（kernel `cindyxue1122/lerobot-train-act-pusht-100k-kp` / `-px`，源码 `kaggle/lerobot-train-act-pusht-100k/`）
+
+把 seed 1 的 10k 步 checkpoint 热启动（`lerobot-train --policy.path=…`：权重、归一化统计量、模型配置都从 checkpoint 读；AdamW 动量重新开始，因为上一轮只保留了 pretrained_model，没有优化器状态；ACT 没有 lr 调度器，所以这是与严格 resume 的唯一区别）再训 90k 步到 100k。每 10k 步存一个 checkpoint，训练进行中就在同一块 GPU 上用 3 个评测 seed × 50 episodes 评它；最后一个 checkpoint 用 10 个 seed × 50 = 500 episodes，与作者 eval_info.json 的 N 相同。两个变体各一个 kernel 并行：关键点 5.2 it/s、4.8 h，像素 4.1 it/s、6.2 h，90k 步都正常跑完（summary.md 里的 `killed_by_budget=True` 是 v1 脚本在最终评测后例行 kill 已经退出的训练进程留下的标签，`steps_done=90000, rc=0` 才是实际状态；模板已改）。并行评测让中间 checkpoint 的 eval_s 从 31 s 变成 55 s，不影响结果。
+
+| 总步数 | 20k | 30k | 40k | 50k | 60k | 70k | 80k | 90k | 100k |
+|---|---|---|---|---|---|---|---|---|---|
+| kp loss（最后 1k 步均值） | 0.054 | 0.047 | 0.042 | 0.038 | 0.035 | 0.032 | 0.030 | 0.028 | 0.027 |
+| kp 成功率 %（3 seed × 50） | 10.0 | 24.0 | 18.0 | 52.0 | 44.7 | 48.7 | 41.3 | 30.0 | 48.7 |
+| px loss | 0.026 | 0.022 | 0.019 | 0.016 | 0.015 | 0.014 | 0.013 | 0.012 | 0.012 |
+| px 成功率 %（3 seed × 50） | 16.7 | 16.7 | 24.0 | 28.0 | 28.0 | 30.7 | 29.3 | 34.7 | 32.7 |
+
+最终 checkpoint（100k 步，500 episodes）：
+
+| 变体 | k/N | 成功率 | Wilson 95% CI | 参照 |
+|---|---|---|---|---|
+| kp | 247/500 | 49.4% | [45.0, 53.8] | 作者自报 320/500 = 64.0%：z=−4.66，p<0.001；作者权重在本流程重测 94/150 = 62.7%：z=−2.85，p=0.004 |
+| px | 175/500 | 35.0% | [30.9, 39.3] | 无官方像素权重；社区 arclabmit 2.0%（p<0.001）；同一 seed 10k 步时 4.7% |
+
+- **关键点版 50k 步之后不再上升，而且在 checkpoint 之间来回跳。** loss 从 0.054 单调降到 0.027，成功率却在 50k 步到 52% 之后在 30% 到 52% 之间震荡：50k 到 100k 这 6 个 checkpoint 的标准差 7.9 pts，是 n=150 采样误差（4.1 pts）的两倍；相邻的 90k（45/150）与 100k（73/150，同 3 个 seed）差 19 pts，z=−3.31，p=0.0009。这不是评测噪声，是策略本身在相邻 checkpoint 之间变了。
+- **像素版单调上升、checkpoint 间稳定。** 16.7% → 35.0%，50k 之后 6 个 checkpoint 的标准差 2.7 pts，低于采样误差 3.8 pts；100k 步时 loss 还在降，大概率没饱和。
+- **49.4% vs 作者 64%：差 15 个点，显著，但来源分不开。** 候选因素：只有一个训练 seed（§3.4 测到训练 seed 分量 ±11 pts）；取到的是震荡中的哪个 checkpoint（±8 pts）；10k 步处 AdamW 动量重置和数据顺序重新开始；作者用的 lerobot 版本（2024-07，Hydra 配置）与 0.3.3 之间的训练代码差异。前两项合起来就能覆盖 15 个点，所以这个差距不能解读为"配方没复现"；要分辨，需要再跑 2 个训练 seed 并对每条轨迹取多个 checkpoint 的均值。
+- 对评测方法的含义：**从头训的结果要报"最后 k 个 checkpoint 的均值"或一个事先定好的 checkpoint 选择规则，不能只报一个 checkpoint 的数字**。作者的 64% 和我们的 49% 都是单 seed 单 checkpoint，两者的差距里有相当部分是这两层方差。
+
 ## 4. 方差从哪来
 
 **(a) Bernoulli 采样（episode 数 n）。** 单次评测的成功率是 n 个 0/1 的均值，SE = sqrt(p(1−p)/n)。这是 n=50 时最大的不确定性来源：
@@ -156,7 +180,7 @@ kernel `cindyxue1122/lerobot-train-act-pusht`（源码 `kaggle/lerobot-train-act
 
 **(b) 评测 seed = 初始状态。** PushT 的 `reset(seed)` 用 seed 采样 T 块位姿和 agent 位置（本地验证：同 seed 两次 reset 初始状态逐元素相同，seed 1000 与 1001 的状态最大差约 290 像素；50 个连续 seed 的 agent 初始位置标准差约 100–120 像素，T 块关键点约 100 像素）。ALOHA 的 `reset(seed)` 同样采样插销/插座（或方块）的位姿。策略和仿真器本身确定（§1），所以**换评测 seed 的全部效果就是换一批初始状态**。实测跨 seed 标准差 2.3–3.1 pts，都小于对应的 SE 4.4–6.8 pts（§2 汇总表），也就是三批初始状态之间的差异完全能用采样噪声解释，没有"某批初始状态特别难"的额外分量。
 
-**(c) 训练 seed。** 同一配方换训练 seed（初始化、数据顺序、dropout）得到不同权重，这是预训练权重评测看不到的分量。§3.4 用 3 个训练 seed × 3 个评测 seed 的 3×3 设计来拆：关键点变体训练 seed 间标准差 11.6 pts（方差分量 11.3 pts），评测 seed 间 4.6 pts，Bernoulli SE 5.9 pts，F(2,6)=19.2，p=0.003——**训练 seed 是从头训时最大的方差来源**，是另外两项的两倍多；像素变体成功率只有 8%，三项都在 3 pts 左右，分不开（p=0.10）。预训练权重只有一个训练 seed，所以 §2 的所有 CI 都不包含这一项：它们是"这份权重"的成功率区间，不是"这个配方"的。
+**(c) 训练 seed。** 同一配方换训练 seed（初始化、数据顺序、dropout）得到不同权重，这是预训练权重评测看不到的分量。§3.4 用 3 个训练 seed × 3 个评测 seed 的 3×3 设计来拆：关键点变体训练 seed 间标准差 11.6 pts（方差分量 11.3 pts），评测 seed 间 4.6 pts，Bernoulli SE 5.9 pts，F(2,6)=19.2，p=0.003——**训练 seed 是从头训时最大的方差来源**，是另外两项的两倍多；像素变体成功率只有 8%，三项都在 3 pts 左右，分不开（p=0.10）。预训练权重只有一个训练 seed，所以 §2 的所有 CI 都不包含这一项：它们是"这份权重"的成功率区间，不是"这个配方"的。续训到 100k（§3.5）又显示第三层：同一条训练轨迹相邻 checkpoint 之间的差异（关键点版 50k 到 100k 标准差 7.9 pts，90k 与 100k 相差 19 pts，p=0.0009），同样比评测噪声大；像素版没有这一层（2.7 pts，低于采样误差）。
 
 **(d) 仿真器与硬件。** 同一权重、同一 seed：MuJoCo 3.8.1 → 2.3.7 把 ALOHA 插接从 10.7% 提到 16.7%（6 pts，比任何 seed 效应都大）；PushT 关键点 ACT 在本地 CPU（torch 2.2.2）与 Kaggle GPU 上同 seed 的结果 66/58/66 vs 64/60/64——个别 episode 因浮点差异翻转，总体在 CI 内。这类差异是系统性的，不会随 n 变小，只能靠钉版本来消除（三个 kernel 和本地 venv 现在都钉在 gym-aloha 0.1.1 / mujoco 2.3.7）。
 
@@ -169,5 +193,6 @@ kernel `cindyxue1122/lerobot-train-act-pusht`（源码 `kaggle/lerobot-train-act
 - `kaggle/outputs/lerobot-act-eval-aloha-transfer-mj237/`：transfer cube 对照，2 次评测。
 - `kaggle/outputs/lerobot-act-eval-aloha-ep500-mj237/`：插接 500 步口径，2 次评测。
 - `kaggle/outputs/lerobot-train-act-pusht/`：短训 6 个 checkpoint 的训练日志（`train/<run>/train_log.json`，每 100 步的 loss / grad norm）、18+1 次评测、seed-1 的两个 checkpoint（`ckpts/`，`model.safetensors` 不入 git）。
+- `kaggle/outputs/lerobot-train-act-pusht-100k-kp/`、`.../-100k-px/`：续训到 100k 的训练日志（`train/<variant>_cont/train_log.json`，步数已按行号修正）、每 10k 步 3 次评测 + 100k 步 10 次评测的 `eval_info.json`、100k 步 checkpoint（`ckpts/`，`model.safetensors` 不入 git）。
 - `kaggle/outputs/libero-spatial-eval/run5/`：LIBERO 回放与协议走通的逐条记录。
 - 统计脚本：`lerobot/outputs/eval_stats.py`（Wilson CI、方差）；各 kernel 内嵌同一份逻辑生成 `summary.md`。

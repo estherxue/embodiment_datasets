@@ -423,12 +423,14 @@ def main():
             done.add(last.name)
             SUMMARY["train"]["curve"] = parse_train_log(RUN)
             save_summary()
-            if final and rc is None:
-                log("time budget reached: killing training after the final evaluation")
-                os.killpg(p.pid, signal.SIGKILL)
-                p.wait()
-                killed = True
-                rc = p.returncode
+            if final:
+                rc = p.poll()
+                if rc is None:  # still running: last checkpoint reached under the time budget, or lerobot still exiting
+                    log("final checkpoint evaluated while training still runs: killing training")
+                    os.killpg(p.pid, signal.SIGKILL)
+                    p.wait()
+                    killed = int(last.name) < STEPS
+                    rc = p.returncode
                 break
         if rc is not None:
             # training ended: make sure its last checkpoint (if written after the previous poll) is evaluated

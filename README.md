@@ -6,7 +6,7 @@
 |---|---|
 | `lerobot/` | LeRobot clone（commit b883328e，v0.3.3）+ 本地 `.venv` + **`EVAL_NOTES.md`**（PushT ACT、ALOHA 插接 ACT 的全部结果、命令、踩坑） |
 | `LIBERO/` | LIBERO clone（commit 8f1084e）+ 本地 `.venv` + `datasets/libero_spatial`（5.8 GB）+ `local_eval/`（回放/协议脚本）+ **`EVAL_NOTES.md`**（套件结构、评测协议、demo 回放、协议走通） |
-| `kaggle/lerobot-eval/`、`kaggle/lerobot-eval-aloha-mj237/`、`kaggle/lerobot-eval-aloha-transfer-mj237/`、`kaggle/lerobot-eval-aloha-ep500-mj237/`、`kaggle/lerobot-train-act-pusht/`、`kaggle/libero-eval/` | 六个 Kaggle script kernel 的源码与 `kernel-metadata.json`（训练 kernel 另带 `train_analysis.py`） |
+| `kaggle/lerobot-eval/`、`kaggle/lerobot-eval-aloha-mj237/`、`kaggle/lerobot-eval-aloha-transfer-mj237/`、`kaggle/lerobot-eval-aloha-ep500-mj237/`、`kaggle/lerobot-train-act-pusht/`、`kaggle/lerobot-train-act-pusht-100k/`、`kaggle/libero-eval/` | 八个 Kaggle script kernel 的源码与 `kernel-metadata.json`（训练 kernel 另带 `train_analysis.py`；续训 kernel 由 `build.py` 从模板生成 kp/px 两份） |
 | **`embodied-eval-notes.md`** | 一页汇总：跑了什么、N、成功率与 Wilson CI、方差来源（Bernoulli / 评测 seed / 训练 seed / 仿真器 / 协议） |
 | `kaggle/outputs/<kernel>/` | 从 Kaggle 拉回的 `summary.md` / `summary.json` / `eval_info.json` / 日志 / 视频 |
 
@@ -32,6 +32,8 @@
 | 像素 | 4.7 / 10.7 / 8.7% | 36/450 = 8.0%（CI [5.8, 10.9]） | 3.1 / 2.8 pts（不显著） |
 
 训练回路通：loss 单调降到 0.067 / 0.036 且 10k 步未平；同权重同 seed 重跑逐 episode 一致。关键点变体三个训练 seed 的 loss 几乎一样、成功率却是 10% vs 33%——从头训的 checkpoint 单报一个数没有锚，训练 seed 是比评测 seed 和 n 更大的方差来源。详见 `embodied-eval-notes.md` §3。
+
+**续训到 100k 步**（seed 1 的 checkpoint 热启动再训 90k，每 10k 步评 3 seed × 50，最后一个 checkpoint 500 episodes）：关键点 247/500 = 49.4%（CI [45.0, 53.8]），作者同配方 100k 步自报 64.0%，差 15 个点、显著；像素 175/500 = 35.0%（CI [30.9, 39.3]）。关键点版 50k 步后成功率不再上升，在相邻 checkpoint 之间于 30% 到 52% 震荡（loss 仍单调降），像素版单调升到 35%。单 seed 单 checkpoint 的数字带着训练 seed 和 checkpoint 两层方差，49% 与 64% 的差距分不出是配方还是运气。详见 `embodied-eval-notes.md` §3.5。
 
 ALOHA 插接模型卡自报 20.6%（500 episodes；原论文 20%），MuJoCo 2.3.7 下的 16.7% 与之统计上一致（p=0.29）。之前笔记里写的“自报 83%”来自该仓库的 eval_info.json，排查发现那是 transfer cube 的文件被错传进了插接仓库，用同一流程评 transfer cube 得 76%（模型卡 83%，p=0.10），说明流程能复现作者数字。排查过程见 `lerobot/EVAL_NOTES.md` §6；插接按 500 步（demo 长度）口径补测得 21.0%（21/100），与模型卡重合，比 400 步口径高约 4 个点但不显著。
 

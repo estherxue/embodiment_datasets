@@ -1,0 +1,3 @@
+
+===== [10:31:49] $ /kaggle/tmp/venv/bin/python /kaggle/tmp/gpu_check.py
+GPU_CHECK {"torch": "2.7.1+cu126", "cuda_available": true, "device_name": "Tesla T4", "gpu_ok": true}
