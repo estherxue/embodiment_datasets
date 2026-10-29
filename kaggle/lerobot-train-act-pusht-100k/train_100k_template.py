@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
-"""Kaggle script kernel: continue the 10k-step ACT PushT checkpoint (train seed 1, from kernel
-cindyxue1122/lerobot-train-act-pusht, mounted under /kaggle/input) for 90k more steps = 100k total, one variant per
-kernel (VARIANT below; build.py writes the kp and px copies).
+"""Kaggle script kernel: ACT on PushT to 100k total steps, one (variant, train seed, init) per kernel; build.py
+writes the copies from this template. INIT="ckpt": continue the 10k-step checkpoint of this seed (kernel
+cindyxue1122/lerobot-train-act-pusht, mounted under /kaggle/input) for 90k more steps. INIT="scratch": fresh 100k-step
+run with the same recipe (the 10k kernel kept only seed-1 checkpoints, so seeds 2 and 3 start from scratch).
 
 Warm start = `lerobot-train --policy.path=<10k pretrained_model>`: weights, normalization stats and the policy config
 come from the checkpoint; AdamW moments start fresh (the 10k kernel kept pretrained_model only, not training_state).
@@ -15,6 +16,8 @@ Outputs: /kaggle/working/{train/<variant>_cont/train_log.json, eval/<run>/eval_i
           ckpts/<variant>_100k/pretrained_model, logs/*.log, env/*, summary.json, summary.md}
 """
 VARIANT = "kp"  # replaced by build.py
+TRAIN_SEED = 1  # replaced by build.py
+INIT = "ckpt"  # replaced by build.py: "ckpt" (warm start from the 10k checkpoint) or "scratch" (fresh 100k run)
 
 import glob
 import json
@@ -42,30 +45,35 @@ PY = str(VENV / "bin" / "python")
 LEROBOT_TRAIN = str(VENV / "bin" / "lerobot-train")
 LEROBOT_EVAL = str(VENV / "bin" / "lerobot-eval")
 
-OFFSET = 10_000          # steps already done by the input checkpoint
-STEPS = 90_000           # steps in this run; total = OFFSET + step
+OFFSET = 10_000 if INIT == "ckpt" else 0   # steps already done by the input checkpoint
+STEPS = 100_000 - OFFSET                   # steps in this run; total = OFFSET + step
 SAVE_FREQ = 10_000
 LOG_FREQ = 100           # lerobot prints "step:1K" (lossy), so the step is recovered from the line index
 BATCH_TRAIN = 64
-TRAIN_SEED = 1
 EVAL_SEEDS = [1000, 2000, 3000]
 FINAL_EVAL_SEEDS = [1000 * i for i in range(1, 11)]
 N_EPISODES, BATCH_EVAL = 50, 50
 TRAIN_BUDGET_S = 10.0 * 3600   # kill training after this (Kaggle hard limit 12 h); final 500-episode eval still fits
 POLL_S = 30
 REF = {"kp": (320, 500, "alexandersoare/act_pusht_keypoints eval_info.json, 100k steps, 64.0%"), "px": None}
+# same recipe as the 10k kernel (= alexandersoare/act_pusht_keypoints): used directly for INIT="scratch"; for
+# INIT="ckpt" it is already stored in the checkpoint's config.json
+POLICY_ARGS = ("--policy.type=act --policy.chunk_size=16 --policy.n_action_steps=16 --policy.n_decoder_layers=4 "
+               "--policy.optimizer_lr=3e-5")
 VARIANTS = {
     "kp": dict(dataset="lerobot/pusht_keypoints", env="--env.type=pusht --env.obs_type=environment_state_agent_pos",
+               norm='{"ENV":"MIN_MAX","STATE":"MIN_MAX","ACTION":"MIN_MAX"}',
                label="ACT keypoints (16-D keypoints + agent pos)"),
     "px": dict(dataset="lerobot/pusht", env="--env.type=pusht",
+               norm='{"VISUAL":"MEAN_STD","STATE":"MIN_MAX","ACTION":"MIN_MAX"}',
                label="ACT pixels (96x96 image + agent pos, resnet18)"),
 }
 V = VARIANTS[VARIANT]
-RUN = f"{VARIANT}_cont"
+RUN = f"{VARIANT}_cont" if INIT == "ckpt" else f"{VARIANT}_train{TRAIN_SEED}_100k"
 
 SUMMARY = {
     "meta": {
-        "variant": VARIANT, "lerobot_commit": LEROBOT_COMMIT, "offset": OFFSET, "steps": STEPS, "save_freq": SAVE_FREQ,
+        "variant": VARIANT, "init": INIT, "lerobot_commit": LEROBOT_COMMIT, "offset": OFFSET, "steps": STEPS, "save_freq": SAVE_FREQ,
         "batch_train": BATCH_TRAIN, "train_seed": TRAIN_SEED, "eval_seeds": EVAL_SEEDS, "final_eval_seeds": FINAL_EVAL_SEEDS,
         "n_episodes": N_EPISODES, "batch_eval": BATCH_EVAL, "reference": REF[VARIANT],
         "started_utc": time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()),
@@ -214,10 +222,13 @@ def parse_train_log(log_name):
 def write_summary_md():
     meta = SUMMARY["meta"]
     t = SUMMARY["train"]
-    lines = [f"# ACT on PushT ({VARIANT}): continue the 10k-step checkpoint to {OFFSET + STEPS} steps, Kaggle", "",
+    head = (f"continue the 10k-step checkpoint (train seed {TRAIN_SEED}) to {OFFSET + STEPS} steps" if INIT == "ckpt"
+            else f"train seed {TRAIN_SEED} from scratch for {STEPS} steps")
+    lines = [f"# ACT on PushT ({VARIANT}): {head}, Kaggle", "",
              f"- lerobot commit: `{meta['lerobot_commit']}` (v0.3.3), dataset revision v2.1, {V['dataset']}",
              f"- device: {meta.get('device')}  |  GPU: {meta.get('gpu', {}).get('device_name')}  |  torch {meta.get('gpu', {}).get('torch')}",
-             f"- input checkpoint: `{meta.get('input_ckpt')}` ({OFFSET} steps, train seed {TRAIN_SEED})",
+             (f"- input checkpoint: `{meta.get('input_ckpt')}` ({OFFSET} steps, train seed {TRAIN_SEED})" if INIT == "ckpt"
+              else f"- from scratch, train seed {TRAIN_SEED}, policy args `{POLICY_ARGS} --policy.normalization_mapping={V['norm']}`"),
              f"- training: {STEPS} more steps (total {OFFSET + STEPS}), batch {BATCH_TRAIN}, seed {TRAIN_SEED}, save every {SAVE_FREQ}; "
              f"rc={t.get('rc')}, wall {t.get('wall_s', 0) / 60:.1f} min, {t.get('it_s', '-')} it/s, killed_by_budget={t.get('killed')}",
              f"- evaluation: intermediate checkpoints seeds {EVAL_SEEDS} x {N_EPISODES} episodes; last checkpoint seeds {FINAL_EVAL_SEEDS} x {N_EPISODES}",
@@ -313,8 +324,8 @@ def step_install():
 
 
 def find_input_ckpt():
-    hits = sorted(glob.glob(f"/kaggle/input/**/ckpts/{VARIANT}_train1/pretrained_model/model.safetensors", recursive=True))
-    assert hits, f"no input checkpoint for {VARIANT}_train1 under /kaggle/input (kernel_sources must list lerobot-train-act-pusht)"
+    hits = sorted(glob.glob(f"/kaggle/input/**/ckpts/{VARIANT}_train{TRAIN_SEED}/pretrained_model/model.safetensors", recursive=True))
+    assert hits, f"no input checkpoint for {VARIANT}_train{TRAIN_SEED} under /kaggle/input (kernel_sources must list lerobot-train-act-pusht)"
     ckpt = Path(hits[0]).parent
     # copy out of the read-only input mount so lerobot can read it like a normal directory
     local = TMP / "input_ckpt" / VARIANT / "pretrained_model"
@@ -327,7 +338,7 @@ def find_input_ckpt():
 
 
 def run_eval(ckpt_dir, total_step, eval_seed):
-    name = f"{VARIANT}_s{total_step:06d}_eval{eval_seed}"
+    name = f"{VARIANT}_t{TRAIN_SEED}_s{total_step:06d}_eval{eval_seed}"
     out = EVAL_DIR / name
     if out.exists() and not (out / "eval_info.json").exists():
         shutil.rmtree(out, ignore_errors=True)
@@ -390,7 +401,7 @@ def main():
     os.chdir(WORK)
     try:
         step_install()
-        in_ckpt = find_input_ckpt()
+        in_ckpt = find_input_ckpt() if INIT == "ckpt" else None
     except Exception:
         SUMMARY["errors"].append("install: " + traceback.format_exc()[-1500:])
         log("INSTALL FAILED:\n" + traceback.format_exc())
@@ -400,7 +411,9 @@ def main():
 
     out = TMP / "train" / RUN
     shutil.rmtree(out, ignore_errors=True)
-    cmd = (f"{LEROBOT_TRAIN} --policy.path={in_ckpt} --policy.device=cuda --policy.push_to_hub=false "
+    policy_part = (f"--policy.path={in_ckpt}" if INIT == "ckpt"
+                   else f"{POLICY_ARGS} '--policy.normalization_mapping={V['norm']}'")
+    cmd = (f"{LEROBOT_TRAIN} {policy_part} --policy.device=cuda --policy.push_to_hub=false "
            f"--dataset.repo_id={V['dataset']} {V['env']} --output_dir={out} --job_name={RUN} --steps={STEPS} --save_freq={SAVE_FREQ} --eval_freq=0 "
            f"--log_freq={LOG_FREQ} --batch_size={BATCH_TRAIN} --num_workers=4 --seed={TRAIN_SEED} --wandb.enable=false")
     t_train = time.time()
