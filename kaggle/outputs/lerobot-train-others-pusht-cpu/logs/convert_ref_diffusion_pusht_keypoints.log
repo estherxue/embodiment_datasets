@@ -1,0 +1,5 @@
+
+===== [01:17:28] $ /kaggle/tmp/venv/bin/python /kaggle/tmp/convert_old_diffusion.py lerobot/diffusion_pusht_keypoints /kaggle/tmp/ckpts/ref_diffusion_pusht_keypoints cpu
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights from local directory
+CONVERT_OK lerobot/diffusion_pusht_keypoints -> /kaggle/tmp/ckpts/ref_diffusion_pusht_keypoints: 248.8M params, inputs=['observation.environment_state', 'observation.state'] norm={'ENV': <NormalizationMode.MIN_MAX: 'MIN_MAX'>, 'STATE': <NormalizationMode.MIN_MAX: 'MIN_MAX'>, 'ACTION': <NormalizationMode.MIN_MAX: 'MIN_MAX'>} scheduler=DDIM/10

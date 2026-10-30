@@ -1,0 +1,216 @@
+
+===== [05:31:41] $ /kaggle/tmp/venv/bin/lerobot-eval --policy.path=/kaggle/tmp/train/tdmpc_kp/checkpoints/010000/pretrained_model --policy.device=cpu --env.type=pusht --env.obs_type=environment_state_agent_pos --eval.n_episodes=50 --eval.batch_size=50 --seed=2000 --output_dir=/kaggle/working/eval/tdmpc_kp_eval2000
+INFO 2026-10-30 05:31:52 pts/eval.py:462 {'env': {'episode_length': 300,
+         'features': {'action': {'shape': (2,),
+                                 'type': <FeatureType.ACTION: 'ACTION'>},
+                      'agent_pos': {'shape': (2,),
+                                    'type': <FeatureType.STATE: 'STATE'>},
+                      'environment_state': {'shape': (16,),
+                                            'type': <FeatureType.ENV: 'ENV'>}},
+         'features_map': {'action': 'action',
+                          'agent_pos': 'observation.state',
+                          'environment_state': 'observation.environment_state',
+                          'pixels': 'observation.image'},
+         'fps': 10,
+         'obs_type': 'environment_state_agent_pos',
+         'render_mode': 'rgb_array',
+         'task': 'PushT-v0',
+         'visualization_height': 384,
+         'visualization_width': 384},
+ 'eval': {'batch_size': 50, 'n_episodes': 50, 'use_async_envs': False},
+ 'job_name': 'pusht_tdmpc',
+ 'output_dir': PosixPath('/kaggle/working/eval/tdmpc_kp_eval2000'),
+ 'policy': {'advantage_scaling': 3.0,
+            'cem_iterations': 6,
+            'consistency_coeff': 20.0,
+            'device': 'cpu',
+            'discount': 0.9,
+            'elite_weighting_temperature': 0.5,
+            'expectile_weight': 0.9,
+            'gaussian_mean_momentum': 0.1,
+            'horizon': 5,
+            'image_encoder_hidden_dim': 32,
+            'input_features': {'observation.environment_state': {'shape': (16,),
+                                                                 'type': <FeatureType.ENV: 'ENV'>},
+                               'observation.state': {'shape': (2,),
+                                                     'type': <FeatureType.STATE: 'STATE'>}},
+            'latent_dim': 50,
+            'license': None,
+            'max_random_shift_ratio': 0.0476,
+            'max_std': 2.0,
+            'min_std': 0.05,
+            'mlp_dim': 512,
+            'n_action_repeats': 2,
+            'n_action_steps': 1,
+            'n_elites': 50,
+            'n_gaussian_samples': 512,
+            'n_obs_steps': 1,
+            'n_pi_samples': 51,
+            'normalization_mapping': {'ACTION': <NormalizationMode.MIN_MAX: 'MIN_MAX'>,
+                                      'ENV': <NormalizationMode.MIN_MAX: 'MIN_MAX'>,
+                                      'STATE': <NormalizationMode.MIN_MAX: 'MIN_MAX'>},
+            'optimizer_lr': 0.0003,
+            'output_features': {'action': {'shape': (2,),
+                                           'type': <FeatureType.ACTION: 'ACTION'>}},
+            'pi_coeff': 0.5,
+            'private': None,
+            'push_to_hub': False,
+            'q_ensemble_size': 5,
+            'repo_id': None,
+            'reward_coeff': 0.5,
+            'state_encoder_hidden_dim': 256,
+            'tags': None,
+            'target_model_momentum': 0.995,
+            'temporal_decay_coeff': 0.5,
+            'uncertainty_regularizer_coeff': 1.0,
+            'use_amp': False,
+            'use_mpc': True,
+            'value_coeff': 0.1},
+ 'seed': 2000}
+WARNING 2026-10-30 05:31:52 ils/utils.py:72 Using CPU, this will be slow.
+INFO 2026-10-30 05:31:52 pts/eval.py:471 Output dir: /kaggle/working/eval/tdmpc_kp_eval2000
+INFO 2026-10-30 05:31:52 pts/eval.py:473 Making environment.
+INFO 2026-10-30 05:31:52 pts/eval.py:476 Making policy.
+Loading weights from local directory
+Stepping through eval batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Running rollout with at most 300 steps:   0%|          | 0/300 [00:00<?, ?it/s][A/kaggle/tmp/venv/lib/python3.10/site-packages/gymnasium/core.py:311: UserWarning: [33mWARN: env.task_description to get variables from other wrappers is deprecated and will be removed in v1.0, to get this variable you can do `env.unwrapped.task_description` for environment variables or `env.get_wrapper_attr('task_description')` that will search the reminding wrappers.[0m
+  logger.warn(
+/kaggle/tmp/lerobot/src/lerobot/scripts/eval.py:147: UserWarning: The environment does not have 'task_description' and 'task'. Some policies require these features.
+  check_env_attributes_and_types(env)
+/kaggle/tmp/venv/lib/python3.10/site-packages/gymnasium/core.py:311: UserWarning: [33mWARN: env.task_description to get variables from other wrappers is deprecated and will be removed in v1.0, to get this variable you can do `env.unwrapped.task_description` for environment variables or `env.get_wrapper_attr('task_description')` that will search the reminding wrappers.[0m
+  logger.warn(
+/kaggle/tmp/venv/lib/python3.10/site-packages/gymnasium/core.py:311: UserWarning: [33mWARN: env.task to get variables from other wrappers is deprecated and will be removed in v1.0, to get this variable you can do `env.unwrapped.task` for environment variables or `env.get_wrapper_attr('task')` that will search the reminding wrappers.[0m
+  logger.warn(
+
+Running rollout with at most 300 steps:   0%|          | 0/300 [01:21<?, ?it/s, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:   0%|          | 1/300 [01:21<6:45:35, 81.39s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:   0%|          | 1/300 [01:21<6:45:35, 81.39s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:   1%|          | 2/300 [02:42<6:44:13, 81.39s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:   1%|          | 3/300 [02:42<4:13:36, 51.23s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:   1%|          | 3/300 [02:42<4:13:36, 51.23s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:   1%|▏         | 4/300 [04:04<4:12:45, 51.23s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:   2%|▏         | 5/300 [04:04<3:45:18, 45.82s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:   2%|▏         | 5/300 [04:04<3:45:18, 45.82s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:   2%|▏         | 6/300 [05:25<3:44:32, 45.82s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:   2%|▏         | 7/300 [05:25<3:32:53, 43.59s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:   2%|▏         | 7/300 [05:25<3:32:53, 43.59s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:   3%|▎         | 8/300 [06:46<3:32:09, 43.59s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:   3%|▎         | 9/300 [06:46<3:25:52, 42.45s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:   3%|▎         | 9/300 [06:46<3:25:52, 42.45s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:   3%|▎         | 10/300 [08:08<3:25:09, 42.45s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:   4%|▎         | 11/300 [08:08<3:22:24, 42.02s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:   4%|▎         | 11/300 [08:08<3:22:24, 42.02s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:   4%|▍         | 12/300 [09:29<3:21:42, 42.02s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:   4%|▍         | 13/300 [09:29<3:18:32, 41.51s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:   4%|▍         | 13/300 [09:29<3:18:32, 41.51s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:   5%|▍         | 14/300 [09:29<2:39:53, 33.54s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:   5%|▍         | 14/300 [10:50<2:39:53, 33.54s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:   5%|▌         | 15/300 [10:50<3:27:43, 43.73s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:   5%|▌         | 15/300 [10:50<3:27:43, 43.73s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:   5%|▌         | 16/300 [12:11<3:27:00, 43.73s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:   6%|▌         | 17/300 [12:11<3:20:29, 42.51s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:   6%|▌         | 17/300 [12:11<3:20:29, 42.51s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:   6%|▌         | 18/300 [13:32<3:19:47, 42.51s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:   6%|▋         | 19/300 [13:32<3:15:54, 41.83s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:   6%|▋         | 19/300 [13:33<3:15:54, 41.83s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:   7%|▋         | 20/300 [14:54<3:15:12, 41.83s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:   7%|▋         | 21/300 [14:54<3:12:46, 41.46s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:   7%|▋         | 21/300 [14:54<3:12:46, 41.46s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:   7%|▋         | 22/300 [16:16<3:12:04, 41.46s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:   8%|▊         | 23/300 [16:16<3:10:51, 41.34s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:   8%|▊         | 23/300 [16:16<3:10:51, 41.34s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:   8%|▊         | 24/300 [17:40<3:10:10, 41.34s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:   8%|▊         | 25/300 [17:40<3:10:01, 41.46s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:   8%|▊         | 25/300 [17:40<3:10:01, 41.46s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:   9%|▊         | 26/300 [19:03<3:09:20, 41.46s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:   9%|▉         | 27/300 [19:03<3:09:20, 41.61s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:   9%|▉         | 27/300 [19:04<3:09:20, 41.61s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:   9%|▉         | 28/300 [20:26<3:08:39, 41.61s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:  10%|▉         | 29/300 [20:26<3:07:46, 41.57s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:  10%|▉         | 29/300 [20:26<3:07:46, 41.57s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:  10%|█         | 30/300 [21:48<3:07:04, 41.57s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:  10%|█         | 31/300 [21:48<3:05:33, 41.39s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:  10%|█         | 31/300 [21:48<3:05:33, 41.39s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:  11%|█         | 32/300 [23:12<3:04:52, 41.39s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:  11%|█         | 33/300 [23:12<3:04:48, 41.53s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:  11%|█         | 33/300 [23:12<3:04:48, 41.53s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:  11%|█▏        | 34/300 [24:35<3:04:06, 41.53s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:  12%|█▏        | 35/300 [24:35<3:03:33, 41.56s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:  12%|█▏        | 35/300 [24:35<3:03:33, 41.56s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:  12%|█▏        | 36/300 [25:57<3:02:51, 41.56s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:  12%|█▏        | 37/300 [25:57<3:01:16, 41.35s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:  12%|█▏        | 37/300 [25:57<3:01:16, 41.35s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:  13%|█▎        | 38/300 [27:19<3:00:34, 41.35s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:  13%|█▎        | 39/300 [27:19<2:59:06, 41.17s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:  13%|█▎        | 39/300 [27:19<2:59:06, 41.17s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:  13%|█▎        | 40/300 [28:40<2:58:25, 41.17s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:  14%|█▎        | 41/300 [28:40<2:57:14, 41.06s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:  14%|█▎        | 41/300 [28:40<2:57:14, 41.06s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:  14%|█▍        | 42/300 [30:03<2:56:33, 41.06s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:  14%|█▍        | 43/300 [30:03<2:56:08, 41.12s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:  14%|█▍        | 43/300 [30:03<2:56:08, 41.12s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:  15%|█▍        | 44/300 [31:24<2:55:27, 41.12s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:  15%|█▌        | 45/300 [31:24<2:54:27, 41.05s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:  15%|█▌        | 45/300 [31:25<2:54:27, 41.05s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:  15%|█▌        | 46/300 [32:47<2:53:46, 41.05s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:  16%|█▌        | 47/300 [32:47<2:53:19, 41.11s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:  16%|█▌        | 47/300 [32:47<2:53:19, 41.11s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:  16%|█▌        | 48/300 [34:09<2:52:38, 41.11s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:  16%|█▋        | 49/300 [34:09<2:52:07, 41.14s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:  16%|█▋        | 49/300 [34:09<2:52:07, 41.14s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:  17%|█▋        | 50/300 [34:09<2:21:15, 33.90s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:  17%|█▋        | 50/300 [35:31<2:21:15, 33.90s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:  17%|█▋        | 51/300 [35:31<3:00:26, 43.48s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:  17%|█▋        | 51/300 [35:31<3:00:26, 43.48s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:  17%|█▋        | 52/300 [36:54<2:59:42, 43.48s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:  18%|█▊        | 53/300 [36:54<2:55:41, 42.68s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:  18%|█▊        | 53/300 [36:54<2:55:41, 42.68s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:  18%|█▊        | 54/300 [38:16<2:54:58, 42.68s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:  18%|█▊        | 55/300 [38:16<2:52:26, 42.23s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:  18%|█▊        | 55/300 [38:16<2:52:26, 42.23s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:  19%|█▊        | 56/300 [39:38<2:51:44, 42.23s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:  19%|█▉        | 57/300 [39:38<2:49:11, 41.78s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:  19%|█▉        | 57/300 [39:38<2:49:11, 41.78s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:  19%|█▉        | 58/300 [41:00<2:48:29, 41.78s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:  20%|█▉        | 59/300 [41:00<2:46:47, 41.53s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:  20%|█▉        | 59/300 [41:00<2:46:47, 41.53s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:  20%|██        | 60/300 [42:22<2:46:06, 41.53s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:  20%|██        | 61/300 [42:22<2:44:29, 41.29s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:  20%|██        | 61/300 [42:22<2:44:29, 41.29s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:  21%|██        | 62/300 [43:43<2:43:48, 41.29s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:  21%|██        | 63/300 [43:43<2:42:29, 41.14s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:  21%|██        | 63/300 [43:43<2:42:29, 41.14s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:  21%|██▏       | 64/300 [45:05<2:41:48, 41.14s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:  22%|██▏       | 65/300 [45:05<2:40:53, 41.08s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:  22%|██▏       | 65/300 [45:05<2:40:53, 41.08s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:  22%|██▏       | 66/300 [46:26<2:40:12, 41.08s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:  22%|██▏       | 67/300 [46:26<2:39:07, 40.97s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:  22%|██▏       | 67/300 [46:27<2:39:07, 40.97s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:  23%|██▎       | 68/300 [47:49<2:38:26, 40.97s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:  23%|██▎       | 69/300 [47:49<2:37:53, 41.01s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:  23%|██▎       | 69/300 [47:49<2:37:53, 41.01s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:  23%|██▎       | 70/300 [49:12<2:37:12, 41.01s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:  24%|██▎       | 71/300 [49:12<2:37:06, 41.16s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:  24%|██▎       | 71/300 [49:12<2:37:06, 41.16s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:  24%|██▍       | 72/300 [50:35<2:36:25, 41.16s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:  24%|██▍       | 73/300 [50:35<2:36:15, 41.30s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:  24%|██▍       | 73/300 [50:35<2:36:15, 41.30s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:  25%|██▍       | 74/300 [51:57<2:35:34, 41.30s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:  25%|██▌       | 75/300 [51:57<2:34:31, 41.21s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:  25%|██▌       | 75/300 [51:57<2:34:31, 41.21s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:  25%|██▌       | 76/300 [53:18<2:33:50, 41.21s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:  26%|██▌       | 77/300 [53:18<2:32:36, 41.06s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:  26%|██▌       | 77/300 [53:18<2:32:36, 41.06s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:  26%|██▌       | 78/300 [54:40<2:31:55, 41.06s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:  26%|██▋       | 79/300 [54:40<2:30:49, 40.95s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:  26%|██▋       | 79/300 [54:40<2:30:49, 40.95s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:  27%|██▋       | 80/300 [56:01<2:30:08, 40.95s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:  27%|██▋       | 81/300 [56:01<2:29:03, 40.84s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:  27%|██▋       | 81/300 [56:01<2:29:03, 40.84s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:  27%|██▋       | 82/300 [57:22<2:28:22, 40.84s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:  28%|██▊       | 83/300 [57:22<2:27:28, 40.78s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:  28%|██▊       | 83/300 [57:22<2:27:28, 40.78s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:  28%|██▊       | 84/300 [58:44<2:26:47, 40.78s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:  28%|██▊       | 85/300 [58:44<2:26:14, 40.81s/it, running_success_rate=0.0%][A
+Running rollout with at most 300 steps:  28%|██▊       | 85/300 [58:44<2:26:14, 40.81s/it, running_success_rate=0.0%][A
+===== TIMEOUT after 3600s, killed

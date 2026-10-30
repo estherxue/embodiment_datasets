@@ -7,7 +7,9 @@
   "is_private": true,
   "enable_gpu": true,
   "enable_internet": true,
-  "dataset_sources": [],
+  "dataset_sources": [
+    "cindyxue1122/tdmpc-pusht-kp-10k"
+  ],
   "competition_sources": [],
   "kernel_sources": []
 }

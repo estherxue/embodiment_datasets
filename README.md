@@ -6,7 +6,7 @@
 |---|---|
 | `lerobot/` | LeRobot clone（commit b883328e，v0.3.3）+ 本地 `.venv` + **`EVAL_NOTES.md`**（PushT ACT、ALOHA 插接 ACT 的全部结果、命令、踩坑） |
 | `LIBERO/` | LIBERO clone（commit 8f1084e）+ 本地 `.venv` + `datasets/libero_spatial`（5.8 GB）+ `local_eval/`（回放/协议脚本）+ **`EVAL_NOTES.md`**（套件结构、评测协议、demo 回放、协议走通） |
-| `kaggle/lerobot-eval/`、`kaggle/lerobot-eval-aloha-mj237/`、`kaggle/lerobot-eval-aloha-transfer-mj237/`、`kaggle/lerobot-eval-aloha-ep500-mj237/`、`kaggle/lerobot-train-act-pusht/`、`kaggle/lerobot-train-act-pusht-100k/`、`kaggle/libero-eval/` | 八个 Kaggle script kernel 的源码与 `kernel-metadata.json`（训练 kernel 另带 `train_analysis.py`；续训 kernel 由 `build.py` 从模板生成 kp/px 两份） |
+| `kaggle/lerobot-eval/`、`kaggle/lerobot-eval-aloha-mj237/`、`kaggle/lerobot-eval-aloha-transfer-mj237/`、`kaggle/lerobot-eval-aloha-ep500-mj237/`、`kaggle/lerobot-train-act-pusht/`、`kaggle/lerobot-train-act-pusht-100k/`、`kaggle/lerobot-train-others-pusht/`、`kaggle/libero-eval/` | 各 Kaggle script kernel 的源码与 `kernel-metadata.json`（训练 kernel 另带 `train_analysis.py`；续训 kernel 和其他模型 kernel 由 `build.py` 从模板生成 kp/px、cpu/gpu 两份） |
 | **`embodied-eval-notes.md`** | 一页汇总：跑了什么、N、成功率与 Wilson CI、方差来源（Bernoulli / 评测 seed / 训练 seed / 仿真器 / 协议） |
 | `kaggle/outputs/<kernel>/` | 从 Kaggle 拉回的 `summary.md` / `summary.json` / `eval_info.json` / 日志 / 视频 |
 
@@ -34,6 +34,8 @@
 训练回路通：loss 单调降到 0.067 / 0.036 且 10k 步未平；同权重同 seed 重跑逐 episode 一致。关键点变体三个训练 seed 的 loss 几乎一样、成功率却是 10% vs 33%——从头训的 checkpoint 单报一个数没有锚，训练 seed 是比评测 seed 和 n 更大的方差来源。详见 `embodied-eval-notes.md` §3。
 
 **训满 100k 步**（关键点 3 个训练 seed，像素 1 个；每 10k 步评 3 seed × 50，100k checkpoint 500 episodes）：关键点三个 seed 的 100k 结果 49.4 / 49.6 / 43.8%，合并 714/1500 = 47.6%（CI [45.1, 50.1]），作者同配方 100k 步自报 64.0%，差 16 个点，p=2e-10，三条轨迹 30 个 checkpoint 没有一个够到作者的区间，差距是训练侧的系统性差异（lerobot 版本 / 数据集格式待逐项对比），不是 seed 或 checkpoint 运气；像素 175/500 = 35.0%。训练 seed 分量从 10k 时的 11.6 pts 缩到 100k 时的 3.3 pts，但相邻 checkpoint 之间仍在 ±4 到 9 pts 震荡，loss 全程单调降。详见 `embodied-eval-notes.md` §3.5。
+
+**其他策略（进行中）**：同协议换成 TD-MPC / VQ-BeT / Diffusion Policy（`kaggle/lerobot-train-others-pusht/`）。已完成的 CPU 部分：官方 `lerobot/vqbet_pusht` 84/150 = 56.0%（模型卡 57.0%，p=0.83）、官方 `lerobot/diffusion_pusht_keypoints`（Hydra 旧格式转换后）110/150 = 73.3%（模型卡 71.0%，p=0.58），两份参照都复现；TD-MPC 关键点 10k 训完但 CEM 规划在 CPU 上 40 s/步评不完，VQ-BeT 像素 9 s/步只到 4k 步就撞上 12 h 上限。这三项连同两个 Diffusion 短训放到 GPU kernel，等周 GPU 配额刷新。详见 `embodied-eval-notes.md` §3.7。
 
 ALOHA 插接模型卡自报 20.6%（500 episodes；原论文 20%），MuJoCo 2.3.7 下的 16.7% 与之统计上一致（p=0.29）。之前笔记里写的“自报 83%”来自该仓库的 eval_info.json，排查发现那是 transfer cube 的文件被错传进了插接仓库，用同一流程评 transfer cube 得 76%（模型卡 83%，p=0.10），说明流程能复现作者数字。排查过程见 `lerobot/EVAL_NOTES.md` §6；插接按 500 步（demo 长度）口径补测得 21.0%（21/100），与模型卡重合，比 400 步口径高约 4 个点但不显著。
 

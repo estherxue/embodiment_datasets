@@ -8,11 +8,11 @@ MARK = {"DEVICE": 'DEVICE = "cuda"  # replaced by build.py', "ONLY_MODELS": "ONL
         "ONLY_REFS": "ONLY_REFS = None  # replaced by build.py"}
 for m in MARK.values():
     assert tpl.count(m) == 1, m
-KERNELS = {  # suffix: (device, models, refs, enable_gpu)
-    "cpu": ("cpu", ["tdmpc_kp", "vqbet_px"], ["ref_vqbet_pusht", "ref_diffusion_pusht_keypoints"], False),
-    "gpu": ("cuda", ["diffusion_kp", "diffusion_px"], [], True),
+KERNELS = {  # suffix: (device, models, refs, enable_gpu, dataset_sources)
+    "cpu": ("cpu", ["tdmpc_kp", "vqbet_px"], ["ref_vqbet_pusht", "ref_diffusion_pusht_keypoints"], False, []),
+    "gpu": ("cuda", ["vqbet_px", "diffusion_kp", "diffusion_px"], ["tdmpc_kp_cpu10k"], True, ["cindyxue1122/tdmpc-pusht-kp-10k"]),
 }
-for suffix, (device, models, refs, gpu) in KERNELS.items():
+for suffix, (device, models, refs, gpu, datasets) in KERNELS.items():
     d = here / suffix
     d.mkdir(exist_ok=True)
     name = f"lerobot_train_others_pusht_{suffix}.py"
@@ -25,7 +25,7 @@ for suffix, (device, models, refs, gpu) in KERNELS.items():
         "title": f"lerobot-train-others-pusht-{suffix}",
         "code_file": name, "language": "python", "kernel_type": "script",
         "is_private": True, "enable_gpu": gpu, "enable_internet": True,
-        "dataset_sources": [], "competition_sources": [], "kernel_sources": [],
+        "dataset_sources": datasets, "competition_sources": [], "kernel_sources": [],
     }
     (d / "kernel-metadata.json").write_text(json.dumps(meta, indent=2) + "\n")
     print("wrote", d / name)

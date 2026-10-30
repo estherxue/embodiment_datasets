@@ -16,6 +16,7 @@
 | ALOHA 插接，同一权重，时限改成 demo 长度 500 步 | 2 × 50 = 100 | 21.0% | [14.2, 30.0] | 模型卡 20.6%（p=0.93）；vs 400 步 16.7%（p=0.39） |
 | **PushT，自己短训的 ACT（10k 步，3 个训练 seed × 3 个评测 seed）** | 9 × 50 = 450 / 变体 | 关键点 **22.7%**；像素 8.0% | [19.0, 26.8]；[5.8, 10.9] | 100k 步的同配方权重 64%；**训练 seed 间 10% / 25% / 33%** |
 | **PushT，ACT 训满 100k 步（关键点 3 个训练 seed；像素 1 个）** | 关键点 3 × 500 = 1500；像素 500 | 关键点 **47.6%**（49.4 / 49.6 / 43.8）；像素 35.0% | [45.1, 50.1]；[30.9, 39.3] | 作者同配方 100k 步 64.0%：差 16 pts，p=2e-10，三个 seed 都显著低，**不是 seed 或 checkpoint 的运气** |
+| PushT，官方参照 VQ-BeT（`lerobot/vqbet_pusht`，像素）与 Diffusion Policy 关键点（`lerobot/diffusion_pusht_keypoints`，Hydra 旧格式转换后） | 各 3 × 50 = 150 | 56.0%；73.3% | [48.0, 63.7]；[65.7, 79.8] | 模型卡 57.0%（p=0.83）/ 71.0%（p=0.58），两份都复现；同协议短训 TD-MPC / VQ-BeT / Diffusion 等 GPU 配额（§3.7） |
 | LIBERO libero_spatial，demo 开环回放（无可加载的官方权重） | 10 任务 × 50 = 500 | 90.2% | [87.3, 92.5] | 回放上限，不是策略成绩 |
 
 方差从哪来（展开见 §4）：n=50 时 **Bernoulli 采样误差 5–7 个百分点**是主项；换评测 seed（= 换一批初始状态）带来的 seed 间标准差只有 2–3 个百分点，**小于**采样误差本身，说明初始状态没有额外的方差分量；仿真器版本能把 ALOHA 插接移动 6 个百分点，是比 seed 大得多的系统性因素；**训练 seed 是最大的一项**：同配方 10k 步的三个 checkpoint 成功率 10% / 25% / 33%，训练 seed 间标准差 11.6 个百分点，是评测 seed 分量（4.6）和采样误差（5.9）的两倍多（§3、§4c）。训满 100k 后训练 seed 分量缩到 3.3 pts（三个 seed 49.4 / 49.6 / 43.8%），但相邻 checkpoint 之间仍在 ±4 到 9 pts 震荡，loss 全程单调降，**选哪个 checkpoint 仍是比评测噪声大的方差来源**（§3.5）。
@@ -170,6 +171,25 @@ loss（L1 + 10·KL，最后 1k 步均值）三条关键点轨迹几乎重合：1
 
 AdamW 给每个参数维护一阶矩 m（梯度的滑动平均，β1=0.9，记忆约 10 步）和二阶矩 v（梯度平方的滑动平均，β2=0.999，记忆约 1000 步），步长由 m̂/√v̂ 决定；这两个量存在 checkpoint 的 `training_state/optimizer_state.safetensors` 里，体积是权重的两倍。`--policy.path` 只加载权重和归一化统计量，m、v 从零开始，前几步退化成"每个参数不论梯度大小都走约 lr 的一步"。日志里的瞬态：关键点 loss 0.067 → 0.080、grad norm 3.5 → 6.2（重启后第一个 100 步），第二个 100 步起 0.066 / 3.2；像素 0.036 → 0.050、3.8 → 6.4，同样 200 步内恢复。90k 步里占 0.1%，权重衰减是解耦无状态的，ACT 没有 lr 调度器，所以这是与严格 resume 的唯一区别，终点上看不出影响。
 
+### 3.7 其他策略在 PushT 上（kernel `cindyxue1122/lerobot-train-others-pusht-{cpu,gpu}`，源码 `kaggle/lerobot-train-others-pusht/`；进行中）
+
+同一协议（10k 步、batch 64、训练 seed 1、评测 seed 1000/2000/3000 × 50）换策略：TD-MPC（关键点）、VQ-BeT（像素）、Diffusion Policy（关键点 DDIM-10 / 像素 DDPM-100），外加两份官方权重作参照。周 GPU 配额（30 h）在 10-30 用完，先把便宜的部分放到 CPU kernel 上跑（2026-10-30 01:05 UTC 起，4 核、无 GPU）。
+
+**跑完的部分（CPU kernel）**
+
+| 跑了什么 | 评测 seed 1000 / 2000 / 3000 | 合并 | Wilson 95% CI | 模型卡 |
+|---|---|---|---|---|
+| 官方 `lerobot/vqbet_pusht`（VQ-BeT，像素，250k 步） | 60 / 56 / 52% | 84/150 = 56.0% | [48.0, 63.7] | 57.0% / 500 eps（p=0.83） |
+| 官方 `lerobot/diffusion_pusht_keypoints`（2024-07 Hydra 格式，kernel 内转成 0.3.3 格式） | 76 / 70 / 74% | 110/150 = 73.3% | [65.7, 79.8] | 71.0% / 500 eps（p=0.58） |
+
+两份参照都复现：评测流程对 VQ-BeT 和 Diffusion 同样成立，Hydra 旧格式的转换（156 个张量逐一对上）没有丢东西。跨评测 seed 标准差 4.0 / 3.1 pts，仍在采样误差（6–7 pts）之内，与 §4(b) 一致。
+
+**TD-MPC 关键点版：训练完成，评测没跑完。** 2.7M 参数，CPU 上 0.2 s/步，10k 步 138 min；loss 1.13（100 步）→ 0.089（1k）→ 0.071（5k）→ 0.048（10k）。评测时 TD-MPC 每个环境步都做 CEM 规划（512 个高斯样本 + 51 个策略样本 × 6 轮迭代 × 时域 5，再过 5 个 Q 网络），50 个并行环境在 4 核 CPU 上是 40 s 一个环境步，300 步一条要 3.4 h；三个 seed 各在 1 h 超时处被杀，只到第 85 步（期间 0 成功，但 85 步内成功本来就少见，不能当结果）。checkpoint 留下了（`ckpts/tdmpc_kp/`，21 MB），上传为 Kaggle 数据集 `cindyxue1122/tdmpc-pusht-kp-10k`，改由 GPU kernel 评。
+
+**VQ-BeT 像素版：训到 4k 步被 12 h 上限截断。** 前 2k 步只训 VQ-VAE（动作离散化，0.05 s/步），之后策略阶段每步要把 64 × 5 帧 96×96 图像过 ResNet18 再过 GPT，CPU 上 9 s/步，5.4 h 只到 4k 步，kernel 在 12 h 处被 Kaggle 取消（`save_freq=10000`，没有中间 checkpoint）。策略阶段 loss 3410 → 803（`offset_loss_weight=10000` 放大了偏移项，量级正常）。也搬到 GPU kernel。
+
+**待跑（GPU kernel，周 GPU 配额周六 00:00 UTC 刷新后由本地脚本自动推送）**：VQ-BeT 像素 10k、Diffusion 关键点 10k、Diffusion 像素 10k 各 3 × 50 评测，以及 TD-MPC checkpoint 的 3 × 50 评测。拿到后与 ACT 10k 的 22.7%（关键点）/ 8.0%（像素）和上面两份参照比。
+
 ## 4. 方差从哪来
 
 **(a) Bernoulli 采样（episode 数 n）。** 单次评测的成功率是 n 个 0/1 的均值，SE = sqrt(p(1−p)/n)。这是 n=50 时最大的不确定性来源：
@@ -198,5 +218,6 @@ AdamW 给每个参数维护一阶矩 m（梯度的滑动平均，β1=0.9，记�
 - `kaggle/outputs/lerobot-act-eval-aloha-ep500-mj237/`：插接 500 步口径，2 次评测。
 - `kaggle/outputs/lerobot-train-act-pusht/`：短训 6 个 checkpoint 的训练日志（`train/<run>/train_log.json`，每 100 步的 loss / grad norm）、18+1 次评测、seed-1 的两个 checkpoint（`ckpts/`，`model.safetensors` 不入 git）。
 - `kaggle/outputs/lerobot-train-act-pusht-100k-kp/`、`.../-100k-px/`、`.../-100k-kp-seed2/`、`.../-100k-kp-seed3/`：训满 100k 的训练日志（`train/<variant>_cont/train_log.json`，步数已按行号修正）、每 10k 步 3 次评测 + 100k 步 10 次评测的 `eval_info.json`、100k 步 checkpoint（`ckpts/`，`model.safetensors` 不入 git）。
+- `kaggle/outputs/lerobot-train-others-pusht-cpu/`：两份官方参照（VQ-BeT、Diffusion 关键点）各 3 次评测、TD-MPC 关键点 10k 步训练日志与 checkpoint（`model.safetensors` 不入 git；Kaggle 数据集 `cindyxue1122/tdmpc-pusht-kp-10k`）、VQ-BeT 像素版训到 4k 步的日志。
 - `kaggle/outputs/libero-spatial-eval/run5/`：LIBERO 回放与协议走通的逐条记录。
 - 统计脚本：`lerobot/outputs/eval_stats.py`（Wilson CI、方差）；各 kernel 内嵌同一份逻辑生成 `summary.md`。

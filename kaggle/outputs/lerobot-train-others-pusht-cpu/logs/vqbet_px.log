@@ -1,0 +1,213 @@
+
+===== [07:31:41] $ /kaggle/tmp/venv/bin/lerobot-train --dataset.repo_id=lerobot/pusht --env.type=pusht --policy.type=vqbet --policy.n_vqvae_training_steps=2000 --policy.push_to_hub=false --policy.device=cpu --output_dir=/kaggle/tmp/train/vqbet_px --job_name=vqbet_px --steps=10000 --save_freq=10000 --eval_freq=0 --log_freq=100 --batch_size=64 --num_workers=2 --seed=1 --wandb.enable=false
+INFO 2026-10-30 07:31:51 ts/train.py:111 {'batch_size': 64,
+ 'dataset': {'episodes': None,
+             'image_transforms': {'enable': False,
+                                  'max_num_transforms': 3,
+                                  'random_order': False,
+                                  'tfs': {'brightness': {'kwargs': {'brightness': [0.8,
+                                                                                   1.2]},
+                                                         'type': 'ColorJitter',
+                                                         'weight': 1.0},
+                                          'contrast': {'kwargs': {'contrast': [0.8,
+                                                                               1.2]},
+                                                       'type': 'ColorJitter',
+                                                       'weight': 1.0},
+                                          'hue': {'kwargs': {'hue': [-0.05,
+                                                                     0.05]},
+                                                  'type': 'ColorJitter',
+                                                  'weight': 1.0},
+                                          'saturation': {'kwargs': {'saturation': [0.5,
+                                                                                   1.5]},
+                                                         'type': 'ColorJitter',
+                                                         'weight': 1.0},
+                                          'sharpness': {'kwargs': {'sharpness': [0.5,
+                                                                                 1.5]},
+                                                        'type': 'SharpnessJitter',
+                                                        'weight': 1.0}}},
+             'repo_id': 'lerobot/pusht',
+             'revision': None,
+             'root': None,
+             'use_imagenet_stats': True,
+             'video_backend': 'torchcodec'},
+ 'env': {'episode_length': 300,
+         'features': {'action': {'shape': [2],
+                                 'type': <FeatureType.ACTION: 'ACTION'>},
+                      'agent_pos': {'shape': [2],
+                                    'type': <FeatureType.STATE: 'STATE'>},
+                      'pixels': {'shape': [384, 384, 3],
+                                 'type': <FeatureType.VISUAL: 'VISUAL'>}},
+         'features_map': {'action': 'action',
+                          'agent_pos': 'observation.state',
+                          'environment_state': 'observation.environment_state',
+                          'pixels': 'observation.image'},
+         'fps': 10,
+         'obs_type': 'pixels_agent_pos',
+         'render_mode': 'rgb_array',
+         'task': 'PushT-v0',
+         'type': 'pusht',
+         'visualization_height': 384,
+         'visualization_width': 384},
+ 'eval': {'batch_size': 50, 'n_episodes': 50, 'use_async_envs': False},
+ 'eval_freq': 0,
+ 'job_name': 'vqbet_px',
+ 'log_freq': 100,
+ 'num_workers': 2,
+ 'optimizer': {'betas': [0.95, 0.999],
+               'eps': 1e-08,
+               'grad_clip_norm': 10.0,
+               'lr': 0.0001,
+               'type': 'adam',
+               'weight_decay': 1e-06},
+ 'output_dir': '/kaggle/tmp/train/vqbet_px',
+ 'policy': {'action_chunk_size': 5,
+            'bet_softmax_temperature': 0.1,
+            'crop_is_random': True,
+            'crop_shape': [84, 84],
+            'device': 'cpu',
+            'dropout': 0.1,
+            'gpt_block_size': 500,
+            'gpt_hidden_dim': 512,
+            'gpt_input_dim': 512,
+            'gpt_n_head': 8,
+            'gpt_n_layer': 8,
+            'gpt_output_dim': 512,
+            'input_features': {},
+            'license': None,
+            'mlp_hidden_dim': 1024,
+            'n_action_pred_token': 3,
+            'n_obs_steps': 5,
+            'n_vqvae_training_steps': 2000,
+            'normalization_mapping': {'ACTION': <NormalizationMode.MIN_MAX: 'MIN_MAX'>,
+                                      'STATE': <NormalizationMode.MIN_MAX: 'MIN_MAX'>,
+                                      'VISUAL': <NormalizationMode.IDENTITY: 'IDENTITY'>},
+            'offset_loss_weight': 10000.0,
+            'optimizer_betas': [0.95, 0.999],
+            'optimizer_eps': 1e-08,
+            'optimizer_lr': 0.0001,
+            'optimizer_vqvae_lr': 0.001,
+            'optimizer_vqvae_weight_decay': 0.0001,
+            'optimizer_weight_decay': 1e-06,
+            'output_features': {},
+            'pretrained_backbone_weights': None,
+            'primary_code_loss_weight': 5.0,
+            'private': None,
+            'push_to_hub': False,
+            'repo_id': None,
+            'scheduler_warmup_steps': 500,
+            'secondary_code_loss_weight': 0.5,
+            'sequentially_select': False,
+            'spatial_softmax_num_keypoints': 32,
+            'tags': None,
+            'type': 'vqbet',
+            'use_amp': False,
+            'use_group_norm': True,
+            'vision_backbone': 'resnet18',
+            'vqvae_embedding_dim': 256,
+            'vqvae_enc_hidden_dim': 128,
+            'vqvae_n_embed': 16},
+ 'resume': False,
+ 'save_checkpoint': True,
+ 'save_freq': 10000,
+ 'scheduler': {'num_cycles': 0.5,
+               'num_vqvae_training_steps': 2000,
+               'num_warmup_steps': 500,
+               'type': 'vqbet'},
+ 'seed': 1,
+ 'steps': 10000,
+ 'use_policy_training_preset': True,
+ 'wandb': {'disable_artifact': False,
+           'enable': False,
+           'entity': None,
+           'mode': None,
+           'notes': None,
+           'project': 'lerobot',
+           'run_id': None}}
+INFO 2026-10-30 07:31:51 ts/train.py:117 Logs will be saved locally.
+WARNING 2026-10-30 07:31:51 ils/utils.py:72 Using CPU, this will be slow.
+INFO 2026-10-30 07:31:51 ts/train.py:127 Creating dataset
+INFO 2026-10-30 07:31:51 _client.py:1025 HTTP Request: GET https://huggingface.co/api/datasets/lerobot/pusht/refs "HTTP/1.1 200 OK"
+INFO 2026-10-30 07:31:51 _client.py:1025 HTTP Request: GET https://huggingface.co/api/datasets/lerobot/pusht/revision/v2.1 "HTTP/1.1 200 OK"
+INFO 2026-10-30 07:31:51 _client.py:1025 HTTP Request: GET https://huggingface.co/api/datasets/lerobot/pusht/tree/6e1d9c95aaf8abb19342e723935b6af7c54b5903?recursive=true&expand=false "HTTP/1.1 200 OK"
+Fetching 4 files:   0%|          | 0/4 [00:00<?, ?it/s]INFO 2026-10-30 07:31:51 _client.py:1025 HTTP Request: HEAD https://huggingface.co/datasets/lerobot/pusht/resolve/6e1d9c95aaf8abb19342e723935b6af7c54b5903/meta/info.json "HTTP/1.1 307 Temporary Redirect"
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+WARNING 2026-10-30 07:31:51 ls/_http.py:993 Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+INFO 2026-10-30 07:31:51 _client.py:1025 HTTP Request: HEAD https://huggingface.co/api/resolve-cache/datasets/lerobot/pusht/6e1d9c95aaf8abb19342e723935b6af7c54b5903/meta%2Finfo.json?%2Fdatasets%2Flerobot%2Fpusht%2Fresolve%2F6e1d9c95aaf8abb19342e723935b6af7c54b5903%2Fmeta%2Finfo.json=&etag=%22c9a165c2da0f3d7294e31a8bfdad185b9cb7d69e%22 "HTTP/1.1 200 OK"
+INFO 2026-10-30 07:31:52 _client.py:1025 HTTP Request: GET https://huggingface.co/api/resolve-cache/datasets/lerobot/pusht/6e1d9c95aaf8abb19342e723935b6af7c54b5903/meta%2Finfo.json?%2Fdatasets%2Flerobot%2Fpusht%2Fresolve%2F6e1d9c95aaf8abb19342e723935b6af7c54b5903%2Fmeta%2Finfo.json=&etag=%22c9a165c2da0f3d7294e31a8bfdad185b9cb7d69e%22 "HTTP/1.1 200 OK"
+Fetching 4 files:  25%|██▌       | 1/4 [00:00<00:00,  8.38it/s]INFO 2026-10-30 07:31:52 _client.py:1025 HTTP Request: HEAD https://huggingface.co/datasets/lerobot/pusht/resolve/6e1d9c95aaf8abb19342e723935b6af7c54b5903/meta/episodes.jsonl "HTTP/1.1 307 Temporary Redirect"
+INFO 2026-10-30 07:31:52 _client.py:1025 HTTP Request: HEAD https://huggingface.co/datasets/lerobot/pusht/resolve/6e1d9c95aaf8abb19342e723935b6af7c54b5903/meta/tasks.jsonl "HTTP/1.1 307 Temporary Redirect"
+INFO 2026-10-30 07:31:52 _client.py:1025 HTTP Request: HEAD https://huggingface.co/api/resolve-cache/datasets/lerobot/pusht/6e1d9c95aaf8abb19342e723935b6af7c54b5903/meta%2Fepisodes.jsonl?%2Fdatasets%2Flerobot%2Fpusht%2Fresolve%2F6e1d9c95aaf8abb19342e723935b6af7c54b5903%2Fmeta%2Fepisodes.jsonl=&etag=%224be46f1f591d1cf87eb21d66b7cde14d25e2b594%22 "HTTP/1.1 200 OK"
+INFO 2026-10-30 07:31:52 _client.py:1025 HTTP Request: HEAD https://huggingface.co/api/resolve-cache/datasets/lerobot/pusht/6e1d9c95aaf8abb19342e723935b6af7c54b5903/meta%2Ftasks.jsonl?%2Fdatasets%2Flerobot%2Fpusht%2Fresolve%2F6e1d9c95aaf8abb19342e723935b6af7c54b5903%2Fmeta%2Ftasks.jsonl=&etag=%22c1b0bc09ff33ebfcf4a0175d13503f65ffdf5ca9%22 "HTTP/1.1 200 OK"
+INFO 2026-10-30 07:31:52 _client.py:1025 HTTP Request: HEAD https://huggingface.co/datasets/lerobot/pusht/resolve/6e1d9c95aaf8abb19342e723935b6af7c54b5903/meta/episodes_stats.jsonl "HTTP/1.1 307 Temporary Redirect"
+INFO 2026-10-30 07:31:52 _client.py:1025 HTTP Request: GET https://huggingface.co/api/resolve-cache/datasets/lerobot/pusht/6e1d9c95aaf8abb19342e723935b6af7c54b5903/meta%2Fepisodes.jsonl?%2Fdatasets%2Flerobot%2Fpusht%2Fresolve%2F6e1d9c95aaf8abb19342e723935b6af7c54b5903%2Fmeta%2Fepisodes.jsonl=&etag=%224be46f1f591d1cf87eb21d66b7cde14d25e2b594%22 "HTTP/1.1 200 OK"
+Fetching 4 files:  50%|█████     | 2/4 [00:00<00:00,  9.24it/s]INFO 2026-10-30 07:31:52 _client.py:1025 HTTP Request: GET https://huggingface.co/api/resolve-cache/datasets/lerobot/pusht/6e1d9c95aaf8abb19342e723935b6af7c54b5903/meta%2Ftasks.jsonl?%2Fdatasets%2Flerobot%2Fpusht%2Fresolve%2F6e1d9c95aaf8abb19342e723935b6af7c54b5903%2Fmeta%2Ftasks.jsonl=&etag=%22c1b0bc09ff33ebfcf4a0175d13503f65ffdf5ca9%22 "HTTP/1.1 200 OK"
+INFO 2026-10-30 07:31:52 _client.py:1025 HTTP Request: HEAD https://huggingface.co/api/resolve-cache/datasets/lerobot/pusht/6e1d9c95aaf8abb19342e723935b6af7c54b5903/meta%2Fepisodes_stats.jsonl?%2Fdatasets%2Flerobot%2Fpusht%2Fresolve%2F6e1d9c95aaf8abb19342e723935b6af7c54b5903%2Fmeta%2Fepisodes_stats.jsonl=&etag=%22001a733a06ce00487095bc4a4af1017c4b3cfb36%22 "HTTP/1.1 200 OK"
+INFO 2026-10-30 07:31:52 _client.py:1025 HTTP Request: GET https://huggingface.co/api/resolve-cache/datasets/lerobot/pusht/6e1d9c95aaf8abb19342e723935b6af7c54b5903/meta%2Fepisodes_stats.jsonl?%2Fdatasets%2Flerobot%2Fpusht%2Fresolve%2F6e1d9c95aaf8abb19342e723935b6af7c54b5903%2Fmeta%2Fepisodes_stats.jsonl=&etag=%22001a733a06ce00487095bc4a4af1017c4b3cfb36%22 "HTTP/1.1 200 OK"
+Fetching 4 files: 100%|██████████| 4/4 [00:00<00:00, 13.53it/s]Fetching 4 files: 100%|██████████| 4/4 [00:00<00:00, 12.21it/s]
+INFO 2026-10-30 07:31:52 _client.py:1025 HTTP Request: GET https://huggingface.co/api/datasets/lerobot/pusht/refs "HTTP/1.1 200 OK"
+INFO 2026-10-30 07:31:52 _client.py:1025 HTTP Request: GET https://huggingface.co/api/datasets/lerobot/pusht/revision/v2.1 "HTTP/1.1 200 OK"
+Fetching 418 files:   0%|          | 0/418 [00:00<?, ?it/s]INFO 2026-10-30 07:31:52 _client.py:1025 HTTP Request: HEAD https://huggingface.co/datasets/lerobot/pusht/resolve/6e1d9c95aaf8abb19342e723935b6af7c54b5903/.gitattributes "HTTP/1.1 307 Temporary Redirect"
+INFO 2026-10-30 07:31:52 _client.py:1025 HTTP Request: HEAD https://huggingface.co/datasets/lerobot/pusht/resolve/6e1d9c95aaf8abb19342e723935b6af7c54b5903/README.md "HTTP/1.1 307 Temporary Redirect"
+INFO 2026-10-30 07:31:52 _client.py:1025 HTTP Request: HEAD https://huggingface.co/api/resolve-cache/datasets/lerobot/pusht/6e1d9c95aaf8abb19342e723935b6af7c54b5903/README.md?%2Fdatasets%2Flerobot%2Fpusht%2Fresolve%2F6e1d9c95aaf8abb19342e723935b6af7c54b5903%2FREADME.md=&etag=%229005ff31912b5b48506e519c2534cc63961d0e74%22 "HTTP/1.1 200 OK"
+INFO 2026-10-30 07:31:52 _client.py:1025 HTTP Request: HEAD https://huggingface.co/api/resolve-cache/datasets/lerobot/pusht/6e1d9c95aaf8abb19342e723935b6af7c54b5903/.gitattributes?%2Fdatasets%2Flerobot%2Fpusht%2Fresolve%2F6e1d9c95aaf8abb19342e723935b6af7c54b5903%2F.gitattributes=&etag=%2255cab133643a2a73e083373d2106533678d0edd5%22 "HTTP/1.1 200 OK"
+INFO 2026-10-30 07:31:52 _client.py:1025 HTTP Request: GET https://huggingface.co/api/resolve-cache/datasets/lerobot/pusht/6e1d9c95aaf8abb19342e723935b6af7c54b5903/README.md?%2Fdatasets%2Flerobot%2Fpusht%2Fresolve%2F6e1d9c95aaf8abb19342e723935b6af7c54b5903%2FREADME.md=&etag=%229005ff31912b5b48506e519c2534cc63961d0e74%22 "HTTP/1.1 200 OK"
+INFO 2026-10-30 07:31:52 _client.py:1025 HTTP Request: GET https://huggingface.co/api/resolve-cache/datasets/lerobot/pusht/6e1d9c95aaf8abb19342e723935b6af7c54b5903/.gitattributes?%2Fdatasets%2Flerobot%2Fpusht%2Fresolve%2F6e1d9c95aaf8abb19342e723935b6af7c54b5903%2F.gitattributes=&etag=%2255cab133643a2a73e083373d2106533678d0edd5%22 "HTTP/1.1 200 OK"
+Fetching 418 files:   0%|          | 1/418 [00:00<00:59,  6.96it/s]INFO 2026-10-30 07:31:52 _client.py:1025 HTTP Request: GET https://huggingface.co/api/datasets/lerobot/pusht/xet-read-token/6e1d9c95aaf8abb19342e723935b6af7c54b5903 "HTTP/1.1 200 OK"
+Fetching 418 files:   1%|          | 3/418 [00:00<01:39,  4.16it/s]Fetching 418 files:   2%|▏         | 8/418 [00:00<00:33, 12.41it/s]Fetching 418 files:   3%|▎         | 11/418 [00:00<00:30, 13.46it/s]Fetching 418 files:   3%|▎         | 14/418 [00:01<00:25, 16.08it/s]Fetching 418 files:   5%|▍         | 19/418 [00:01<00:19, 20.37it/s]Fetching 418 files:   5%|▌         | 22/418 [00:01<00:19, 20.53it/s]Fetching 418 files:   6%|▋         | 27/418 [00:01<00:15, 25.32it/s]Fetching 418 files:   7%|▋         | 30/418 [00:01<00:17, 22.27it/s]Fetching 418 files:   8%|▊         | 33/418 [00:01<00:16, 23.58it/s]Fetching 418 files:   9%|▉         | 37/418 [00:01<00:15, 24.29it/s]Fetching 418 files:  10%|▉         | 41/418 [00:02<00:14, 26.51it/s]Fetching 418 files:  11%|█         | 45/418 [00:02<00:14, 24.89it/s]Fetching 418 files:  11%|█▏        | 48/418 [00:02<00:14, 25.36it/s]Fetching 418 files:  13%|█▎        | 53/418 [00:02<00:14, 25.40it/s]Fetching 418 files:  14%|█▎        | 57/418 [00:02<00:14, 25.66it/s]Fetching 418 files:  14%|█▍        | 60/418 [00:02<00:13, 25.70it/s]Fetching 418 files:  15%|█▌        | 64/418 [00:02<00:12, 28.94it/s]Fetching 418 files:  16%|█▋        | 68/418 [00:03<00:15, 23.32it/s]Fetching 418 files:  17%|█▋        | 73/418 [00:03<00:12, 28.63it/s]Fetching 418 files:  18%|█▊        | 77/418 [00:03<00:13, 24.58it/s]Fetching 418 files:  20%|█▉        | 82/418 [00:03<00:12, 26.55it/s]Fetching 418 files:  20%|██        | 85/418 [00:03<00:13, 25.07it/s]Fetching 418 files:  21%|██▏       | 89/418 [00:03<00:12, 27.23it/s]Fetching 418 files:  22%|██▏       | 92/418 [00:04<00:13, 24.47it/s]Fetching 418 files:  23%|██▎       | 97/418 [00:04<00:10, 29.29it/s]Fetching 418 files:  24%|██▍       | 101/418 [00:04<00:12, 26.26it/s]Fetching 418 files:  25%|██▌       | 105/418 [00:04<00:10, 29.19it/s]Fetching 418 files:  26%|██▌       | 109/418 [00:04<00:12, 25.64it/s]Fetching 418 files:  27%|██▋       | 112/418 [00:04<00:12, 25.11it/s]Fetching 418 files:  28%|██▊       | 115/418 [00:05<00:13, 22.42it/s]Fetching 418 files:  29%|██▊       | 120/418 [00:05<00:11, 25.66it/s]Fetching 418 files:  29%|██▉       | 123/418 [00:05<00:12, 24.20it/s]Fetching 418 files:  30%|███       | 126/418 [00:05<00:11, 25.15it/s]Fetching 418 files:  31%|███       | 129/418 [00:05<00:11, 25.78it/s]Fetching 418 files:  32%|███▏      | 133/418 [00:05<00:10, 27.87it/s]Fetching 418 files:  33%|███▎      | 136/418 [00:05<00:10, 27.38it/s]Fetching 418 files:  33%|███▎      | 140/418 [00:05<00:10, 27.12it/s]Fetching 418 files:  34%|███▍      | 144/418 [00:06<00:09, 27.94it/s]Fetching 418 files:  35%|███▌      | 148/418 [00:06<00:09, 27.66it/s]Fetching 418 files:  36%|███▋      | 152/418 [00:06<00:09, 28.90it/s]Fetching 418 files:  37%|███▋      | 155/418 [00:06<00:09, 27.67it/s]Fetching 418 files:  38%|███▊      | 160/418 [00:06<00:08, 29.25it/s]Fetching 418 files:  39%|███▉      | 163/418 [00:06<00:08, 28.34it/s]Fetching 418 files:  40%|███▉      | 166/418 [00:06<00:08, 28.55it/s]Fetching 418 files:  40%|████      | 169/418 [00:06<00:08, 28.01it/s]Fetching 418 files:  41%|████      | 172/418 [00:07<00:08, 27.81it/s]Fetching 418 files:  42%|████▏     | 176/418 [00:07<00:07, 30.56it/s]Fetching 418 files:  43%|████▎     | 180/418 [00:07<00:08, 26.54it/s]Fetching 418 files:  44%|████▍     | 185/418 [00:07<00:08, 28.17it/s]Fetching 418 files:  45%|████▍     | 188/418 [00:07<00:08, 27.71it/s]Fetching 418 files:  46%|████▌     | 192/418 [00:07<00:07, 30.09it/s]Fetching 418 files:  47%|████▋     | 196/418 [00:07<00:07, 27.81it/s]Fetching 418 files:  48%|████▊     | 199/418 [00:07<00:07, 28.04it/s]Fetching 418 files:  50%|████▉     | 208/418 [00:08<00:05, 37.99it/s]Fetching 418 files:  51%|█████     | 212/418 [00:08<00:05, 35.92it/s]Fetching 418 files:  52%|█████▏    | 216/418 [00:08<00:05, 34.46it/s]Fetching 418 files:  53%|█████▎    | 220/418 [00:08<00:06, 30.63it/s]Fetching 418 files:  54%|█████▎    | 224/418 [00:08<00:06, 31.91it/s]Fetching 418 files:  55%|█████▍    | 228/418 [00:08<00:06, 27.46it/s]Fetching 418 files:  56%|█████▌    | 233/418 [00:09<00:06, 27.42it/s]Fetching 418 files:  56%|█████▋    | 236/418 [00:09<00:06, 26.32it/s]Fetching 418 files:  58%|█████▊    | 241/418 [00:09<00:06, 26.22it/s]Fetching 418 files:  59%|█████▉    | 246/418 [00:09<00:06, 28.25it/s]Fetching 418 files:  60%|█████▉    | 249/418 [00:09<00:06, 27.36it/s]Fetching 418 files:  61%|██████    | 254/418 [00:09<00:05, 28.86it/s]Fetching 418 files:  62%|██████▏   | 258/418 [00:09<00:05, 30.13it/s]Fetching 418 files:  63%|██████▎   | 262/418 [00:10<00:05, 28.34it/s]Fetching 418 files:  63%|██████▎   | 265/418 [00:10<00:05, 28.32it/s]Fetching 418 files:  64%|██████▍   | 268/418 [00:10<00:05, 28.41it/s]Fetching 418 files:  65%|██████▍   | 271/418 [00:10<00:05, 28.37it/s]Fetching 418 files:  66%|██████▌   | 274/418 [00:10<00:05, 25.17it/s]Fetching 418 files:  67%|██████▋   | 278/418 [00:10<00:05, 25.57it/s]Fetching 418 files:  67%|██████▋   | 282/418 [00:10<00:05, 25.39it/s]Fetching 418 files:  68%|██████▊   | 286/418 [00:11<00:04, 27.00it/s]Fetching 418 files:  69%|██████▉   | 290/418 [00:11<00:04, 28.30it/s]Fetching 418 files:  70%|███████   | 294/418 [00:11<00:04, 27.32it/s]Fetching 418 files:  71%|███████▏  | 298/418 [00:11<00:04, 28.97it/s]Fetching 418 files:  72%|███████▏  | 302/418 [00:11<00:04, 27.15it/s]Fetching 418 files:  73%|███████▎  | 307/418 [00:11<00:03, 30.26it/s]Fetching 418 files:  74%|███████▍  | 311/418 [00:11<00:03, 27.99it/s]Fetching 418 files:  75%|███████▌  | 315/418 [00:12<00:03, 28.55it/s]Fetching 418 files:  76%|███████▌  | 318/418 [00:12<00:03, 26.37it/s]Fetching 418 files:  77%|███████▋  | 322/418 [00:12<00:03, 29.13it/s]Fetching 418 files:  78%|███████▊  | 326/418 [00:12<00:03, 27.36it/s]Fetching 418 files:  79%|███████▊  | 329/418 [00:12<00:03, 26.23it/s]Fetching 418 files:  80%|███████▉  | 334/418 [00:12<00:02, 30.08it/s]Fetching 418 files:  81%|████████  | 338/418 [00:12<00:02, 26.93it/s]Fetching 418 files:  82%|████████▏ | 343/418 [00:12<00:02, 31.12it/s]Fetching 418 files:  83%|████████▎ | 347/418 [00:13<00:02, 28.36it/s]Fetching 418 files:  84%|████████▍ | 352/418 [00:13<00:02, 27.62it/s]Fetching 418 files:  85%|████████▍ | 355/418 [00:13<00:02, 28.04it/s]Fetching 418 files:  86%|████████▌ | 359/418 [00:13<00:01, 30.30it/s]Fetching 418 files:  87%|████████▋ | 363/418 [00:13<00:01, 28.33it/s]Fetching 418 files:  88%|████████▊ | 366/418 [00:13<00:01, 28.63it/s]Fetching 418 files:  88%|████████▊ | 369/418 [00:13<00:01, 27.70it/s]Fetching 418 files:  89%|████████▉ | 373/418 [00:14<00:01, 28.01it/s]Fetching 418 files:  90%|████████▉ | 376/418 [00:14<00:01, 27.95it/s]Fetching 418 files:  91%|█████████ | 380/418 [00:14<00:01, 26.49it/s]Fetching 418 files:  92%|█████████▏| 385/418 [00:14<00:01, 26.44it/s]Fetching 418 files:  93%|█████████▎| 388/418 [00:14<00:01, 25.47it/s]Fetching 418 files:  94%|█████████▍| 393/418 [00:14<00:00, 28.61it/s]Fetching 418 files:  95%|█████████▍| 396/418 [00:14<00:00, 27.12it/s]Fetching 418 files:  96%|█████████▌| 400/418 [00:15<00:00, 26.60it/s]Fetching 418 files:  96%|█████████▋| 403/418 [00:15<00:00, 26.32it/s]Fetching 418 files:  98%|█████████▊| 408/418 [00:15<00:00, 27.75it/s]Fetching 418 files:  98%|█████████▊| 411/418 [00:15<00:00, 27.03it/s]Fetching 418 files:  99%|█████████▉| 415/418 [00:15<00:00, 29.26it/s]Fetching 418 files: 100%|██████████| 418/418 [00:15<00:00, 26.65it/s]
+INFO 2026-10-30 07:32:08 _client.py:1025 HTTP Request: HEAD https://s3.amazonaws.com/datasets.huggingface.co/datasets/datasets/parquet/parquet.py "HTTP/1.1 404 Not Found"
+Downloading data:   0%|          | 0/206 [00:00<?, ?files/s]Downloading data: 100%|██████████| 206/206 [00:00<00:00, 7423.99files/s]
+Generating train split: 0 examples [00:00, ? examples/s]Generating train split: 5289 examples [00:00, 50749.16 examples/s]Generating train split: 10976 examples [00:00, 53502.72 examples/s]Generating train split: 16789 examples [00:00, 55156.45 examples/s]Generating train split: 22908 examples [00:00, 57105.42 examples/s]Generating train split: 25650 examples [00:00, 55780.93 examples/s]
+INFO 2026-10-30 07:32:09 ts/train.py:138 Creating policy
+/kaggle/tmp/lerobot/src/lerobot/policies/vqbet/vqbet_utils.py:1385: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  @autocast(enabled=False)
+number of parameters: 26.00M
+INFO 2026-10-30 07:32:10 ts/train.py:144 Creating optimizer and scheduler
+INFO 2026-10-30 07:32:10 ts/train.py:156 Output dir: /kaggle/tmp/train/vqbet_px
+INFO 2026-10-30 07:32:10 ts/train.py:158 cfg.env.task='PushT-v0'
+INFO 2026-10-30 07:32:10 ts/train.py:159 cfg.steps=10000 (10K)
+INFO 2026-10-30 07:32:10 ts/train.py:160 dataset.num_frames=25650 (26K)
+INFO 2026-10-30 07:32:10 ts/train.py:161 dataset.num_episodes=206
+INFO 2026-10-30 07:32:10 ts/train.py:162 num_learnable_params=37515530 (38M)
+INFO 2026-10-30 07:32:10 ts/train.py:163 num_total_params=37515542 (38M)
+INFO 2026-10-30 07:32:10 ts/train.py:202 Start offline training on a fixed dataset
+INFO 2026-10-30 07:33:17 ts/train.py:232 step:100 smpl:6K ep:51 epch:0.25 loss:0.281 grdn:0.251 lr:1.0e-04 updt_s:0.052 data_s:0.612
+INFO 2026-10-30 07:34:21 ts/train.py:232 step:200 smpl:13K ep:103 epch:0.50 loss:0.099 grdn:0.408 lr:1.0e-04 updt_s:0.051 data_s:0.589
+INFO 2026-10-30 07:35:25 ts/train.py:232 step:300 smpl:19K ep:154 epch:0.75 loss:0.063 grdn:0.256 lr:1.0e-04 updt_s:0.052 data_s:0.594
+INFO 2026-10-30 07:36:30 ts/train.py:232 step:400 smpl:26K ep:206 epch:1.00 loss:0.064 grdn:0.323 lr:1.0e-04 updt_s:0.051 data_s:0.593
+INFO 2026-10-30 07:37:35 ts/train.py:232 step:500 smpl:32K ep:257 epch:1.25 loss:0.064 grdn:0.267 lr:1.0e-04 updt_s:0.048 data_s:0.600
+INFO 2026-10-30 07:38:39 ts/train.py:232 step:600 smpl:38K ep:308 epch:1.50 loss:0.064 grdn:0.263 lr:1.0e-04 updt_s:0.048 data_s:0.593
+INFO 2026-10-30 07:39:44 ts/train.py:232 step:700 smpl:45K ep:360 epch:1.75 loss:0.064 grdn:0.254 lr:1.0e-04 updt_s:0.048 data_s:0.602
+INFO 2026-10-30 07:40:48 ts/train.py:232 step:800 smpl:51K ep:411 epch:2.00 loss:0.063 grdn:0.240 lr:1.0e-04 updt_s:0.049 data_s:0.596
+INFO 2026-10-30 07:41:52 ts/train.py:232 step:900 smpl:58K ep:463 epch:2.25 loss:0.064 grdn:0.259 lr:1.0e-04 updt_s:0.049 data_s:0.590
+INFO 2026-10-30 07:42:56 ts/train.py:232 step:1K smpl:64K ep:514 epch:2.50 loss:0.063 grdn:0.247 lr:1.0e-04 updt_s:0.049 data_s:0.590
+INFO 2026-10-30 07:44:00 ts/train.py:232 step:1K smpl:70K ep:565 epch:2.74 loss:0.063 grdn:0.231 lr:1.0e-04 updt_s:0.048 data_s:0.591
+INFO 2026-10-30 07:45:05 ts/train.py:232 step:1K smpl:77K ep:617 epch:2.99 loss:0.063 grdn:0.230 lr:1.0e-04 updt_s:0.049 data_s:0.596
+INFO 2026-10-30 07:46:10 ts/train.py:232 step:1K smpl:83K ep:668 epch:3.24 loss:0.063 grdn:0.218 lr:1.0e-04 updt_s:0.049 data_s:0.605
+INFO 2026-10-30 07:47:14 ts/train.py:232 step:1K smpl:90K ep:720 epch:3.49 loss:0.064 grdn:0.273 lr:1.0e-04 updt_s:0.050 data_s:0.592
+INFO 2026-10-30 07:48:18 ts/train.py:232 step:2K smpl:96K ep:771 epch:3.74 loss:0.064 grdn:0.260 lr:1.0e-04 updt_s:0.048 data_s:0.590
+INFO 2026-10-30 07:49:22 ts/train.py:232 step:2K smpl:102K ep:822 epch:3.99 loss:0.065 grdn:0.274 lr:1.0e-04 updt_s:0.053 data_s:0.592
+INFO 2026-10-30 07:50:27 ts/train.py:232 step:2K smpl:109K ep:874 epch:4.24 loss:0.063 grdn:0.208 lr:1.0e-04 updt_s:0.049 data_s:0.593
+INFO 2026-10-30 07:51:31 ts/train.py:232 step:2K smpl:115K ep:925 epch:4.49 loss:0.063 grdn:0.228 lr:1.0e-04 updt_s:0.049 data_s:0.592
+INFO 2026-10-30 07:52:35 ts/train.py:232 step:2K smpl:122K ep:977 epch:4.74 loss:0.065 grdn:0.244 lr:1.0e-04 updt_s:0.049 data_s:0.589
+Finished discretizing action data!
+INFO 2026-10-30 07:53:39 ts/train.py:232 step:2K smpl:128K ep:1K epch:4.99 loss:0.064 grdn:0.213 lr:9.9e-05 updt_s:0.049 data_s:0.591
+INFO 2026-10-30 08:08:29 ts/train.py:232 step:2K smpl:134K ep:1K epch:5.24 loss:3410.261 grdn:15472.122 lr:1.0e-05 updt_s:8.852 data_s:0.041
+INFO 2026-10-30 08:23:10 ts/train.py:232 step:2K smpl:141K ep:1K epch:5.49 loss:1630.366 grdn:13823.778 lr:3.0e-05 updt_s:8.793 data_s:0.018
+INFO 2026-10-30 08:37:56 ts/train.py:232 step:2K smpl:147K ep:1K epch:5.74 loss:1389.338 grdn:17062.338 lr:5.0e-05 updt_s:8.833 data_s:0.017
+INFO 2026-10-30 08:52:47 ts/train.py:232 step:2K smpl:154K ep:1K epch:5.99 loss:1266.935 grdn:17704.211 lr:7.0e-05 updt_s:8.882 data_s:0.018
+INFO 2026-10-30 09:07:50 ts/train.py:232 step:2K smpl:160K ep:1K epch:6.24 loss:1112.330 grdn:16187.182 lr:9.0e-05 updt_s:8.975 data_s:0.045
+INFO 2026-10-30 09:22:46 ts/train.py:232 step:3K smpl:166K ep:1K epch:6.49 loss:1060.232 grdn:15444.025 lr:1.0e-04 updt_s:8.934 data_s:0.017
+INFO 2026-10-30 09:38:33 ts/train.py:232 step:3K smpl:173K ep:1K epch:6.74 loss:1022.541 grdn:13786.632 lr:1.0e-04 updt_s:9.444 data_s:0.020
+INFO 2026-10-30 09:53:46 ts/train.py:232 step:3K smpl:179K ep:1K epch:6.99 loss:978.342 grdn:12112.457 lr:1.0e-04 updt_s:9.099 data_s:0.018
+INFO 2026-10-30 10:08:43 ts/train.py:232 step:3K smpl:186K ep:1K epch:7.24 loss:949.979 grdn:10982.015 lr:1.0e-04 updt_s:8.920 data_s:0.040
+INFO 2026-10-30 10:23:46 ts/train.py:232 step:3K smpl:192K ep:2K epch:7.49 loss:920.703 grdn:10224.668 lr:9.9e-05 updt_s:9.005 data_s:0.018
+INFO 2026-10-30 10:38:43 ts/train.py:232 step:3K smpl:198K ep:2K epch:7.73 loss:914.466 grdn:10626.395 lr:9.9e-05 updt_s:8.945 data_s:0.017
+INFO 2026-10-30 10:53:43 ts/train.py:232 step:3K smpl:205K ep:2K epch:7.98 loss:885.105 grdn:10439.337 lr:9.9e-05 updt_s:8.969 data_s:0.017
+INFO 2026-10-30 11:08:30 ts/train.py:232 step:3K smpl:211K ep:2K epch:8.23 loss:897.846 grdn:10735.924 lr:9.8e-05 updt_s:8.820 data_s:0.044
+INFO 2026-10-30 11:23:29 ts/train.py:232 step:3K smpl:218K ep:2K epch:8.48 loss:844.720 grdn:9060.708 lr:9.8e-05 updt_s:8.962 data_s:0.018
+INFO 2026-10-30 11:38:28 ts/train.py:232 step:4K smpl:224K ep:2K epch:8.73 loss:831.932 grdn:8903.747 lr:9.8e-05 updt_s:8.968 data_s:0.018
+INFO 2026-10-30 11:53:25 ts/train.py:232 step:4K smpl:230K ep:2K epch:8.98 loss:824.030 grdn:9050.312 lr:9.7e-05 updt_s:8.940 data_s:0.018
+INFO 2026-10-30 12:08:50 ts/train.py:232 step:4K smpl:237K ep:2K epch:9.23 loss:810.536 grdn:9357.985 lr:9.6e-05 updt_s:9.197 data_s:0.044
+INFO 2026-10-30 12:24:07 ts/train.py:232 step:4K smpl:243K ep:2K epch:9.48 loss:799.057 grdn:8738.138 lr:9.6e-05 updt_s:9.150 data_s:0.018
+INFO 2026-10-30 12:39:27 ts/train.py:232 step:4K smpl:250K ep:2K epch:9.73 loss:782.249 grdn:8023.077 lr:9.5e-05 updt_s:9.171 data_s:0.018
+INFO 2026-10-30 12:54:54 ts/train.py:232 step:4K smpl:256K ep:2K epch:9.98 loss:802.583 grdn:9320.060 lr:9.4e-05 updt_s:9.243 data_s:0.019

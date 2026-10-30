@@ -12,8 +12,10 @@ Official references evaluated with the same eval protocol:
   lerobot/diffusion_pusht_keypoints 2024-07 Hydra-format checkpoint (converted in-kernel), card 71.0% / 500 episodes
   (lerobot/diffusion_pusht was evaluated earlier: 66% / 50 episodes, card 65.4%)
 
-Split into two kernels by build.py because the weekly Kaggle GPU quota ran out: "cpu" (no GPU: TD-MPC, VQ-BeT and
-both reference evaluations are cheap enough) and "gpu" (the two Diffusion Policy runs, 249M / 263M params).
+Split into two kernels by build.py because the weekly Kaggle GPU quota ran out: "cpu" (no GPU) and "gpu". The cpu run
+(2026-10-30) finished both reference evaluations and the TD-MPC training, but TD-MPC evaluation timed out (40 s per env
+step on CPU) and VQ-BeT reached only 4k of 10k steps (9 s/step) before the 12 h kernel limit; so the gpu kernel trains
+VQ-BeT and both Diffusion Policies and evaluates the cpu kernel's TD-MPC checkpoint (dataset cindyxue1122/tdmpc-pusht-kp-10k).
 
 Outputs: /kaggle/working/{train/<run>/train_log.json, eval/<run>/eval_info.json, ckpts/<run>/pretrained_model (only if
           model.safetensors < 200 MB), logs/*.log, env/*, summary.json, summary.md}
@@ -79,6 +81,10 @@ REFS = {  # official checkpoints, evaluated with the same protocol
                             label="official lerobot/vqbet_pusht (250k steps; card 57.0% / 500 eps)"),
     "ref_diffusion_pusht_keypoints": dict(repo="lerobot/diffusion_pusht_keypoints", env=KP_ENV, convert="diffusion",
                                           label="official lerobot/diffusion_pusht_keypoints (Hydra ckpt converted; card 71.0% / 500 eps)"),
+    # the cpu kernel trained tdmpc_kp but its evaluation (CEM planning, 50 envs) ran at 40 s per env step on CPU and timed
+    # out; the checkpoint was uploaded as a Kaggle dataset and is evaluated by the gpu kernel with the same protocol
+    "tdmpc_kp_cpu10k": dict(repo="/kaggle/input/tdmpc-pusht-kp-10k", env=KP_ENV, convert=None,
+                            label="TD-MPC, keypoints + agent pos, offline, 10000 steps, train seed 1 (trained in the cpu kernel)"),
 }
 
 if ONLY_REFS is not None:

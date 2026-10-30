@@ -1,0 +1,13 @@
+
+===== [01:05:13] $ nvidia-smi || true; echo; python -V; nproc; free -g; df -h /kaggle/working /kaggle/tmp /tmp | cat
+/bin/bash: line 1: nvidia-smi: command not found
+
+Python 3.13.15
+4
+               total        used        free      shared  buff/cache   available
+Mem:              31           0          26           0           4          30
+Swap:              0           0           0
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/loop2       20G  172K   20G   1% /kaggle/working
+overlay         8.0T  7.0T  1.1T  88% /
+overlay         8.0T  7.0T  1.1T  88% /
