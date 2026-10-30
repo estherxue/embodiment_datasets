@@ -33,7 +33,7 @@
 
 训练回路通：loss 单调降到 0.067 / 0.036 且 10k 步未平；同权重同 seed 重跑逐 episode 一致。关键点变体三个训练 seed 的 loss 几乎一样、成功率却是 10% vs 33%——从头训的 checkpoint 单报一个数没有锚，训练 seed 是比评测 seed 和 n 更大的方差来源。详见 `embodied-eval-notes.md` §3。
 
-**续训到 100k 步**（seed 1 的 checkpoint 热启动再训 90k，每 10k 步评 3 seed × 50，最后一个 checkpoint 500 episodes）：关键点 247/500 = 49.4%（CI [45.0, 53.8]），作者同配方 100k 步自报 64.0%，差 15 个点、显著；像素 175/500 = 35.0%（CI [30.9, 39.3]）。关键点版 50k 步后成功率不再上升，在相邻 checkpoint 之间于 30% 到 52% 震荡（loss 仍单调降），像素版单调升到 35%。单 seed 单 checkpoint 的数字带着训练 seed 和 checkpoint 两层方差，49% 与 64% 的差距分不出是配方还是运气。详见 `embodied-eval-notes.md` §3.5。
+**训满 100k 步**（关键点 3 个训练 seed，像素 1 个；每 10k 步评 3 seed × 50，100k checkpoint 500 episodes）：关键点三个 seed 的 100k 结果 49.4 / 49.6 / 43.8%，合并 714/1500 = 47.6%（CI [45.1, 50.1]），作者同配方 100k 步自报 64.0%，差 16 个点，p=2e-10，三条轨迹 30 个 checkpoint 没有一个够到作者的区间，差距是训练侧的系统性差异（lerobot 版本 / 数据集格式待逐项对比），不是 seed 或 checkpoint 运气；像素 175/500 = 35.0%。训练 seed 分量从 10k 时的 11.6 pts 缩到 100k 时的 3.3 pts，但相邻 checkpoint 之间仍在 ±4 到 9 pts 震荡，loss 全程单调降。详见 `embodied-eval-notes.md` §3.5。
 
 ALOHA 插接模型卡自报 20.6%（500 episodes；原论文 20%），MuJoCo 2.3.7 下的 16.7% 与之统计上一致（p=0.29）。之前笔记里写的“自报 83%”来自该仓库的 eval_info.json，排查发现那是 transfer cube 的文件被错传进了插接仓库，用同一流程评 transfer cube 得 76%（模型卡 83%，p=0.10），说明流程能复现作者数字。排查过程见 `lerobot/EVAL_NOTES.md` §6；插接按 500 步（demo 长度）口径补测得 21.0%（21/100），与模型卡重合，比 400 步口径高约 4 个点但不显著。
 
