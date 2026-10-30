@@ -1,7 +1,7 @@
 {
-  "id": "cindyxue1122/lerobot-train-others-pusht",
-  "title": "lerobot-train-others-pusht",
-  "code_file": "lerobot_train_others_pusht.py",
+  "id": "cindyxue1122/lerobot-train-others-pusht-gpu",
+  "title": "lerobot-train-others-pusht-gpu",
+  "code_file": "lerobot_train_others_pusht_gpu.py",
   "language": "python",
   "kernel_type": "script",
   "is_private": true,

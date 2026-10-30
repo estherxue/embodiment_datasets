@@ -12,9 +12,16 @@ Official references evaluated with the same eval protocol:
   lerobot/diffusion_pusht_keypoints 2024-07 Hydra-format checkpoint (converted in-kernel), card 71.0% / 500 episodes
   (lerobot/diffusion_pusht was evaluated earlier: 66% / 50 episodes, card 65.4%)
 
+Split into two kernels by build.py because the weekly Kaggle GPU quota ran out: "cpu" (no GPU: TD-MPC, VQ-BeT and
+both reference evaluations are cheap enough) and "gpu" (the two Diffusion Policy runs, 249M / 263M params).
+
 Outputs: /kaggle/working/{train/<run>/train_log.json, eval/<run>/eval_info.json, ckpts/<run>/pretrained_model (only if
           model.safetensors < 200 MB), logs/*.log, env/*, summary.json, summary.md}
 """
+DEVICE = "cuda"  # replaced by build.py
+ONLY_MODELS = None  # replaced by build.py: list of MODELS keys to train, None = all
+ONLY_REFS = None  # replaced by build.py: list of REFS keys to evaluate, None = all
+
 import json
 import math
 import os
@@ -46,7 +53,9 @@ BATCH_TRAIN = 64
 TRAIN_SEED = 1
 EVAL_SEEDS = [1000, 2000, 3000]
 N_EPISODES, BATCH_EVAL = 50, 50
-BUDGET_S = 10 * 3600  # do not start new training runs after this (Kaggle hard limit: 12 h)
+BUDGET_S = 8 * 3600  # do not start new training runs after this (Kaggle hard limit: 12 h)
+TRAIN_TIMEOUT_S = 3 * 3600 if DEVICE == "cuda" else 7 * 3600
+NUM_WORKERS = 4 if DEVICE == "cuda" else 2
 KEEP_CKPT_MAX_BYTES = 200_000_000
 KP_ENV = "--env.type=pusht --env.obs_type=environment_state_agent_pos"
 PX_ENV = "--env.type=pusht"
@@ -63,6 +72,8 @@ MODELS = {  # run order = dict order (cheap first)
     "diffusion_px": dict(dataset="lerobot/pusht", env=PX_ENV, norm=None,
                          policy="--policy.type=diffusion", label="Diffusion Policy, pixels + agent pos, DDPM-100"),
 }
+if ONLY_MODELS is not None:
+    MODELS = {k: v for k, v in MODELS.items() if k in ONLY_MODELS}
 REFS = {  # official checkpoints, evaluated with the same protocol
     "ref_vqbet_pusht": dict(repo="lerobot/vqbet_pusht", env=PX_ENV, convert=None,
                             label="official lerobot/vqbet_pusht (250k steps; card 57.0% / 500 eps)"),
@@ -70,9 +81,12 @@ REFS = {  # official checkpoints, evaluated with the same protocol
                                           label="official lerobot/diffusion_pusht_keypoints (Hydra ckpt converted; card 71.0% / 500 eps)"),
 }
 
+if ONLY_REFS is not None:
+    REFS = {k: v for k, v in REFS.items() if k in ONLY_REFS}
+
 SUMMARY = {
     "meta": {
-        "lerobot_commit": LEROBOT_COMMIT, "steps": STEPS, "batch_train": BATCH_TRAIN, "train_seed": TRAIN_SEED,
+        "device_mode": DEVICE, "lerobot_commit": LEROBOT_COMMIT, "steps": STEPS, "batch_train": BATCH_TRAIN, "train_seed": TRAIN_SEED,
         "eval_seeds": EVAL_SEEDS, "n_episodes": N_EPISODES, "batch_eval": BATCH_EVAL, "models": MODELS, "refs": REFS,
         "started_utc": time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()),
     },
@@ -115,12 +129,12 @@ import json, os, shutil, sys
 from huggingface_hub import hf_hub_download
 from lerobot.configs.policies import PreTrainedConfig
 from lerobot.policies.diffusion.modeling_diffusion import DiffusionPolicy
-repo, out = sys.argv[1], sys.argv[2]
+repo, out, device = sys.argv[1], sys.argv[2], sys.argv[3]
 old = json.load(open(hf_hub_download(repo, "config.json")))
 TYPE = {"observation.image": "VISUAL", "observation.state": "STATE", "observation.environment_state": "ENV", "action": "ACTION"}
 MODE = {"mean_std": "MEAN_STD", "min_max": "MIN_MAX", "identity": "IDENTITY"}
 new = {"type": "diffusion", "n_obs_steps": old["n_obs_steps"], "normalization_mapping": {}, "input_features": {},
-       "output_features": {}, "device": "cuda", "use_amp": False}
+       "output_features": {}, "device": device, "use_amp": False}
 for k, shape in old["input_shapes"].items():
     new["input_features"][k] = {"type": TYPE[k], "shape": shape}
     new["normalization_mapping"][TYPE[k]] = MODE[old["input_normalization_modes"][k]]
@@ -239,7 +253,7 @@ def stats_from_eval_info(path):
 
 def write_summary_md():
     meta = SUMMARY["meta"]
-    lines = ["# Other LeRobot policies on PushT: 10k-step training + official references, Kaggle", "",
+    lines = [f"# Other LeRobot policies on PushT: 10k-step training + official references, Kaggle ({DEVICE})", "",
              f"- lerobot commit: `{meta['lerobot_commit']}` (v0.3.3), dataset revision v2.1",
              f"- device: {meta.get('device')}  |  GPU: {meta.get('gpu', {}).get('device_name')}  |  torch {meta.get('gpu', {}).get('torch')}",
              f"- training: {meta['steps']} steps, batch {meta['batch_train']}, train seed {meta['train_seed']}",
@@ -315,7 +329,8 @@ def step_install():
     assert sh(f"{uv} venv --python 3.10 {VENV}", "01_install") == 0, "uv venv failed"
     assert sh(f"git clone -q {LEROBOT_REPO} {SRC} && cd {SRC} && git checkout -q {LEROBOT_COMMIT} && "
               f"git log -1 --format='%H %cd %s' --date=short", "01_install") == 0, "git clone/checkout failed"
-    assert sh(f"{uv} pip install --python {PY} torch==2.7.1 torchvision==0.22.1 --index-url https://download.pytorch.org/whl/cu126",
+    idx = "cu126" if DEVICE == "cuda" else "cpu"
+    assert sh(f"{uv} pip install --python {PY} torch==2.7.1 torchvision==0.22.1 --index-url https://download.pytorch.org/whl/{idx}",
               "01_install") == 0, "torch install failed"
     assert sh(f"{uv} pip install --python {PY} --no-deps torchcodec==0.4.0", "01_install") == 0, "torchcodec install failed"
     (TMP / "constraints.txt").write_text("torch==2.7.1\ntorchvision==0.22.1\ntorchcodec==0.4.0\n")
@@ -323,8 +338,9 @@ def step_install():
         "lerobot install failed"
     gpu = gpu_check()
     SUMMARY["meta"]["gpu"] = gpu
-    assert gpu.get("gpu_ok"), f"GPU not usable: {gpu}"
-    SUMMARY["meta"]["device"] = "cuda"
+    if DEVICE == "cuda":
+        assert gpu.get("gpu_ok"), f"GPU not usable: {gpu}"
+    SUMMARY["meta"]["device"] = DEVICE
     sh(f"{uv} pip freeze --python {PY} > {ENV_DIR}/requirements-freeze.txt; wc -l {ENV_DIR}/requirements-freeze.txt",
        "01_install", tail=3)
     save_summary()
@@ -353,10 +369,11 @@ def run_train(name):
     shutil.rmtree(out, ignore_errors=True)  # lerobot refuses to start if output_dir exists
     norm = f" '--policy.normalization_mapping={m['norm']}'" if m["norm"] else ""
     cmd = (f"{LEROBOT_TRAIN} --dataset.repo_id={m['dataset']} {m['env']} {m['policy']} --policy.push_to_hub=false "
-           f"--policy.device=cuda{norm} --output_dir={out} --job_name={name} --steps={STEPS} --save_freq={STEPS} "
-           f"--eval_freq=0 --log_freq={LOG_FREQ} --batch_size={BATCH_TRAIN} --num_workers=4 --seed={TRAIN_SEED} --wandb.enable=false")
+           f"--policy.device={DEVICE}{norm} --output_dir={out} --job_name={name} --steps={STEPS} --save_freq={STEPS} "
+           f"--eval_freq=0 --log_freq={LOG_FREQ} --batch_size={BATCH_TRAIN} --num_workers={NUM_WORKERS} --seed={TRAIN_SEED} "
+           f"--wandb.enable=false")
     t = time.time()
-    rc = sh(cmd, name, timeout=3 * 3600, tail=6)
+    rc = sh(cmd, name, timeout=TRAIN_TIMEOUT_S, tail=6)
     wall = round(time.time() - t, 1)
     ckpt = out / "checkpoints" / f"{STEPS:06d}" / "pretrained_model"
     rec = dict(rc=rc, wall_s=wall, cmd=cmd, dataset=m["dataset"], ckpt=str(ckpt))
@@ -397,7 +414,7 @@ def run_eval(group, label, policy_path, env, eval_seed):
     out = EVAL_DIR / name
     if out.exists() and not (out / "eval_info.json").exists():
         shutil.rmtree(out, ignore_errors=True)
-    cmd = (f"{LEROBOT_EVAL} --policy.path={policy_path} --policy.device=cuda {env} "
+    cmd = (f"{LEROBOT_EVAL} --policy.path={policy_path} --policy.device={DEVICE} {env} "
            f"--eval.n_episodes={N_EPISODES} --eval.batch_size={BATCH_EVAL} --seed={eval_seed} --output_dir={out}")
     t = time.time()
     rc = sh(cmd, name, timeout=3600, tail=6)
@@ -430,7 +447,7 @@ def prepare_ref(name):
     if r["convert"] == "diffusion":
         out = TMP / "ckpts" / name
         script = write_script("convert_old_diffusion.py", CONVERT_OLD_DIFFUSION)
-        rc = sh(f"{PY} {script} {r['repo']} {out}", f"convert_{name}", timeout=1800, tail=4)
+        rc = sh(f"{PY} {script} {r['repo']} {out} {DEVICE}", f"convert_{name}", timeout=1800, tail=4)
         msg = grep_log(f"convert_{name}", "CONVERT_OK ")
         SUMMARY["meta"][f"{name}_convert"] = msg or f"FAILED rc={rc}"
         if not msg:
