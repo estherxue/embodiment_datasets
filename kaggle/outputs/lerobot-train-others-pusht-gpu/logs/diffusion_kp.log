@@ -1,0 +1,266 @@
+
+===== [09:11:20] $ /kaggle/tmp/venv/bin/lerobot-train --dataset.repo_id=lerobot/pusht_keypoints --env.type=pusht --env.obs_type=environment_state_agent_pos --policy.type=diffusion --policy.noise_scheduler_type=DDIM --policy.num_inference_steps=10 --policy.push_to_hub=false --policy.device=cuda '--policy.normalization_mapping={"ENV":"MIN_MAX","STATE":"MIN_MAX","ACTION":"MIN_MAX"}' --output_dir=/kaggle/tmp/train/diffusion_kp --job_name=diffusion_kp --steps=10000 --save_freq=10000 --eval_freq=0 --log_freq=100 --batch_size=64 --num_workers=4 --seed=1 --wandb.enable=false
+INFO 2026-10-31 09:11:27 ts/train.py:111 {'batch_size': 64,
+ 'dataset': {'episodes': None,
+             'image_transforms': {'enable': False,
+                                  'max_num_transforms': 3,
+                                  'random_order': False,
+                                  'tfs': {'brightness': {'kwargs': {'brightness': [0.8,
+                                                                                   1.2]},
+                                                         'type': 'ColorJitter',
+                                                         'weight': 1.0},
+                                          'contrast': {'kwargs': {'contrast': [0.8,
+                                                                               1.2]},
+                                                       'type': 'ColorJitter',
+                                                       'weight': 1.0},
+                                          'hue': {'kwargs': {'hue': [-0.05,
+                                                                     0.05]},
+                                                  'type': 'ColorJitter',
+                                                  'weight': 1.0},
+                                          'saturation': {'kwargs': {'saturation': [0.5,
+                                                                                   1.5]},
+                                                         'type': 'ColorJitter',
+                                                         'weight': 1.0},
+                                          'sharpness': {'kwargs': {'sharpness': [0.5,
+                                                                                 1.5]},
+                                                        'type': 'SharpnessJitter',
+                                                        'weight': 1.0}}},
+             'repo_id': 'lerobot/pusht_keypoints',
+             'revision': None,
+             'root': None,
+             'use_imagenet_stats': True,
+             'video_backend': 'torchcodec'},
+ 'env': {'episode_length': 300,
+         'features': {'action': {'shape': [2],
+                                 'type': <FeatureType.ACTION: 'ACTION'>},
+                      'agent_pos': {'shape': [2],
+                                    'type': <FeatureType.STATE: 'STATE'>},
+                      'environment_state': {'shape': [16],
+                                            'type': <FeatureType.ENV: 'ENV'>}},
+         'features_map': {'action': 'action',
+                          'agent_pos': 'observation.state',
+                          'environment_state': 'observation.environment_state',
+                          'pixels': 'observation.image'},
+         'fps': 10,
+         'obs_type': 'environment_state_agent_pos',
+         'render_mode': 'rgb_array',
+         'task': 'PushT-v0',
+         'type': 'pusht',
+         'visualization_height': 384,
+         'visualization_width': 384},
+ 'eval': {'batch_size': 50, 'n_episodes': 50, 'use_async_envs': False},
+ 'eval_freq': 0,
+ 'job_name': 'diffusion_kp',
+ 'log_freq': 100,
+ 'num_workers': 4,
+ 'optimizer': {'betas': [0.95, 0.999],
+               'eps': 1e-08,
+               'grad_clip_norm': 10.0,
+               'lr': 0.0001,
+               'type': 'adam',
+               'weight_decay': 1e-06},
+ 'output_dir': '/kaggle/tmp/train/diffusion_kp',
+ 'policy': {'beta_end': 0.02,
+            'beta_schedule': 'squaredcos_cap_v2',
+            'beta_start': 0.0001,
+            'clip_sample': True,
+            'clip_sample_range': 1.0,
+            'crop_is_random': True,
+            'crop_shape': [84, 84],
+            'device': 'cuda',
+            'diffusion_step_embed_dim': 128,
+            'do_mask_loss_for_padding': False,
+            'down_dims': [512, 1024, 2048],
+            'drop_n_last_frames': 7,
+            'horizon': 16,
+            'input_features': {},
+            'kernel_size': 5,
+            'license': None,
+            'n_action_steps': 8,
+            'n_groups': 8,
+            'n_obs_steps': 2,
+            'noise_scheduler_type': 'DDIM',
+            'normalization_mapping': {'ACTION': <NormalizationMode.MIN_MAX: 'MIN_MAX'>,
+                                      'ENV': <NormalizationMode.MIN_MAX: 'MIN_MAX'>,
+                                      'STATE': <NormalizationMode.MIN_MAX: 'MIN_MAX'>},
+            'num_inference_steps': 10,
+            'num_train_timesteps': 100,
+            'optimizer_betas': [0.95, 0.999],
+            'optimizer_eps': 1e-08,
+            'optimizer_lr': 0.0001,
+            'optimizer_weight_decay': 1e-06,
+            'output_features': {},
+            'prediction_type': 'epsilon',
+            'pretrained_backbone_weights': None,
+            'private': None,
+            'push_to_hub': False,
+            'repo_id': None,
+            'scheduler_name': 'cosine',
+            'scheduler_warmup_steps': 500,
+            'spatial_softmax_num_keypoints': 32,
+            'tags': None,
+            'type': 'diffusion',
+            'use_amp': False,
+            'use_film_scale_modulation': True,
+            'use_group_norm': True,
+            'use_separate_rgb_encoder_per_camera': False,
+            'vision_backbone': 'resnet18'},
+ 'resume': False,
+ 'save_checkpoint': True,
+ 'save_freq': 10000,
+ 'scheduler': {'name': 'cosine', 'num_warmup_steps': 500, 'type': 'diffuser'},
+ 'seed': 1,
+ 'steps': 10000,
+ 'use_policy_training_preset': True,
+ 'wandb': {'disable_artifact': False,
+           'enable': False,
+           'entity': None,
+           'mode': None,
+           'notes': None,
+           'project': 'lerobot',
+           'run_id': None}}
+INFO 2026-10-31 09:11:27 ts/train.py:117 Logs will be saved locally.
+INFO 2026-10-31 09:11:27 ts/train.py:127 Creating dataset
+INFO 2026-10-31 09:11:27 _client.py:1025 HTTP Request: GET https://huggingface.co/api/datasets/lerobot/pusht_keypoints/refs "HTTP/1.1 200 OK"
+INFO 2026-10-31 09:11:27 _client.py:1025 HTTP Request: GET https://huggingface.co/api/datasets/lerobot/pusht_keypoints/revision/v2.1 "HTTP/1.1 200 OK"
+INFO 2026-10-31 09:11:27 _client.py:1025 HTTP Request: GET https://huggingface.co/api/datasets/lerobot/pusht_keypoints/tree/99414e6663a36f1d7217ba775212cdc9c2b981ff?recursive=true&expand=false "HTTP/1.1 200 OK"
+Fetching 4 files:   0%|          | 0/4 [00:00<?, ?it/s]INFO 2026-10-31 09:11:28 _client.py:1025 HTTP Request: HEAD https://huggingface.co/datasets/lerobot/pusht_keypoints/resolve/99414e6663a36f1d7217ba775212cdc9c2b981ff/meta/info.json "HTTP/1.1 307 Temporary Redirect"
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+INFO 2026-10-31 09:11:28 _client.py:1025 HTTP Request: HEAD https://huggingface.co/datasets/lerobot/pusht_keypoints/resolve/99414e6663a36f1d7217ba775212cdc9c2b981ff/meta/tasks.jsonl "HTTP/1.1 307 Temporary Redirect"
+WARNING 2026-10-31 09:11:28 ls/_http.py:993 Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+INFO 2026-10-31 09:11:28 _client.py:1025 HTTP Request: HEAD https://huggingface.co/api/resolve-cache/datasets/lerobot/pusht_keypoints/99414e6663a36f1d7217ba775212cdc9c2b981ff/meta%2Finfo.json?%2Fdatasets%2Flerobot%2Fpusht_keypoints%2Fresolve%2F99414e6663a36f1d7217ba775212cdc9c2b981ff%2Fmeta%2Finfo.json=&etag=%2276467adce52fb1674293901788032208993e1556%22 "HTTP/1.1 200 OK"
+INFO 2026-10-31 09:11:28 _client.py:1025 HTTP Request: HEAD https://huggingface.co/api/resolve-cache/datasets/lerobot/pusht_keypoints/99414e6663a36f1d7217ba775212cdc9c2b981ff/meta%2Ftasks.jsonl?%2Fdatasets%2Flerobot%2Fpusht_keypoints%2Fresolve%2F99414e6663a36f1d7217ba775212cdc9c2b981ff%2Fmeta%2Ftasks.jsonl=&etag=%22c1b0bc09ff33ebfcf4a0175d13503f65ffdf5ca9%22 "HTTP/1.1 200 OK"
+INFO 2026-10-31 09:11:28 _client.py:1025 HTTP Request: HEAD https://huggingface.co/datasets/lerobot/pusht_keypoints/resolve/99414e6663a36f1d7217ba775212cdc9c2b981ff/meta/episodes_stats.jsonl "HTTP/1.1 307 Temporary Redirect"
+INFO 2026-10-31 09:11:28 _client.py:1025 HTTP Request: HEAD https://huggingface.co/datasets/lerobot/pusht_keypoints/resolve/99414e6663a36f1d7217ba775212cdc9c2b981ff/meta/episodes.jsonl "HTTP/1.1 307 Temporary Redirect"
+INFO 2026-10-31 09:11:28 _client.py:1025 HTTP Request: GET https://huggingface.co/api/resolve-cache/datasets/lerobot/pusht_keypoints/99414e6663a36f1d7217ba775212cdc9c2b981ff/meta%2Ftasks.jsonl?%2Fdatasets%2Flerobot%2Fpusht_keypoints%2Fresolve%2F99414e6663a36f1d7217ba775212cdc9c2b981ff%2Fmeta%2Ftasks.jsonl=&etag=%22c1b0bc09ff33ebfcf4a0175d13503f65ffdf5ca9%22 "HTTP/1.1 200 OK"
+INFO 2026-10-31 09:11:28 _client.py:1025 HTTP Request: GET https://huggingface.co/api/resolve-cache/datasets/lerobot/pusht_keypoints/99414e6663a36f1d7217ba775212cdc9c2b981ff/meta%2Finfo.json?%2Fdatasets%2Flerobot%2Fpusht_keypoints%2Fresolve%2F99414e6663a36f1d7217ba775212cdc9c2b981ff%2Fmeta%2Finfo.json=&etag=%2276467adce52fb1674293901788032208993e1556%22 "HTTP/1.1 200 OK"
+INFO 2026-10-31 09:11:28 _client.py:1025 HTTP Request: HEAD https://huggingface.co/api/resolve-cache/datasets/lerobot/pusht_keypoints/99414e6663a36f1d7217ba775212cdc9c2b981ff/meta%2Fepisodes_stats.jsonl?%2Fdatasets%2Flerobot%2Fpusht_keypoints%2Fresolve%2F99414e6663a36f1d7217ba775212cdc9c2b981ff%2Fmeta%2Fepisodes_stats.jsonl=&etag=%22a4bf340fc18c29d0e0458a8903e5bd21c5d0bfa8%22 "HTTP/1.1 200 OK"
+INFO 2026-10-31 09:11:28 _client.py:1025 HTTP Request: HEAD https://huggingface.co/api/resolve-cache/datasets/lerobot/pusht_keypoints/99414e6663a36f1d7217ba775212cdc9c2b981ff/meta%2Fepisodes.jsonl?%2Fdatasets%2Flerobot%2Fpusht_keypoints%2Fresolve%2F99414e6663a36f1d7217ba775212cdc9c2b981ff%2Fmeta%2Fepisodes.jsonl=&etag=%224be46f1f591d1cf87eb21d66b7cde14d25e2b594%22 "HTTP/1.1 200 OK"
+Fetching 4 files:  25%|██▌       | 1/4 [00:00<00:00,  5.92it/s]INFO 2026-10-31 09:11:28 _client.py:1025 HTTP Request: GET https://huggingface.co/api/resolve-cache/datasets/lerobot/pusht_keypoints/99414e6663a36f1d7217ba775212cdc9c2b981ff/meta%2Fepisodes_stats.jsonl?%2Fdatasets%2Flerobot%2Fpusht_keypoints%2Fresolve%2F99414e6663a36f1d7217ba775212cdc9c2b981ff%2Fmeta%2Fepisodes_stats.jsonl=&etag=%22a4bf340fc18c29d0e0458a8903e5bd21c5d0bfa8%22 "HTTP/1.1 200 OK"
+INFO 2026-10-31 09:11:28 _client.py:1025 HTTP Request: GET https://huggingface.co/api/resolve-cache/datasets/lerobot/pusht_keypoints/99414e6663a36f1d7217ba775212cdc9c2b981ff/meta%2Fepisodes.jsonl?%2Fdatasets%2Flerobot%2Fpusht_keypoints%2Fresolve%2F99414e6663a36f1d7217ba775212cdc9c2b981ff%2Fmeta%2Fepisodes.jsonl=&etag=%224be46f1f591d1cf87eb21d66b7cde14d25e2b594%22 "HTTP/1.1 200 OK"
+Fetching 4 files: 100%|██████████| 4/4 [00:00<00:00, 19.40it/s]
+INFO 2026-10-31 09:11:28 _client.py:1025 HTTP Request: GET https://huggingface.co/api/datasets/lerobot/pusht_keypoints/refs "HTTP/1.1 200 OK"
+INFO 2026-10-31 09:11:28 _client.py:1025 HTTP Request: GET https://huggingface.co/api/datasets/lerobot/pusht_keypoints/revision/v2.1 "HTTP/1.1 200 OK"
+Fetching 212 files:   0%|          | 0/212 [00:00<?, ?it/s]INFO 2026-10-31 09:11:28 _client.py:1025 HTTP Request: HEAD https://huggingface.co/datasets/lerobot/pusht_keypoints/resolve/99414e6663a36f1d7217ba775212cdc9c2b981ff/README.md "HTTP/1.1 307 Temporary Redirect"
+INFO 2026-10-31 09:11:28 _client.py:1025 HTTP Request: HEAD https://huggingface.co/datasets/lerobot/pusht_keypoints/resolve/99414e6663a36f1d7217ba775212cdc9c2b981ff/.gitattributes "HTTP/1.1 307 Temporary Redirect"
+INFO 2026-10-31 09:11:28 _client.py:1025 HTTP Request: HEAD https://huggingface.co/api/resolve-cache/datasets/lerobot/pusht_keypoints/99414e6663a36f1d7217ba775212cdc9c2b981ff/README.md?%2Fdatasets%2Flerobot%2Fpusht_keypoints%2Fresolve%2F99414e6663a36f1d7217ba775212cdc9c2b981ff%2FREADME.md=&etag=%223d2b91ac7af778a4b7c69f3dcb9328646efff1c5%22 "HTTP/1.1 200 OK"
+INFO 2026-10-31 09:11:28 _client.py:1025 HTTP Request: GET https://huggingface.co/api/datasets/lerobot/pusht_keypoints/xet-read-token/99414e6663a36f1d7217ba775212cdc9c2b981ff "HTTP/1.1 200 OK"
+INFO 2026-10-31 09:11:28 _client.py:1025 HTTP Request: HEAD https://huggingface.co/api/resolve-cache/datasets/lerobot/pusht_keypoints/99414e6663a36f1d7217ba775212cdc9c2b981ff/.gitattributes?%2Fdatasets%2Flerobot%2Fpusht_keypoints%2Fresolve%2F99414e6663a36f1d7217ba775212cdc9c2b981ff%2F.gitattributes=&etag=%2228df5f900b358436f0267334b3e3e9af33f917ba%22 "HTTP/1.1 200 OK"
+INFO 2026-10-31 09:11:28 _client.py:1025 HTTP Request: GET https://huggingface.co/api/resolve-cache/datasets/lerobot/pusht_keypoints/99414e6663a36f1d7217ba775212cdc9c2b981ff/README.md?%2Fdatasets%2Flerobot%2Fpusht_keypoints%2Fresolve%2F99414e6663a36f1d7217ba775212cdc9c2b981ff%2FREADME.md=&etag=%223d2b91ac7af778a4b7c69f3dcb9328646efff1c5%22 "HTTP/1.1 200 OK"
+INFO 2026-10-31 09:11:28 _client.py:1025 HTTP Request: GET https://huggingface.co/api/resolve-cache/datasets/lerobot/pusht_keypoints/99414e6663a36f1d7217ba775212cdc9c2b981ff/.gitattributes?%2Fdatasets%2Flerobot%2Fpusht_keypoints%2Fresolve%2F99414e6663a36f1d7217ba775212cdc9c2b981ff%2F.gitattributes=&etag=%2228df5f900b358436f0267334b3e3e9af33f917ba%22 "HTTP/1.1 200 OK"
+Fetching 212 files:   0%|          | 1/212 [00:00<00:24,  8.66it/s]Fetching 212 files:   1%|▏         | 3/212 [00:00<00:37,  5.59it/s]Fetching 212 files:   4%|▍         | 8/212 [00:00<00:13, 15.35it/s]Fetching 212 files:   5%|▌         | 11/212 [00:00<00:11, 17.94it/s]Fetching 212 files:   7%|▋         | 14/212 [00:00<00:09, 20.74it/s]Fetching 212 files:   9%|▉         | 19/212 [00:00<00:07, 27.17it/s]Fetching 212 files:  11%|█         | 23/212 [00:01<00:06, 27.86it/s]Fetching 212 files:  13%|█▎        | 27/212 [00:01<00:06, 28.54it/s]Fetching 212 files:  15%|█▍        | 31/212 [00:01<00:05, 31.07it/s]Fetching 212 files:  17%|█▋        | 35/212 [00:01<00:05, 32.10it/s]Fetching 212 files:  18%|█▊        | 39/212 [00:01<00:05, 32.46it/s]Fetching 212 files:  20%|██        | 43/212 [00:01<00:05, 31.90it/s]Fetching 212 files:  22%|██▏       | 47/212 [00:01<00:05, 32.92it/s]Fetching 212 files:  24%|██▍       | 51/212 [00:01<00:04, 34.72it/s]Fetching 212 files:  26%|██▌       | 55/212 [00:02<00:04, 31.42it/s]Fetching 212 files:  28%|██▊       | 60/212 [00:02<00:04, 31.12it/s]Fetching 212 files:  31%|███       | 66/212 [00:02<00:04, 34.93it/s]Fetching 212 files:  33%|███▎      | 70/212 [00:02<00:04, 34.33it/s]Fetching 212 files:  35%|███▌      | 75/212 [00:02<00:04, 32.47it/s]Fetching 212 files:  37%|███▋      | 79/212 [00:02<00:03, 34.13it/s]Fetching 212 files:  39%|███▉      | 83/212 [00:02<00:03, 35.06it/s]Fetching 212 files:  41%|████      | 87/212 [00:02<00:03, 34.87it/s]Fetching 212 files:  43%|████▎     | 91/212 [00:03<00:03, 36.14it/s]Fetching 212 files:  45%|████▍     | 95/212 [00:03<00:03, 33.28it/s]Fetching 212 files:  47%|████▋     | 100/212 [00:03<00:03, 34.94it/s]Fetching 212 files:  49%|████▉     | 104/212 [00:03<00:03, 33.35it/s]Fetching 212 files:  51%|█████     | 108/212 [00:03<00:03, 34.47it/s]Fetching 212 files:  53%|█████▎    | 112/212 [00:03<00:03, 32.65it/s]Fetching 212 files:  55%|█████▌    | 117/212 [00:03<00:02, 36.36it/s]Fetching 212 files:  57%|█████▋    | 121/212 [00:04<00:02, 32.33it/s]Fetching 212 files:  60%|█████▉    | 127/212 [00:04<00:02, 36.06it/s]Fetching 212 files:  62%|██████▏   | 131/212 [00:04<00:02, 35.37it/s]Fetching 212 files:  64%|██████▎   | 135/212 [00:04<00:02, 36.50it/s]Fetching 212 files:  66%|██████▌   | 139/212 [00:04<00:02, 33.64it/s]Fetching 212 files:  68%|██████▊   | 144/212 [00:04<00:01, 35.24it/s]Fetching 212 files:  70%|██████▉   | 148/212 [00:04<00:01, 34.77it/s]Fetching 212 files:  72%|███████▏  | 152/212 [00:04<00:01, 35.92it/s]Fetching 212 files:  74%|███████▎  | 156/212 [00:04<00:01, 34.30it/s]Fetching 212 files:  76%|███████▌  | 161/212 [00:05<00:01, 31.67it/s]Fetching 212 files:  79%|███████▉  | 167/212 [00:05<00:01, 37.15it/s]Fetching 212 files:  81%|████████  | 171/212 [00:05<00:01, 35.98it/s]Fetching 212 files:  83%|████████▎ | 175/212 [00:05<00:01, 33.63it/s]Fetching 212 files:  84%|████████▍ | 179/212 [00:05<00:00, 33.29it/s]Fetching 212 files:  86%|████████▋ | 183/212 [00:05<00:00, 34.24it/s]Fetching 212 files:  88%|████████▊ | 187/212 [00:05<00:00, 33.34it/s]Fetching 212 files:  91%|█████████ | 192/212 [00:06<00:00, 34.35it/s]Fetching 212 files:  92%|█████████▏| 196/212 [00:06<00:00, 31.43it/s]Fetching 212 files:  95%|█████████▍| 201/212 [00:06<00:00, 30.04it/s]Fetching 212 files:  99%|█████████▉| 210/212 [00:06<00:00, 42.61it/s]Fetching 212 files: 100%|██████████| 212/212 [00:06<00:00, 32.52it/s]
+INFO 2026-10-31 09:11:34 _client.py:1025 HTTP Request: HEAD https://s3.amazonaws.com/datasets.huggingface.co/datasets/datasets/parquet/parquet.py "HTTP/1.1 404 Not Found"
+Downloading data:   0%|          | 0/206 [00:00<?, ?files/s]Downloading data: 100%|██████████| 206/206 [00:00<00:00, 8942.34files/s]
+Generating train split: 0 examples [00:00, ? examples/s]Generating train split: 6513 examples [00:00, 64065.89 examples/s]Generating train split: 12955 examples [00:00, 64177.60 examples/s]Generating train split: 20185 examples [00:00, 66868.60 examples/s]Generating train split: 25650 examples [00:00, 67663.98 examples/s]
+INFO 2026-10-31 09:11:35 ts/train.py:138 Creating policy
+INFO 2026-10-31 09:11:38 ts/train.py:144 Creating optimizer and scheduler
+INFO 2026-10-31 09:11:38 ts/train.py:156 Output dir: /kaggle/tmp/train/diffusion_kp
+INFO 2026-10-31 09:11:38 ts/train.py:158 cfg.env.task='PushT-v0'
+INFO 2026-10-31 09:11:38 ts/train.py:159 cfg.steps=10000 (10K)
+INFO 2026-10-31 09:11:38 ts/train.py:160 dataset.num_frames=25650 (26K)
+INFO 2026-10-31 09:11:38 ts/train.py:161 dataset.num_episodes=206
+INFO 2026-10-31 09:11:38 ts/train.py:162 num_learnable_params=248759426 (249M)
+INFO 2026-10-31 09:11:38 ts/train.py:163 num_total_params=248759470 (249M)
+INFO 2026-10-31 09:11:38 ts/train.py:202 Start offline training on a fixed dataset
+INFO 2026-10-31 09:12:24 ts/train.py:232 step:100 smpl:6K ep:51 epch:0.25 loss:0.659 grdn:6.041 lr:1.0e-05 updt_s:0.330 data_s:0.131
+INFO 2026-10-31 09:13:02 ts/train.py:232 step:200 smpl:13K ep:103 epch:0.50 loss:0.130 grdn:3.120 lr:3.0e-05 updt_s:0.255 data_s:0.122
+INFO 2026-10-31 09:13:39 ts/train.py:232 step:300 smpl:19K ep:154 epch:0.75 loss:0.086 grdn:2.659 lr:5.0e-05 updt_s:0.259 data_s:0.112
+INFO 2026-10-31 09:14:22 ts/train.py:232 step:400 smpl:26K ep:206 epch:1.00 loss:0.069 grdn:1.729 lr:7.0e-05 updt_s:0.291 data_s:0.133
+INFO 2026-10-31 09:15:00 ts/train.py:232 step:500 smpl:32K ep:257 epch:1.25 loss:0.066 grdn:1.554 lr:9.0e-05 updt_s:0.266 data_s:0.120
+INFO 2026-10-31 09:15:39 ts/train.py:232 step:600 smpl:38K ep:308 epch:1.50 loss:0.062 grdn:1.431 lr:1.0e-04 updt_s:0.267 data_s:0.114
+INFO 2026-10-31 09:16:18 ts/train.py:232 step:700 smpl:45K ep:360 epch:1.75 loss:0.058 grdn:1.095 lr:1.0e-04 updt_s:0.267 data_s:0.121
+INFO 2026-10-31 09:16:57 ts/train.py:232 step:800 smpl:51K ep:411 epch:2.00 loss:0.057 grdn:0.985 lr:1.0e-04 updt_s:0.267 data_s:0.123
+INFO 2026-10-31 09:17:35 ts/train.py:232 step:900 smpl:58K ep:463 epch:2.25 loss:0.054 grdn:0.835 lr:1.0e-04 updt_s:0.268 data_s:0.110
+INFO 2026-10-31 09:18:14 ts/train.py:232 step:1K smpl:64K ep:514 epch:2.50 loss:0.052 grdn:0.915 lr:9.9e-05 updt_s:0.268 data_s:0.125
+INFO 2026-10-31 09:18:52 ts/train.py:232 step:1K smpl:70K ep:565 epch:2.74 loss:0.055 grdn:0.697 lr:9.9e-05 updt_s:0.268 data_s:0.112
+INFO 2026-10-31 09:19:31 ts/train.py:232 step:1K smpl:77K ep:617 epch:2.99 loss:0.052 grdn:0.721 lr:9.9e-05 updt_s:0.266 data_s:0.123
+INFO 2026-10-31 09:20:10 ts/train.py:232 step:1K smpl:83K ep:668 epch:3.24 loss:0.051 grdn:0.624 lr:9.8e-05 updt_s:0.268 data_s:0.122
+INFO 2026-10-31 09:20:49 ts/train.py:232 step:1K smpl:90K ep:720 epch:3.49 loss:0.051 grdn:0.837 lr:9.8e-05 updt_s:0.268 data_s:0.114
+INFO 2026-10-31 09:21:27 ts/train.py:232 step:2K smpl:96K ep:771 epch:3.74 loss:0.048 grdn:0.685 lr:9.8e-05 updt_s:0.268 data_s:0.112
+INFO 2026-10-31 09:22:07 ts/train.py:232 step:2K smpl:102K ep:822 epch:3.99 loss:0.048 grdn:0.614 lr:9.7e-05 updt_s:0.268 data_s:0.138
+INFO 2026-10-31 09:22:45 ts/train.py:232 step:2K smpl:109K ep:874 epch:4.24 loss:0.046 grdn:0.672 lr:9.6e-05 updt_s:0.268 data_s:0.108
+INFO 2026-10-31 09:23:23 ts/train.py:232 step:2K smpl:115K ep:925 epch:4.49 loss:0.046 grdn:0.767 lr:9.6e-05 updt_s:0.267 data_s:0.115
+INFO 2026-10-31 09:24:02 ts/train.py:232 step:2K smpl:122K ep:977 epch:4.74 loss:0.048 grdn:0.627 lr:9.5e-05 updt_s:0.267 data_s:0.120
+INFO 2026-10-31 09:24:39 ts/train.py:232 step:2K smpl:128K ep:1K epch:4.99 loss:0.045 grdn:0.697 lr:9.4e-05 updt_s:0.267 data_s:0.104
+INFO 2026-10-31 09:25:17 ts/train.py:232 step:2K smpl:134K ep:1K epch:5.24 loss:0.045 grdn:0.593 lr:9.4e-05 updt_s:0.268 data_s:0.109
+INFO 2026-10-31 09:25:55 ts/train.py:232 step:2K smpl:141K ep:1K epch:5.49 loss:0.044 grdn:0.618 lr:9.3e-05 updt_s:0.267 data_s:0.111
+INFO 2026-10-31 09:26:33 ts/train.py:232 step:2K smpl:147K ep:1K epch:5.74 loss:0.042 grdn:0.630 lr:9.2e-05 updt_s:0.266 data_s:0.114
+INFO 2026-10-31 09:27:12 ts/train.py:232 step:2K smpl:154K ep:1K epch:5.99 loss:0.044 grdn:0.599 lr:9.1e-05 updt_s:0.268 data_s:0.119
+INFO 2026-10-31 09:27:49 ts/train.py:232 step:2K smpl:160K ep:1K epch:6.24 loss:0.043 grdn:0.570 lr:9.0e-05 updt_s:0.267 data_s:0.106
+INFO 2026-10-31 09:28:27 ts/train.py:232 step:3K smpl:166K ep:1K epch:6.49 loss:0.043 grdn:0.662 lr:8.9e-05 updt_s:0.267 data_s:0.107
+INFO 2026-10-31 09:29:05 ts/train.py:232 step:3K smpl:173K ep:1K epch:6.74 loss:0.041 grdn:0.519 lr:8.8e-05 updt_s:0.266 data_s:0.114
+INFO 2026-10-31 09:29:43 ts/train.py:232 step:3K smpl:179K ep:1K epch:6.99 loss:0.042 grdn:0.559 lr:8.7e-05 updt_s:0.267 data_s:0.118
+INFO 2026-10-31 09:30:23 ts/train.py:232 step:3K smpl:186K ep:1K epch:7.24 loss:0.043 grdn:0.531 lr:8.6e-05 updt_s:0.268 data_s:0.125
+INFO 2026-10-31 09:31:04 ts/train.py:232 step:3K smpl:192K ep:2K epch:7.49 loss:0.038 grdn:0.534 lr:8.4e-05 updt_s:0.269 data_s:0.147
+INFO 2026-10-31 09:31:44 ts/train.py:232 step:3K smpl:198K ep:2K epch:7.73 loss:0.041 grdn:0.599 lr:8.3e-05 updt_s:0.266 data_s:0.126
+INFO 2026-10-31 09:32:23 ts/train.py:232 step:3K smpl:205K ep:2K epch:7.98 loss:0.040 grdn:0.602 lr:8.2e-05 updt_s:0.268 data_s:0.125
+INFO 2026-10-31 09:33:02 ts/train.py:232 step:3K smpl:211K ep:2K epch:8.23 loss:0.039 grdn:0.684 lr:8.1e-05 updt_s:0.268 data_s:0.117
+INFO 2026-10-31 09:33:42 ts/train.py:232 step:3K smpl:218K ep:2K epch:8.48 loss:0.039 grdn:0.524 lr:7.9e-05 updt_s:0.268 data_s:0.130
+INFO 2026-10-31 09:34:23 ts/train.py:232 step:4K smpl:224K ep:2K epch:8.73 loss:0.037 grdn:0.482 lr:7.8e-05 updt_s:0.267 data_s:0.147
+INFO 2026-10-31 09:35:02 ts/train.py:232 step:4K smpl:230K ep:2K epch:8.98 loss:0.039 grdn:0.527 lr:7.7e-05 updt_s:0.268 data_s:0.116
+INFO 2026-10-31 09:35:40 ts/train.py:232 step:4K smpl:237K ep:2K epch:9.23 loss:0.036 grdn:0.560 lr:7.5e-05 updt_s:0.267 data_s:0.111
+INFO 2026-10-31 09:36:19 ts/train.py:232 step:4K smpl:243K ep:2K epch:9.48 loss:0.037 grdn:0.488 lr:7.4e-05 updt_s:0.267 data_s:0.124
+INFO 2026-10-31 09:37:00 ts/train.py:232 step:4K smpl:250K ep:2K epch:9.73 loss:0.037 grdn:0.437 lr:7.2e-05 updt_s:0.269 data_s:0.142
+INFO 2026-10-31 09:37:42 ts/train.py:232 step:4K smpl:256K ep:2K epch:9.98 loss:0.036 grdn:0.492 lr:7.1e-05 updt_s:0.268 data_s:0.150
+INFO 2026-10-31 09:38:21 ts/train.py:232 step:4K smpl:262K ep:2K epch:10.23 loss:0.035 grdn:0.373 lr:6.9e-05 updt_s:0.269 data_s:0.124
+INFO 2026-10-31 09:39:01 ts/train.py:232 step:4K smpl:269K ep:2K epch:10.48 loss:0.036 grdn:0.487 lr:6.8e-05 updt_s:0.267 data_s:0.127
+INFO 2026-10-31 09:39:40 ts/train.py:232 step:4K smpl:275K ep:2K epch:10.73 loss:0.034 grdn:0.483 lr:6.6e-05 updt_s:0.268 data_s:0.127
+INFO 2026-10-31 09:40:20 ts/train.py:232 step:4K smpl:282K ep:2K epch:10.98 loss:0.034 grdn:0.412 lr:6.5e-05 updt_s:0.268 data_s:0.129
+INFO 2026-10-31 09:41:00 ts/train.py:232 step:4K smpl:288K ep:2K epch:11.23 loss:0.034 grdn:0.442 lr:6.3e-05 updt_s:0.268 data_s:0.125
+INFO 2026-10-31 09:41:38 ts/train.py:232 step:5K smpl:294K ep:2K epch:11.48 loss:0.034 grdn:0.397 lr:6.1e-05 updt_s:0.267 data_s:0.119
+INFO 2026-10-31 09:42:17 ts/train.py:232 step:5K smpl:301K ep:2K epch:11.73 loss:0.034 grdn:0.409 lr:6.0e-05 updt_s:0.268 data_s:0.121
+INFO 2026-10-31 09:42:57 ts/train.py:232 step:5K smpl:307K ep:2K epch:11.98 loss:0.035 grdn:0.411 lr:5.8e-05 updt_s:0.267 data_s:0.127
+INFO 2026-10-31 09:43:35 ts/train.py:232 step:5K smpl:314K ep:3K epch:12.23 loss:0.033 grdn:0.393 lr:5.7e-05 updt_s:0.268 data_s:0.111
+INFO 2026-10-31 09:44:16 ts/train.py:232 step:5K smpl:320K ep:3K epch:12.48 loss:0.035 grdn:0.387 lr:5.5e-05 updt_s:0.267 data_s:0.141
+INFO 2026-10-31 09:44:54 ts/train.py:232 step:5K smpl:326K ep:3K epch:12.73 loss:0.033 grdn:0.424 lr:5.3e-05 updt_s:0.268 data_s:0.115
+INFO 2026-10-31 09:45:32 ts/train.py:232 step:5K smpl:333K ep:3K epch:12.97 loss:0.034 grdn:0.438 lr:5.2e-05 updt_s:0.268 data_s:0.115
+INFO 2026-10-31 09:46:11 ts/train.py:232 step:5K smpl:339K ep:3K epch:13.22 loss:0.033 grdn:0.363 lr:5.0e-05 updt_s:0.268 data_s:0.115
+INFO 2026-10-31 09:46:51 ts/train.py:232 step:5K smpl:346K ep:3K epch:13.47 loss:0.033 grdn:0.438 lr:4.8e-05 updt_s:0.267 data_s:0.136
+INFO 2026-10-31 09:47:30 ts/train.py:232 step:6K smpl:352K ep:3K epch:13.72 loss:0.032 grdn:0.388 lr:4.7e-05 updt_s:0.269 data_s:0.120
+INFO 2026-10-31 09:48:09 ts/train.py:232 step:6K smpl:358K ep:3K epch:13.97 loss:0.033 grdn:0.384 lr:4.5e-05 updt_s:0.267 data_s:0.122
+INFO 2026-10-31 09:48:49 ts/train.py:232 step:6K smpl:365K ep:3K epch:14.22 loss:0.033 grdn:0.444 lr:4.3e-05 updt_s:0.268 data_s:0.130
+INFO 2026-10-31 09:49:28 ts/train.py:232 step:6K smpl:371K ep:3K epch:14.47 loss:0.032 grdn:0.358 lr:4.2e-05 updt_s:0.268 data_s:0.124
+INFO 2026-10-31 09:50:08 ts/train.py:232 step:6K smpl:378K ep:3K epch:14.72 loss:0.032 grdn:0.413 lr:4.0e-05 updt_s:0.268 data_s:0.122
+INFO 2026-10-31 09:50:46 ts/train.py:232 step:6K smpl:384K ep:3K epch:14.97 loss:0.032 grdn:0.446 lr:3.9e-05 updt_s:0.268 data_s:0.119
+INFO 2026-10-31 09:51:27 ts/train.py:232 step:6K smpl:390K ep:3K epch:15.22 loss:0.031 grdn:0.362 lr:3.7e-05 updt_s:0.267 data_s:0.133
+INFO 2026-10-31 09:52:06 ts/train.py:232 step:6K smpl:397K ep:3K epch:15.47 loss:0.029 grdn:0.353 lr:3.5e-05 updt_s:0.269 data_s:0.127
+INFO 2026-10-31 09:52:45 ts/train.py:232 step:6K smpl:403K ep:3K epch:15.72 loss:0.031 grdn:0.344 lr:3.4e-05 updt_s:0.267 data_s:0.118
+INFO 2026-10-31 09:53:23 ts/train.py:232 step:6K smpl:410K ep:3K epch:15.97 loss:0.031 grdn:0.362 lr:3.2e-05 updt_s:0.268 data_s:0.114
+INFO 2026-10-31 09:54:02 ts/train.py:232 step:6K smpl:416K ep:3K epch:16.22 loss:0.029 grdn:0.334 lr:3.1e-05 updt_s:0.266 data_s:0.118
+INFO 2026-10-31 09:54:40 ts/train.py:232 step:7K smpl:422K ep:3K epch:16.47 loss:0.028 grdn:0.412 lr:2.9e-05 updt_s:0.268 data_s:0.113
+INFO 2026-10-31 09:55:19 ts/train.py:232 step:7K smpl:429K ep:3K epch:16.72 loss:0.030 grdn:0.340 lr:2.8e-05 updt_s:0.268 data_s:0.119
+INFO 2026-10-31 09:55:57 ts/train.py:232 step:7K smpl:435K ep:3K epch:16.97 loss:0.029 grdn:0.337 lr:2.6e-05 updt_s:0.268 data_s:0.119
+INFO 2026-10-31 09:56:37 ts/train.py:232 step:7K smpl:442K ep:4K epch:17.22 loss:0.029 grdn:0.348 lr:2.5e-05 updt_s:0.267 data_s:0.130
+INFO 2026-10-31 09:57:15 ts/train.py:232 step:7K smpl:448K ep:4K epch:17.47 loss:0.029 grdn:0.330 lr:2.3e-05 updt_s:0.268 data_s:0.112
+INFO 2026-10-31 09:57:55 ts/train.py:232 step:7K smpl:454K ep:4K epch:17.72 loss:0.028 grdn:0.309 lr:2.2e-05 updt_s:0.268 data_s:0.128
+INFO 2026-10-31 09:58:33 ts/train.py:232 step:7K smpl:461K ep:4K epch:17.96 loss:0.027 grdn:0.345 lr:2.1e-05 updt_s:0.267 data_s:0.116
+INFO 2026-10-31 09:59:14 ts/train.py:232 step:7K smpl:467K ep:4K epch:18.21 loss:0.028 grdn:0.323 lr:1.9e-05 updt_s:0.267 data_s:0.134
+INFO 2026-10-31 09:59:53 ts/train.py:232 step:7K smpl:474K ep:4K epch:18.46 loss:0.027 grdn:0.318 lr:1.8e-05 updt_s:0.268 data_s:0.126
+INFO 2026-10-31 10:00:33 ts/train.py:232 step:8K smpl:480K ep:4K epch:18.71 loss:0.027 grdn:0.323 lr:1.7e-05 updt_s:0.268 data_s:0.134
+INFO 2026-10-31 10:01:13 ts/train.py:232 step:8K smpl:486K ep:4K epch:18.96 loss:0.027 grdn:0.356 lr:1.6e-05 updt_s:0.268 data_s:0.129
+INFO 2026-10-31 10:01:53 ts/train.py:232 step:8K smpl:493K ep:4K epch:19.21 loss:0.027 grdn:0.293 lr:1.4e-05 updt_s:0.267 data_s:0.130
+INFO 2026-10-31 10:02:32 ts/train.py:232 step:8K smpl:499K ep:4K epch:19.46 loss:0.026 grdn:0.314 lr:1.3e-05 updt_s:0.268 data_s:0.122
+INFO 2026-10-31 10:03:12 ts/train.py:232 step:8K smpl:506K ep:4K epch:19.71 loss:0.026 grdn:0.313 lr:1.2e-05 updt_s:0.268 data_s:0.131
+INFO 2026-10-31 10:03:51 ts/train.py:232 step:8K smpl:512K ep:4K epch:19.96 loss:0.026 grdn:0.332 lr:1.1e-05 updt_s:0.267 data_s:0.124
+INFO 2026-10-31 10:04:29 ts/train.py:232 step:8K smpl:518K ep:4K epch:20.21 loss:0.025 grdn:0.331 lr:1.0e-05 updt_s:0.267 data_s:0.113
+INFO 2026-10-31 10:05:07 ts/train.py:232 step:8K smpl:525K ep:4K epch:20.46 loss:0.027 grdn:0.294 lr:9.1e-06 updt_s:0.268 data_s:0.112
+INFO 2026-10-31 10:05:45 ts/train.py:232 step:8K smpl:531K ep:4K epch:20.71 loss:0.024 grdn:0.276 lr:8.1e-06 updt_s:0.268 data_s:0.108
+INFO 2026-10-31 10:06:25 ts/train.py:232 step:8K smpl:538K ep:4K epch:20.96 loss:0.024 grdn:0.352 lr:7.3e-06 updt_s:0.267 data_s:0.127
+INFO 2026-10-31 10:07:03 ts/train.py:232 step:8K smpl:544K ep:4K epch:21.21 loss:0.024 grdn:0.295 lr:6.4e-06 updt_s:0.268 data_s:0.121
+INFO 2026-10-31 10:07:42 ts/train.py:232 step:9K smpl:550K ep:4K epch:21.46 loss:0.025 grdn:0.293 lr:5.6e-06 updt_s:0.268 data_s:0.116
+INFO 2026-10-31 10:08:22 ts/train.py:232 step:9K smpl:557K ep:4K epch:21.71 loss:0.024 grdn:0.264 lr:4.9e-06 updt_s:0.268 data_s:0.128
+INFO 2026-10-31 10:09:01 ts/train.py:232 step:9K smpl:563K ep:5K epch:21.96 loss:0.023 grdn:0.249 lr:4.2e-06 updt_s:0.267 data_s:0.127
+INFO 2026-10-31 10:09:40 ts/train.py:232 step:9K smpl:570K ep:5K epch:22.21 loss:0.024 grdn:0.257 lr:3.6e-06 updt_s:0.268 data_s:0.116
+INFO 2026-10-31 10:10:18 ts/train.py:232 step:9K smpl:576K ep:5K epch:22.46 loss:0.024 grdn:0.260 lr:3.0e-06 updt_s:0.268 data_s:0.120
+INFO 2026-10-31 10:10:57 ts/train.py:232 step:9K smpl:582K ep:5K epch:22.71 loss:0.024 grdn:0.257 lr:2.4e-06 updt_s:0.266 data_s:0.122
+INFO 2026-10-31 10:11:35 ts/train.py:232 step:9K smpl:589K ep:5K epch:22.96 loss:0.024 grdn:0.263 lr:2.0e-06 updt_s:0.268 data_s:0.106
+INFO 2026-10-31 10:12:13 ts/train.py:232 step:9K smpl:595K ep:5K epch:23.20 loss:0.024 grdn:0.257 lr:1.5e-06 updt_s:0.268 data_s:0.111
+INFO 2026-10-31 10:12:51 ts/train.py:232 step:9K smpl:602K ep:5K epch:23.45 loss:0.024 grdn:0.255 lr:1.2e-06 updt_s:0.267 data_s:0.113
+INFO 2026-10-31 10:13:32 ts/train.py:232 step:10K smpl:608K ep:5K epch:23.70 loss:0.023 grdn:0.260 lr:8.3e-07 updt_s:0.267 data_s:0.139
+INFO 2026-10-31 10:14:09 ts/train.py:232 step:10K smpl:614K ep:5K epch:23.95 loss:0.024 grdn:0.255 lr:5.5e-07 updt_s:0.268 data_s:0.107
+INFO 2026-10-31 10:14:47 ts/train.py:232 step:10K smpl:621K ep:5K epch:24.20 loss:0.023 grdn:0.245 lr:3.4e-07 updt_s:0.267 data_s:0.115
+INFO 2026-10-31 10:15:26 ts/train.py:232 step:10K smpl:627K ep:5K epch:24.45 loss:0.022 grdn:0.236 lr:1.7e-07 updt_s:0.267 data_s:0.117
+INFO 2026-10-31 10:16:05 ts/train.py:232 step:10K smpl:634K ep:5K epch:24.70 loss:0.022 grdn:0.247 lr:6.3e-08 updt_s:0.267 data_s:0.124
+INFO 2026-10-31 10:16:43 ts/train.py:232 step:10K smpl:640K ep:5K epch:24.95 loss:0.022 grdn:0.246 lr:9.0e-09 updt_s:0.268 data_s:0.113
+INFO 2026-10-31 10:16:43 ts/train.py:241 Checkpoint policy after step 10000
+INFO 2026-10-31 10:16:47 ts/train.py:283 End of training

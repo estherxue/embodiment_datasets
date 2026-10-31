@@ -35,7 +35,7 @@
 
 **训满 100k 步**（关键点 3 个训练 seed，像素 1 个；每 10k 步评 3 seed × 50，100k checkpoint 500 episodes）：关键点三个 seed 的 100k 结果 49.4 / 49.6 / 43.8%，合并 714/1500 = 47.6%（CI [45.1, 50.1]），作者同配方 100k 步自报 64.0%，差 16 个点，p=2e-10，三条轨迹 30 个 checkpoint 没有一个够到作者的区间，差距是训练侧的系统性差异（lerobot 版本 / 数据集格式待逐项对比），不是 seed 或 checkpoint 运气；像素 175/500 = 35.0%。训练 seed 分量从 10k 时的 11.6 pts 缩到 100k 时的 3.3 pts，但相邻 checkpoint 之间仍在 ±4 到 9 pts 震荡，loss 全程单调降。详见 `embodied-eval-notes.md` §3.5。
 
-**其他策略（进行中）**：同协议换成 TD-MPC / VQ-BeT / Diffusion Policy（`kaggle/lerobot-train-others-pusht/`）。已完成的 CPU 部分：官方 `lerobot/vqbet_pusht` 84/150 = 56.0%（模型卡 57.0%，p=0.83）、官方 `lerobot/diffusion_pusht_keypoints`（Hydra 旧格式转换后）110/150 = 73.3%（模型卡 71.0%，p=0.58），两份参照都复现；TD-MPC 关键点 10k 训完但 CEM 规划在 CPU 上 40 s/步评不完，VQ-BeT 像素 9 s/步只到 4k 步就撞上 12 h 上限。这三项连同两个 Diffusion 短训放到 GPU kernel，等周 GPU 配额刷新。详见 `embodied-eval-notes.md` §3.7。
+**其他策略，同协议 10k 步**（训练 seed 1，3 评测 seed × 50；`kaggle/lerobot-train-others-pusht/`，对比脚本 `analyze_others.py`）：关键点 Diffusion Policy（DDIM-10）58/150 = 38.7%（CI [31.2, 46.7]），显著高于同数据同步数的 ACT 22.7%（p=1e-4），但离其官方参照 73.3% 还远；像素三个方法在 10k 步都没起来：VQ-BeT 10.0%、Diffusion 7.3%、ACT 8.0%，两两分不开（官方参照 57% / 65%）；TD-MPC 关键点 0/150（离线 10k 步 + 评测时 CEM 规划，T 块几乎没被推动；关掉规划只用策略先验也是 0/150）。两份官方参照 `lerobot/vqbet_pusht` 56.0%、`lerobot/diffusion_pusht_keypoints` 73.3% 与模型卡 57.0% / 71.0% 一致。详见 `embodied-eval-notes.md` §3.7。
 
 ALOHA 插接模型卡自报 20.6%（500 episodes；原论文 20%），MuJoCo 2.3.7 下的 16.7% 与之统计上一致（p=0.29）。之前笔记里写的“自报 83%”来自该仓库的 eval_info.json，排查发现那是 transfer cube 的文件被错传进了插接仓库，用同一流程评 transfer cube 得 76%（模型卡 83%，p=0.10），说明流程能复现作者数字。排查过程见 `lerobot/EVAL_NOTES.md` §6；插接按 500 步（demo 长度）口径补测得 21.0%（21/100），与模型卡重合，比 400 步口径高约 4 个点但不显著。
 

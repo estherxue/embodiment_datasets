@@ -1,0 +1,3082 @@
+{
+  "meta": {
+    "device_mode": "cuda",
+    "lerobot_commit": "b883328e6c95681ca90a18b102e4ae5e1f91e2bf",
+    "steps": 10000,
+    "batch_train": 64,
+    "train_seed": 1,
+    "eval_seeds": [
+      1000,
+      2000,
+      3000
+    ],
+    "n_episodes": 50,
+    "batch_eval": 50,
+    "models": {
+      "vqbet_px": {
+        "dataset": "lerobot/pusht",
+        "env": "--env.type=pusht",
+        "norm": null,
+        "policy": "--policy.type=vqbet --policy.n_vqvae_training_steps=2000",
+        "label": "VQ-BeT, pixels + agent pos (2k VQ-VAE + 8k policy steps)"
+      },
+      "diffusion_kp": {
+        "dataset": "lerobot/pusht_keypoints",
+        "env": "--env.type=pusht --env.obs_type=environment_state_agent_pos",
+        "norm": "{\"ENV\":\"MIN_MAX\",\"STATE\":\"MIN_MAX\",\"ACTION\":\"MIN_MAX\"}",
+        "policy": "--policy.type=diffusion --policy.noise_scheduler_type=DDIM --policy.num_inference_steps=10",
+        "label": "Diffusion Policy, keypoints + agent pos, DDIM-10"
+      },
+      "diffusion_px": {
+        "dataset": "lerobot/pusht",
+        "env": "--env.type=pusht",
+        "norm": null,
+        "policy": "--policy.type=diffusion",
+        "label": "Diffusion Policy, pixels + agent pos, DDPM-100"
+      }
+    },
+    "refs": {
+      "tdmpc_kp_cpu10k": {
+        "repo": "/kaggle/input/tdmpc-pusht-kp-10k",
+        "env": "--env.type=pusht --env.obs_type=environment_state_agent_pos",
+        "convert": null,
+        "label": "TD-MPC, keypoints + agent pos, offline, 10000 steps, train seed 1 (trained in the cpu kernel)"
+      }
+    },
+    "started_utc": "2026-10-31 07:33:54",
+    "gpu": {
+      "torch": "2.7.1+cu126",
+      "cuda_available": true,
+      "device_name": "Tesla T4",
+      "gpu_ok": true
+    },
+    "device": "cuda",
+    "elapsed_s": 15142.3
+  },
+  "train": {
+    "vqbet_px": {
+      "rc": 0,
+      "wall_s": 4506.9,
+      "cmd": "/kaggle/tmp/venv/bin/lerobot-train --dataset.repo_id=lerobot/pusht --env.type=pusht --policy.type=vqbet --policy.n_vqvae_training_steps=2000 --policy.push_to_hub=false --policy.device=cuda --output_dir=/kaggle/tmp/train/vqbet_px --job_name=vqbet_px --steps=10000 --save_freq=10000 --eval_freq=0 --log_freq=100 --batch_size=64 --num_workers=4 --seed=1 --wandb.enable=false",
+      "dataset": "lerobot/pusht",
+      "ckpt": "/kaggle/tmp/train/vqbet_px/checkpoints/010000/pretrained_model",
+      "curve": [
+        {
+          "step": 100,
+          "step_str": "100",
+          "loss": 0.281,
+          "grad_norm": 0.251,
+          "lr": 0.0001
+        },
+        {
+          "step": 200,
+          "step_str": "200",
+          "loss": 0.099,
+          "grad_norm": 0.393,
+          "lr": 0.0001
+        },
+        {
+          "step": 300,
+          "step_str": "300",
+          "loss": 0.063,
+          "grad_norm": 0.253,
+          "lr": 0.0001
+        },
+        {
+          "step": 400,
+          "step_str": "400",
+          "loss": 0.063,
+          "grad_norm": 0.301,
+          "lr": 0.0001
+        },
+        {
+          "step": 500,
+          "step_str": "500",
+          "loss": 0.064,
+          "grad_norm": 0.296,
+          "lr": 0.0001
+        },
+        {
+          "step": 600,
+          "step_str": "600",
+          "loss": 0.063,
+          "grad_norm": 0.332,
+          "lr": 0.0001
+        },
+        {
+          "step": 700,
+          "step_str": "700",
+          "loss": 0.063,
+          "grad_norm": 0.279,
+          "lr": 0.0001
+        },
+        {
+          "step": 800,
+          "step_str": "800",
+          "loss": 0.063,
+          "grad_norm": 0.244,
+          "lr": 0.0001
+        },
+        {
+          "step": 900,
+          "step_str": "900",
+          "loss": 0.064,
+          "grad_norm": 0.22,
+          "lr": 0.0001
+        },
+        {
+          "step": 1000,
+          "step_str": "1K",
+          "loss": 0.064,
+          "grad_norm": 0.249,
+          "lr": 0.0001
+        },
+        {
+          "step": 1100,
+          "step_str": "1K",
+          "loss": 0.063,
+          "grad_norm": 0.22,
+          "lr": 0.0001
+        },
+        {
+          "step": 1200,
+          "step_str": "1K",
+          "loss": 0.063,
+          "grad_norm": 0.223,
+          "lr": 0.0001
+        },
+        {
+          "step": 1300,
+          "step_str": "1K",
+          "loss": 0.063,
+          "grad_norm": 0.248,
+          "lr": 0.0001
+        },
+        {
+          "step": 1400,
+          "step_str": "1K",
+          "loss": 0.063,
+          "grad_norm": 0.224,
+          "lr": 0.0001
+        },
+        {
+          "step": 1500,
+          "step_str": "2K",
+          "loss": 0.064,
+          "grad_norm": 0.268,
+          "lr": 0.0001
+        },
+        {
+          "step": 1600,
+          "step_str": "2K",
+          "loss": 0.064,
+          "grad_norm": 0.274,
+          "lr": 0.0001
+        },
+        {
+          "step": 1700,
+          "step_str": "2K",
+          "loss": 0.063,
+          "grad_norm": 0.227,
+          "lr": 0.0001
+        },
+        {
+          "step": 1800,
+          "step_str": "2K",
+          "loss": 0.063,
+          "grad_norm": 0.192,
+          "lr": 0.0001
+        },
+        {
+          "step": 1900,
+          "step_str": "2K",
+          "loss": 0.064,
+          "grad_norm": 0.241,
+          "lr": 0.0001
+        },
+        {
+          "step": 2000,
+          "step_str": "2K",
+          "loss": 0.063,
+          "grad_norm": 0.243,
+          "lr": 9.9e-05
+        },
+        {
+          "step": 2100,
+          "step_str": "2K",
+          "loss": 3331.591,
+          "grad_norm": 14319.368,
+          "lr": 1e-05
+        },
+        {
+          "step": 2200,
+          "step_str": "2K",
+          "loss": 1684.245,
+          "grad_norm": 17069.069,
+          "lr": 3e-05
+        },
+        {
+          "step": 2300,
+          "step_str": "2K",
+          "loss": 1432.876,
+          "grad_norm": 18404.59,
+          "lr": 5e-05
+        },
+        {
+          "step": 2400,
+          "step_str": "2K",
+          "loss": 1289.923,
+          "grad_norm": 17836.052,
+          "lr": 7e-05
+        },
+        {
+          "step": 2500,
+          "step_str": "2K",
+          "loss": 1165.231,
+          "grad_norm": 19114.511,
+          "lr": 9e-05
+        },
+        {
+          "step": 2600,
+          "step_str": "3K",
+          "loss": 1107.989,
+          "grad_norm": 18102.005,
+          "lr": 0.0001
+        },
+        {
+          "step": 2700,
+          "step_str": "3K",
+          "loss": 1048.248,
+          "grad_norm": 14925.306,
+          "lr": 0.0001
+        },
+        {
+          "step": 2800,
+          "step_str": "3K",
+          "loss": 1018.653,
+          "grad_norm": 14905.628,
+          "lr": 0.0001
+        },
+        {
+          "step": 2900,
+          "step_str": "3K",
+          "loss": 958.276,
+          "grad_norm": 12824.84,
+          "lr": 0.0001
+        },
+        {
+          "step": 3000,
+          "step_str": "3K",
+          "loss": 979.303,
+          "grad_norm": 13464.67,
+          "lr": 9.9e-05
+        },
+        {
+          "step": 3100,
+          "step_str": "3K",
+          "loss": 934.373,
+          "grad_norm": 12313.843,
+          "lr": 9.9e-05
+        },
+        {
+          "step": 3200,
+          "step_str": "3K",
+          "loss": 937.421,
+          "grad_norm": 12937.758,
+          "lr": 9.9e-05
+        },
+        {
+          "step": 3300,
+          "step_str": "3K",
+          "loss": 901.879,
+          "grad_norm": 11795.008,
+          "lr": 9.8e-05
+        },
+        {
+          "step": 3400,
+          "step_str": "3K",
+          "loss": 876.945,
+          "grad_norm": 11214.153,
+          "lr": 9.8e-05
+        },
+        {
+          "step": 3500,
+          "step_str": "4K",
+          "loss": 856.438,
+          "grad_norm": 9973.95,
+          "lr": 9.8e-05
+        },
+        {
+          "step": 3600,
+          "step_str": "4K",
+          "loss": 866.719,
+          "grad_norm": 10547.504,
+          "lr": 9.7e-05
+        },
+        {
+          "step": 3700,
+          "step_str": "4K",
+          "loss": 826.305,
+          "grad_norm": 9071.331,
+          "lr": 9.6e-05
+        },
+        {
+          "step": 3800,
+          "step_str": "4K",
+          "loss": 806.956,
+          "grad_norm": 9034.445,
+          "lr": 9.6e-05
+        },
+        {
+          "step": 3900,
+          "step_str": "4K",
+          "loss": 816.737,
+          "grad_norm": 10139.069,
+          "lr": 9.5e-05
+        },
+        {
+          "step": 4000,
+          "step_str": "4K",
+          "loss": 807.409,
+          "grad_norm": 9561.564,
+          "lr": 9.4e-05
+        },
+        {
+          "step": 4100,
+          "step_str": "4K",
+          "loss": 785.023,
+          "grad_norm": 9210.553,
+          "lr": 9.4e-05
+        },
+        {
+          "step": 4200,
+          "step_str": "4K",
+          "loss": 776.322,
+          "grad_norm": 8738.323,
+          "lr": 9.3e-05
+        },
+        {
+          "step": 4300,
+          "step_str": "4K",
+          "loss": 768.157,
+          "grad_norm": 8560.9,
+          "lr": 9.2e-05
+        },
+        {
+          "step": 4400,
+          "step_str": "4K",
+          "loss": 759.411,
+          "grad_norm": 9099.915,
+          "lr": 9.1e-05
+        },
+        {
+          "step": 4500,
+          "step_str": "4K",
+          "loss": 765.251,
+          "grad_norm": 9646.062,
+          "lr": 9e-05
+        },
+        {
+          "step": 4600,
+          "step_str": "5K",
+          "loss": 759.795,
+          "grad_norm": 8657.927,
+          "lr": 8.9e-05
+        },
+        {
+          "step": 4700,
+          "step_str": "5K",
+          "loss": 726.374,
+          "grad_norm": 7880.343,
+          "lr": 8.8e-05
+        },
+        {
+          "step": 4800,
+          "step_str": "5K",
+          "loss": 728.843,
+          "grad_norm": 8381.093,
+          "lr": 8.7e-05
+        },
+        {
+          "step": 4900,
+          "step_str": "5K",
+          "loss": 727.486,
+          "grad_norm": 8074.94,
+          "lr": 8.6e-05
+        },
+        {
+          "step": 5000,
+          "step_str": "5K",
+          "loss": 724.224,
+          "grad_norm": 8548.01,
+          "lr": 8.4e-05
+        },
+        {
+          "step": 5100,
+          "step_str": "5K",
+          "loss": 712.266,
+          "grad_norm": 7978.402,
+          "lr": 8.3e-05
+        },
+        {
+          "step": 5200,
+          "step_str": "5K",
+          "loss": 691.701,
+          "grad_norm": 7784.188,
+          "lr": 8.2e-05
+        },
+        {
+          "step": 5300,
+          "step_str": "5K",
+          "loss": 698.079,
+          "grad_norm": 7813.018,
+          "lr": 8.1e-05
+        },
+        {
+          "step": 5400,
+          "step_str": "5K",
+          "loss": 677.224,
+          "grad_norm": 7850.923,
+          "lr": 7.9e-05
+        },
+        {
+          "step": 5500,
+          "step_str": "6K",
+          "loss": 683.547,
+          "grad_norm": 7237.716,
+          "lr": 7.8e-05
+        },
+        {
+          "step": 5600,
+          "step_str": "6K",
+          "loss": 681.977,
+          "grad_norm": 7391.976,
+          "lr": 7.7e-05
+        },
+        {
+          "step": 5700,
+          "step_str": "6K",
+          "loss": 666.766,
+          "grad_norm": 8035.296,
+          "lr": 7.5e-05
+        },
+        {
+          "step": 5800,
+          "step_str": "6K",
+          "loss": 658.154,
+          "grad_norm": 6832.814,
+          "lr": 7.4e-05
+        },
+        {
+          "step": 5900,
+          "step_str": "6K",
+          "loss": 669.606,
+          "grad_norm": 7160.969,
+          "lr": 7.2e-05
+        },
+        {
+          "step": 6000,
+          "step_str": "6K",
+          "loss": 655.678,
+          "grad_norm": 7651.175,
+          "lr": 7.1e-05
+        },
+        {
+          "step": 6100,
+          "step_str": "6K",
+          "loss": 643.108,
+          "grad_norm": 6885.839,
+          "lr": 6.9e-05
+        },
+        {
+          "step": 6200,
+          "step_str": "6K",
+          "loss": 666.168,
+          "grad_norm": 8591.497,
+          "lr": 6.8e-05
+        },
+        {
+          "step": 6300,
+          "step_str": "6K",
+          "loss": 654.58,
+          "grad_norm": 7440.142,
+          "lr": 6.6e-05
+        },
+        {
+          "step": 6400,
+          "step_str": "6K",
+          "loss": 629.787,
+          "grad_norm": 7037.845,
+          "lr": 6.5e-05
+        },
+        {
+          "step": 6500,
+          "step_str": "6K",
+          "loss": 641.846,
+          "grad_norm": 7787.986,
+          "lr": 6.3e-05
+        },
+        {
+          "step": 6600,
+          "step_str": "7K",
+          "loss": 642.05,
+          "grad_norm": 7123.476,
+          "lr": 6.1e-05
+        },
+        {
+          "step": 6700,
+          "step_str": "7K",
+          "loss": 630.876,
+          "grad_norm": 6736.47,
+          "lr": 6e-05
+        },
+        {
+          "step": 6800,
+          "step_str": "7K",
+          "loss": 626.612,
+          "grad_norm": 6958.641,
+          "lr": 5.8e-05
+        },
+        {
+          "step": 6900,
+          "step_str": "7K",
+          "loss": 623.096,
+          "grad_norm": 6702.543,
+          "lr": 5.7e-05
+        },
+        {
+          "step": 7000,
+          "step_str": "7K",
+          "loss": 612.402,
+          "grad_norm": 6357.976,
+          "lr": 5.5e-05
+        },
+        {
+          "step": 7100,
+          "step_str": "7K",
+          "loss": 602.688,
+          "grad_norm": 6668.173,
+          "lr": 5.3e-05
+        },
+        {
+          "step": 7200,
+          "step_str": "7K",
+          "loss": 603.686,
+          "grad_norm": 6793.052,
+          "lr": 5.2e-05
+        },
+        {
+          "step": 7300,
+          "step_str": "7K",
+          "loss": 601.911,
+          "grad_norm": 7230.698,
+          "lr": 5e-05
+        },
+        {
+          "step": 7400,
+          "step_str": "7K",
+          "loss": 598.292,
+          "grad_norm": 6731.574,
+          "lr": 4.8e-05
+        },
+        {
+          "step": 7500,
+          "step_str": "8K",
+          "loss": 586.677,
+          "grad_norm": 6159.385,
+          "lr": 4.7e-05
+        },
+        {
+          "step": 7600,
+          "step_str": "8K",
+          "loss": 596.215,
+          "grad_norm": 6653.801,
+          "lr": 4.5e-05
+        },
+        {
+          "step": 7700,
+          "step_str": "8K",
+          "loss": 585.043,
+          "grad_norm": 6228.28,
+          "lr": 4.3e-05
+        },
+        {
+          "step": 7800,
+          "step_str": "8K",
+          "loss": 578.793,
+          "grad_norm": 6521.791,
+          "lr": 4.2e-05
+        },
+        {
+          "step": 7900,
+          "step_str": "8K",
+          "loss": 579.547,
+          "grad_norm": 6235.602,
+          "lr": 4e-05
+        },
+        {
+          "step": 8000,
+          "step_str": "8K",
+          "loss": 569.766,
+          "grad_norm": 6244.219,
+          "lr": 3.9e-05
+        },
+        {
+          "step": 8100,
+          "step_str": "8K",
+          "loss": 569.563,
+          "grad_norm": 6507.391,
+          "lr": 3.7e-05
+        },
+        {
+          "step": 8200,
+          "step_str": "8K",
+          "loss": 563.348,
+          "grad_norm": 6133.015,
+          "lr": 3.5e-05
+        },
+        {
+          "step": 8300,
+          "step_str": "8K",
+          "loss": 567.098,
+          "grad_norm": 5924.595,
+          "lr": 3.4e-05
+        },
+        {
+          "step": 8400,
+          "step_str": "8K",
+          "loss": 559.477,
+          "grad_norm": 6773.248,
+          "lr": 3.2e-05
+        },
+        {
+          "step": 8500,
+          "step_str": "8K",
+          "loss": 557.688,
+          "grad_norm": 5897.491,
+          "lr": 3.1e-05
+        },
+        {
+          "step": 8600,
+          "step_str": "9K",
+          "loss": 543.418,
+          "grad_norm": 6165.755,
+          "lr": 2.9e-05
+        },
+        {
+          "step": 8700,
+          "step_str": "9K",
+          "loss": 547.877,
+          "grad_norm": 6166.146,
+          "lr": 2.8e-05
+        },
+        {
+          "step": 8800,
+          "step_str": "9K",
+          "loss": 546.205,
+          "grad_norm": 5754.426,
+          "lr": 2.6e-05
+        },
+        {
+          "step": 8900,
+          "step_str": "9K",
+          "loss": 549.263,
+          "grad_norm": 5673.555,
+          "lr": 2.5e-05
+        },
+        {
+          "step": 9000,
+          "step_str": "9K",
+          "loss": 529.905,
+          "grad_norm": 5384.529,
+          "lr": 2.3e-05
+        },
+        {
+          "step": 9100,
+          "step_str": "9K",
+          "loss": 531.116,
+          "grad_norm": 5416.538,
+          "lr": 2.2e-05
+        },
+        {
+          "step": 9200,
+          "step_str": "9K",
+          "loss": 528.972,
+          "grad_norm": 6402.208,
+          "lr": 2.1e-05
+        },
+        {
+          "step": 9300,
+          "step_str": "9K",
+          "loss": 520.87,
+          "grad_norm": 5768.04,
+          "lr": 1.9e-05
+        },
+        {
+          "step": 9400,
+          "step_str": "9K",
+          "loss": 519.405,
+          "grad_norm": 5370.949,
+          "lr": 1.8e-05
+        },
+        {
+          "step": 9500,
+          "step_str": "10K",
+          "loss": 522.107,
+          "grad_norm": 5664.923,
+          "lr": 1.7e-05
+        },
+        {
+          "step": 9600,
+          "step_str": "10K",
+          "loss": 523.029,
+          "grad_norm": 5940.055,
+          "lr": 1.6e-05
+        },
+        {
+          "step": 9700,
+          "step_str": "10K",
+          "loss": 513.311,
+          "grad_norm": 5395.281,
+          "lr": 1.4e-05
+        },
+        {
+          "step": 9800,
+          "step_str": "10K",
+          "loss": 508.21,
+          "grad_norm": 5016.359,
+          "lr": 1.3e-05
+        },
+        {
+          "step": 9900,
+          "step_str": "10K",
+          "loss": 509.373,
+          "grad_norm": 5353.534,
+          "lr": 1.2e-05
+        },
+        {
+          "step": 10000,
+          "step_str": "10K",
+          "loss": 503.91,
+          "grad_norm": 5230.686,
+          "lr": 1.1e-05
+        }
+      ],
+      "params": "37.5M",
+      "ok": true
+    },
+    "diffusion_kp": {
+      "rc": 0,
+      "wall_s": 3928.4,
+      "cmd": "/kaggle/tmp/venv/bin/lerobot-train --dataset.repo_id=lerobot/pusht_keypoints --env.type=pusht --env.obs_type=environment_state_agent_pos --policy.type=diffusion --policy.noise_scheduler_type=DDIM --policy.num_inference_steps=10 --policy.push_to_hub=false --policy.device=cuda '--policy.normalization_mapping={\"ENV\":\"MIN_MAX\",\"STATE\":\"MIN_MAX\",\"ACTION\":\"MIN_MAX\"}' --output_dir=/kaggle/tmp/train/diffusion_kp --job_name=diffusion_kp --steps=10000 --save_freq=10000 --eval_freq=0 --log_freq=100 --batch_size=64 --num_workers=4 --seed=1 --wandb.enable=false",
+      "dataset": "lerobot/pusht_keypoints",
+      "ckpt": "/kaggle/tmp/train/diffusion_kp/checkpoints/010000/pretrained_model",
+      "curve": [
+        {
+          "step": 100,
+          "step_str": "100",
+          "loss": 0.659,
+          "grad_norm": 6.041,
+          "lr": 1e-05
+        },
+        {
+          "step": 200,
+          "step_str": "200",
+          "loss": 0.13,
+          "grad_norm": 3.12,
+          "lr": 3e-05
+        },
+        {
+          "step": 300,
+          "step_str": "300",
+          "loss": 0.086,
+          "grad_norm": 2.659,
+          "lr": 5e-05
+        },
+        {
+          "step": 400,
+          "step_str": "400",
+          "loss": 0.069,
+          "grad_norm": 1.729,
+          "lr": 7e-05
+        },
+        {
+          "step": 500,
+          "step_str": "500",
+          "loss": 0.066,
+          "grad_norm": 1.554,
+          "lr": 9e-05
+        },
+        {
+          "step": 600,
+          "step_str": "600",
+          "loss": 0.062,
+          "grad_norm": 1.431,
+          "lr": 0.0001
+        },
+        {
+          "step": 700,
+          "step_str": "700",
+          "loss": 0.058,
+          "grad_norm": 1.095,
+          "lr": 0.0001
+        },
+        {
+          "step": 800,
+          "step_str": "800",
+          "loss": 0.057,
+          "grad_norm": 0.985,
+          "lr": 0.0001
+        },
+        {
+          "step": 900,
+          "step_str": "900",
+          "loss": 0.054,
+          "grad_norm": 0.835,
+          "lr": 0.0001
+        },
+        {
+          "step": 1000,
+          "step_str": "1K",
+          "loss": 0.052,
+          "grad_norm": 0.915,
+          "lr": 9.9e-05
+        },
+        {
+          "step": 1100,
+          "step_str": "1K",
+          "loss": 0.055,
+          "grad_norm": 0.697,
+          "lr": 9.9e-05
+        },
+        {
+          "step": 1200,
+          "step_str": "1K",
+          "loss": 0.052,
+          "grad_norm": 0.721,
+          "lr": 9.9e-05
+        },
+        {
+          "step": 1300,
+          "step_str": "1K",
+          "loss": 0.051,
+          "grad_norm": 0.624,
+          "lr": 9.8e-05
+        },
+        {
+          "step": 1400,
+          "step_str": "1K",
+          "loss": 0.051,
+          "grad_norm": 0.837,
+          "lr": 9.8e-05
+        },
+        {
+          "step": 1500,
+          "step_str": "2K",
+          "loss": 0.048,
+          "grad_norm": 0.685,
+          "lr": 9.8e-05
+        },
+        {
+          "step": 1600,
+          "step_str": "2K",
+          "loss": 0.048,
+          "grad_norm": 0.614,
+          "lr": 9.7e-05
+        },
+        {
+          "step": 1700,
+          "step_str": "2K",
+          "loss": 0.046,
+          "grad_norm": 0.672,
+          "lr": 9.6e-05
+        },
+        {
+          "step": 1800,
+          "step_str": "2K",
+          "loss": 0.046,
+          "grad_norm": 0.767,
+          "lr": 9.6e-05
+        },
+        {
+          "step": 1900,
+          "step_str": "2K",
+          "loss": 0.048,
+          "grad_norm": 0.627,
+          "lr": 9.5e-05
+        },
+        {
+          "step": 2000,
+          "step_str": "2K",
+          "loss": 0.045,
+          "grad_norm": 0.697,
+          "lr": 9.4e-05
+        },
+        {
+          "step": 2100,
+          "step_str": "2K",
+          "loss": 0.045,
+          "grad_norm": 0.593,
+          "lr": 9.4e-05
+        },
+        {
+          "step": 2200,
+          "step_str": "2K",
+          "loss": 0.044,
+          "grad_norm": 0.618,
+          "lr": 9.3e-05
+        },
+        {
+          "step": 2300,
+          "step_str": "2K",
+          "loss": 0.042,
+          "grad_norm": 0.63,
+          "lr": 9.2e-05
+        },
+        {
+          "step": 2400,
+          "step_str": "2K",
+          "loss": 0.044,
+          "grad_norm": 0.599,
+          "lr": 9.1e-05
+        },
+        {
+          "step": 2500,
+          "step_str": "2K",
+          "loss": 0.043,
+          "grad_norm": 0.57,
+          "lr": 9e-05
+        },
+        {
+          "step": 2600,
+          "step_str": "3K",
+          "loss": 0.043,
+          "grad_norm": 0.662,
+          "lr": 8.9e-05
+        },
+        {
+          "step": 2700,
+          "step_str": "3K",
+          "loss": 0.041,
+          "grad_norm": 0.519,
+          "lr": 8.8e-05
+        },
+        {
+          "step": 2800,
+          "step_str": "3K",
+          "loss": 0.042,
+          "grad_norm": 0.559,
+          "lr": 8.7e-05
+        },
+        {
+          "step": 2900,
+          "step_str": "3K",
+          "loss": 0.043,
+          "grad_norm": 0.531,
+          "lr": 8.6e-05
+        },
+        {
+          "step": 3000,
+          "step_str": "3K",
+          "loss": 0.038,
+          "grad_norm": 0.534,
+          "lr": 8.4e-05
+        },
+        {
+          "step": 3100,
+          "step_str": "3K",
+          "loss": 0.041,
+          "grad_norm": 0.599,
+          "lr": 8.3e-05
+        },
+        {
+          "step": 3200,
+          "step_str": "3K",
+          "loss": 0.04,
+          "grad_norm": 0.602,
+          "lr": 8.2e-05
+        },
+        {
+          "step": 3300,
+          "step_str": "3K",
+          "loss": 0.039,
+          "grad_norm": 0.684,
+          "lr": 8.1e-05
+        },
+        {
+          "step": 3400,
+          "step_str": "3K",
+          "loss": 0.039,
+          "grad_norm": 0.524,
+          "lr": 7.9e-05
+        },
+        {
+          "step": 3500,
+          "step_str": "4K",
+          "loss": 0.037,
+          "grad_norm": 0.482,
+          "lr": 7.8e-05
+        },
+        {
+          "step": 3600,
+          "step_str": "4K",
+          "loss": 0.039,
+          "grad_norm": 0.527,
+          "lr": 7.7e-05
+        },
+        {
+          "step": 3700,
+          "step_str": "4K",
+          "loss": 0.036,
+          "grad_norm": 0.56,
+          "lr": 7.5e-05
+        },
+        {
+          "step": 3800,
+          "step_str": "4K",
+          "loss": 0.037,
+          "grad_norm": 0.488,
+          "lr": 7.4e-05
+        },
+        {
+          "step": 3900,
+          "step_str": "4K",
+          "loss": 0.037,
+          "grad_norm": 0.437,
+          "lr": 7.2e-05
+        },
+        {
+          "step": 4000,
+          "step_str": "4K",
+          "loss": 0.036,
+          "grad_norm": 0.492,
+          "lr": 7.1e-05
+        },
+        {
+          "step": 4100,
+          "step_str": "4K",
+          "loss": 0.035,
+          "grad_norm": 0.373,
+          "lr": 6.9e-05
+        },
+        {
+          "step": 4200,
+          "step_str": "4K",
+          "loss": 0.036,
+          "grad_norm": 0.487,
+          "lr": 6.8e-05
+        },
+        {
+          "step": 4300,
+          "step_str": "4K",
+          "loss": 0.034,
+          "grad_norm": 0.483,
+          "lr": 6.6e-05
+        },
+        {
+          "step": 4400,
+          "step_str": "4K",
+          "loss": 0.034,
+          "grad_norm": 0.412,
+          "lr": 6.5e-05
+        },
+        {
+          "step": 4500,
+          "step_str": "4K",
+          "loss": 0.034,
+          "grad_norm": 0.442,
+          "lr": 6.3e-05
+        },
+        {
+          "step": 4600,
+          "step_str": "5K",
+          "loss": 0.034,
+          "grad_norm": 0.397,
+          "lr": 6.1e-05
+        },
+        {
+          "step": 4700,
+          "step_str": "5K",
+          "loss": 0.034,
+          "grad_norm": 0.409,
+          "lr": 6e-05
+        },
+        {
+          "step": 4800,
+          "step_str": "5K",
+          "loss": 0.035,
+          "grad_norm": 0.411,
+          "lr": 5.8e-05
+        },
+        {
+          "step": 4900,
+          "step_str": "5K",
+          "loss": 0.033,
+          "grad_norm": 0.393,
+          "lr": 5.7e-05
+        },
+        {
+          "step": 5000,
+          "step_str": "5K",
+          "loss": 0.035,
+          "grad_norm": 0.387,
+          "lr": 5.5e-05
+        },
+        {
+          "step": 5100,
+          "step_str": "5K",
+          "loss": 0.033,
+          "grad_norm": 0.424,
+          "lr": 5.3e-05
+        },
+        {
+          "step": 5200,
+          "step_str": "5K",
+          "loss": 0.034,
+          "grad_norm": 0.438,
+          "lr": 5.2e-05
+        },
+        {
+          "step": 5300,
+          "step_str": "5K",
+          "loss": 0.033,
+          "grad_norm": 0.363,
+          "lr": 5e-05
+        },
+        {
+          "step": 5400,
+          "step_str": "5K",
+          "loss": 0.033,
+          "grad_norm": 0.438,
+          "lr": 4.8e-05
+        },
+        {
+          "step": 5500,
+          "step_str": "6K",
+          "loss": 0.032,
+          "grad_norm": 0.388,
+          "lr": 4.7e-05
+        },
+        {
+          "step": 5600,
+          "step_str": "6K",
+          "loss": 0.033,
+          "grad_norm": 0.384,
+          "lr": 4.5e-05
+        },
+        {
+          "step": 5700,
+          "step_str": "6K",
+          "loss": 0.033,
+          "grad_norm": 0.444,
+          "lr": 4.3e-05
+        },
+        {
+          "step": 5800,
+          "step_str": "6K",
+          "loss": 0.032,
+          "grad_norm": 0.358,
+          "lr": 4.2e-05
+        },
+        {
+          "step": 5900,
+          "step_str": "6K",
+          "loss": 0.032,
+          "grad_norm": 0.413,
+          "lr": 4e-05
+        },
+        {
+          "step": 6000,
+          "step_str": "6K",
+          "loss": 0.032,
+          "grad_norm": 0.446,
+          "lr": 3.9e-05
+        },
+        {
+          "step": 6100,
+          "step_str": "6K",
+          "loss": 0.031,
+          "grad_norm": 0.362,
+          "lr": 3.7e-05
+        },
+        {
+          "step": 6200,
+          "step_str": "6K",
+          "loss": 0.029,
+          "grad_norm": 0.353,
+          "lr": 3.5e-05
+        },
+        {
+          "step": 6300,
+          "step_str": "6K",
+          "loss": 0.031,
+          "grad_norm": 0.344,
+          "lr": 3.4e-05
+        },
+        {
+          "step": 6400,
+          "step_str": "6K",
+          "loss": 0.031,
+          "grad_norm": 0.362,
+          "lr": 3.2e-05
+        },
+        {
+          "step": 6500,
+          "step_str": "6K",
+          "loss": 0.029,
+          "grad_norm": 0.334,
+          "lr": 3.1e-05
+        },
+        {
+          "step": 6600,
+          "step_str": "7K",
+          "loss": 0.028,
+          "grad_norm": 0.412,
+          "lr": 2.9e-05
+        },
+        {
+          "step": 6700,
+          "step_str": "7K",
+          "loss": 0.03,
+          "grad_norm": 0.34,
+          "lr": 2.8e-05
+        },
+        {
+          "step": 6800,
+          "step_str": "7K",
+          "loss": 0.029,
+          "grad_norm": 0.337,
+          "lr": 2.6e-05
+        },
+        {
+          "step": 6900,
+          "step_str": "7K",
+          "loss": 0.029,
+          "grad_norm": 0.348,
+          "lr": 2.5e-05
+        },
+        {
+          "step": 7000,
+          "step_str": "7K",
+          "loss": 0.029,
+          "grad_norm": 0.33,
+          "lr": 2.3e-05
+        },
+        {
+          "step": 7100,
+          "step_str": "7K",
+          "loss": 0.028,
+          "grad_norm": 0.309,
+          "lr": 2.2e-05
+        },
+        {
+          "step": 7200,
+          "step_str": "7K",
+          "loss": 0.027,
+          "grad_norm": 0.345,
+          "lr": 2.1e-05
+        },
+        {
+          "step": 7300,
+          "step_str": "7K",
+          "loss": 0.028,
+          "grad_norm": 0.323,
+          "lr": 1.9e-05
+        },
+        {
+          "step": 7400,
+          "step_str": "7K",
+          "loss": 0.027,
+          "grad_norm": 0.318,
+          "lr": 1.8e-05
+        },
+        {
+          "step": 7500,
+          "step_str": "8K",
+          "loss": 0.027,
+          "grad_norm": 0.323,
+          "lr": 1.7e-05
+        },
+        {
+          "step": 7600,
+          "step_str": "8K",
+          "loss": 0.027,
+          "grad_norm": 0.356,
+          "lr": 1.6e-05
+        },
+        {
+          "step": 7700,
+          "step_str": "8K",
+          "loss": 0.027,
+          "grad_norm": 0.293,
+          "lr": 1.4e-05
+        },
+        {
+          "step": 7800,
+          "step_str": "8K",
+          "loss": 0.026,
+          "grad_norm": 0.314,
+          "lr": 1.3e-05
+        },
+        {
+          "step": 7900,
+          "step_str": "8K",
+          "loss": 0.026,
+          "grad_norm": 0.313,
+          "lr": 1.2e-05
+        },
+        {
+          "step": 8000,
+          "step_str": "8K",
+          "loss": 0.026,
+          "grad_norm": 0.332,
+          "lr": 1.1e-05
+        },
+        {
+          "step": 8100,
+          "step_str": "8K",
+          "loss": 0.025,
+          "grad_norm": 0.331,
+          "lr": 1e-05
+        },
+        {
+          "step": 8200,
+          "step_str": "8K",
+          "loss": 0.027,
+          "grad_norm": 0.294,
+          "lr": 9.1e-06
+        },
+        {
+          "step": 8300,
+          "step_str": "8K",
+          "loss": 0.024,
+          "grad_norm": 0.276,
+          "lr": 8.1e-06
+        },
+        {
+          "step": 8400,
+          "step_str": "8K",
+          "loss": 0.024,
+          "grad_norm": 0.352,
+          "lr": 7.3e-06
+        },
+        {
+          "step": 8500,
+          "step_str": "8K",
+          "loss": 0.024,
+          "grad_norm": 0.295,
+          "lr": 6.4e-06
+        },
+        {
+          "step": 8600,
+          "step_str": "9K",
+          "loss": 0.025,
+          "grad_norm": 0.293,
+          "lr": 5.6e-06
+        },
+        {
+          "step": 8700,
+          "step_str": "9K",
+          "loss": 0.024,
+          "grad_norm": 0.264,
+          "lr": 4.9e-06
+        },
+        {
+          "step": 8800,
+          "step_str": "9K",
+          "loss": 0.023,
+          "grad_norm": 0.249,
+          "lr": 4.2e-06
+        },
+        {
+          "step": 8900,
+          "step_str": "9K",
+          "loss": 0.024,
+          "grad_norm": 0.257,
+          "lr": 3.6e-06
+        },
+        {
+          "step": 9000,
+          "step_str": "9K",
+          "loss": 0.024,
+          "grad_norm": 0.26,
+          "lr": 3e-06
+        },
+        {
+          "step": 9100,
+          "step_str": "9K",
+          "loss": 0.024,
+          "grad_norm": 0.257,
+          "lr": 2.4e-06
+        },
+        {
+          "step": 9200,
+          "step_str": "9K",
+          "loss": 0.024,
+          "grad_norm": 0.263,
+          "lr": 2e-06
+        },
+        {
+          "step": 9300,
+          "step_str": "9K",
+          "loss": 0.024,
+          "grad_norm": 0.257,
+          "lr": 1.5e-06
+        },
+        {
+          "step": 9400,
+          "step_str": "9K",
+          "loss": 0.024,
+          "grad_norm": 0.255,
+          "lr": 1.2e-06
+        },
+        {
+          "step": 9500,
+          "step_str": "10K",
+          "loss": 0.023,
+          "grad_norm": 0.26,
+          "lr": 8.3e-07
+        },
+        {
+          "step": 9600,
+          "step_str": "10K",
+          "loss": 0.024,
+          "grad_norm": 0.255,
+          "lr": 5.5e-07
+        },
+        {
+          "step": 9700,
+          "step_str": "10K",
+          "loss": 0.023,
+          "grad_norm": 0.245,
+          "lr": 3.4e-07
+        },
+        {
+          "step": 9800,
+          "step_str": "10K",
+          "loss": 0.022,
+          "grad_norm": 0.236,
+          "lr": 1.7e-07
+        },
+        {
+          "step": 9900,
+          "step_str": "10K",
+          "loss": 0.022,
+          "grad_norm": 0.247,
+          "lr": 6.3e-08
+        },
+        {
+          "step": 10000,
+          "step_str": "10K",
+          "loss": 0.022,
+          "grad_norm": 0.246,
+          "lr": 9e-09
+        }
+      ],
+      "params": "248.8M",
+      "ok": true
+    },
+    "diffusion_px": {
+      "rc": 0,
+      "wall_s": 4325.5,
+      "cmd": "/kaggle/tmp/venv/bin/lerobot-train --dataset.repo_id=lerobot/pusht --env.type=pusht --policy.type=diffusion --policy.push_to_hub=false --policy.device=cuda --output_dir=/kaggle/tmp/train/diffusion_px --job_name=diffusion_px --steps=10000 --save_freq=10000 --eval_freq=0 --log_freq=100 --batch_size=64 --num_workers=4 --seed=1 --wandb.enable=false",
+      "dataset": "lerobot/pusht",
+      "ckpt": "/kaggle/tmp/train/diffusion_px/checkpoints/010000/pretrained_model",
+      "curve": [
+        {
+          "step": 100,
+          "step_str": "100",
+          "loss": 0.633,
+          "grad_norm": 10.008,
+          "lr": 1e-05
+        },
+        {
+          "step": 200,
+          "step_str": "200",
+          "loss": 0.118,
+          "grad_norm": 4.517,
+          "lr": 3e-05
+        },
+        {
+          "step": 300,
+          "step_str": "300",
+          "loss": 0.086,
+          "grad_norm": 3.092,
+          "lr": 5e-05
+        },
+        {
+          "step": 400,
+          "step_str": "400",
+          "loss": 0.077,
+          "grad_norm": 2.562,
+          "lr": 7e-05
+        },
+        {
+          "step": 500,
+          "step_str": "500",
+          "loss": 0.067,
+          "grad_norm": 1.711,
+          "lr": 9e-05
+        },
+        {
+          "step": 600,
+          "step_str": "600",
+          "loss": 0.066,
+          "grad_norm": 1.616,
+          "lr": 0.0001
+        },
+        {
+          "step": 700,
+          "step_str": "700",
+          "loss": 0.062,
+          "grad_norm": 1.468,
+          "lr": 0.0001
+        },
+        {
+          "step": 800,
+          "step_str": "800",
+          "loss": 0.06,
+          "grad_norm": 1.41,
+          "lr": 0.0001
+        },
+        {
+          "step": 900,
+          "step_str": "900",
+          "loss": 0.058,
+          "grad_norm": 1.312,
+          "lr": 0.0001
+        },
+        {
+          "step": 1000,
+          "step_str": "1K",
+          "loss": 0.054,
+          "grad_norm": 1.08,
+          "lr": 9.9e-05
+        },
+        {
+          "step": 1100,
+          "step_str": "1K",
+          "loss": 0.056,
+          "grad_norm": 1.004,
+          "lr": 9.9e-05
+        },
+        {
+          "step": 1200,
+          "step_str": "1K",
+          "loss": 0.057,
+          "grad_norm": 1.046,
+          "lr": 9.9e-05
+        },
+        {
+          "step": 1300,
+          "step_str": "1K",
+          "loss": 0.054,
+          "grad_norm": 0.955,
+          "lr": 9.8e-05
+        },
+        {
+          "step": 1400,
+          "step_str": "1K",
+          "loss": 0.053,
+          "grad_norm": 0.907,
+          "lr": 9.8e-05
+        },
+        {
+          "step": 1500,
+          "step_str": "2K",
+          "loss": 0.049,
+          "grad_norm": 0.9,
+          "lr": 9.8e-05
+        },
+        {
+          "step": 1600,
+          "step_str": "2K",
+          "loss": 0.052,
+          "grad_norm": 1.093,
+          "lr": 9.7e-05
+        },
+        {
+          "step": 1700,
+          "step_str": "2K",
+          "loss": 0.049,
+          "grad_norm": 0.887,
+          "lr": 9.6e-05
+        },
+        {
+          "step": 1800,
+          "step_str": "2K",
+          "loss": 0.048,
+          "grad_norm": 0.879,
+          "lr": 9.6e-05
+        },
+        {
+          "step": 1900,
+          "step_str": "2K",
+          "loss": 0.052,
+          "grad_norm": 0.899,
+          "lr": 9.5e-05
+        },
+        {
+          "step": 2000,
+          "step_str": "2K",
+          "loss": 0.05,
+          "grad_norm": 0.995,
+          "lr": 9.4e-05
+        },
+        {
+          "step": 2100,
+          "step_str": "2K",
+          "loss": 0.048,
+          "grad_norm": 0.833,
+          "lr": 9.4e-05
+        },
+        {
+          "step": 2200,
+          "step_str": "2K",
+          "loss": 0.046,
+          "grad_norm": 0.818,
+          "lr": 9.3e-05
+        },
+        {
+          "step": 2300,
+          "step_str": "2K",
+          "loss": 0.046,
+          "grad_norm": 0.799,
+          "lr": 9.2e-05
+        },
+        {
+          "step": 2400,
+          "step_str": "2K",
+          "loss": 0.05,
+          "grad_norm": 0.972,
+          "lr": 9.1e-05
+        },
+        {
+          "step": 2500,
+          "step_str": "2K",
+          "loss": 0.047,
+          "grad_norm": 0.87,
+          "lr": 9e-05
+        },
+        {
+          "step": 2600,
+          "step_str": "3K",
+          "loss": 0.047,
+          "grad_norm": 0.816,
+          "lr": 8.9e-05
+        },
+        {
+          "step": 2700,
+          "step_str": "3K",
+          "loss": 0.045,
+          "grad_norm": 0.703,
+          "lr": 8.8e-05
+        },
+        {
+          "step": 2800,
+          "step_str": "3K",
+          "loss": 0.046,
+          "grad_norm": 0.789,
+          "lr": 8.7e-05
+        },
+        {
+          "step": 2900,
+          "step_str": "3K",
+          "loss": 0.046,
+          "grad_norm": 0.739,
+          "lr": 8.6e-05
+        },
+        {
+          "step": 3000,
+          "step_str": "3K",
+          "loss": 0.044,
+          "grad_norm": 0.911,
+          "lr": 8.4e-05
+        },
+        {
+          "step": 3100,
+          "step_str": "3K",
+          "loss": 0.045,
+          "grad_norm": 0.872,
+          "lr": 8.3e-05
+        },
+        {
+          "step": 3200,
+          "step_str": "3K",
+          "loss": 0.044,
+          "grad_norm": 0.757,
+          "lr": 8.2e-05
+        },
+        {
+          "step": 3300,
+          "step_str": "3K",
+          "loss": 0.043,
+          "grad_norm": 0.739,
+          "lr": 8.1e-05
+        },
+        {
+          "step": 3400,
+          "step_str": "3K",
+          "loss": 0.044,
+          "grad_norm": 0.745,
+          "lr": 7.9e-05
+        },
+        {
+          "step": 3500,
+          "step_str": "4K",
+          "loss": 0.042,
+          "grad_norm": 0.738,
+          "lr": 7.8e-05
+        },
+        {
+          "step": 3600,
+          "step_str": "4K",
+          "loss": 0.043,
+          "grad_norm": 0.727,
+          "lr": 7.7e-05
+        },
+        {
+          "step": 3700,
+          "step_str": "4K",
+          "loss": 0.04,
+          "grad_norm": 0.697,
+          "lr": 7.5e-05
+        },
+        {
+          "step": 3800,
+          "step_str": "4K",
+          "loss": 0.04,
+          "grad_norm": 0.685,
+          "lr": 7.4e-05
+        },
+        {
+          "step": 3900,
+          "step_str": "4K",
+          "loss": 0.041,
+          "grad_norm": 0.698,
+          "lr": 7.2e-05
+        },
+        {
+          "step": 4000,
+          "step_str": "4K",
+          "loss": 0.041,
+          "grad_norm": 0.802,
+          "lr": 7.1e-05
+        },
+        {
+          "step": 4100,
+          "step_str": "4K",
+          "loss": 0.041,
+          "grad_norm": 0.855,
+          "lr": 6.9e-05
+        },
+        {
+          "step": 4200,
+          "step_str": "4K",
+          "loss": 0.04,
+          "grad_norm": 0.726,
+          "lr": 6.8e-05
+        },
+        {
+          "step": 4300,
+          "step_str": "4K",
+          "loss": 0.04,
+          "grad_norm": 0.653,
+          "lr": 6.6e-05
+        },
+        {
+          "step": 4400,
+          "step_str": "4K",
+          "loss": 0.039,
+          "grad_norm": 0.546,
+          "lr": 6.5e-05
+        },
+        {
+          "step": 4500,
+          "step_str": "4K",
+          "loss": 0.039,
+          "grad_norm": 0.647,
+          "lr": 6.3e-05
+        },
+        {
+          "step": 4600,
+          "step_str": "5K",
+          "loss": 0.039,
+          "grad_norm": 0.602,
+          "lr": 6.1e-05
+        },
+        {
+          "step": 4700,
+          "step_str": "5K",
+          "loss": 0.04,
+          "grad_norm": 0.67,
+          "lr": 6e-05
+        },
+        {
+          "step": 4800,
+          "step_str": "5K",
+          "loss": 0.039,
+          "grad_norm": 0.585,
+          "lr": 5.8e-05
+        },
+        {
+          "step": 4900,
+          "step_str": "5K",
+          "loss": 0.037,
+          "grad_norm": 0.588,
+          "lr": 5.7e-05
+        },
+        {
+          "step": 5000,
+          "step_str": "5K",
+          "loss": 0.04,
+          "grad_norm": 0.572,
+          "lr": 5.5e-05
+        },
+        {
+          "step": 5100,
+          "step_str": "5K",
+          "loss": 0.037,
+          "grad_norm": 0.613,
+          "lr": 5.3e-05
+        },
+        {
+          "step": 5200,
+          "step_str": "5K",
+          "loss": 0.039,
+          "grad_norm": 0.761,
+          "lr": 5.2e-05
+        },
+        {
+          "step": 5300,
+          "step_str": "5K",
+          "loss": 0.036,
+          "grad_norm": 0.557,
+          "lr": 5e-05
+        },
+        {
+          "step": 5400,
+          "step_str": "5K",
+          "loss": 0.037,
+          "grad_norm": 0.469,
+          "lr": 4.8e-05
+        },
+        {
+          "step": 5500,
+          "step_str": "6K",
+          "loss": 0.037,
+          "grad_norm": 0.563,
+          "lr": 4.7e-05
+        },
+        {
+          "step": 5600,
+          "step_str": "6K",
+          "loss": 0.037,
+          "grad_norm": 0.548,
+          "lr": 4.5e-05
+        },
+        {
+          "step": 5700,
+          "step_str": "6K",
+          "loss": 0.037,
+          "grad_norm": 0.547,
+          "lr": 4.3e-05
+        },
+        {
+          "step": 5800,
+          "step_str": "6K",
+          "loss": 0.036,
+          "grad_norm": 0.58,
+          "lr": 4.2e-05
+        },
+        {
+          "step": 5900,
+          "step_str": "6K",
+          "loss": 0.036,
+          "grad_norm": 0.48,
+          "lr": 4e-05
+        },
+        {
+          "step": 6000,
+          "step_str": "6K",
+          "loss": 0.035,
+          "grad_norm": 0.497,
+          "lr": 3.9e-05
+        },
+        {
+          "step": 6100,
+          "step_str": "6K",
+          "loss": 0.036,
+          "grad_norm": 0.522,
+          "lr": 3.7e-05
+        },
+        {
+          "step": 6200,
+          "step_str": "6K",
+          "loss": 0.033,
+          "grad_norm": 0.617,
+          "lr": 3.5e-05
+        },
+        {
+          "step": 6300,
+          "step_str": "6K",
+          "loss": 0.035,
+          "grad_norm": 0.53,
+          "lr": 3.4e-05
+        },
+        {
+          "step": 6400,
+          "step_str": "6K",
+          "loss": 0.035,
+          "grad_norm": 0.613,
+          "lr": 3.2e-05
+        },
+        {
+          "step": 6500,
+          "step_str": "6K",
+          "loss": 0.034,
+          "grad_norm": 0.552,
+          "lr": 3.1e-05
+        },
+        {
+          "step": 6600,
+          "step_str": "7K",
+          "loss": 0.034,
+          "grad_norm": 0.634,
+          "lr": 2.9e-05
+        },
+        {
+          "step": 6700,
+          "step_str": "7K",
+          "loss": 0.033,
+          "grad_norm": 0.479,
+          "lr": 2.8e-05
+        },
+        {
+          "step": 6800,
+          "step_str": "7K",
+          "loss": 0.034,
+          "grad_norm": 0.526,
+          "lr": 2.6e-05
+        },
+        {
+          "step": 6900,
+          "step_str": "7K",
+          "loss": 0.032,
+          "grad_norm": 0.467,
+          "lr": 2.5e-05
+        },
+        {
+          "step": 7000,
+          "step_str": "7K",
+          "loss": 0.033,
+          "grad_norm": 0.589,
+          "lr": 2.3e-05
+        },
+        {
+          "step": 7100,
+          "step_str": "7K",
+          "loss": 0.031,
+          "grad_norm": 0.477,
+          "lr": 2.2e-05
+        },
+        {
+          "step": 7200,
+          "step_str": "7K",
+          "loss": 0.031,
+          "grad_norm": 0.461,
+          "lr": 2.1e-05
+        },
+        {
+          "step": 7300,
+          "step_str": "7K",
+          "loss": 0.031,
+          "grad_norm": 0.486,
+          "lr": 1.9e-05
+        },
+        {
+          "step": 7400,
+          "step_str": "7K",
+          "loss": 0.03,
+          "grad_norm": 0.441,
+          "lr": 1.8e-05
+        },
+        {
+          "step": 7500,
+          "step_str": "8K",
+          "loss": 0.032,
+          "grad_norm": 0.46,
+          "lr": 1.7e-05
+        },
+        {
+          "step": 7600,
+          "step_str": "8K",
+          "loss": 0.031,
+          "grad_norm": 0.49,
+          "lr": 1.6e-05
+        },
+        {
+          "step": 7700,
+          "step_str": "8K",
+          "loss": 0.031,
+          "grad_norm": 0.529,
+          "lr": 1.4e-05
+        },
+        {
+          "step": 7800,
+          "step_str": "8K",
+          "loss": 0.029,
+          "grad_norm": 0.456,
+          "lr": 1.3e-05
+        },
+        {
+          "step": 7900,
+          "step_str": "8K",
+          "loss": 0.031,
+          "grad_norm": 0.48,
+          "lr": 1.2e-05
+        },
+        {
+          "step": 8000,
+          "step_str": "8K",
+          "loss": 0.029,
+          "grad_norm": 0.447,
+          "lr": 1.1e-05
+        },
+        {
+          "step": 8100,
+          "step_str": "8K",
+          "loss": 0.029,
+          "grad_norm": 0.424,
+          "lr": 1e-05
+        },
+        {
+          "step": 8200,
+          "step_str": "8K",
+          "loss": 0.03,
+          "grad_norm": 0.444,
+          "lr": 9.1e-06
+        },
+        {
+          "step": 8300,
+          "step_str": "8K",
+          "loss": 0.03,
+          "grad_norm": 0.43,
+          "lr": 8.1e-06
+        },
+        {
+          "step": 8400,
+          "step_str": "8K",
+          "loss": 0.029,
+          "grad_norm": 0.428,
+          "lr": 7.3e-06
+        },
+        {
+          "step": 8500,
+          "step_str": "8K",
+          "loss": 0.027,
+          "grad_norm": 0.415,
+          "lr": 6.4e-06
+        },
+        {
+          "step": 8600,
+          "step_str": "9K",
+          "loss": 0.029,
+          "grad_norm": 0.418,
+          "lr": 5.6e-06
+        },
+        {
+          "step": 8700,
+          "step_str": "9K",
+          "loss": 0.027,
+          "grad_norm": 0.379,
+          "lr": 4.9e-06
+        },
+        {
+          "step": 8800,
+          "step_str": "9K",
+          "loss": 0.027,
+          "grad_norm": 0.405,
+          "lr": 4.2e-06
+        },
+        {
+          "step": 8900,
+          "step_str": "9K",
+          "loss": 0.027,
+          "grad_norm": 0.398,
+          "lr": 3.6e-06
+        },
+        {
+          "step": 9000,
+          "step_str": "9K",
+          "loss": 0.029,
+          "grad_norm": 0.403,
+          "lr": 3e-06
+        },
+        {
+          "step": 9100,
+          "step_str": "9K",
+          "loss": 0.027,
+          "grad_norm": 0.397,
+          "lr": 2.4e-06
+        },
+        {
+          "step": 9200,
+          "step_str": "9K",
+          "loss": 0.027,
+          "grad_norm": 0.376,
+          "lr": 2e-06
+        },
+        {
+          "step": 9300,
+          "step_str": "9K",
+          "loss": 0.028,
+          "grad_norm": 0.379,
+          "lr": 1.5e-06
+        },
+        {
+          "step": 9400,
+          "step_str": "9K",
+          "loss": 0.028,
+          "grad_norm": 0.382,
+          "lr": 1.2e-06
+        },
+        {
+          "step": 9500,
+          "step_str": "10K",
+          "loss": 0.027,
+          "grad_norm": 0.376,
+          "lr": 8.3e-07
+        },
+        {
+          "step": 9600,
+          "step_str": "10K",
+          "loss": 0.027,
+          "grad_norm": 0.365,
+          "lr": 5.5e-07
+        },
+        {
+          "step": 9700,
+          "step_str": "10K",
+          "loss": 0.027,
+          "grad_norm": 0.351,
+          "lr": 3.4e-07
+        },
+        {
+          "step": 9800,
+          "step_str": "10K",
+          "loss": 0.026,
+          "grad_norm": 0.371,
+          "lr": 1.7e-07
+        },
+        {
+          "step": 9900,
+          "step_str": "10K",
+          "loss": 0.025,
+          "grad_norm": 0.368,
+          "lr": 6.3e-08
+        },
+        {
+          "step": 10000,
+          "step_str": "10K",
+          "loss": 0.026,
+          "grad_norm": 0.366,
+          "lr": 9e-09
+        }
+      ],
+      "params": "262.7M",
+      "ok": true
+    }
+  },
+  "runs": {
+    "tdmpc_kp_cpu10k_eval1000": {
+      "group": "tdmpc_kp_cpu10k",
+      "policy": "TD-MPC, keypoints + agent pos, offline, 10000 steps, train seed 1 (trained in the cpu kernel)",
+      "policy_path": "/kaggle/input/tdmpc-pusht-kp-10k",
+      "env": "--env.type=pusht --env.obs_type=environment_state_agent_pos",
+      "seed": 1000,
+      "rc": 0,
+      "wall_s": 328.0,
+      "cmd": "/kaggle/tmp/venv/bin/lerobot-eval --policy.path=/kaggle/input/tdmpc-pusht-kp-10k --policy.device=cuda --env.type=pusht --env.obs_type=environment_state_agent_pos --eval.n_episodes=50 --eval.batch_size=50 --seed=1000 --output_dir=/kaggle/working/eval/tdmpc_kp_cpu10k_eval1000",
+      "stats": {
+        "n_episodes": 50,
+        "n_success": 0,
+        "pc_success": 0.0,
+        "ci95_wilson": [
+          0.0,
+          7.135003417431873
+        ],
+        "avg_sum_reward": 7.643242600595636,
+        "avg_max_reward": 0.0728924286256209,
+        "eval_s": 312.14113116264343,
+        "successes": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ]
+      }
+    },
+    "tdmpc_kp_cpu10k_eval2000": {
+      "group": "tdmpc_kp_cpu10k",
+      "policy": "TD-MPC, keypoints + agent pos, offline, 10000 steps, train seed 1 (trained in the cpu kernel)",
+      "policy_path": "/kaggle/input/tdmpc-pusht-kp-10k",
+      "env": "--env.type=pusht --env.obs_type=environment_state_agent_pos",
+      "seed": 2000,
+      "rc": 0,
+      "wall_s": 346.7,
+      "cmd": "/kaggle/tmp/venv/bin/lerobot-eval --policy.path=/kaggle/input/tdmpc-pusht-kp-10k --policy.device=cuda --env.type=pusht --env.obs_type=environment_state_agent_pos --eval.n_episodes=50 --eval.batch_size=50 --seed=2000 --output_dir=/kaggle/working/eval/tdmpc_kp_cpu10k_eval2000",
+      "stats": {
+        "n_episodes": 50,
+        "n_success": 0,
+        "pc_success": 0.0,
+        "ci95_wilson": [
+          0.0,
+          7.135003417431873
+        ],
+        "avg_sum_reward": 12.270556113302694,
+        "avg_max_reward": 0.10742644449706837,
+        "eval_s": 337.9327919483185,
+        "successes": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ]
+      }
+    },
+    "tdmpc_kp_cpu10k_eval3000": {
+      "group": "tdmpc_kp_cpu10k",
+      "policy": "TD-MPC, keypoints + agent pos, offline, 10000 steps, train seed 1 (trained in the cpu kernel)",
+      "policy_path": "/kaggle/input/tdmpc-pusht-kp-10k",
+      "env": "--env.type=pusht --env.obs_type=environment_state_agent_pos",
+      "seed": 3000,
+      "rc": 0,
+      "wall_s": 347.0,
+      "cmd": "/kaggle/tmp/venv/bin/lerobot-eval --policy.path=/kaggle/input/tdmpc-pusht-kp-10k --policy.device=cuda --env.type=pusht --env.obs_type=environment_state_agent_pos --eval.n_episodes=50 --eval.batch_size=50 --seed=3000 --output_dir=/kaggle/working/eval/tdmpc_kp_cpu10k_eval3000",
+      "stats": {
+        "n_episodes": 50,
+        "n_success": 0,
+        "pc_success": 0.0,
+        "ci95_wilson": [
+          0.0,
+          7.135003417431873
+        ],
+        "avg_sum_reward": 6.628990276960616,
+        "avg_max_reward": 0.09884289916400762,
+        "eval_s": 338.30677247047424,
+        "successes": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ]
+      }
+    },
+    "vqbet_px_eval1000": {
+      "group": "vqbet_px",
+      "policy": "VQ-BeT, pixels + agent pos (2k VQ-VAE + 8k policy steps), 10000 steps, train seed 1",
+      "policy_path": "/kaggle/tmp/train/vqbet_px/checkpoints/010000/pretrained_model",
+      "env": "--env.type=pusht",
+      "seed": 1000,
+      "rc": 0,
+      "wall_s": 84.6,
+      "cmd": "/kaggle/tmp/venv/bin/lerobot-eval --policy.path=/kaggle/tmp/train/vqbet_px/checkpoints/010000/pretrained_model --policy.device=cuda --env.type=pusht --eval.n_episodes=50 --eval.batch_size=50 --seed=1000 --output_dir=/kaggle/working/eval/vqbet_px_eval1000",
+      "stats": {
+        "n_episodes": 50,
+        "n_success": 3,
+        "pc_success": 6.0,
+        "ci95_wilson": [
+          2.0614596364630478,
+          16.217343370877003
+        ],
+        "avg_sum_reward": 105.97423826123207,
+        "avg_max_reward": 0.6280672995702915,
+        "eval_s": 74.94029998779297,
+        "successes": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          true,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          true,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          true,
+          false,
+          false,
+          false
+        ]
+      }
+    },
+    "vqbet_px_eval2000": {
+      "group": "vqbet_px",
+      "policy": "VQ-BeT, pixels + agent pos (2k VQ-VAE + 8k policy steps), 10000 steps, train seed 1",
+      "policy_path": "/kaggle/tmp/train/vqbet_px/checkpoints/010000/pretrained_model",
+      "env": "--env.type=pusht",
+      "seed": 2000,
+      "rc": 0,
+      "wall_s": 84.5,
+      "cmd": "/kaggle/tmp/venv/bin/lerobot-eval --policy.path=/kaggle/tmp/train/vqbet_px/checkpoints/010000/pretrained_model --policy.device=cuda --env.type=pusht --eval.n_episodes=50 --eval.batch_size=50 --seed=2000 --output_dir=/kaggle/working/eval/vqbet_px_eval2000",
+      "stats": {
+        "n_episodes": 50,
+        "n_success": 4,
+        "pc_success": 8.0,
+        "ci95_wilson": [
+          3.1549003255790686,
+          18.838502545063704
+        ],
+        "avg_sum_reward": 118.63211683100792,
+        "avg_max_reward": 0.6909813838589602,
+        "eval_s": 74.95975041389465,
+        "successes": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          true,
+          false,
+          false,
+          false,
+          false,
+          true,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          true,
+          false,
+          false,
+          false,
+          false,
+          false,
+          true,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ]
+      }
+    },
+    "vqbet_px_eval3000": {
+      "group": "vqbet_px",
+      "policy": "VQ-BeT, pixels + agent pos (2k VQ-VAE + 8k policy steps), 10000 steps, train seed 1",
+      "policy_path": "/kaggle/tmp/train/vqbet_px/checkpoints/010000/pretrained_model",
+      "env": "--env.type=pusht",
+      "seed": 3000,
+      "rc": 0,
+      "wall_s": 83.1,
+      "cmd": "/kaggle/tmp/venv/bin/lerobot-eval --policy.path=/kaggle/tmp/train/vqbet_px/checkpoints/010000/pretrained_model --policy.device=cuda --env.type=pusht --eval.n_episodes=50 --eval.batch_size=50 --seed=3000 --output_dir=/kaggle/working/eval/vqbet_px_eval3000",
+      "stats": {
+        "n_episodes": 50,
+        "n_success": 8,
+        "pc_success": 16.0,
+        "ci95_wilson": [
+          8.337321362087696,
+          28.51448096176598
+        ],
+        "avg_sum_reward": 95.88474520825346,
+        "avg_max_reward": 0.6293550506347814,
+        "eval_s": 73.55531406402588,
+        "successes": [
+          false,
+          false,
+          true,
+          true,
+          false,
+          false,
+          false,
+          false,
+          true,
+          false,
+          false,
+          false,
+          false,
+          true,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          true,
+          true,
+          false,
+          false,
+          false,
+          false,
+          true,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          true,
+          false,
+          false,
+          false
+        ]
+      }
+    },
+    "diffusion_kp_eval1000": {
+      "group": "diffusion_kp",
+      "policy": "Diffusion Policy, keypoints + agent pos, DDIM-10, 10000 steps, train seed 1",
+      "policy_path": "/kaggle/tmp/train/diffusion_kp/checkpoints/010000/pretrained_model",
+      "env": "--env.type=pusht --env.obs_type=environment_state_agent_pos",
+      "seed": 1000,
+      "rc": 0,
+      "wall_s": 63.6,
+      "cmd": "/kaggle/tmp/venv/bin/lerobot-eval --policy.path=/kaggle/tmp/train/diffusion_kp/checkpoints/010000/pretrained_model --policy.device=cuda --env.type=pusht --env.obs_type=environment_state_agent_pos --eval.n_episodes=50 --eval.batch_size=50 --seed=1000 --output_dir=/kaggle/working/eval/diffusion_kp_eval1000",
+      "stats": {
+        "n_episodes": 50,
+        "n_success": 23,
+        "pc_success": 46.0,
+        "ci95_wilson": [
+          32.96943460178263,
+          59.601365671611916
+        ],
+        "avg_sum_reward": 140.88030478901538,
+        "avg_max_reward": 0.9827748967851799,
+        "eval_s": 51.13477683067322,
+        "successes": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          true,
+          true,
+          false,
+          true,
+          false,
+          true,
+          false,
+          true,
+          false,
+          false,
+          false,
+          false,
+          true,
+          false,
+          true,
+          true,
+          false,
+          false,
+          false,
+          true,
+          false,
+          false,
+          true,
+          true,
+          true,
+          true,
+          true,
+          false,
+          false,
+          false,
+          false,
+          false,
+          true,
+          false,
+          true,
+          true,
+          true,
+          true,
+          true,
+          false,
+          true,
+          false,
+          true,
+          true,
+          false
+        ]
+      }
+    },
+    "diffusion_kp_eval2000": {
+      "group": "diffusion_kp",
+      "policy": "Diffusion Policy, keypoints + agent pos, DDIM-10, 10000 steps, train seed 1",
+      "policy_path": "/kaggle/tmp/train/diffusion_kp/checkpoints/010000/pretrained_model",
+      "env": "--env.type=pusht --env.obs_type=environment_state_agent_pos",
+      "seed": 2000,
+      "rc": 0,
+      "wall_s": 62.1,
+      "cmd": "/kaggle/tmp/venv/bin/lerobot-eval --policy.path=/kaggle/tmp/train/diffusion_kp/checkpoints/010000/pretrained_model --policy.device=cuda --env.type=pusht --env.obs_type=environment_state_agent_pos --eval.n_episodes=50 --eval.batch_size=50 --seed=2000 --output_dir=/kaggle/working/eval/diffusion_kp_eval2000",
+      "stats": {
+        "n_episodes": 50,
+        "n_success": 14,
+        "pc_success": 28.000000000000004,
+        "ci95_wilson": [
+          17.47401435768036,
+          41.66538714598967
+        ],
+        "avg_sum_reward": 135.44215475881262,
+        "avg_max_reward": 0.9005610664066743,
+        "eval_s": 50.87560272216797,
+        "successes": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          true,
+          false,
+          false,
+          true,
+          false,
+          false,
+          false,
+          true,
+          true,
+          false,
+          false,
+          false,
+          true,
+          false,
+          false,
+          false,
+          true,
+          false,
+          true,
+          true,
+          false,
+          true,
+          false,
+          false,
+          false,
+          false,
+          false,
+          true,
+          true,
+          false,
+          false,
+          true,
+          false,
+          false,
+          false,
+          false,
+          false,
+          true,
+          true,
+          false,
+          false
+        ]
+      }
+    },
+    "diffusion_kp_eval3000": {
+      "group": "diffusion_kp",
+      "policy": "Diffusion Policy, keypoints + agent pos, DDIM-10, 10000 steps, train seed 1",
+      "policy_path": "/kaggle/tmp/train/diffusion_kp/checkpoints/010000/pretrained_model",
+      "env": "--env.type=pusht --env.obs_type=environment_state_agent_pos",
+      "seed": 3000,
+      "rc": 0,
+      "wall_s": 62.0,
+      "cmd": "/kaggle/tmp/venv/bin/lerobot-eval --policy.path=/kaggle/tmp/train/diffusion_kp/checkpoints/010000/pretrained_model --policy.device=cuda --env.type=pusht --env.obs_type=environment_state_agent_pos --eval.n_episodes=50 --eval.batch_size=50 --seed=3000 --output_dir=/kaggle/working/eval/diffusion_kp_eval3000",
+      "stats": {
+        "n_episodes": 50,
+        "n_success": 21,
+        "pc_success": 42.0,
+        "ci95_wilson": [
+          29.37479723456693,
+          55.766803312222166
+        ],
+        "avg_sum_reward": 122.69027839832684,
+        "avg_max_reward": 0.9506145846651153,
+        "eval_s": 50.768481492996216,
+        "successes": [
+          true,
+          false,
+          false,
+          false,
+          true,
+          false,
+          false,
+          false,
+          false,
+          true,
+          false,
+          false,
+          false,
+          true,
+          false,
+          false,
+          true,
+          false,
+          false,
+          true,
+          false,
+          false,
+          true,
+          false,
+          true,
+          true,
+          false,
+          true,
+          false,
+          false,
+          true,
+          false,
+          false,
+          true,
+          true,
+          false,
+          true,
+          false,
+          true,
+          false,
+          true,
+          true,
+          false,
+          true,
+          true,
+          false,
+          true,
+          true,
+          false,
+          false
+        ]
+      }
+    },
+    "diffusion_px_eval1000": {
+      "group": "diffusion_px",
+      "policy": "Diffusion Policy, pixels + agent pos, DDPM-100, 10000 steps, train seed 1",
+      "policy_path": "/kaggle/tmp/train/diffusion_px/checkpoints/010000/pretrained_model",
+      "env": "--env.type=pusht",
+      "seed": 1000,
+      "rc": 0,
+      "wall_s": 291.3,
+      "cmd": "/kaggle/tmp/venv/bin/lerobot-eval --policy.path=/kaggle/tmp/train/diffusion_px/checkpoints/010000/pretrained_model --policy.device=cuda --env.type=pusht --eval.n_episodes=50 --eval.batch_size=50 --seed=1000 --output_dir=/kaggle/working/eval/diffusion_px_eval1000",
+      "stats": {
+        "n_episodes": 50,
+        "n_success": 5,
+        "pc_success": 10.0,
+        "ci95_wilson": [
+          4.347512399157111,
+          21.36049033478839
+        ],
+        "avg_sum_reward": 104.12577399242265,
+        "avg_max_reward": 0.7180436700521007,
+        "eval_s": 271.1014869213104,
+        "successes": [
+          false,
+          false,
+          false,
+          true,
+          false,
+          false,
+          false,
+          true,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          true,
+          false,
+          true,
+          false,
+          false,
+          false,
+          false,
+          false,
+          true,
+          false,
+          false,
+          false,
+          false
+        ]
+      }
+    },
+    "diffusion_px_eval2000": {
+      "group": "diffusion_px",
+      "policy": "Diffusion Policy, pixels + agent pos, DDPM-100, 10000 steps, train seed 1",
+      "policy_path": "/kaggle/tmp/train/diffusion_px/checkpoints/010000/pretrained_model",
+      "env": "--env.type=pusht",
+      "seed": 2000,
+      "rc": 0,
+      "wall_s": 282.5,
+      "cmd": "/kaggle/tmp/venv/bin/lerobot-eval --policy.path=/kaggle/tmp/train/diffusion_px/checkpoints/010000/pretrained_model --policy.device=cuda --env.type=pusht --eval.n_episodes=50 --eval.batch_size=50 --seed=2000 --output_dir=/kaggle/working/eval/diffusion_px_eval2000",
+      "stats": {
+        "n_episodes": 50,
+        "n_success": 3,
+        "pc_success": 6.0,
+        "ci95_wilson": [
+          2.0614596364630478,
+          16.217343370877003
+        ],
+        "avg_sum_reward": 107.43720848859228,
+        "avg_max_reward": 0.6610508617648907,
+        "eval_s": 270.6692523956299,
+        "successes": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          true,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          true,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          true,
+          false,
+          false,
+          false,
+          false
+        ]
+      }
+    },
+    "diffusion_px_eval3000": {
+      "group": "diffusion_px",
+      "policy": "Diffusion Policy, pixels + agent pos, DDPM-100, 10000 steps, train seed 1",
+      "policy_path": "/kaggle/tmp/train/diffusion_px/checkpoints/010000/pretrained_model",
+      "env": "--env.type=pusht",
+      "seed": 3000,
+      "rc": 0,
+      "wall_s": 280.6,
+      "cmd": "/kaggle/tmp/venv/bin/lerobot-eval --policy.path=/kaggle/tmp/train/diffusion_px/checkpoints/010000/pretrained_model --policy.device=cuda --env.type=pusht --eval.n_episodes=50 --eval.batch_size=50 --seed=3000 --output_dir=/kaggle/working/eval/diffusion_px_eval3000",
+      "stats": {
+        "n_episodes": 50,
+        "n_success": 3,
+        "pc_success": 6.0,
+        "ci95_wilson": [
+          2.0614596364630478,
+          16.217343370877003
+        ],
+        "avg_sum_reward": 106.18187828212972,
+        "avg_max_reward": 0.7066622003384561,
+        "eval_s": 268.69710898399353,
+        "successes": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          true,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          true,
+          true,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ]
+      }
+    }
+  },
+  "errors": []
+}

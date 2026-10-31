@@ -1,0 +1,373 @@
+{
+  "per_episode": [
+    {
+      "episode_ix": 0,
+      "sum_reward": 5.1291718220188045,
+      "max_reward": 0.11781713304955495,
+      "success": false,
+      "seed": 3000
+    },
+    {
+      "episode_ix": 1,
+      "sum_reward": 55.01866446809228,
+      "max_reward": 0.43024134342463666,
+      "success": false,
+      "seed": 3001
+    },
+    {
+      "episode_ix": 2,
+      "sum_reward": 15.134934797653266,
+      "max_reward": 0.05044978265884421,
+      "success": false,
+      "seed": 3002
+    },
+    {
+      "episode_ix": 3,
+      "sum_reward": 0.0,
+      "max_reward": 0.0,
+      "success": false,
+      "seed": 3003
+    },
+    {
+      "episode_ix": 4,
+      "sum_reward": 0.0,
+      "max_reward": 0.0,
+      "success": false,
+      "seed": 3004
+    },
+    {
+      "episode_ix": 5,
+      "sum_reward": 3.455660034544289,
+      "max_reward": 0.17210778087769754,
+      "success": false,
+      "seed": 3005
+    },
+    {
+      "episode_ix": 6,
+      "sum_reward": 157.98194467292694,
+      "max_reward": 0.5898100361590561,
+      "success": false,
+      "seed": 3006
+    },
+    {
+      "episode_ix": 7,
+      "sum_reward": 0.0,
+      "max_reward": 0.0,
+      "success": false,
+      "seed": 3007
+    },
+    {
+      "episode_ix": 8,
+      "sum_reward": 0.0,
+      "max_reward": 0.0,
+      "success": false,
+      "seed": 3008
+    },
+    {
+      "episode_ix": 9,
+      "sum_reward": 38.58137309183453,
+      "max_reward": 0.12860457697278183,
+      "success": false,
+      "seed": 3009
+    },
+    {
+      "episode_ix": 10,
+      "sum_reward": 82.21896349941485,
+      "max_reward": 0.364191309853016,
+      "success": false,
+      "seed": 3010
+    },
+    {
+      "episode_ix": 11,
+      "sum_reward": 103.16514235925344,
+      "max_reward": 0.7597967320685697,
+      "success": false,
+      "seed": 3011
+    },
+    {
+      "episode_ix": 12,
+      "sum_reward": 0.0,
+      "max_reward": 0.0,
+      "success": false,
+      "seed": 3012
+    },
+    {
+      "episode_ix": 13,
+      "sum_reward": 84.98259036716092,
+      "max_reward": 0.3972099584151432,
+      "success": false,
+      "seed": 3013
+    },
+    {
+      "episode_ix": 14,
+      "sum_reward": 0.0,
+      "max_reward": 0.0,
+      "success": false,
+      "seed": 3014
+    },
+    {
+      "episode_ix": 15,
+      "sum_reward": 43.319141367891135,
+      "max_reward": 0.20575093399191058,
+      "success": false,
+      "seed": 3015
+    },
+    {
+      "episode_ix": 16,
+      "sum_reward": 0.0,
+      "max_reward": 0.0,
+      "success": false,
+      "seed": 3016
+    },
+    {
+      "episode_ix": 17,
+      "sum_reward": 21.432510328563303,
+      "max_reward": 0.25879156711725115,
+      "success": false,
+      "seed": 3017
+    },
+    {
+      "episode_ix": 18,
+      "sum_reward": 11.674720634823885,
+      "max_reward": 0.039290702765719124,
+      "success": false,
+      "seed": 3018
+    },
+    {
+      "episode_ix": 19,
+      "sum_reward": 245.99365639809517,
+      "max_reward": 0.955502062461214,
+      "success": false,
+      "seed": 3019
+    },
+    {
+      "episode_ix": 20,
+      "sum_reward": 0.0,
+      "max_reward": 0.0,
+      "success": false,
+      "seed": 3020
+    },
+    {
+      "episode_ix": 21,
+      "sum_reward": 0.0,
+      "max_reward": 0.0,
+      "success": false,
+      "seed": 3021
+    },
+    {
+      "episode_ix": 22,
+      "sum_reward": 0.501021965221035,
+      "max_reward": 0.09188374885456194,
+      "success": false,
+      "seed": 3022
+    },
+    {
+      "episode_ix": 23,
+      "sum_reward": 109.46482312823184,
+      "max_reward": 0.3675284161808735,
+      "success": false,
+      "seed": 3023
+    },
+    {
+      "episode_ix": 24,
+      "sum_reward": 0.0,
+      "max_reward": 0.0,
+      "success": false,
+      "seed": 3024
+    },
+    {
+      "episode_ix": 25,
+      "sum_reward": 1.496873624276514,
+      "max_reward": 0.006208971175925852,
+      "success": false,
+      "seed": 3025
+    },
+    {
+      "episode_ix": 26,
+      "sum_reward": 0.0,
+      "max_reward": 0.0,
+      "success": false,
+      "seed": 3026
+    },
+    {
+      "episode_ix": 27,
+      "sum_reward": 0.0,
+      "max_reward": 0.0,
+      "success": false,
+      "seed": 3027
+    },
+    {
+      "episode_ix": 28,
+      "sum_reward": 24.10715525944383,
+      "max_reward": 0.455076703868871,
+      "success": false,
+      "seed": 3028
+    },
+    {
+      "episode_ix": 29,
+      "sum_reward": 0.0,
+      "max_reward": 0.0,
+      "success": false,
+      "seed": 3029
+    },
+    {
+      "episode_ix": 30,
+      "sum_reward": 3.1934019785849337,
+      "max_reward": 0.17103625572958492,
+      "success": false,
+      "seed": 3030
+    },
+    {
+      "episode_ix": 31,
+      "sum_reward": 45.33227037798929,
+      "max_reward": 0.1568516486036824,
+      "success": false,
+      "seed": 3031
+    },
+    {
+      "episode_ix": 32,
+      "sum_reward": 15.119156894445435,
+      "max_reward": 0.05187676308193386,
+      "success": false,
+      "seed": 3032
+    },
+    {
+      "episode_ix": 33,
+      "sum_reward": 117.13295383159716,
+      "max_reward": 0.6874017751815117,
+      "success": false,
+      "seed": 3033
+    },
+    {
+      "episode_ix": 34,
+      "sum_reward": 12.08184298436994,
+      "max_reward": 0.2161965772247265,
+      "success": false,
+      "seed": 3034
+    },
+    {
+      "episode_ix": 35,
+      "sum_reward": 248.03358023762368,
+      "max_reward": 0.8571222833838108,
+      "success": false,
+      "seed": 3035
+    },
+    {
+      "episode_ix": 36,
+      "sum_reward": 0.0,
+      "max_reward": 0.0,
+      "success": false,
+      "seed": 3036
+    },
+    {
+      "episode_ix": 37,
+      "sum_reward": 142.93964734050098,
+      "max_reward": 0.7429102193829388,
+      "success": false,
+      "seed": 3037
+    },
+    {
+      "episode_ix": 38,
+      "sum_reward": 0.0,
+      "max_reward": 0.0,
+      "success": false,
+      "seed": 3038
+    },
+    {
+      "episode_ix": 39,
+      "sum_reward": 34.40027564616335,
+      "max_reward": 0.2765711761199939,
+      "success": false,
+      "seed": 3039
+    },
+    {
+      "episode_ix": 40,
+      "sum_reward": 0.4053104127211188,
+      "max_reward": 0.07730287136698927,
+      "success": false,
+      "seed": 3040
+    },
+    {
+      "episode_ix": 41,
+      "sum_reward": 46.56957707874501,
+      "max_reward": 0.42580318085257196,
+      "success": false,
+      "seed": 3041
+    },
+    {
+      "episode_ix": 42,
+      "sum_reward": 0.0,
+      "max_reward": 0.0,
+      "success": false,
+      "seed": 3042
+    },
+    {
+      "episode_ix": 43,
+      "sum_reward": 0.0,
+      "max_reward": 0.0,
+      "success": false,
+      "seed": 3043
+    },
+    {
+      "episode_ix": 44,
+      "sum_reward": 20.176263639356748,
+      "max_reward": 0.1392209463384369,
+      "success": false,
+      "seed": 3044
+    },
+    {
+      "episode_ix": 45,
+      "sum_reward": 0.0,
+      "max_reward": 0.0,
+      "success": false,
+      "seed": 3045
+    },
+    {
+      "episode_ix": 46,
+      "sum_reward": 115.02163948970906,
+      "max_reward": 0.44691017674875877,
+      "success": false,
+      "seed": 3046
+    },
+    {
+      "episode_ix": 47,
+      "sum_reward": 9.731667789114663,
+      "max_reward": 0.19981249179600175,
+      "success": false,
+      "seed": 3047
+    },
+    {
+      "episode_ix": 48,
+      "sum_reward": 190.45478098877217,
+      "max_reward": 0.9869562434161413,
+      "success": false,
+      "seed": 3048
+    },
+    {
+      "episode_ix": 49,
+      "sum_reward": 56.88076264576706,
+      "max_reward": 0.27923631224007256,
+      "success": false,
+      "seed": 3049
+    }
+  ],
+  "aggregated": {
+    "avg_sum_reward": 41.22262958309813,
+    "avg_max_reward": 0.22210941362725567,
+    "pc_success": 0.0,
+    "eval_s": 35.83353400230408,
+    "eval_ep_s": 0.7166706991195678
+  },
+  "video_paths": [
+    "/private/tmp/claude-501/-Users-xingyuanxue1122-Documents-coding/c12ee476-2308-4ffc-882c-36a819a26e8c/scratchpad/tdmpc_nompc/seed3000/videos/eval_episode_0.mp4",
+    "/private/tmp/claude-501/-Users-xingyuanxue1122-Documents-coding/c12ee476-2308-4ffc-882c-36a819a26e8c/scratchpad/tdmpc_nompc/seed3000/videos/eval_episode_1.mp4",
+    "/private/tmp/claude-501/-Users-xingyuanxue1122-Documents-coding/c12ee476-2308-4ffc-882c-36a819a26e8c/scratchpad/tdmpc_nompc/seed3000/videos/eval_episode_2.mp4",
+    "/private/tmp/claude-501/-Users-xingyuanxue1122-Documents-coding/c12ee476-2308-4ffc-882c-36a819a26e8c/scratchpad/tdmpc_nompc/seed3000/videos/eval_episode_3.mp4",
+    "/private/tmp/claude-501/-Users-xingyuanxue1122-Documents-coding/c12ee476-2308-4ffc-882c-36a819a26e8c/scratchpad/tdmpc_nompc/seed3000/videos/eval_episode_4.mp4",
+    "/private/tmp/claude-501/-Users-xingyuanxue1122-Documents-coding/c12ee476-2308-4ffc-882c-36a819a26e8c/scratchpad/tdmpc_nompc/seed3000/videos/eval_episode_5.mp4",
+    "/private/tmp/claude-501/-Users-xingyuanxue1122-Documents-coding/c12ee476-2308-4ffc-882c-36a819a26e8c/scratchpad/tdmpc_nompc/seed3000/videos/eval_episode_6.mp4",
+    "/private/tmp/claude-501/-Users-xingyuanxue1122-Documents-coding/c12ee476-2308-4ffc-882c-36a819a26e8c/scratchpad/tdmpc_nompc/seed3000/videos/eval_episode_7.mp4",
+    "/private/tmp/claude-501/-Users-xingyuanxue1122-Documents-coding/c12ee476-2308-4ffc-882c-36a819a26e8c/scratchpad/tdmpc_nompc/seed3000/videos/eval_episode_8.mp4",
+    "/private/tmp/claude-501/-Users-xingyuanxue1122-Documents-coding/c12ee476-2308-4ffc-882c-36a819a26e8c/scratchpad/tdmpc_nompc/seed3000/videos/eval_episode_9.mp4"
+  ]
+}
