@@ -15,7 +15,7 @@
 | ALOHA transfer cube，预训练 ACT（流程正向对照） | 2 × 50 = 100 | 76.0% | [66.8, 83.3] | 模型卡 83.0% / 500 eps（p=0.10） |
 | ALOHA 插接，同一权重，时限改成 demo 长度 500 步 | 2 × 50 = 100 | 21.0% | [14.2, 30.0] | 模型卡 20.6%（p=0.93）；vs 400 步 16.7%（p=0.39） |
 | **PushT，自己短训的 ACT（10k 步，3 个训练 seed × 3 个评测 seed）** | 9 × 50 = 450 / 变体 | 关键点 **22.7%**；像素 8.0% | [19.0, 26.8]；[5.8, 10.9] | 100k 步的同配方权重 64%；**训练 seed 间 10% / 25% / 33%** |
-| **PushT，ACT 训满 100k 步（关键点 3 个训练 seed；像素 1 个）** | 关键点 3 × 500 = 1500；像素 500 | 关键点 **47.6%**（49.4 / 49.6 / 43.8）；像素 35.0% | [45.1, 50.1]；[30.9, 39.3] | 作者同配方 100k 步 64.0%：差 16 pts，p=2e-10，三个 seed 都显著低，**不是 seed 或 checkpoint 的运气** |
+| **PushT，ACT 训满 100k 步（关键点 3 个训练 seed；像素 1 个）** | 关键点 3 × 500 = 1500；像素 500 | 关键点 **47.6%**（49.4 / 49.6 / 43.8）；像素 35.0% | [45.1, 50.1]；[30.9, 39.3] | 作者同配方 100k 步 64.0%：差 16 pts，p=2e-10，三个 seed 都显著低，不是 seed 或 checkpoint 的运气；配置 / 模型代码 / 数据逐项一致，作者代码 + 配置原样复跑 45.4%，开 AMP 46.8%，五次运行 47.0% ± 2.5：**公开配方复现不出公开权重**（§3.8） |
 | **PushT，同协议短训其他策略（10k 步，训练 seed 1，3 评测 seed × 50）** | 各 150 | Diffusion 关键点 **38.7%**；VQ-BeT 像素 10.0%；Diffusion 像素 7.3%；TD-MPC 关键点 0.0% | [31.2, 46.7]；[6.2, 15.8]；[4.1, 12.7]；[0.0, 2.5] | 同模态 ACT 10k：关键点 22.7%（Diffusion 显著高，p=1e-4）、像素 8.0%（三个像素方法分不开）；各自官方参照 73.3% / 56.0% / 66.0%（§3.7） |
 | PushT，官方参照 VQ-BeT（`lerobot/vqbet_pusht`，像素）与 Diffusion Policy 关键点（`lerobot/diffusion_pusht_keypoints`，Hydra 旧格式转换后） | 各 150 | 56.0%；73.3% | [48.0, 63.7]；[65.7, 79.8] | 模型卡 57.0%（p=0.83）/ 71.0%（p=0.58），两份都复现 |
 | LIBERO libero_spatial，demo 开环回放（无可加载的官方权重） | 10 任务 × 50 = 500 | 90.2% | [87.3, 92.5] | 回放上限，不是策略成绩 |
@@ -162,7 +162,7 @@ loss（L1 + 10·KL，最后 1k 步均值）三条关键点轨迹几乎重合：1
 
 **三条轨迹合起来看到的东西**
 
-- **与作者的差距是系统性的，不是 seed 或 checkpoint 的运气。** 100k 处三个 seed 合并 714/1500 = 47.6% [45.1, 50.1]，作者 320/500 = 64.0%，z=−6.4，p=2e-10；三个 seed 各自都显著低（p ≤ 4e-6）；三条轨迹 30 个 checkpoint 里最好的一个是 52.7%，没有一个碰到作者的区间 [59.7, 68.1]。作者权重在本流程重测是 62.7%（§2），评测侧没问题，差异在训练侧。候选原因：作者用的是 2024-07 的 lerobot（Hydra 配置）而这里是 0.3.3，两者之间的 ACT 训练代码、数据集格式（v1 → v2.1 转换）或默认超参可能有差异，这里没有逐项对比；要确认需要用作者的 config.yaml 在当时的 lerobot 版本上重训一次。
+- **与作者的差距是系统性的，不是 seed 或 checkpoint 的运气。** 100k 处三个 seed 合并 714/1500 = 47.6% [45.1, 50.1]，作者 320/500 = 64.0%，z=−6.4，p=2e-10；三个 seed 各自都显著低（p ≤ 4e-6）；三条轨迹 30 个 checkpoint 里最好的一个是 52.7%，没有一个碰到作者的区间 [59.7, 68.1]。作者权重在本流程重测是 62.7%（§2），评测侧没问题，差异在训练侧。候选原因：作者用的是 2024-07 的 lerobot（Hydra 配置）而这里是 0.3.3，两者之间的 ACT 训练代码、数据集格式（v1 → v2.1 转换）或默认超参可能有差异，这里没有逐项对比；要确认需要用作者的 config.yaml 在当时的 lerobot 版本上重训一次（§3.8 做了：45.4%，这些候选全部排除）。
 - **训练 seed 分量随训练变小。** 10k 时三个 seed 是 10 / 25 / 33%（标准差 11.6 pts，§3.4）；100k 时是 49.4 / 49.6 / 43.8%（标准差 3.3 pts，方差分量 2.5 pts，F(2,27)=2.4，不显著）。训练越充分，seed 之间越像。
 - **checkpoint 之间的震荡不随训练消失。** 50k 到 100k 六个 checkpoint 的标准差，三个 seed 分别 7.9 / 8.8 / 4.2 pts，都不低于 n=150 的采样误差 4 pts；seed 1 的 90k 与 100k 差 19 pts（p=0.0009），seed 2 的 50k 与 90k 差 26 pts。loss 全程单调下降，成功率却从 50k 起就在平台上来回跳。像素版没有这一层（2.7 pts，低于采样误差 3.8）。
 - 对评测方法的含义：**报从头训的结果时，至少报多个训练 seed，并且用最后 k 个 checkpoint 的均值或事先定好的选择规则，不要报单个 checkpoint**。这里 60k–100k 五个 checkpoint 的均值是 42.7 / 43.1 / 36.4%，平均 40.7%，比任何一条轨迹上"最好的那个 checkpoint"保守 10 个点。
@@ -193,25 +193,35 @@ AdamW 给每个参数维护一阶矩 m（梯度的滑动平均，β1=0.9，记�
 - 评测流程对三种新策略都成立：两份官方参照 56.0% / 73.3% 与模型卡 57.0% / 71.0% 一致（p=0.83 / 0.58），Hydra 旧格式的 Diffusion 权重转换（156 个张量逐一对上）没有丢东西；参照的跨评测 seed 标准差 4.0 / 3.1 pts，在采样误差内，与 §4(b) 一致。
 - 对评测方法的含义：跨方法比较时，每个方法只有一个训练 seed 的话，方法间差异和训练 seed 噪声（10k 时 ACT 测到 11.6 pts）混在一起；这里 Diffusion 比 ACT 高 16 pts，大于这个噪声，像素三方的 2–3 pts 差异则完全在噪声里。
 
-### 3.8 47.6% 对 64.0%：排查训练侧差异（进行中，2026-11-08）
+### 3.8 47.6% 对 64.0%：排查训练侧差异（2026-11-08；kernel `cindyxue1122/lerobot-train-act-pusht-100k-kp-seed2-amp`、`cindyxue1122/lerobot-train-act-pusht-oldcode`，源码 `kaggle/lerobot-train-act-pusht-100k/`、`kaggle/lerobot-train-act-pusht-oldcode/`）
 
-§3.5 的结论是差距在训练侧。把作者的 Hub 配置（`config.yaml`，2024-07 的 Hydra 格式）、作者上传当天的 lerobot 代码和数据集两个修订版逐项对比：
+§3.5 的结论是差距在训练侧。先把作者 Hub 上的配置、作者上传当天的 lerobot 代码和数据集的两个修订版逐项对比，再用两个 kernel 做确认实验。
+
+**逐项对比**
 
 | 项 | 作者（2024-07） | 这里（lerobot 0.3.3） | 一致？ |
 |---|---|---|---|
-| 配置：模型结构（dim 512 / 8 头 / FF 3200 / 编码 4 层 / 解码 4 层 / VAE 编码 4 层 / latent 32 / dropout 0.1 / kl 10）、chunk 16 / n_action_steps 16、归一化（ENV / STATE / ACTION 全部 min-max）、lr 3e-5 / backbone 1e-5 / weight decay 1e-4 / grad clip 10、batch 64、100k 步、无 lr 调度 | `config.yaml` | 各 kernel 存下的 `train_config.json` | 全部一致 |
+| 配置：模型结构（dim 512 / 8 头 / FF 3200 / 编码 4 层 / 解码 4 层 / VAE 编码 4 层 / latent 32 / dropout 0.1 / kl 10）、chunk 16 / n_action_steps 16、归一化（ENV / STATE / ACTION 全部 min-max）、lr 3e-5 / backbone 1e-5 / weight decay 1e-4 / grad clip 10、batch 64、100k 步、无 lr 调度 | `config.yaml`（Hub 上保存的 Hydra 完整配置） | 各 kernel 存下的 `train_config.json` | 全部一致 |
 | 配置：`use_amp`（混合精度） | true | false | **不同** |
 | 配置：训练 seed / num_workers | 100000 / 8 | 1、2、3 / 4 | 不同，但 §3.5 三个 seed 都低 14–20 pts |
 | ACT 模型代码 | commit 471eab3d（PR #314，2024-07-11，作者 07-10 上传权重的次日合入，作者用的就是这个分支） | b883328e | 关键点路径上**没有数学改动**：此后的改动是 `n_vae_encoder_layers` 修复（PR #400，两边都是 4，无影响）、推理时关 VAE（PR #1588，只影响评测期）、图像多相机路径重构、temporal ensembling（未用） |
 | 优化器 | AdamW，backbone 单独一个参数组，无调度器 | 同 | 一致 |
-| 数据 | `lerobot/pusht_keypoints` revision v1.5（老代码 `CODEBASE_VERSION`） | revision v2.1 | 25,650 帧的 environment_state / state / action / timestamp / reward **逐元素相同**（max |diff| = 0），min / max 统计量精确相同，mean / std 差 1e-4（min-max 归一化用不到）；比对脚本 `kaggle/lerobot-train-act-pusht-oldcode/data_check/` |
+| 数据 | `lerobot/pusht_keypoints` revision v1.5（老代码的 `CODEBASE_VERSION`） | revision v2.1 | 25,650 帧的 environment_state / state / action / timestamp / reward **逐元素相同**（max \|diff\| = 0），min / max 统计量精确相同，mean / std 差 1e-4（min-max 归一化用不到）；比对脚本 `kaggle/lerobot-train-act-pusht-oldcode/data_check/` |
 
-配置、模型、数据三项都排除，只剩：(a) AMP；(b) 两版代码在训练循环 / 数据加载上某个上表没覆盖的差异；(c) 作者那一次运行本身（单个 seed，可能恰好偏高）。两个 kernel 同时在跑，各约 5 h：
+配置、模型、数据三项都排除，只剩 (a) AMP，(b) 两版代码在训练循环 / 数据加载上某个上表没覆盖的差异，(c) 作者那一次运行本身。
 
-- `cindyxue1122/lerobot-train-act-pusht-100k-kp-seed2-amp`：0.3.3，与 §3.5 的 seed 2 完全相同，只加 `--policy.use_amp=true`，只动一个变量（模板加了 `EXTRA_ARGS` 开关）。
-- `cindyxue1122/lerobot-train-act-pusht-oldcode`（源码 `kaggle/lerobot-train-act-pusht-oldcode/`）：直接用作者的代码（lerobot 471eab3d、torch 2.3.1、数据 v1.5）和作者的 `config.yaml` 原样（seed 100000、AMP）重训 100k，每 10k 存档；同一 kernel 里装 0.3.3，把每个 checkpoint 转成 0.3.3 的配置格式（`model.safetensors` 键名没变）后按本页协议评（每档 3 × 50，100k 处 500）。本地用 4 步 dry run 验过"老代码训练 → 转格式严格加载 → 0.3.3 评测"整条链路。
+**确认实验**（同日并行，T4，各约 4.5 h；每 10k 步评 3 评测 seed × 50，100k 处 10 × 50 = 500；汇总脚本 `analyze_100k.py` 已并入这两行）
 
-读法：老代码复现到 60% 以上而 AMP 版仍在 48% 左右，差异就在两版代码的训练循环 / 数据加载里（再 bisect）；两个都到 60% 以上，是 AMP；老代码也只有 48% 左右，作者的 64% 是那一次运行的偏高结果（或 checkpoint 选择），同配方的期望值更接近这里的 47.6%。
+| 运行 | 代码 / 数据 / 配置 | 10k | 20k | 30k | 40k | 50k | 60k | 70k | 80k | 90k | 100k | 60k–100k 均值 | 100k，500 eps |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| seed 2 + AMP | 0.3.3 / v2.1 / §3.5 的 seed 2 只加 `--policy.use_amp=true`（只动一个变量） | 8.0 | 32.7 | 32.0 | 22.7 | 38.0 | 43.3 | 33.3 | 39.3 | 44.0 | 47.3 | 41.5 | 234/500 = 46.8% [42.5, 51.2] |
+| 作者代码 + 作者配置原样 | lerobot 471eab3d、torch 2.3.1 / v1.5 / `config.yaml` 原样（seed 100000、AMP、Hydra `train.py`），checkpoint 转成 0.3.3 格式后评 | 6.0 | 10.7 | 26.0 | 18.7 | 18.0 | 27.3 | 37.3 | 41.3 | 41.3 | 42.0 | 37.9 | 227/500 = 45.4% [41.1, 49.8] |
+
+- **AMP 不是原因。** seed 2 开 AMP 46.8% 对不开 49.6%，差异在噪声内（p=0.38）；与三个 seed 合并的 47.6% 分不开（p=0.76）。训练速度 6.2 对 6.0 it/s，这个模型小，AMP 基本不提速。
+- **代码版本、数据修订、随机种子、torch 版本也不是原因。** 作者的代码、配置、数据、seed 原样复跑，100k 处 45.4%，与我们 0.3.3 的三个 seed 分不开（p=0.39），离作者自报的 64.0% 差 5.9 个标准误（p=3.5e-9）。loss 曲线（10k 0.066 → 100k 0.029）和成功率随步数的形状与 §3.5 一样，一路都在 §3.5 三条轨迹的范围内。
+- **五次独立的 100k 训练**（0.3.3 三个 seed、0.3.3 + AMP、作者代码）全在 43.8%–49.6%，合并 1175/2500 = 47.0% [45.0, 49.0]，运行间标准差 2.5 pts；64.0% 在这组数里是 6.8 个标准差外的点，"那次运行手气好"解释不通。
+- 所以：**公开的配方（`config.yaml` + 当时的代码 + 数据集）在这里稳定给出 47% 左右，复现不出公开权重的 64%。** 权重本身是真的好（本流程重测 62.7%，§2），差异只能来自公开配方没记录的东西：作者训练时用的是尚未合入的 PR 分支，分支状态可能与合入的 commit 不同；或训练过程（实际步数、是否多次 resume、从多个运行里挑选）与 `config.yaml` 所述不同。这一步无法再从外部推进，要问作者。
+- 对评测方法的含义：**模型卡上的数字是"这份权重"的成绩，不是"这个配方"的成绩。** 要引用一个配方的期望成功率，得自己跑多个 seed：这里 ACT 关键点配方 100k 步的期望值是 47% ± 2.5（5 次运行），不是 64%；用模型卡数字当配方基线会高估 17 个点。
 
 ## 4. 方差从哪来
 
@@ -243,5 +253,7 @@ AdamW 给每个参数维护一阶矩 m（梯度的滑动平均，β1=0.9，记�
 - `kaggle/outputs/lerobot-train-act-pusht-100k-kp/`、`.../-100k-px/`、`.../-100k-kp-seed2/`、`.../-100k-kp-seed3/`：训满 100k 的训练日志（`train/<variant>_cont/train_log.json`，步数已按行号修正）、每 10k 步 3 次评测 + 100k 步 10 次评测的 `eval_info.json`、100k 步 checkpoint（`ckpts/`，`model.safetensors` 不入 git）。
 - `kaggle/outputs/lerobot-train-others-pusht-cpu/`：两份官方参照（VQ-BeT、Diffusion 关键点）各 3 次评测、TD-MPC 关键点 10k 步训练日志与 checkpoint（`model.safetensors` 不入 git；Kaggle 数据集 `cindyxue1122/tdmpc-pusht-kp-10k`）、VQ-BeT 像素版训到 4k 步的日志。
 - `kaggle/outputs/lerobot-train-others-pusht-gpu/`：VQ-BeT 像素、Diffusion 关键点、Diffusion 像素各 10k 步的训练日志（`train/<run>/train_log.json`）、12 次评测（含 TD-MPC checkpoint 的 3 次）、VQ-BeT checkpoint（`ckpts/`，`model.safetensors` 不入 git；两个 Diffusion 的 1 GB 权重没留）。对比表和 p 值由 `kaggle/lerobot-train-others-pusht/analyze_others.py kaggle/outputs` 重算。
+- `kaggle/outputs/lerobot-train-act-pusht-100k-kp-seed2-amp/`：§3.8 的 AMP 对照（seed 2 + `use_amp=true`），格式同上。
+- `kaggle/outputs/lerobot-train-act-pusht-oldcode/`：§3.8 作者代码 + 配置原样复跑：训练日志（`train/old_act_kp/train_log.json`）、每 10k 步 3 次 + 100k 步 10 次评测、100k checkpoint 的原格式与转换后两份（`model.safetensors` 不入 git）、`env/author_config.yaml`、两套 venv 的 `requirements-freeze-*.txt`。
 - `kaggle/outputs/libero-spatial-eval/run5/`：LIBERO 回放与协议走通的逐条记录。
 - 统计脚本：`lerobot/outputs/eval_stats.py`（Wilson CI、方差）；各 kernel 内嵌同一份逻辑生成 `summary.md`。

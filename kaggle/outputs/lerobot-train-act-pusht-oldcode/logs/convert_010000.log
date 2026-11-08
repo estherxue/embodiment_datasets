@@ -1,0 +1,5 @@
+
+===== [04:51:24] $ /kaggle/tmp/venv/bin/python /kaggle/tmp/convert_old_act_ckpt.py /kaggle/tmp/train/old_act_kp/checkpoints/010000/pretrained_model /kaggle/tmp/converted/010000
+Loading weights from local directory
+CONVERT_OK /kaggle/tmp/train/old_act_kp/checkpoints/010000/pretrained_model -> /kaggle/tmp/converted/010000: 56.3M params; inputs=['observation.environment_state', 'observation.state'] norm={'ENV': <NormalizationMode.MIN_MAX: 'MIN_MAX'>, 'STATE': <NormalizationMode.MIN_MAX: 'MIN_MAX'>, 'ACTION': <NormalizationMode.MIN_MAX: 'MIN_MAX'>} chunk=16 n_action_steps=16
+normalize buffers finite: True

@@ -1,5 +1,7 @@
-"""Combine the 100k-step ACT PushT keypoint runs (seed 1 = 10k kernel + continuation, seeds 2/3 from scratch):
-success per checkpoint, final 500-episode results, checkpoint-to-checkpoint spread, train-seed decomposition at 100k.
+"""Combine the 100k-step ACT PushT keypoint runs (seed 1 = 10k kernel + continuation, seeds 2/3 from scratch, plus the
+two investigation runs: seed 2 with use_amp=true, and the author's 2024-07 code + config.yaml with seed 100000):
+success per checkpoint, final 500-episode results, checkpoint-to-checkpoint spread, train-seed decomposition at 100k
+(seeds 1-3 only; the investigation runs are reported alongside and tested against the references).
 Usage: python3 -I analyze_100k.py <kaggle/outputs root>"""
 import json, math, os, sys, glob
 
@@ -23,8 +25,12 @@ def sd(xs):
 
 # ---- load: {train_seed: {total_step: {eval_seed: (k, n)}}}
 runs = {}
-SRC = {1: "lerobot-train-act-pusht-100k-kp", 2: "lerobot-train-act-pusht-100k-kp-seed2", 3: "lerobot-train-act-pusht-100k-kp-seed3"}
-for ts, d in SRC.items():
+# label -> (kernel output dir, part of the seed-1/2/3 decomposition)
+SRC = {"1": ("lerobot-train-act-pusht-100k-kp", True), "2": ("lerobot-train-act-pusht-100k-kp-seed2", True),
+       "3": ("lerobot-train-act-pusht-100k-kp-seed3", True),
+       "2, use_amp=true": ("lerobot-train-act-pusht-100k-kp-seed2-amp", False),
+       "author code+cfg, seed 100000": ("lerobot-train-act-pusht-oldcode", False)}
+for ts, (d, _) in SRC.items():
     p = os.path.join(root, d, "summary.json")
     if not os.path.exists(p):
         print(f"(missing {d})"); continue
@@ -32,12 +38,13 @@ for ts, d in SRC.items():
     for name, r in S["runs"].items():
         if r.get("stats"):
             runs.setdefault(ts, {}).setdefault(r["total_step"], {})[r["seed"]] = (r["stats"]["n_success"], r["stats"]["n_episodes"])
-    if ts == 1:  # the 10k checkpoint of seed 1 was evaluated in the 10k kernel
+    if ts == "1":  # the 10k checkpoint of seed 1 was evaluated in the 10k kernel
         S10 = json.load(open(os.path.join(root, "lerobot-train-act-pusht", "summary.json")))
         for name, r in S10["runs"].items():
             if name.startswith("kp_train1_eval") and not r.get("repeat") and r.get("stats"):
-                runs[1].setdefault(10000, {})[r["seed"]] = (r["stats"]["n_success"], r["stats"]["n_episodes"])
-seeds = sorted(runs)
+                runs["1"].setdefault(10000, {})[r["seed"]] = (r["stats"]["n_success"], r["stats"]["n_episodes"])
+seeds = [ts for ts in SRC if ts in runs]
+anova_seeds = [ts for ts in seeds if SRC[ts][1]]
 steps = sorted({s for ts in runs for s in runs[ts]})
 
 # ---- table: success per checkpoint, first 3 eval seeds pooled (150 eps) so all checkpoints are comparable
@@ -65,8 +72,8 @@ for ts in seeds:
     m = sum(vals) / len(vals)
     print(f"- seed {ts}: {[round(v, 1) for v in vals]} mean {m:.1f} std {sd(vals):.1f} (Bernoulli SE at n=150: {100 * math.sqrt(m / 100 * (1 - m / 100) / 150):.1f})")
 
-print("\n## 100k checkpoint: train-seed decomposition (10 eval seeds x 50 per train seed)")
-mat = {ts: [100 * runs[ts][100000][e][0] / runs[ts][100000][e][1] for e in sorted(runs[ts][100000])] for ts in seeds if 100000 in runs[ts]}
+print("\n## 100k checkpoint: train-seed decomposition (10 eval seeds x 50 per train seed; lerobot 0.3.3 seeds 1-3 only)")
+mat = {ts: [100 * runs[ts][100000][e][0] / runs[ts][100000][e][1] for e in sorted(runs[ts][100000])] for ts in anova_seeds if 100000 in runs[ts]}
 means = {ts: sum(v) / len(v) for ts, v in mat.items()}
 E = min(len(v) for v in mat.values())
 grand = sum(means.values()) / len(means)
@@ -77,10 +84,12 @@ comp = max(0.0, (ms_train - ms_eval) / E)
 print(f"- per-train-seed means: {{{', '.join(f'{ts}: {m:.1f}%' for ts, m in means.items())}}}; std across train seeds {sd(list(means.values())):.1f} pts")
 print(f"- within-checkpoint std across eval seeds (pooled) {math.sqrt(ms_eval):.1f} pts; Bernoulli SE n=50 at p={grand / 100:.2f}: {100 * math.sqrt(grand / 100 * (1 - grand / 100) / 50):.1f}")
 print(f"- one-way ANOVA F({len(means) - 1},{len(means) * (E - 1)}) = {F:.2f}; train-seed variance component std = {math.sqrt(comp):.1f} pts")
-K = sum(final[ts][0] for ts in final); N = sum(final[ts][1] for ts in final)
+K = sum(final[ts][0] for ts in anova_seeds); N = sum(final[ts][1] for ts in anova_seeds)
 lo, hi = wilson(K, N)
-print(f"- pooled over train seeds at 100k: {K}/{N} = {100 * K / N:.1f}% [{lo:.1f}, {hi:.1f}]; vs reference {REF[0]}/{REF[1]} = {100 * REF[0] / REF[1]:.1f}%: z={ztest(K, N, *REF)[0]:.2f}, p={ztest(K, N, *REF)[1]:.2g}")
+print(f"- pooled over train seeds 1-3 at 100k: {K}/{N} = {100 * K / N:.1f}% [{lo:.1f}, {hi:.1f}]; vs reference {REF[0]}/{REF[1]} = {100 * REF[0] / REF[1]:.1f}%: z={ztest(K, N, *REF)[0]:.2f}, p={ztest(K, N, *REF)[1]:.2g}")
 for ts in seeds:
     k, n = final[ts]; z, p = ztest(k, n, *REF)
-    print(f"  - seed {ts}: {k}/{n} = {100 * k / n:.1f}% vs reference: z={z:.2f}, p={p:.2g}")
-print(f"- mean of last-5 checkpoints (60k-100k): {{{', '.join(f'{ts}: {v:.1f}%' for ts, v in last5.items())}}}, mean {sum(last5.values()) / len(last5):.1f}%, std {sd(list(last5.values())):.1f}")
+    extra = "" if SRC[ts][1] else f"; vs seeds 1-3 pooled: z={ztest(k, n, K, N)[0]:.2f}, p={ztest(k, n, K, N)[1]:.2g}"
+    print(f"  - seed {ts}: {k}/{n} = {100 * k / n:.1f}% vs reference: z={z:.2f}, p={p:.2g}{extra}")
+print(f"- mean of last-5 checkpoints (60k-100k): {{{', '.join(f'{ts}: {v:.1f}%' for ts, v in last5.items())}}}, "
+      f"seeds 1-3 mean {sum(last5[ts] for ts in anova_seeds) / len(anova_seeds):.1f}%, std {sd([last5[ts] for ts in anova_seeds]):.1f}")

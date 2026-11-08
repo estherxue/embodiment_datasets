@@ -1,0 +1,41 @@
+{
+  "chunk_size": 16,
+  "dim_feedforward": 3200,
+  "dim_model": 512,
+  "dropout": 0.1,
+  "feedforward_activation": "relu",
+  "input_normalization_modes": {
+    "observation.environment_state": "min_max",
+    "observation.state": "min_max"
+  },
+  "input_shapes": {
+    "observation.environment_state": [
+      16
+    ],
+    "observation.state": [
+      2
+    ]
+  },
+  "kl_weight": 10.0,
+  "latent_dim": 32,
+  "n_action_steps": 16,
+  "n_decoder_layers": 4,
+  "n_encoder_layers": 4,
+  "n_heads": 8,
+  "n_obs_steps": 1,
+  "n_vae_encoder_layers": 4,
+  "output_normalization_modes": {
+    "action": "min_max"
+  },
+  "output_shapes": {
+    "action": [
+      2
+    ]
+  },
+  "pre_norm": false,
+  "pretrained_backbone_weights": "ResNet18_Weights.IMAGENET1K_V1",
+  "replace_final_stride_with_dilation": false,
+  "temporal_ensemble_momentum": null,
+  "use_vae": true,
+  "vision_backbone": "resnet18"
+}
