@@ -18,6 +18,8 @@ Outputs: /kaggle/working/{train/<variant>_cont/train_log.json, eval/<run>/eval_i
 VARIANT = "kp"  # written by build.py
 TRAIN_SEED = 2  # written by build.py
 INIT = "scratch"  # written by build.py: "ckpt" (warm start from the 10k checkpoint) or "scratch" (fresh 100k run)
+EXTRA_ARGS = ""  # written by build.py: extra lerobot-train args, e.g. --policy.use_amp=true
+RUN_SUFFIX = ""  # written by build.py: appended to the run name so variants of the same seed stay apart
 
 import glob
 import json
@@ -69,7 +71,7 @@ VARIANTS = {
                label="ACT pixels (96x96 image + agent pos, resnet18)"),
 }
 V = VARIANTS[VARIANT]
-RUN = f"{VARIANT}_cont" if INIT == "ckpt" else f"{VARIANT}_train{TRAIN_SEED}_100k"
+RUN = (f"{VARIANT}_cont" if INIT == "ckpt" else f"{VARIANT}_train{TRAIN_SEED}_100k") + RUN_SUFFIX
 
 SUMMARY = {
     "meta": {
@@ -228,7 +230,7 @@ def write_summary_md():
              f"- lerobot commit: `{meta['lerobot_commit']}` (v0.3.3), dataset revision v2.1, {V['dataset']}",
              f"- device: {meta.get('device')}  |  GPU: {meta.get('gpu', {}).get('device_name')}  |  torch {meta.get('gpu', {}).get('torch')}",
              (f"- input checkpoint: `{meta.get('input_ckpt')}` ({OFFSET} steps, train seed {TRAIN_SEED})" if INIT == "ckpt"
-              else f"- from scratch, train seed {TRAIN_SEED}, policy args `{POLICY_ARGS} --policy.normalization_mapping={V['norm']}`"),
+              else f"- from scratch, train seed {TRAIN_SEED}, policy args `{POLICY_ARGS} --policy.normalization_mapping={V['norm']} {EXTRA_ARGS}`"),
              f"- training: {STEPS} more steps (total {OFFSET + STEPS}), batch {BATCH_TRAIN}, seed {TRAIN_SEED}, save every {SAVE_FREQ}; "
              f"rc={t.get('rc')}, wall {t.get('wall_s', 0) / 60:.1f} min, {t.get('it_s', '-')} it/s, killed_by_budget={t.get('killed')}",
              f"- evaluation: intermediate checkpoints seeds {EVAL_SEEDS} x {N_EPISODES} episodes; last checkpoint seeds {FINAL_EVAL_SEEDS} x {N_EPISODES}",
@@ -413,7 +415,7 @@ def main():
     shutil.rmtree(out, ignore_errors=True)
     policy_part = (f"--policy.path={in_ckpt}" if INIT == "ckpt"
                    else f"{POLICY_ARGS} '--policy.normalization_mapping={V['norm']}'")
-    cmd = (f"{LEROBOT_TRAIN} {policy_part} --policy.device=cuda --policy.push_to_hub=false "
+    cmd = (f"{LEROBOT_TRAIN} {policy_part} {EXTRA_ARGS} --policy.device=cuda --policy.push_to_hub=false "
            f"--dataset.repo_id={V['dataset']} {V['env']} --output_dir={out} --job_name={RUN} --steps={STEPS} --save_freq={SAVE_FREQ} --eval_freq=0 "
            f"--log_freq={LOG_FREQ} --batch_size={BATCH_TRAIN} --num_workers=4 --seed={TRAIN_SEED} --wandb.enable=false")
     t_train = time.time()
