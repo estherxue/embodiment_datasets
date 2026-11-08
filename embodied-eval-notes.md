@@ -193,6 +193,26 @@ AdamW 给每个参数维护一阶矩 m（梯度的滑动平均，β1=0.9，记�
 - 评测流程对三种新策略都成立：两份官方参照 56.0% / 73.3% 与模型卡 57.0% / 71.0% 一致（p=0.83 / 0.58），Hydra 旧格式的 Diffusion 权重转换（156 个张量逐一对上）没有丢东西；参照的跨评测 seed 标准差 4.0 / 3.1 pts，在采样误差内，与 §4(b) 一致。
 - 对评测方法的含义：跨方法比较时，每个方法只有一个训练 seed 的话，方法间差异和训练 seed 噪声（10k 时 ACT 测到 11.6 pts）混在一起；这里 Diffusion 比 ACT 高 16 pts，大于这个噪声，像素三方的 2–3 pts 差异则完全在噪声里。
 
+### 3.8 47.6% 对 64.0%：排查训练侧差异（进行中，2026-11-08）
+
+§3.5 的结论是差距在训练侧。把作者的 Hub 配置（`config.yaml`，2024-07 的 Hydra 格式）、作者上传当天的 lerobot 代码和数据集两个修订版逐项对比：
+
+| 项 | 作者（2024-07） | 这里（lerobot 0.3.3） | 一致？ |
+|---|---|---|---|
+| 配置：模型结构（dim 512 / 8 头 / FF 3200 / 编码 4 层 / 解码 4 层 / VAE 编码 4 层 / latent 32 / dropout 0.1 / kl 10）、chunk 16 / n_action_steps 16、归一化（ENV / STATE / ACTION 全部 min-max）、lr 3e-5 / backbone 1e-5 / weight decay 1e-4 / grad clip 10、batch 64、100k 步、无 lr 调度 | `config.yaml` | 各 kernel 存下的 `train_config.json` | 全部一致 |
+| 配置：`use_amp`（混合精度） | true | false | **不同** |
+| 配置：训练 seed / num_workers | 100000 / 8 | 1、2、3 / 4 | 不同，但 §3.5 三个 seed 都低 14–20 pts |
+| ACT 模型代码 | commit 471eab3d（PR #314，2024-07-11，作者 07-10 上传权重的次日合入，作者用的就是这个分支） | b883328e | 关键点路径上**没有数学改动**：此后的改动是 `n_vae_encoder_layers` 修复（PR #400，两边都是 4，无影响）、推理时关 VAE（PR #1588，只影响评测期）、图像多相机路径重构、temporal ensembling（未用） |
+| 优化器 | AdamW，backbone 单独一个参数组，无调度器 | 同 | 一致 |
+| 数据 | `lerobot/pusht_keypoints` revision v1.5（老代码 `CODEBASE_VERSION`） | revision v2.1 | 25,650 帧的 environment_state / state / action / timestamp / reward **逐元素相同**（max |diff| = 0），min / max 统计量精确相同，mean / std 差 1e-4（min-max 归一化用不到）；比对脚本 `kaggle/lerobot-train-act-pusht-oldcode/data_check/` |
+
+配置、模型、数据三项都排除，只剩：(a) AMP；(b) 两版代码在训练循环 / 数据加载上某个上表没覆盖的差异；(c) 作者那一次运行本身（单个 seed，可能恰好偏高）。两个 kernel 同时在跑，各约 5 h：
+
+- `cindyxue1122/lerobot-train-act-pusht-100k-kp-seed2-amp`：0.3.3，与 §3.5 的 seed 2 完全相同，只加 `--policy.use_amp=true`，只动一个变量（模板加了 `EXTRA_ARGS` 开关）。
+- `cindyxue1122/lerobot-train-act-pusht-oldcode`（源码 `kaggle/lerobot-train-act-pusht-oldcode/`）：直接用作者的代码（lerobot 471eab3d、torch 2.3.1、数据 v1.5）和作者的 `config.yaml` 原样（seed 100000、AMP）重训 100k，每 10k 存档；同一 kernel 里装 0.3.3，把每个 checkpoint 转成 0.3.3 的配置格式（`model.safetensors` 键名没变）后按本页协议评（每档 3 × 50，100k 处 500）。本地用 4 步 dry run 验过"老代码训练 → 转格式严格加载 → 0.3.3 评测"整条链路。
+
+读法：老代码复现到 60% 以上而 AMP 版仍在 48% 左右，差异就在两版代码的训练循环 / 数据加载里（再 bisect）；两个都到 60% 以上，是 AMP；老代码也只有 48% 左右，作者的 64% 是那一次运行的偏高结果（或 checkpoint 选择），同配方的期望值更接近这里的 47.6%。
+
 ## 4. 方差从哪来
 
 **(a) Bernoulli 采样（episode 数 n）。** 单次评测的成功率是 n 个 0/1 的均值，SE = sqrt(p(1−p)/n)。这是 n=50 时最大的不确定性来源：

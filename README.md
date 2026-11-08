@@ -37,6 +37,8 @@
 
 **其他策略，同协议 10k 步**（训练 seed 1，3 评测 seed × 50；`kaggle/lerobot-train-others-pusht/`，对比脚本 `analyze_others.py`）：关键点 Diffusion Policy（DDIM-10）58/150 = 38.7%（CI [31.2, 46.7]），显著高于同数据同步数的 ACT 22.7%（p=1e-4），但离其官方参照 73.3% 还远；像素三个方法在 10k 步都没起来：VQ-BeT 10.0%、Diffusion 7.3%、ACT 8.0%，两两分不开（官方参照 57% / 65%）；TD-MPC 关键点 0/150（离线 10k 步 + 评测时 CEM 规划，T 块几乎没被推动；关掉规划只用策略先验也是 0/150）。两份官方参照 `lerobot/vqbet_pusht` 56.0%、`lerobot/diffusion_pusht_keypoints` 73.3% 与模型卡 57.0% / 71.0% 一致。详见 `embodied-eval-notes.md` §3.7。
 
+**47.6% 对 64% 的排查（进行中）**：作者的 `config.yaml` 与我们的训练配置只差 `use_amp`；ACT 模型代码在关键点路径上无数学改动；数据集 v1.5 与 v2.1 逐元素相同。正在跑两个确认 kernel：0.3.3 + `use_amp=true`（seed 2），以及用作者当年的 lerobot 代码和原配置原样重训（`kaggle/lerobot-train-act-pusht-oldcode/`）。详见 `embodied-eval-notes.md` §3.8。
+
 ALOHA 插接模型卡自报 20.6%（500 episodes；原论文 20%），MuJoCo 2.3.7 下的 16.7% 与之统计上一致（p=0.29）。之前笔记里写的“自报 83%”来自该仓库的 eval_info.json，排查发现那是 transfer cube 的文件被错传进了插接仓库，用同一流程评 transfer cube 得 76%（模型卡 83%，p=0.10），说明流程能复现作者数字。排查过程见 `lerobot/EVAL_NOTES.md` §6；插接按 500 步（demo 长度）口径补测得 21.0%（21/100），与模型卡重合，比 400 步口径高约 4 个点但不显著。
 
 **LIBERO（libero_spatial）**
